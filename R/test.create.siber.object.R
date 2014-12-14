@@ -1,9 +1,9 @@
 # Read in SIBER format data and generate the SIBER object
 # This script to be turned into a function in time.
 
-rm(list=ls())
+#rm(list=ls())
 
-setwd("/Users/andrewjackson/documents/github/siber/R")
+#setwd("/Users/andrewjackson/documents/github/siber/R")
 
 
 
@@ -12,6 +12,14 @@ mydata <- read.csv("../data/demo.siber.data.csv", header=T)
 # create an object that is a list, into which the raw data, 
 # its transforms, and various calculated metrics can be stored.
 siber <- list()
+
+
+# some basic summary stats helpful for plotting
+my.summary <- function(x){
+	c(min = min(x), max = max(x), mean = mean(x), median = median(x))
+}
+
+siber$iso.summary <- apply(mydata[,1:2], 2, my.summary)
 
 # store the raw data as list split by the community variable
 # and rename the list components
@@ -54,7 +62,7 @@ for (i in 1:siber$n.communities) {
 		tmp <- subset(siber$raw.data[[i]], group == j)	
 		
 	    mu.tmp <- colMeans(cbind(tmp$iso1, tmp$iso2))
-	    cov.tmp <- cov(tmp$iso1, tmp$iso2)
+	    cov.tmp <- cov(cbind(tmp$iso1, tmp$iso2))
 
 	    siber$ML.mu[[i]][,,j] <- mu.tmp
 	    siber$ML.cov[[i]][,,j] <- cov.tmp
@@ -84,6 +92,8 @@ for (i in 1:siber$n.communities) {
 
 	
 }
+
+
 
 
 
