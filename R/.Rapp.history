@@ -1,0 +1,2248 @@
+new.data <- data.frame(gender=c("male","female"), age=c(19,35))#
+#
+yhat.treat <- predict(treat.model, new.data, type="response")
+new.data
+yhat.treat
+yhat.cost <- predict(cost.model, new.data)
+yhat.cost
+exp(yhat.cost)
+estimated.costs <- yhat.treat * yhat.cost
+estimated.costs
+# ---------------------------------------------------------------------------------#
+# we could use this method to visualise how the costs scale by age and gender#
+# ---------------------------------------------------------------------------------#
+sim.age <- seq(0,65, length=100)#
+mm <- rep("male", length(sim.age))#
+ff <- rep("female", length(sim.age))#
+#
+sim.all.data <- data.frame(gender = c(mm,ff), age = c(sim.age, sim.age))#
+#
+sim.all.data$treat <- predict(treat.model, sim.all.data, type="response")#
+sim.all.data$cost <- exp(predict(cost.model, sim.all.data))#
+#
+# put the full estimated costings back into the dataframe for safe keeping#
+sim.all.data$predicted <- sim.treat * sim.cost#
+# with() essentially lets us temporarily attach the sim.all.data#
+# dataframe within the curly brackets.#
+with(sim.all.data){#
+ dev.new()#
+ par(mfrow = c(2,2))#
+#
+ plot(age, sim.treat, col = gender, type = "l", main = "probability of treatment")#
+#
+ plot(age, sim.cost, col = gender, type = "l", main = "cost of treatment if required")#
+#
+ plot(age, predicted, col = gender, type = "l", main = "average realised cost of treatment")#
+}
+# with() essentially lets us temporarily attach the sim.all.data#
+# dataframe within the brackets.#
+with(sim.all.data,#
+ dev.new()#
+ par(mfrow = c(2,2))#
+#
+ plot(age, sim.treat, col = gender, type = "l", main = "probability of treatment")#
+#
+ plot(age, sim.cost, col = gender, type = "l", main = "cost of treatment if required")#
+#
+ plot(age, predicted, col = gender, type = "l", main = "average realised cost of treatment")#
+) # end of with()
+with(sim.all.data,#
+ dev.new()#
+ par(mfrow = c(2,2))#
+#
+ plot(age, sim.treat, col = gender, type = "l", main = "probability of treatment")#
+#
+ plot(age, sim.cost, col = gender, type = "l", main = "cost of treatment if required")#
+#
+ plot(age, predicted, col = gender, type = "l", main = "average realised cost of treatment")#
+) # end of with()
+dev.new()#
+par(mfrow = c(2,2))#
+#
+with(sim.all.data,#
+ plot(age, sim.treat, col = gender, type = "l", main = "probability of treatment")#
+#
+ plot(age, sim.cost, col = gender, type = "l", main = "cost of treatment if required")#
+#
+ plot(age, predicted, col = gender, type = "l", main = "average realised cost of treatment")#
+) # end of with()
+?with
+# with() essentially lets us temporarily attach the sim.all.data#
+# dataframe within the brackets.#
+with(sim.all.data,{#
+ dev.new()#
+ par(mfrow = c(2,2))#
+#
+ plot(age, sim.treat, col = gender, type = "l", main = "probability of treatment")#
+#
+ plot(age, sim.cost, col = gender, type = "l", main = "cost of treatment if required")#
+#
+ plot(age, predicted, col = gender, type = "l", main = "average realised cost of treatment")#
+}) # end of with()
+# with() essentially lets us temporarily attach the sim.all.data#
+# dataframe within the brackets.#
+with(sim.all.data,{#
+ dev.new()#
+ par(mfrow = c(2,2))#
+#
+ plot(age, treat, col = gender, type = "l", main = "probability of treatment")#
+#
+ plot(age, cost, col = gender, type = "l", main = "cost of treatment if required")#
+#
+ plot(age, predicted, col = gender, type = "l", main = "average realised cost of treatment")#
+}) # end of with()
+head(sim.all.data)
+sim.all.data$predicted <- sim.treat * sim.cost
+sim.all.data$predicted <- sim.all.data$treat * sim.all.data$cost
+# with() essentially lets us temporarily attach the sim.all.data#
+# dataframe within the brackets.#
+with(sim.all.data,{#
+ dev.new()#
+ par(mfrow = c(2,2))#
+#
+ plot(age, treat, col = gender, type = "l", main = "probability of treatment")#
+#
+ plot(age, cost, col = gender, type = "l", main = "cost of treatment if required")#
+#
+ plot(age, predicted, col = gender, type = "l", main = "average realised cost of treatment")#
+}) # end of with()
+# dataframe within the brackets.#
+with(sim.all.data,{#
+ dev.new()#
+ par(mfrow = c(2,2))#
+#
+ plot(age, treat, col = gender, type = "p", main = "probability of treatment")#
+#
+ plot(age, cost, col = gender, type = "p", main = "cost of treatment if required")#
+#
+ plot(age, predicted, col = gender, type = "p", main = "average realised cost of treatment")#
+}) # end of with()
+sim.age <- seq(0,65, length=100)#
+mm <- rep("male", length(sim.age))#
+ff <- rep("female", length(sim.age))#
+#
+sim.all.data <- data.frame(gender = c(mm,ff), age = c(sim.age, sim.age))#
+#
+sim.all.data$treat <- predict(treat.model, sim.all.data, type="response")#
+sim.all.data$cost <- exp(predict(cost.model, sim.all.data))#
+#
+# put the full estimated costings back into the dataframe for safe keeping#
+sim.all.data$predicted <- sim.all.data$treat * sim.all.data$cost#
+# with() essentially lets us temporarily attach the sim.all.data#
+# dataframe within the brackets.#
+with(sim.all.data,{#
+ dev.new()#
+ par(mfrow = c(2,2))#
+#
+ plot(age, treat, col = gender, type = "p", main = "probability of treatment")#
+#
+ plot(age, cost, col = gender, type = "p", main = "cost of treatment if required",#
+ 	ylim = c(0,13000))#
+#
+ plot(age, predicted, col = gender, type = "p", main = "average realised cost of treatment",#
+ 	ylim = c(0,13000))#
+}) # end of with()#
+#
+# and add the raw data to the panel for comparison#
+plot(cost.data$age, cost.data$cost, col = cost.data$gender, main = "raw simualted data",#
+	ylim = c(0,13000))
+graphics.off()
+# example for Abi on how to combine a binary regression with a log transformed linear#
+# regression to build a costing model#
+#
+rm(list=ls())#
+graphics.off()#
+set.seed(2)#
+#
+# ---------------------------------------------------------------------------------#
+# simulate some simple data. Cost will be related to age and gender#
+# ---------------------------------------------------------------------------------#
+#
+# sample size per gender#
+n.obs <- 200#
+#
+# some random ages between 1 and 60#
+X.age <- runif(n.obs, 1, 60)#
+#
+# cost is log-normally distributed with different#
+# means for each gender, and the same sd#
+# Age affects the cost according to a seimple linear model#
+# Males have intercept of 1, females intercept of 3#
+# and both have a slope with age of 0.1.#
+y.males <- rlnorm(n.obs, meanlog = 0.1 * X.age + 1, sdlog = 0.3)#
+y.females <- rlnorm(n.obs, meanlog = 0.1 * X.age + 3, sdlog = 0.3)#
+#
+dev.new()#
+par(mfrow=c(1,2))#
+hist(y.males, freq=F)#
+hist(y.females, freq=F)#
+# now we need to simulate the probability of actually needing#
+# treatment in a year and whether they have an associated costing#
+# or not. I am going to just use gender to alter this probability#
+# though Age or any other explanatory factor could also have an #
+# effect.#
+#
+p.males <- 0.8#
+p.females <- 0.6#
+#
+treat.males <- rbinom(n.obs, 1, p.males)#
+treat.females <- rbinom(n.obs, 1,  p.females)#
+#
+# now calculate the actual cost for each individual#
+cost.males <- treat.males * y.males#
+cost.females <- treat.females * y.females#
+# create the dataset for analysis#
+cost.data <- data.frame( cost = c(cost.males,cost.females),#
+                         treat = c(treat.males,treat.females),#
+                         age = c(X.age,X.age),#
+                         gender = c(rep("male",n.obs), rep("female",n.obs))#
+                         )#
+#
+dev.new()#
+plot(cost.data$age, cost.data$cost, col = cost.data$gender)#
+#
+# and thats the data simulated... clear positive relationship with age, and #
+# a difference between the sexes, and lots of zeros to muddle things.#
+# ---------------------------------------------------------------------------------#
+# now we want to build our two models to see if we can rediscover the relationships#
+# and therefore build a predictive model to use with un-observed individuals in the#
+# rest of the population#
+# ---------------------------------------------------------------------------------#
+# ---------------------------------------------------------------------------------#
+# first the binary logistic model to estimate probability of needing treatment#
+# ---------------------------------------------------------------------------------#
+treat.model.full <- glm(treat ~ age * gender, family = binomial, data = cost.data)#
+#
+# use model selcetion to identify the most suitable variables to include#
+treat.model <- step(treat.model.full)#
+#
+summary(treat.model)#
+#
+# so only gender matters in this model. just like we specified up above.#
+#
+# NB these estimate are of logit(p) as a function of age and gender.#
+# so we need to back-calculate to p using the following formula#
+# we specified p.female and p.male. Im going to call our esimates of #
+# those number q.female and q.male#
+#
+b0 <- coef(treat.model)[1]#
+b.male <- coef(treat.model)[2]#
+#
+q.female <-  1 / (1 + exp(-b0))#
+q.male <-  1 / (1 + exp(-(b0 + b.male)))#
+#
+# these are reassuringly close to p.female, and p.male which we were #
+# trying to recover#
+#
+# ---------------------------------------------------------------------------------#
+# now the model of cost if you do need treatment#
+# ---------------------------------------------------------------------------------#
+#
+treat.only.data <- subset(cost.data, cost.data$treat == 1)#
+#
+# we konw the data are skewed so will model log transformed costs#
+#
+# NB we specify very clearly which data set we are using in the call to #
+# glm. This script is a good example of where attach() would run us into#
+# trouble as both dataframes have the same names for the columns, and #
+# we could not guarantee which one we were using each time.#
+cost.model.full <- glm(log(cost) ~ age * gender, data = treat.only.data)#
+#
+# again use step() to identify the most suitable explanatory variables#
+# which in this case is age and gender with no interaction, just like#
+# we simulated above.#
+cost.model <- step(cost.model.full)#
+summary(cost.model)#
+#
+# just lie above, where we specified the rlnorm() data#
+# both males and females have a slope of 0.1,#
+# females have an intercept of 3, and#
+# males have an intercept of (3-2 = 1)#
+# ---------------------------------------------------------------------------------#
+# finally, we  use these two models to estimate a cost for unobserved individuals#
+# ---------------------------------------------------------------------------------#
+#
+new.data <- data.frame(gender=c("male","female"), age=c(19,35))#
+#
+# yhat are the esimated values #
+yhat.treat <- predict(treat.model, new.data, type="response")#
+#
+# NB this model predicts log(cost in euros) so need to exp() the result#
+yhat.cost <- exp(predict(cost.model, new.data))#
+#
+# and finally put the two together#
+estimated.costs <- yhat.treat * yhat.cost#
+# ---------------------------------------------------------------------------------#
+# we could use this method to visualise how the costs scale by age and gender#
+# ---------------------------------------------------------------------------------#
+sim.age <- seq(0,65, length=100)#
+mm <- rep("male", length(sim.age))#
+ff <- rep("female", length(sim.age))#
+#
+sim.all.data <- data.frame(gender = c(mm,ff), age = c(sim.age, sim.age))#
+#
+sim.all.data$treat <- predict(treat.model, sim.all.data, type="response")#
+sim.all.data$cost <- exp(predict(cost.model, sim.all.data))#
+#
+# put the full estimated costings back into the dataframe for safe keeping#
+sim.all.data$predicted <- sim.all.data$treat * sim.all.data$cost#
+# with() essentially lets us temporarily attach the sim.all.data#
+# dataframe within the brackets.#
+with(sim.all.data,{#
+ dev.new()#
+ par(mfrow = c(2,2))#
+#
+ plot(age, treat, col = gender, type = "p", main = "probability of treatment")#
+#
+ plot(age, cost, col = gender, type = "p", main = "cost of treatment if required",#
+ 	ylim = c(0,13000))#
+#
+ plot(age, predicted, col = gender, type = "p", main = "average realised cost of treatment",#
+ 	ylim = c(0,13000))#
+}) # end of with()#
+#
+# and add the raw data to the panel for comparison#
+plot(cost.data$age, cost.data$cost, col = cost.data$gender, main = "raw simualted data",#
+	ylim = c(0,13000))
+# example for Abi on how to combine a binary regression with a log transformed linear#
+# regression to build a costing model#
+#
+rm(list=ls())#
+graphics.off()#
+set.seed(2)#
+#
+# ---------------------------------------------------------------------------------#
+# simulate some simple data. Cost will be related to age and gender#
+# ---------------------------------------------------------------------------------#
+#
+# sample size per gender#
+n.obs <- 200#
+#
+# some random ages between 1 and 60#
+X.age <- runif(n.obs, 1, 60)#
+#
+# cost is log-normally distributed with different#
+# means for each gender, and the same sd#
+# Age affects the cost according to a seimple linear model#
+# Males have intercept of 1, females intercept of 3#
+# and both have a slope with age of 0.1.#
+y.males <- rlnorm(n.obs, meanlog = 0.1 * X.age + 1, sdlog = 0.3)#
+y.females <- rlnorm(n.obs, meanlog = 0.1 * X.age + 3, sdlog = 0.3)#
+#
+dev.new()#
+par(mfrow=c(1,2))#
+hist(y.males, freq=F)#
+hist(y.females, freq=F)#
+# now we need to simulate the probability of actually needing#
+# treatment in a year and whether they have an associated costing#
+# or not. I am going to just use gender to alter this probability#
+# though Age or any other explanatory factor could also have an #
+# effect.#
+#
+p.males <- 0.8#
+p.females <- 0.6#
+#
+treat.males <- rbinom(n.obs, 1, p.males)#
+treat.females <- rbinom(n.obs, 1,  p.females)#
+#
+# now calculate the actual cost for each individual#
+cost.males <- treat.males * y.males#
+cost.females <- treat.females * y.females#
+# create the dataset for analysis#
+cost.data <- data.frame( cost = c(cost.males,cost.females),#
+                         treat = c(treat.males,treat.females),#
+                         age = c(X.age,X.age),#
+                         gender = c(rep("male",n.obs), rep("female",n.obs))#
+                         )#
+#
+dev.new()#
+plot(cost.data$age, cost.data$cost, col = cost.data$gender)#
+#
+# and thats the data simulated... clear positive relationship with age, and #
+# a difference between the sexes, and lots of zeros to muddle things.#
+# ---------------------------------------------------------------------------------#
+# now we want to build our two models to see if we can rediscover the relationships#
+# and therefore build a predictive model to use with un-observed individuals in the#
+# rest of the population#
+# ---------------------------------------------------------------------------------#
+# ---------------------------------------------------------------------------------#
+# first the binary logistic model to estimate probability of needing treatment#
+# ---------------------------------------------------------------------------------#
+treat.model.full <- glm(treat ~ age * gender, family = binomial, data = cost.data)#
+#
+# use model selcetion to identify the most suitable variables to include#
+treat.model <- step(treat.model.full)#
+#
+summary(treat.model)#
+#
+# so only gender matters in this model. just like we specified up above.#
+#
+# NB these estimate are of logit(p) as a function of age and gender.#
+# so we need to back-calculate to p using the following formula#
+# we specified p.female and p.male. Im going to call our esimates of #
+# those number q.female and q.male#
+#
+b0 <- coef(treat.model)[1]#
+b.male <- coef(treat.model)[2]#
+#
+q.female <-  1 / (1 + exp(-b0))#
+q.male <-  1 / (1 + exp(-(b0 + b.male)))#
+#
+# these are reassuringly close to p.female, and p.male which we were #
+# trying to recover#
+#
+# ---------------------------------------------------------------------------------#
+# now the model of cost if you do need treatment#
+# ---------------------------------------------------------------------------------#
+#
+treat.only.data <- subset(cost.data, cost.data$treat == 1)#
+#
+# we konw the data are skewed so will model log transformed costs#
+#
+# NB we specify very clearly which data set we are using in the call to #
+# glm. This script is a good example of where attach() would run us into#
+# trouble as both dataframes have the same names for the columns, and #
+# we could not guarantee which one we were using each time.#
+cost.model.full <- glm(log(cost) ~ age * gender, data = treat.only.data)#
+#
+# again use step() to identify the most suitable explanatory variables#
+# which in this case is age and gender with no interaction, just like#
+# we simulated above.#
+cost.model <- step(cost.model.full)#
+summary(cost.model)#
+#
+# just lie above, where we specified the rlnorm() data#
+# both males and females have a slope of 0.1,#
+# females have an intercept of 3, and#
+# males have an intercept of (3-2 = 1)#
+# ---------------------------------------------------------------------------------#
+# finally, we  use these two models to estimate a cost for unobserved individuals#
+# ---------------------------------------------------------------------------------#
+#
+new.data <- data.frame(gender=c("male","female"), age=c(19,35))#
+#
+# yhat are the esimated values #
+yhat.treat <- predict(treat.model, new.data, type="response")#
+#
+# NB this model predicts log(cost in euros) so need to exp() the result#
+yhat.cost <- exp(predict(cost.model, new.data))#
+#
+# and finally put the two together#
+estimated.costs <- yhat.treat * yhat.cost#
+# ---------------------------------------------------------------------------------#
+# we could use this method to visualise how the costs scale by age and gender#
+# ---------------------------------------------------------------------------------#
+sim.age <- seq(0,65, length=100)#
+mm <- rep("male", length(sim.age))#
+ff <- rep("female", length(sim.age))#
+#
+sim.all.data <- data.frame(gender = c(mm,ff), age = c(sim.age, sim.age))#
+#
+sim.all.data$treat <- predict(treat.model, sim.all.data, type="response")#
+sim.all.data$cost <- exp(predict(cost.model, sim.all.data))#
+#
+# put the full estimated costings back into the dataframe for safe keeping#
+sim.all.data$predicted <- sim.all.data$treat * sim.all.data$cost#
+# with() essentially lets us temporarily attach the sim.all.data#
+# dataframe within the brackets.#
+with(sim.all.data,{#
+ dev.new()#
+ par(mfrow = c(2,2))#
+#
+ plot(age, treat, col = gender, type = "p", main = "probability of treatment", #
+ 	ylim = c(0,1))#
+#
+ plot(age, cost, col = gender, type = "p", main = "cost of treatment if required",#
+ 	ylim = c(0,13000))#
+#
+ plot(age, predicted, col = gender, type = "p", main = "average realised cost of treatment",#
+ 	ylim = c(0,13000))#
+}) # end of with()#
+#
+# and add the raw data to the panel for comparison#
+plot(cost.data$age, cost.data$cost, col = cost.data$gender, main = "raw simualted data",#
+	ylim = c(0,13000))
+# example for Abi on how to combine a binary regression with a log transformed linear#
+# regression to build a costing model#
+#
+rm(list=ls())#
+graphics.off()#
+set.seed(2)#
+#
+# ---------------------------------------------------------------------------------#
+# simulate some simple data. Cost will be related to age and gender#
+# ---------------------------------------------------------------------------------#
+#
+# sample size per gender#
+n.obs <- 200#
+#
+# some random ages between 1 and 60#
+X.age <- runif(n.obs, 1, 60)#
+#
+# cost is log-normally distributed with different#
+# means for each gender, and the same sd#
+# Age affects the cost according to a seimple linear model#
+# Males have intercept of 1, females intercept of 3#
+# and both have a slope with age of 0.1.#
+y.males <- rlnorm(n.obs, meanlog = 0.1 * X.age + 1, sdlog = 0.3)#
+y.females <- rlnorm(n.obs, meanlog = 0.1 * X.age + 3, sdlog = 0.3)#
+#
+dev.new()#
+par(mfrow=c(1,2))#
+hist(y.males, freq=F)#
+hist(y.females, freq=F)#
+# now we need to simulate the probability of actually needing#
+# treatment in a year and whether they have an associated costing#
+# or not. I am going to just use gender to alter this probability#
+# though Age or any other explanatory factor could also have an #
+# effect.#
+#
+p.males <- 0.8#
+p.females <- 0.6#
+#
+treat.males <- rbinom(n.obs, 1, p.males)#
+treat.females <- rbinom(n.obs, 1,  p.females)#
+#
+# now calculate the actual cost for each individual#
+cost.males <- treat.males * y.males#
+cost.females <- treat.females * y.females#
+# create the dataset for analysis#
+cost.data <- data.frame( cost = c(cost.males,cost.females),#
+                         treat = c(treat.males,treat.females),#
+                         age = c(X.age,X.age),#
+                         gender = c(rep("male",n.obs), rep("female",n.obs))#
+                         )#
+#
+dev.new()#
+plot(cost.data$age, cost.data$cost, col = cost.data$gender)#
+#
+# and thats the data simulated... clear positive relationship with age, and #
+# a difference between the sexes, and lots of zeros to muddle things.#
+# ---------------------------------------------------------------------------------#
+# now we want to build our two models to see if we can rediscover the relationships#
+# and therefore build a predictive model to use with un-observed individuals in the#
+# rest of the population#
+# ---------------------------------------------------------------------------------#
+# ---------------------------------------------------------------------------------#
+# first the binary logistic model to estimate probability of needing treatment#
+# ---------------------------------------------------------------------------------#
+treat.model.full <- glm(treat ~ age * gender, family = binomial, data = cost.data)#
+#
+# use model selcetion to identify the most suitable variables to include#
+treat.model <- step(treat.model.full)#
+#
+summary(treat.model)#
+#
+# so only gender matters in this model. just like we specified up above.#
+#
+# NB these estimate are of logit(p) as a function of age and gender.#
+# so we need to back-calculate to p using the following formula#
+# we specified p.female and p.male. Im going to call our esimates of #
+# those number q.female and q.male#
+#
+b0 <- coef(treat.model)[1]#
+b.male <- coef(treat.model)[2]#
+#
+q.female <-  1 / (1 + exp(-b0))#
+q.male <-  1 / (1 + exp(-(b0 + b.male)))#
+#
+# these are reassuringly close to p.female, and p.male which we were #
+# trying to recover#
+#
+# ---------------------------------------------------------------------------------#
+# now the model of cost if you do need treatment#
+# ---------------------------------------------------------------------------------#
+#
+treat.only.data <- subset(cost.data, cost.data$treat == 1)#
+#
+# we konw the data are skewed so will model log transformed costs#
+#
+# NB we specify very clearly which data set we are using in the call to #
+# glm. This script is a good example of where attach() would run us into#
+# trouble as both dataframes have the same names for the columns, and #
+# we could not guarantee which one we were using each time.#
+cost.model.full <- glm(log(cost) ~ age * gender, data = treat.only.data)#
+#
+# again use step() to identify the most suitable explanatory variables#
+# which in this case is age and gender with no interaction, just like#
+# we simulated above.#
+cost.model <- step(cost.model.full)#
+summary(cost.model)#
+#
+# just lie above, where we specified the rlnorm() data#
+# both males and females have a slope of 0.1,#
+# females have an intercept of 3, and#
+# males have an intercept of (3-2 = 1)#
+# ---------------------------------------------------------------------------------#
+# finally, we  use these two models to estimate a cost for unobserved individuals#
+# ---------------------------------------------------------------------------------#
+#
+new.data <- data.frame(gender=c("male","female"), age=c(19,35))#
+#
+# yhat are the esimated values #
+yhat.treat <- predict(treat.model, new.data, type="response")#
+#
+# NB this model predicts log(cost in euros) so need to exp() the result#
+yhat.cost <- exp(predict(cost.model, new.data))#
+#
+# and finally put the two together#
+estimated.costs <- yhat.treat * yhat.cost#
+# ---------------------------------------------------------------------------------#
+# we could use this method to visualise how the costs scale by age and gender#
+# ---------------------------------------------------------------------------------#
+sim.age <- seq(0,65, length=100)#
+mm <- rep("male", length(sim.age))#
+ff <- rep("female", length(sim.age))#
+#
+sim.all.data <- data.frame(gender = c(mm,ff), age = c(sim.age, sim.age))#
+#
+sim.all.data$treat <- predict(treat.model, sim.all.data, type="response")#
+sim.all.data$cost <- exp(predict(cost.model, sim.all.data))#
+#
+# put the full estimated costings back into the dataframe for safe keeping#
+sim.all.data$predicted <- sim.all.data$treat * sim.all.data$cost#
+# with() essentially lets us temporarily attach the sim.all.data#
+# dataframe within the brackets.#
+with(sim.all.data,{#
+ dev.new()#
+ par(mfrow = c(2,2))#
+#
+ plot(age, treat, col = gender, type = "p", main = "probability of treatment", #
+ 	ylim = c(0,1), cex = 0.75)#
+#
+ plot(age, cost, col = gender, type = "p", main = "cost of treatment if required",#
+ 	ylim = c(0,13000), cex = 0.75)#
+#
+ plot(age, predicted, col = gender, type = "p", main = "average realised cost of treatment",#
+ 	ylim = c(0,13000), cex = 0.75)#
+}) # end of with()#
+#
+# and add the raw data to the panel for comparison#
+plot(cost.data$age, cost.data$cost, col = cost.data$gender, main = "raw simualted data",#
+	ylim = c(0,13000), cex = 0.75)
+0.5/70
+1/70
+# About: create random networks of nodes, among which energy flows #
+# according to system of simple linear ODEs.#
+# Author: Andrew Jackson#
+# Date created: 22/11/14#
+# Based on: http://books.google.ie/books?id=hZVMPYaK6GgC&pg=PA104&lpg=PA104&dq=compartment+model+energy+flow&source=bl&ots=_yZyDalndi&sig=SVdQEUG6B031AEyoiYmb9XIZqbE&hl=en&sa=X&ei=hpxwVMwyhrE88O2BuAs&ved=0CC8Q6AEwAQ#v=onepage&q=compartment%20model%20energy%20flow&f=false#
+#-------------------------------------------------------------------------------#
+# Initiation#
+rm(list=ls())  # clear memory#
+graphics.off() # close open graphics windows from previous runs#
+#set.seed(1)   # for debugging#
+#
+# This script requires installation of these packages, along with their#
+# dependencies#
+# in the R command window, type#
+# install.packages(c('deSolve', 'diagram'))#
+# to pull them down from the cran repository.#
+library('deSolve')#
+library('diagram')#
+#
+#-------------------------------------------------------------------------------#
+# Network set up#
+# I am toying with turning this portion of code into a function#
+#
+# number of nodes in a network to create#
+n.nodes <- 7#
+#
+# specify the binary interaction matrix B#
+# this matrix deterimes which nodes are connected.#
+# This is defined here symmetically, so that an amount of energy g#
+# is removed from one node, and added to another. But see later, we #
+# can specify energy losses which essentially makes these asymmetric,#
+# with an amount g lost from one node, and a corresponding amount qg#
+# gained by the other node with 0 <= g <= 1#
+# probability of a connection#
+p.connect <- 0.6#
+#
+B <- matrix(rbinom(n.nodes^2, 1, p.connect), ncol = n.nodes, nrow = n.nodes)#
+# only fill in the lower triangle of B#
+# nodes in the lower triangle consume energy from the #
+# node specified by each column. That is, if a[2,1] <-1#
+# then node2 gains one unit from node1 and so node1 has to#
+# have a negative value associated in its diagonal.#
+B[upper.tri(B)] <- 0#
+B[diag(B)] <- 0#
+#
+# specify the weighted interaction matrix A#
+# this matrix determines the rates of energy flow between nodes.#
+# We will let energy production stay constant at 1, and scale the others#
+# below this amount.#
+#
+# upper and lower bounds for values in A#
+a.ub <- 0.2#
+a.lb <- 0.1#
+#
+aa <- matrix(runif(n.nodes^2, a.lb, a.ub), #
+	          ncol = n.nodes, nrow = n.nodes)#
+#
+# Create the transition matrix a for each valid connection specified by #
+# the binary connection matrix B#
+a <- aa * B#
+# Each node loses energy. This simulates energy loss during transfer,#
+# and also potentially acts as a feedback of energy to the environment,#
+# but that would need some re-coding to acheive.#
+e.ub <- 0.15 # energy loss lower bound#
+e.lb <- 0.05 # energy loss upper bound#
+e <- runif(n.nodes, e.lb, e.ub)#
+# calculate the diagonal values representing sums of losses to connected nodes#
+# in addition to loss to the environment#
+diag(a) <- -colSums(a) - e#
+#
+# Energy input to the system is defined  by the vector f#
+f <- double(n.nodes)#
+# in this simple model, only node1 acquires energy from the environment#
+f[1] <- 1 #
+# set initial conditions, i.e. Energy per node.#
+# HEre i am going to just seed the network with 1 unit of energy#
+# in the energy node#1#
+G.0 <- matrix(0, nrow = n.nodes, ncol = 1)#
+G.0[1] <- 1#
+#-------------------------------------------------------------------------------#
+# Evaluate the network as a set of coupled ODEs#
+#-------------------------------------------------------------------------------#
+energy.flow <- function(t, G, Pars) {#
+  with(as.list(Pars), {#
+#
+    if (t >= event.t) {#
+      a[,node.loss.id] <- 0#
+      a[node.loss.id] <- 0#
+      }#
+    dG <- (a %*% G) + f#
+#
+    return(list(dG))#
+  })#
+}#
+#
+# define the parameters for passing to the energy.flow() function#
+# The following parameters control the perturbation:#
+#     node.hit = integer identifying which node will be proportionally changed#
+#     prop.fall = proportional change to node.hit. If == 1, then no change#
+#     node.loss.id = integer identifying which node to remove entirely#
+#     event.t = time point to lose node.#
+# Notes: set even.t = Inf to not apply any perturbation.#
+# If removing a node, then you should also use node.hit = node.loss.id and #
+# prop.fall = 0 to set its state variable value to zero, in addition to removing#
+# its connections. You can turn off a proportional change in any node by #
+# setting prop.fail = 1.#
+pars  <- c(a = a, f = f,#
+           node.hit = 2, prop.fall = 1,#
+           node.loss.id = NA, event.t = Inf)#
+#
+# initial conditions of the system#
+yini  <- c(G = G.0)#
+#
+# specify the times at which we want to evaluate the system#
+times <- seq(1, 100, length = 100)#
+# Include a perturbation event function which can be evaluated at #
+# defined time points in the call to ode()#
+node.fall <- function(t, G, pars){#
+  with (as.list(pars),{#
+    G[node.hit] <- G[node.hit] * prop.fall#
+    return(G)#
+  })#
+#
+}#
+#*******************************************************************************#
+# This is where the system is actually evaluated.#
+# Simulate the system over time with a call to ode()#
+out   <- ode(yini, times, energy.flow, pars,#
+             events = list(func = node.fall, time = pars["event.t"]))#
+#*******************************************************************************#
+#
+#-------------------------------------------------------------------------------#
+# Plot the results, and the network structure#
+#-------------------------------------------------------------------------------#
+# Plot the energy per node over time#
+dev.new(height = 5, width = 5)#
+matplot(out[,1], out[,2:(n.nodes+1)], type="l", main = "ODE model", #
+	     xlab = "time", ylab = "energy in each node", #
+       lwd = c(2, rep(1, n.nodes-1)), bty = "L",#
+       xlim=c(0, max(times) * 1.2))#
+# Add a grey vertical line to indicate the time at which the perturbation event#
+# is to be applied (if there is one specified)#
+abline(v = pars["event.t"], col="grey")#
+text((max(times)*1.05 + 2*(1:n.nodes)),#
+      out[nrow(out), 2:(n.nodes+1)], 1:n.nodes, cex = 0.75)#
+#
+#-------------------------------------------------------------------------------#
+# Use pkg 'diagram' to visualise the network#
+# I intend to tidy up this to make it more visually appealing, and#
+# accurate regarding the energy gains and losses to and from the environment.#
+#
+a.cnx <- a#
+diag(a.cnx) <- 0#
+a.self <- diag(a)#
+dev.new()#
+pp <- plotmat(round(a.cnx, digits = 2),#
+               curve = 0.1,#
+               lwd = 1, box.lwd = 2, cex.txt = F,#
+               box.type = "square", box.prop = 0.8,  box.size = 0.05,#
+               arr.type = "triangle", arr.length = 0.3,#
+               arr.width = 0.3 / 2,#
+               arr.pos = 0.7,#
+               arr.lwd = a.cnx, #
+               shadow.size = 0, prefix = "",#
+               relsize = 0.75,#
+               self.lwd = 1,#
+               self.shiftx = 0.07, self.shifty = 0.07, #
+               main = "Energy network", #
+               box.col = c('red', rep('white',n.nodes-1)))#
+# add red arrows representing gain from the environment#
+dx <- 0.06#
+dy <- 0.06#
+#
+for ( i in 1:n.nodes){#
+  if (f[i]) {#
+    straightarrow(from = c(pp$rect[i,"xright"] + dx, #
+                           mean(pp$rect[i,c("ytop","ybot")])),#
+                  to =   c(pp$rect[i,"xright"],#
+                           mean(pp$rect[i,c("ytop","ybot")])),#
+                           lcol = "red", arr.col = "red", lty = 1,#
+                           arr.pos = 0, arr.type = "triangle"#
+                  )#
+  }#
+}#
+# add blue arrows representing loss to the environment#
+for ( i in 1:n.nodes){#
+  if (a.self[i]) {#
+    straightarrow(from = c(pp$rect[i,"xleft"], #
+                           pp$rect[i,"ytop"]),#
+                  to =   c(pp$rect[i,"xleft"] - dx,#
+                           pp$rect[i,"ytop"]  + dy),#
+                           lcol = "blue", arr.col = "blue", lty = 3,#
+                           arr.pos = 1, , arr.type = "triangle"#
+                  )#
+  }#
+}
+install.packages('diagram')
+# About: create random networks of nodes, among which energy flows #
+# according to system of simple linear ODEs.#
+# Author: Andrew Jackson#
+# Date created: 22/11/14#
+# Based on: http://books.google.ie/books?id=hZVMPYaK6GgC&pg=PA104&lpg=PA104&dq=compartment+model+energy+flow&source=bl&ots=_yZyDalndi&sig=SVdQEUG6B031AEyoiYmb9XIZqbE&hl=en&sa=X&ei=hpxwVMwyhrE88O2BuAs&ved=0CC8Q6AEwAQ#v=onepage&q=compartment%20model%20energy%20flow&f=false#
+#-------------------------------------------------------------------------------#
+# Initiation#
+rm(list=ls())  # clear memory#
+graphics.off() # close open graphics windows from previous runs#
+#set.seed(1)   # for debugging#
+#
+# This script requires installation of these packages, along with their#
+# dependencies#
+# in the R command window, type#
+# install.packages(c('deSolve', 'diagram'))#
+# to pull them down from the cran repository.#
+library('deSolve')#
+library('diagram')#
+#
+#-------------------------------------------------------------------------------#
+# Network set up#
+# I am toying with turning this portion of code into a function#
+#
+# number of nodes in a network to create#
+n.nodes <- 7#
+#
+# specify the binary interaction matrix B#
+# this matrix deterimes which nodes are connected.#
+# This is defined here symmetically, so that an amount of energy g#
+# is removed from one node, and added to another. But see later, we #
+# can specify energy losses which essentially makes these asymmetric,#
+# with an amount g lost from one node, and a corresponding amount qg#
+# gained by the other node with 0 <= g <= 1#
+# probability of a connection#
+p.connect <- 0.6#
+#
+B <- matrix(rbinom(n.nodes^2, 1, p.connect), ncol = n.nodes, nrow = n.nodes)#
+# only fill in the lower triangle of B#
+# nodes in the lower triangle consume energy from the #
+# node specified by each column. That is, if a[2,1] <-1#
+# then node2 gains one unit from node1 and so node1 has to#
+# have a negative value associated in its diagonal.#
+B[upper.tri(B)] <- 0#
+B[diag(B)] <- 0#
+#
+# specify the weighted interaction matrix A#
+# this matrix determines the rates of energy flow between nodes.#
+# We will let energy production stay constant at 1, and scale the others#
+# below this amount.#
+#
+# upper and lower bounds for values in A#
+a.ub <- 0.2#
+a.lb <- 0.1#
+#
+aa <- matrix(runif(n.nodes^2, a.lb, a.ub), #
+	          ncol = n.nodes, nrow = n.nodes)#
+#
+# Create the transition matrix a for each valid connection specified by #
+# the binary connection matrix B#
+a <- aa * B#
+# Each node loses energy. This simulates energy loss during transfer,#
+# and also potentially acts as a feedback of energy to the environment,#
+# but that would need some re-coding to acheive.#
+e.ub <- 0.15 # energy loss lower bound#
+e.lb <- 0.05 # energy loss upper bound#
+e <- runif(n.nodes, e.lb, e.ub)#
+# calculate the diagonal values representing sums of losses to connected nodes#
+# in addition to loss to the environment#
+diag(a) <- -colSums(a) - e#
+#
+# Energy input to the system is defined  by the vector f#
+f <- double(n.nodes)#
+# in this simple model, only node1 acquires energy from the environment#
+f[1] <- 1 #
+# set initial conditions, i.e. Energy per node.#
+# HEre i am going to just seed the network with 1 unit of energy#
+# in the energy node#1#
+G.0 <- matrix(0, nrow = n.nodes, ncol = 1)#
+G.0[1] <- 1#
+#-------------------------------------------------------------------------------#
+# Evaluate the network as a set of coupled ODEs#
+#-------------------------------------------------------------------------------#
+energy.flow <- function(t, G, Pars) {#
+  with(as.list(Pars), {#
+#
+    if (t >= event.t) {#
+      a[,node.loss.id] <- 0#
+      a[node.loss.id] <- 0#
+      }#
+    dG <- (a %*% G) + f#
+#
+    return(list(dG))#
+  })#
+}#
+#
+# define the parameters for passing to the energy.flow() function#
+# The following parameters control the perturbation:#
+#     node.hit = integer identifying which node will be proportionally changed#
+#     prop.fall = proportional change to node.hit. If == 1, then no change#
+#     node.loss.id = integer identifying which node to remove entirely#
+#     event.t = time point to lose node.#
+# Notes: set even.t = Inf to not apply any perturbation.#
+# If removing a node, then you should also use node.hit = node.loss.id and #
+# prop.fall = 0 to set its state variable value to zero, in addition to removing#
+# its connections. You can turn off a proportional change in any node by #
+# setting prop.fail = 1.#
+pars  <- c(a = a, f = f,#
+           node.hit = 2, prop.fall = 1,#
+           node.loss.id = NA, event.t = Inf)#
+#
+# initial conditions of the system#
+yini  <- c(G = G.0)#
+#
+# specify the times at which we want to evaluate the system#
+times <- seq(1, 100, length = 100)#
+# Include a perturbation event function which can be evaluated at #
+# defined time points in the call to ode()#
+node.fall <- function(t, G, pars){#
+  with (as.list(pars),{#
+    G[node.hit] <- G[node.hit] * prop.fall#
+    return(G)#
+  })#
+#
+}#
+#*******************************************************************************#
+# This is where the system is actually evaluated.#
+# Simulate the system over time with a call to ode()#
+out   <- ode(yini, times, energy.flow, pars,#
+             events = list(func = node.fall, time = pars["event.t"]))#
+#*******************************************************************************#
+#
+#-------------------------------------------------------------------------------#
+# Plot the results, and the network structure#
+#-------------------------------------------------------------------------------#
+# Plot the energy per node over time#
+dev.new(height = 5, width = 5)#
+matplot(out[,1], out[,2:(n.nodes+1)], type="l", main = "ODE model", #
+	     xlab = "time", ylab = "energy in each node", #
+       lwd = c(2, rep(1, n.nodes-1)), bty = "L",#
+       xlim=c(0, max(times) * 1.2))#
+# Add a grey vertical line to indicate the time at which the perturbation event#
+# is to be applied (if there is one specified)#
+abline(v = pars["event.t"], col="grey")#
+text((max(times)*1.05 + 2*(1:n.nodes)),#
+      out[nrow(out), 2:(n.nodes+1)], 1:n.nodes, cex = 0.75)#
+#
+#-------------------------------------------------------------------------------#
+# Use pkg 'diagram' to visualise the network#
+# I intend to tidy up this to make it more visually appealing, and#
+# accurate regarding the energy gains and losses to and from the environment.#
+#
+a.cnx <- a#
+diag(a.cnx) <- 0#
+a.self <- diag(a)#
+dev.new()#
+pp <- plotmat(round(a.cnx, digits = 2),#
+               curve = 0.1,#
+               lwd = 1, box.lwd = 2, cex.txt = F,#
+               box.type = "square", box.prop = 0.8,  box.size = 0.05,#
+               arr.type = "triangle", arr.length = 0.3,#
+               arr.width = 0.3 / 2,#
+               arr.pos = 0.7,#
+               arr.lwd = a.cnx, #
+               shadow.size = 0, prefix = "",#
+               relsize = 0.75,#
+               self.lwd = 1,#
+               self.shiftx = 0.07, self.shifty = 0.07, #
+               main = "Energy network", #
+               box.col = c('red', rep('white',n.nodes-1)))#
+# add red arrows representing gain from the environment#
+dx <- 0.06#
+dy <- 0.06#
+#
+for ( i in 1:n.nodes){#
+  if (f[i]) {#
+    straightarrow(from = c(pp$rect[i,"xright"] + dx, #
+                           mean(pp$rect[i,c("ytop","ybot")])),#
+                  to =   c(pp$rect[i,"xright"],#
+                           mean(pp$rect[i,c("ytop","ybot")])),#
+                           lcol = "red", arr.col = "red", lty = 1,#
+                           arr.pos = 0, arr.type = "triangle"#
+                  )#
+  }#
+}#
+# add blue arrows representing loss to the environment#
+for ( i in 1:n.nodes){#
+  if (a.self[i]) {#
+    straightarrow(from = c(pp$rect[i,"xleft"], #
+                           pp$rect[i,"ytop"]),#
+                  to =   c(pp$rect[i,"xleft"] - dx,#
+                           pp$rect[i,"ytop"]  + dy),#
+                           lcol = "blue", arr.col = "blue", lty = 3,#
+                           arr.pos = 1, , arr.type = "triangle"#
+                  )#
+  }#
+}
+install.packages('deSolve')
+# About: create random networks of nodes, among which energy flows #
+# according to system of simple linear ODEs.#
+# Author: Andrew Jackson#
+# Date created: 22/11/14#
+# Based on: http://books.google.ie/books?id=hZVMPYaK6GgC&pg=PA104&lpg=PA104&dq=compartment+model+energy+flow&source=bl&ots=_yZyDalndi&sig=SVdQEUG6B031AEyoiYmb9XIZqbE&hl=en&sa=X&ei=hpxwVMwyhrE88O2BuAs&ved=0CC8Q6AEwAQ#v=onepage&q=compartment%20model%20energy%20flow&f=false#
+#-------------------------------------------------------------------------------#
+# Initiation#
+rm(list=ls())  # clear memory#
+graphics.off() # close open graphics windows from previous runs#
+#set.seed(1)   # for debugging#
+#
+# This script requires installation of these packages, along with their#
+# dependencies#
+# in the R command window, type#
+# install.packages(c('deSolve', 'diagram'))#
+# to pull them down from the cran repository.#
+library('deSolve')#
+library('diagram')#
+#
+#-------------------------------------------------------------------------------#
+# Network set up#
+# I am toying with turning this portion of code into a function#
+#
+# number of nodes in a network to create#
+n.nodes <- 7#
+#
+# specify the binary interaction matrix B#
+# this matrix deterimes which nodes are connected.#
+# This is defined here symmetically, so that an amount of energy g#
+# is removed from one node, and added to another. But see later, we #
+# can specify energy losses which essentially makes these asymmetric,#
+# with an amount g lost from one node, and a corresponding amount qg#
+# gained by the other node with 0 <= g <= 1#
+# probability of a connection#
+p.connect <- 0.6#
+#
+B <- matrix(rbinom(n.nodes^2, 1, p.connect), ncol = n.nodes, nrow = n.nodes)#
+# only fill in the lower triangle of B#
+# nodes in the lower triangle consume energy from the #
+# node specified by each column. That is, if a[2,1] <-1#
+# then node2 gains one unit from node1 and so node1 has to#
+# have a negative value associated in its diagonal.#
+B[upper.tri(B)] <- 0#
+B[diag(B)] <- 0#
+#
+# specify the weighted interaction matrix A#
+# this matrix determines the rates of energy flow between nodes.#
+# We will let energy production stay constant at 1, and scale the others#
+# below this amount.#
+#
+# upper and lower bounds for values in A#
+a.ub <- 0.2#
+a.lb <- 0.1#
+#
+aa <- matrix(runif(n.nodes^2, a.lb, a.ub), #
+	          ncol = n.nodes, nrow = n.nodes)#
+#
+# Create the transition matrix a for each valid connection specified by #
+# the binary connection matrix B#
+a <- aa * B#
+# Each node loses energy. This simulates energy loss during transfer,#
+# and also potentially acts as a feedback of energy to the environment,#
+# but that would need some re-coding to acheive.#
+e.ub <- 0.15 # energy loss lower bound#
+e.lb <- 0.05 # energy loss upper bound#
+e <- runif(n.nodes, e.lb, e.ub)#
+# calculate the diagonal values representing sums of losses to connected nodes#
+# in addition to loss to the environment#
+diag(a) <- -colSums(a) - e#
+#
+# Energy input to the system is defined  by the vector f#
+f <- double(n.nodes)#
+# in this simple model, only node1 acquires energy from the environment#
+f[1] <- 1 #
+# set initial conditions, i.e. Energy per node.#
+# HEre i am going to just seed the network with 1 unit of energy#
+# in the energy node#1#
+G.0 <- matrix(0, nrow = n.nodes, ncol = 1)#
+G.0[1] <- 1#
+#-------------------------------------------------------------------------------#
+# Evaluate the network as a set of coupled ODEs#
+#-------------------------------------------------------------------------------#
+energy.flow <- function(t, G, Pars) {#
+  with(as.list(Pars), {#
+#
+    if (t >= event.t) {#
+      a[,node.loss.id] <- 0#
+      a[node.loss.id] <- 0#
+      }#
+    dG <- (a %*% G) + f#
+#
+    return(list(dG))#
+  })#
+}#
+#
+# define the parameters for passing to the energy.flow() function#
+# The following parameters control the perturbation:#
+#     node.hit = integer identifying which node will be proportionally changed#
+#     prop.fall = proportional change to node.hit. If == 1, then no change#
+#     node.loss.id = integer identifying which node to remove entirely#
+#     event.t = time point to lose node.#
+# Notes: set even.t = Inf to not apply any perturbation.#
+# If removing a node, then you should also use node.hit = node.loss.id and #
+# prop.fall = 0 to set its state variable value to zero, in addition to removing#
+# its connections. You can turn off a proportional change in any node by #
+# setting prop.fail = 1.#
+pars  <- c(a = a, f = f,#
+           node.hit = 2, prop.fall = 1,#
+           node.loss.id = NA, event.t = Inf)#
+#
+# initial conditions of the system#
+yini  <- c(G = G.0)#
+#
+# specify the times at which we want to evaluate the system#
+times <- seq(1, 100, length = 100)#
+# Include a perturbation event function which can be evaluated at #
+# defined time points in the call to ode()#
+node.fall <- function(t, G, pars){#
+  with (as.list(pars),{#
+    G[node.hit] <- G[node.hit] * prop.fall#
+    return(G)#
+  })#
+#
+}#
+#*******************************************************************************#
+# This is where the system is actually evaluated.#
+# Simulate the system over time with a call to ode()#
+out   <- ode(yini, times, energy.flow, pars,#
+             events = list(func = node.fall, time = pars["event.t"]))#
+#*******************************************************************************#
+#
+#-------------------------------------------------------------------------------#
+# Plot the results, and the network structure#
+#-------------------------------------------------------------------------------#
+# Plot the energy per node over time#
+dev.new(height = 5, width = 5)#
+matplot(out[,1], out[,2:(n.nodes+1)], type="l", main = "ODE model", #
+	     xlab = "time", ylab = "energy in each node", #
+       lwd = c(2, rep(1, n.nodes-1)), bty = "L",#
+       xlim=c(0, max(times) * 1.2))#
+# Add a grey vertical line to indicate the time at which the perturbation event#
+# is to be applied (if there is one specified)#
+abline(v = pars["event.t"], col="grey")#
+text((max(times)*1.05 + 2*(1:n.nodes)),#
+      out[nrow(out), 2:(n.nodes+1)], 1:n.nodes, cex = 0.75)#
+#
+#-------------------------------------------------------------------------------#
+# Use pkg 'diagram' to visualise the network#
+# I intend to tidy up this to make it more visually appealing, and#
+# accurate regarding the energy gains and losses to and from the environment.#
+#
+a.cnx <- a#
+diag(a.cnx) <- 0#
+a.self <- diag(a)#
+dev.new()#
+pp <- plotmat(round(a.cnx, digits = 2),#
+               curve = 0.1,#
+               lwd = 1, box.lwd = 2, cex.txt = F,#
+               box.type = "square", box.prop = 0.8,  box.size = 0.05,#
+               arr.type = "triangle", arr.length = 0.3,#
+               arr.width = 0.3 / 2,#
+               arr.pos = 0.7,#
+               arr.lwd = a.cnx, #
+               shadow.size = 0, prefix = "",#
+               relsize = 0.75,#
+               self.lwd = 1,#
+               self.shiftx = 0.07, self.shifty = 0.07, #
+               main = "Energy network", #
+               box.col = c('red', rep('white',n.nodes-1)))#
+# add red arrows representing gain from the environment#
+dx <- 0.06#
+dy <- 0.06#
+#
+for ( i in 1:n.nodes){#
+  if (f[i]) {#
+    straightarrow(from = c(pp$rect[i,"xright"] + dx, #
+                           mean(pp$rect[i,c("ytop","ybot")])),#
+                  to =   c(pp$rect[i,"xright"],#
+                           mean(pp$rect[i,c("ytop","ybot")])),#
+                           lcol = "red", arr.col = "red", lty = 1,#
+                           arr.pos = 0, arr.type = "triangle"#
+                  )#
+  }#
+}#
+# add blue arrows representing loss to the environment#
+for ( i in 1:n.nodes){#
+  if (a.self[i]) {#
+    straightarrow(from = c(pp$rect[i,"xleft"], #
+                           pp$rect[i,"ytop"]),#
+                  to =   c(pp$rect[i,"xleft"] - dx,#
+                           pp$rect[i,"ytop"]  + dy),#
+                           lcol = "blue", arr.col = "blue", lty = 3,#
+                           arr.pos = 1, , arr.type = "triangle"#
+                  )#
+  }#
+}
+# About: create random networks of nodes, among which energy flows #
+# according to system of simple linear ODEs.#
+# Author: Andrew Jackson#
+# Date created: 22/11/14#
+# Based on: http://books.google.ie/books?id=hZVMPYaK6GgC&pg=PA104&lpg=PA104&dq=compartment+model+energy+flow&source=bl&ots=_yZyDalndi&sig=SVdQEUG6B031AEyoiYmb9XIZqbE&hl=en&sa=X&ei=hpxwVMwyhrE88O2BuAs&ved=0CC8Q6AEwAQ#v=onepage&q=compartment%20model%20energy%20flow&f=false#
+#-------------------------------------------------------------------------------#
+# Initiation#
+rm(list=ls())  # clear memory#
+graphics.off() # close open graphics windows from previous runs#
+#set.seed(1)   # for debugging#
+#
+# This script requires installation of these packages, along with their#
+# dependencies#
+# in the R command window, type#
+# install.packages(c('deSolve', 'diagram'))#
+# to pull them down from the cran repository.#
+library('deSolve')#
+library('diagram')#
+#
+#-------------------------------------------------------------------------------#
+# Network set up#
+# I am toying with turning this portion of code into a function#
+#
+# number of nodes in a network to create#
+n.nodes <- 100#
+#
+# specify the binary interaction matrix B#
+# this matrix deterimes which nodes are connected.#
+# This is defined here symmetically, so that an amount of energy g#
+# is removed from one node, and added to another. But see later, we #
+# can specify energy losses which essentially makes these asymmetric,#
+# with an amount g lost from one node, and a corresponding amount qg#
+# gained by the other node with 0 <= g <= 1#
+# probability of a connection#
+p.connect <- 0.6#
+#
+B <- matrix(rbinom(n.nodes^2, 1, p.connect), ncol = n.nodes, nrow = n.nodes)#
+# only fill in the lower triangle of B#
+# nodes in the lower triangle consume energy from the #
+# node specified by each column. That is, if a[2,1] <-1#
+# then node2 gains one unit from node1 and so node1 has to#
+# have a negative value associated in its diagonal.#
+B[upper.tri(B)] <- 0#
+B[diag(B)] <- 0#
+#
+# specify the weighted interaction matrix A#
+# this matrix determines the rates of energy flow between nodes.#
+# We will let energy production stay constant at 1, and scale the others#
+# below this amount.#
+#
+# upper and lower bounds for values in A#
+a.ub <- 0.2#
+a.lb <- 0.1#
+#
+aa <- matrix(runif(n.nodes^2, a.lb, a.ub), #
+	          ncol = n.nodes, nrow = n.nodes)#
+#
+# Create the transition matrix a for each valid connection specified by #
+# the binary connection matrix B#
+a <- aa * B#
+# Each node loses energy. This simulates energy loss during transfer,#
+# and also potentially acts as a feedback of energy to the environment,#
+# but that would need some re-coding to acheive.#
+e.ub <- 0.15 # energy loss lower bound#
+e.lb <- 0.05 # energy loss upper bound#
+e <- runif(n.nodes, e.lb, e.ub)#
+# calculate the diagonal values representing sums of losses to connected nodes#
+# in addition to loss to the environment#
+diag(a) <- -colSums(a) - e#
+#
+# Energy input to the system is defined  by the vector f#
+f <- double(n.nodes)#
+# in this simple model, only node1 acquires energy from the environment#
+f[1] <- 1 #
+# set initial conditions, i.e. Energy per node.#
+# HEre i am going to just seed the network with 1 unit of energy#
+# in the energy node#1#
+G.0 <- matrix(0, nrow = n.nodes, ncol = 1)#
+G.0[1] <- 1#
+#-------------------------------------------------------------------------------#
+# Evaluate the network as a set of coupled ODEs#
+#-------------------------------------------------------------------------------#
+energy.flow <- function(t, G, Pars) {#
+  with(as.list(Pars), {#
+#
+    if (t >= event.t) {#
+      a[,node.loss.id] <- 0#
+      a[node.loss.id] <- 0#
+      }#
+    dG <- (a %*% G) + f#
+#
+    return(list(dG))#
+  })#
+}#
+#
+# define the parameters for passing to the energy.flow() function#
+# The following parameters control the perturbation:#
+#     node.hit = integer identifying which node will be proportionally changed#
+#     prop.fall = proportional change to node.hit. If == 1, then no change#
+#     node.loss.id = integer identifying which node to remove entirely#
+#     event.t = time point to lose node.#
+# Notes: set even.t = Inf to not apply any perturbation.#
+# If removing a node, then you should also use node.hit = node.loss.id and #
+# prop.fall = 0 to set its state variable value to zero, in addition to removing#
+# its connections. You can turn off a proportional change in any node by #
+# setting prop.fail = 1.#
+pars  <- c(a = a, f = f,#
+           node.hit = 2, prop.fall = 1,#
+           node.loss.id = NA, event.t = Inf)#
+#
+# initial conditions of the system#
+yini  <- c(G = G.0)#
+#
+# specify the times at which we want to evaluate the system#
+times <- seq(1, 100, length = 100)#
+# Include a perturbation event function which can be evaluated at #
+# defined time points in the call to ode()#
+node.fall <- function(t, G, pars){#
+  with (as.list(pars),{#
+    G[node.hit] <- G[node.hit] * prop.fall#
+    return(G)#
+  })#
+#
+}#
+#*******************************************************************************#
+# This is where the system is actually evaluated.#
+# Simulate the system over time with a call to ode()#
+out   <- ode(yini, times, energy.flow, pars,#
+             events = list(func = node.fall, time = pars["event.t"]))#
+#*******************************************************************************#
+#
+#-------------------------------------------------------------------------------#
+# Plot the results, and the network structure#
+#-------------------------------------------------------------------------------#
+# Plot the energy per node over time#
+dev.new(height = 5, width = 5)#
+matplot(out[,1], out[,2:(n.nodes+1)], type="l", main = "ODE model", #
+	     xlab = "time", ylab = "energy in each node", #
+       lwd = c(2, rep(1, n.nodes-1)), bty = "L",#
+       xlim=c(0, max(times) * 1.2))#
+# Add a grey vertical line to indicate the time at which the perturbation event#
+# is to be applied (if there is one specified)#
+abline(v = pars["event.t"], col="grey")#
+text((max(times)*1.05 + 2*(1:n.nodes)),#
+      out[nrow(out), 2:(n.nodes+1)], 1:n.nodes, cex = 0.75)#
+#
+#-------------------------------------------------------------------------------#
+# Use pkg 'diagram' to visualise the network#
+# I intend to tidy up this to make it more visually appealing, and#
+# accurate regarding the energy gains and losses to and from the environment.#
+#
+a.cnx <- a#
+diag(a.cnx) <- 0#
+a.self <- diag(a)#
+dev.new()#
+pp <- plotmat(round(a.cnx, digits = 2),#
+               curve = 0.1,#
+               lwd = 1, box.lwd = 2, cex.txt = F,#
+               box.type = "square", box.prop = 0.8,  box.size = 0.05,#
+               arr.type = "triangle", arr.length = 0.3,#
+               arr.width = 0.3 / 2,#
+               arr.pos = 0.7,#
+               arr.lwd = a.cnx, #
+               shadow.size = 0, prefix = "",#
+               relsize = 0.75,#
+               self.lwd = 1,#
+               self.shiftx = 0.07, self.shifty = 0.07, #
+               main = "Energy network", #
+               box.col = c('red', rep('white',n.nodes-1)))#
+# add red arrows representing gain from the environment#
+dx <- 0.06#
+dy <- 0.06#
+#
+for ( i in 1:n.nodes){#
+  if (f[i]) {#
+    straightarrow(from = c(pp$rect[i,"xright"] + dx, #
+                           mean(pp$rect[i,c("ytop","ybot")])),#
+                  to =   c(pp$rect[i,"xright"],#
+                           mean(pp$rect[i,c("ytop","ybot")])),#
+                           lcol = "red", arr.col = "red", lty = 1,#
+                           arr.pos = 0, arr.type = "triangle"#
+                  )#
+  }#
+}#
+# add blue arrows representing loss to the environment#
+for ( i in 1:n.nodes){#
+  if (a.self[i]) {#
+    straightarrow(from = c(pp$rect[i,"xleft"], #
+                           pp$rect[i,"ytop"]),#
+                  to =   c(pp$rect[i,"xleft"] - dx,#
+                           pp$rect[i,"ytop"]  + dy),#
+                           lcol = "blue", arr.col = "blue", lty = 3,#
+                           arr.pos = 1, , arr.type = "triangle"#
+                  )#
+  }#
+}
+# About: create random networks of nodes, among which energy flows #
+# according to system of simple linear ODEs.#
+# Author: Andrew Jackson#
+# Date created: 22/11/14#
+# Based on: http://books.google.ie/books?id=hZVMPYaK6GgC&pg=PA104&lpg=PA104&dq=compartment+model+energy+flow&source=bl&ots=_yZyDalndi&sig=SVdQEUG6B031AEyoiYmb9XIZqbE&hl=en&sa=X&ei=hpxwVMwyhrE88O2BuAs&ved=0CC8Q6AEwAQ#v=onepage&q=compartment%20model%20energy%20flow&f=false#
+#-------------------------------------------------------------------------------#
+# Initiation#
+rm(list=ls())  # clear memory#
+graphics.off() # close open graphics windows from previous runs#
+#set.seed(1)   # for debugging#
+#
+# This script requires installation of these packages, along with their#
+# dependencies#
+# in the R command window, type#
+# install.packages(c('deSolve', 'diagram'))#
+# to pull them down from the cran repository.#
+library('deSolve')#
+library('diagram')#
+#
+#-------------------------------------------------------------------------------#
+# Network set up#
+# I am toying with turning this portion of code into a function#
+#
+# number of nodes in a network to create#
+n.nodes <- 10#
+#
+# specify the binary interaction matrix B#
+# this matrix deterimes which nodes are connected.#
+# This is defined here symmetically, so that an amount of energy g#
+# is removed from one node, and added to another. But see later, we #
+# can specify energy losses which essentially makes these asymmetric,#
+# with an amount g lost from one node, and a corresponding amount qg#
+# gained by the other node with 0 <= g <= 1#
+# probability of a connection#
+p.connect <- 0.6#
+#
+B <- matrix(rbinom(n.nodes^2, 1, p.connect), ncol = n.nodes, nrow = n.nodes)#
+# only fill in the lower triangle of B#
+# nodes in the lower triangle consume energy from the #
+# node specified by each column. That is, if a[2,1] <-1#
+# then node2 gains one unit from node1 and so node1 has to#
+# have a negative value associated in its diagonal.#
+B[upper.tri(B)] <- 0#
+B[diag(B)] <- 0#
+#
+# specify the weighted interaction matrix A#
+# this matrix determines the rates of energy flow between nodes.#
+# We will let energy production stay constant at 1, and scale the others#
+# below this amount.#
+#
+# upper and lower bounds for values in A#
+a.ub <- 0.2#
+a.lb <- 0.1#
+#
+aa <- matrix(runif(n.nodes^2, a.lb, a.ub), #
+	          ncol = n.nodes, nrow = n.nodes)#
+#
+# Create the transition matrix a for each valid connection specified by #
+# the binary connection matrix B#
+a <- aa * B#
+# Each node loses energy. This simulates energy loss during transfer,#
+# and also potentially acts as a feedback of energy to the environment,#
+# but that would need some re-coding to acheive.#
+e.ub <- 0.15 # energy loss lower bound#
+e.lb <- 0.05 # energy loss upper bound#
+e <- runif(n.nodes, e.lb, e.ub)#
+# calculate the diagonal values representing sums of losses to connected nodes#
+# in addition to loss to the environment#
+diag(a) <- -colSums(a) - e#
+#
+# Energy input to the system is defined  by the vector f#
+f <- double(n.nodes)#
+# in this simple model, only node1 acquires energy from the environment#
+f[1] <- 1 #
+# set initial conditions, i.e. Energy per node.#
+# HEre i am going to just seed the network with 1 unit of energy#
+# in the energy node#1#
+G.0 <- matrix(0, nrow = n.nodes, ncol = 1)#
+G.0[1] <- 1#
+#-------------------------------------------------------------------------------#
+# Evaluate the network as a set of coupled ODEs#
+#-------------------------------------------------------------------------------#
+energy.flow <- function(t, G, Pars) {#
+  with(as.list(Pars), {#
+#
+    if (t >= event.t) {#
+      a[,node.loss.id] <- 0#
+      a[node.loss.id] <- 0#
+      }#
+    dG <- (a %*% G) + f#
+#
+    return(list(dG))#
+  })#
+}#
+#
+# define the parameters for passing to the energy.flow() function#
+# The following parameters control the perturbation:#
+#     node.hit = integer identifying which node will be proportionally changed#
+#     prop.fall = proportional change to node.hit. If == 1, then no change#
+#     node.loss.id = integer identifying which node to remove entirely#
+#     event.t = time point to lose node.#
+# Notes: set even.t = Inf to not apply any perturbation.#
+# If removing a node, then you should also use node.hit = node.loss.id and #
+# prop.fall = 0 to set its state variable value to zero, in addition to removing#
+# its connections. You can turn off a proportional change in any node by #
+# setting prop.fail = 1.#
+pars  <- c(a = a, f = f,#
+           node.hit = 2, prop.fall = 1,#
+           node.loss.id = NA, event.t = Inf)#
+#
+# initial conditions of the system#
+yini  <- c(G = G.0)#
+#
+# specify the times at which we want to evaluate the system#
+times <- seq(1, 100, length = 100)#
+# Include a perturbation event function which can be evaluated at #
+# defined time points in the call to ode()#
+node.fall <- function(t, G, pars){#
+  with (as.list(pars),{#
+    G[node.hit] <- G[node.hit] * prop.fall#
+    return(G)#
+  })#
+#
+}#
+#*******************************************************************************#
+# This is where the system is actually evaluated.#
+# Simulate the system over time with a call to ode()#
+out   <- ode(yini, times, energy.flow, pars,#
+             events = list(func = node.fall, time = pars["event.t"]))#
+#*******************************************************************************#
+#
+#-------------------------------------------------------------------------------#
+# Plot the results, and the network structure#
+#-------------------------------------------------------------------------------#
+# Plot the energy per node over time#
+dev.new(height = 5, width = 5)#
+matplot(out[,1], out[,2:(n.nodes+1)], type="l", main = "ODE model", #
+	     xlab = "time", ylab = "energy in each node", #
+       lwd = c(2, rep(1, n.nodes-1)), bty = "L",#
+       xlim=c(0, max(times) * 1.2))#
+# Add a grey vertical line to indicate the time at which the perturbation event#
+# is to be applied (if there is one specified)#
+abline(v = pars["event.t"], col="grey")#
+text((max(times)*1.05 + 2*(1:n.nodes)),#
+      out[nrow(out), 2:(n.nodes+1)], 1:n.nodes, cex = 0.75)#
+#
+#-------------------------------------------------------------------------------#
+# Use pkg 'diagram' to visualise the network#
+# I intend to tidy up this to make it more visually appealing, and#
+# accurate regarding the energy gains and losses to and from the environment.#
+#
+a.cnx <- a#
+diag(a.cnx) <- 0#
+a.self <- diag(a)#
+dev.new()#
+pp <- plotmat(round(a.cnx, digits = 2),#
+               curve = 0.1,#
+               lwd = 1, box.lwd = 2, cex.txt = F,#
+               box.type = "square", box.prop = 0.8,  box.size = 0.05,#
+               arr.type = "triangle", arr.length = 0.3,#
+               arr.width = 0.3 / 2,#
+               arr.pos = 0.7,#
+               arr.lwd = a.cnx, #
+               shadow.size = 0, prefix = "",#
+               relsize = 0.75,#
+               self.lwd = 1,#
+               self.shiftx = 0.07, self.shifty = 0.07, #
+               main = "Energy network", #
+               box.col = c('red', rep('white',n.nodes-1)))#
+# add red arrows representing gain from the environment#
+dx <- 0.06#
+dy <- 0.06#
+#
+for ( i in 1:n.nodes){#
+  if (f[i]) {#
+    straightarrow(from = c(pp$rect[i,"xright"] + dx, #
+                           mean(pp$rect[i,c("ytop","ybot")])),#
+                  to =   c(pp$rect[i,"xright"],#
+                           mean(pp$rect[i,c("ytop","ybot")])),#
+                           lcol = "red", arr.col = "red", lty = 1,#
+                           arr.pos = 0, arr.type = "triangle"#
+                  )#
+  }#
+}#
+# add blue arrows representing loss to the environment#
+for ( i in 1:n.nodes){#
+  if (a.self[i]) {#
+    straightarrow(from = c(pp$rect[i,"xleft"], #
+                           pp$rect[i,"ytop"]),#
+                  to =   c(pp$rect[i,"xleft"] - dx,#
+                           pp$rect[i,"ytop"]  + dy),#
+                           lcol = "blue", arr.col = "blue", lty = 3,#
+                           arr.pos = 1, , arr.type = "triangle"#
+                  )#
+  }#
+}
+install.packages('source.gist')
+s <- seq(30,40,length=50)
+d <- 40
+t <- d/s
+plot(s,t, type = "l")
+?posix
+?time
+hh <- as.POSIXct(t, format="%H: %M")
+??as.POSIXct
+apply(t,1,as.POSIXct)
+apply(t,as.POSIXct)
+apply(t,2,as.POSIXct)
+length(t)
+?apply
+lapply(t,as.POSIXct)
+lapply(t,as.POSIXct,1)
+lapply(t,as.POSIXct)
+lapply(t,as.POSIXct,origin=1)
+time
+time()
+time(1)
+?time
+presidents
+?as.POSIXct.numeric
+?strptime
+strptime(1)
+strptime(1, format="m")
+strptime(1, format="%m")
+strptime(1, format="%M")
+strptime(1.1, format="%M")
+strptime(1.2, format="%M")
+strptime(1.6, format="%M")
+strptime(2, format="%M")
+40/30
+?plotmath
+?predict
+load("/Users/andrewjackson/Dropbox/Nerd Club/Computer Skillz/Coding your way to success/Example_code/<OUTPUT>_tree_2.R")
+getwd()
+rm(list=ls())#
+graphics.off()#
+#
+grades <- read.csv("/Users/andrewjackson/downloads/assessment2.tmp.csv", header=T)
+grades
+?read.csv
+rm(list=ls())#
+graphics.off()#
+#
+grades <- read.csv("/Users/andrewjackson/downloads/assessment2.tmp.csv", header=T, col.names = c("user","ID","mark"))
+grades
+rm(list=ls())#
+graphics.off()#
+#
+grades <- read.csv("/Users/andrewjackson/downloads/assessment2.tmp.csv", header=T, col.names = c("user","ID","mark"))#
+#
+with (grades, {#
+                sum.stats <- apply(mark, list(mean, sd, min, max))}
+)
+?apply
+apply(grades$mark, 1, list(mean, sd))
+apply(grades$mark, 1, mean)
+apply(grades$mark, 2, mean)
+summary(grades$mark)
+rm(list=ls())#
+graphics.off()#
+#
+grades <- read.csv("/Users/andrewjackson/downloads/assessment2.tmp.csv", header=T, col.names = c("user","ID","mark"))#
+summary(grades$mark)#
+#
+dev.new()#
+hist(grades$mark)
+?hist
+?parplot
+?barplot
+?histc
+?count
+tapply(hist$grades, hist$grades, length)
+tapply(hist$grades, list(hist$grades), length)
+tapply(grades$mark, grades$mark, length)
+tapply(grades$mark, length)
+apply(grades$mark, length)
+sweep(grades$mark, length)
+counts <- tapply(grades$mark, grades$mark, length)
+counts
+names(counts)
+centres <- as.numeric(names(counts))
+centres
+barplot(counts, at = centres)
+plot(centres, counts, type="h")
+barplot(counts, type="h")
+barplot(counts, type="h", xlim = c(0, 100))
+all.counts <- numeric(seq(0,100,10), names = seq(0,100,10))
+?numeric
+is.double(ocunts)
+is.double(counts)
+is.numeric(counts)
+counts
+names(counts = 1)
+names(counts) <- 1
+counts
+# embed the results in the full spectrum#
+all.counts <- numeric(seq(0,100,10))#
+names(all.counts) <- all.counts
+all.counts <- seq(0,100,10)
+names(all.counts) <- all.counts
+all.counts
+all.counts <- numeric(10)
+names(all.counts) <- all.counts
+all.coutns
+all.counts
+names(all.counts) <- seq(0,100,10)
+all.counts <- numeric(11)
+names(all.counts) <- seq(0,100,10)
+all.conts
+all.counts
+all.counts(centres) <- counts
+all.counts[centres] <- counts
+all.counts
+counts <- tapply(grades$mark, grades$mark, length)
+centres <- as.numeric(names(counts))
+centres
+all.counts[as.character(centres)] <- counts
+all.counts
+rm(list=ls())#
+graphics.off()#
+#
+grades <- read.csv("/Users/andrewjackson/downloads/assessment2.tmp.csv", header=T, col.names = c("user","ID","mark"))#
+summary(grades$mark)#
+counts <- tapply(grades$mark, grades$mark, length)#
+centres <- as.numeric(names(counts))#
+#
+# embed the results in the full spectrum#
+all.counts <- numeric(11)#
+names(all.counts) <- seq(0,100,10)#
+all.counts[as.character(centres)] <- counts#
+#
+dev.new()#
+barplot(counts, type="h")
+all.counts
+barplot(all.counts, type="h")
+?jpeg
+barplot(all.counts, xlab="Grade %", ylab="Frequency")
+jpeg("assessment2.jpg", barplot(all.counts, xlab="Grade %", ylab="Frequency"))
+rm(list=ls())#
+graphics.off()#
+#
+grades <- read.csv("/Users/andrewjackson/downloads/assessment2.tmp.csv", header=T, col.names = c("user","ID","mark"))#
+summary(grades$mark)#
+counts <- tapply(grades$mark, grades$mark, length)#
+centres <- as.numeric(names(counts))#
+#
+# embed the results in the full spectrum#
+all.counts <- numeric(11)#
+names(all.counts) <- seq(0,100,10)#
+all.counts[as.character(centres)] <- counts#
+#
+dev.new()#
+barplot(all.counts, xlab="Grade %", ylab="Frequency")#
+#
+# save figure to file#
+jpeg("assessment2.jpg")#
+barplot(all.counts, xlab="Grade %", ylab="Frequency")#
+dev.off()
+getwd()
+?tapply
+library('siar')
+?rmnorm
+?runif
+?deal
+?parse
+?split
+split(c(1,2))
+cut(c(1,2))
+cut(c(1,2),2)
+?rwishart
+# test script for generating random SIBER data#
+#
+source("generate.siber.data.R")#
+#
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 10)
+getwd()
+# test script for generating random SIBER data#
+#
+setwd("/Users/andrewjackson/documents/github/siber")#
+#
+source("generate.siber.data.R")#
+#
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 10)
+# test script for generating random SIBER data#
+#
+setwd("/Users/andrewjackson/documents/github/siber/R")#
+#
+source("generate.siber.data.R")#
+#
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 10)
+mu.range = c(-1, 1)
+mu <- runif(1, mu.range[1], mu.range[2])
+mu
+sigma <- rwishart(2, diag(2))
+y <- rmnorm(n.obs, mu, sigma)
+n.obs <- 30
+y <- rmnorm(n.obs, mu, sigma)
+y
+sigma
+y <- rmnorm(n.obs, mu, sigma$W)
+y
+# test script for generating random SIBER data#
+#
+rm(list=ls())#
+graphics.off()#
+#
+set.seed(1)#
+setwd("/Users/andrewjackson/documents/github/siber/R")#
+#
+source("generate.siber.data.R")#
+#
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 30)#
+dev.new()#
+plot(y, pch = 21)
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 30)
+mu <- runif(2, mu.range[1], mu.range[2])
+generate.siber.data <- function(n.groups = 6, n.communities = 1, n.obs = 10, mu.range = c(-1, 1) ){#
+  # pull a random set of means from the appropriate range#
+  mu <- runif(2, mu.range[1], mu.range[2])#
+#
+  # pull a covariance matrix from the wishart distribution#
+  sigma <- rwishart(2, diag(2))#
+#
+  y <- rmnorm(n.obs, mu, sigma$W)  #
+#
+  return(y)#
+}
+generate.siber.data()
+# test script for generating random SIBER data#
+#
+rm(list=ls())#
+graphics.off()#
+#
+set.seed(1)#
+setwd("/Users/andrewjackson/documents/github/siber/R")#
+#
+source("generate.siber.data.R")#
+#
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 30)#
+dev.new()#
+plot(y, pch = 21)
+y <- generate.siber.data()
+generate.siber.data <- function(n.groups = 6, n.communities = 1, n.obs = 10, mu.range = c(-1, 1) ){#
+  # pull a random set of means from the appropriate range#
+  mu <- runif(2, mu.range[1], mu.range[2])#
+#
+  # pull a covariance matrix from the wishart distribution#
+  sigma <- rwishart(2, diag(2))#
+#
+  y <- rmnorm(n.obs, mu, sigma$W)  #
+#
+  return(y)#
+}
+generate.siber.data()
+a <- generate.siber.data()
+a
+y <- generate.siber.data()
+y <- generate.siber.data()
+y <- generate.siber.data()
+y <- generate.siber.data()
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 30)
+y
+# test script for generating random SIBER data#
+#
+rm(list=ls())#
+graphics.off()#
+#
+set.seed(1)#
+setwd("/Users/andrewjackson/documents/github/siber/R")#
+#
+source("generate.siber.data.R")#
+#
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 30)#
+dev.new()#
+plot(y, pch = 21)
+# test script for generating random SIBER data#
+#
+rm(list=ls())#
+graphics.off()#
+#
+set.seed(1)#
+setwd("/Users/andrewjackson/documents/github/siber/R")#
+#
+source("generate.siber.data.R")#
+#
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 30)#
+dev.new()#
+plot(y, pch = 21)
+# test script for generating random SIBER data#
+#
+rm(list=ls())#
+graphics.off()#
+#
+set.seed(1)#
+setwd("/Users/andrewjackson/documents/github/siber/R")#
+#
+source("generate.siber.data.R")#
+#
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 30)#
+dev.new()#
+plot(y, pch = 21)
+source("generate.siber.data.R")
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+generate.siber.data()
+sigma <- rwishart(2, diag(2))
+sigma$W
+y <- rmnorm(n.obs, mu, sigma$W)
+y <- rmnorm(10, mu, sigma$W)
+y <- rmnorm(10, c(0,0), sigma$W)
+# test script for generating random SIBER data#
+#
+rm(list=ls())#
+graphics.off()#
+#
+set.seed(1)#
+setwd("/Users/andrewjackson/documents/github/siber/R")#
+#
+source("generate.siber.data.R")#
+#
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 30)#
+dev.new()#
+plot(y, pch = 21)
+# test script for generating random SIBER data#
+#
+rm(list=ls())#
+graphics.off()#
+#
+set.seed(1)#
+setwd("/Users/andrewjackson/documents/github/siber/R")#
+#
+source("generate.siber.data.R")#
+#
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 30)#
+dev.new()#
+plot(y, pch = 21)
+# test script for generating random SIBER data#
+#
+rm(list=ls())#
+graphics.off()#
+#
+set.seed(1)#
+setwd("/Users/andrewjackson/documents/github/siber/R")#
+#
+source("generate.siber.data.R")#
+#
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 30)#
+dev.new()#
+plot(y, pch = 21)
+# test script for generating random SIBER data#
+#
+rm(list=ls())#
+graphics.off()#
+#
+set.seed(1)#
+setwd("/Users/andrewjackson/documents/github/siber/R")#
+#
+source("generate.siber.data.R")#
+#
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 30)#
+dev.new()#
+plot(y, pch = 21)
+# test script for generating random SIBER data#
+#
+rm(list=ls())#
+graphics.off()#
+#
+set.seed(1)#
+setwd("/Users/andrewjackson/documents/github/siber/R")#
+#
+source("generate.siber.data.R")#
+#
+y <- generate.siber.data(n.groups = 1, n.communities = 1, n.obs = 50)#
+dev.new()#
+plot(y, pch = 21)
+# a function to generate a single group#
+  generate.siber.group <- function (mu.range, n.obs) {#
+    # pull a random set of means from the appropriate range#
+    mu <- runif(2, mu.range[1], mu.range[2])#
+#
+    # pull a covariance matrix from the wishart distribution#
+    sigma <- rwishart(2, diag(2))#
+#
+    y <- rmnorm(n.obs, mu, sigma$W)  #
+    return(y)#
+  }
+# a function to generate a single group#
+  generate.siber.group <- function (mu.range, n.obs) {#
+    # pull a random set of means from the appropriate range#
+    mu <- runif(2, mu.range[1], mu.range[2])#
+#
+    # pull a covariance matrix from the wishart distribution#
+    sigma <- rwishart(2, diag(2))#
+#
+    y <- rmnorm(n.obs, mu, sigma$W)  #
+    return(y)#
+  }
+# a function to generate a community comprised of a number of groups#
+  siber.generate.community <- function (n.groups, community.id, n.obs){#
+#
+    y <- NULL#
+    community <- NULL#
+    group <- NULL#
+#
+    for (i in 1:n.groups) {#
+    	tmp <- generate.siber.group(mu.range, n.obs)#
+    	y <- cbind(y, tmp)#
+        group <- cbind(group, rep(i, n.obs))#
+    }#
+#
+    out <- data.frame(iso1 <- y[,1], #
+    	              iso2 <- y[,2],#
+    	              group <- group,#
+    	              community <- rep(community.id, nrow(y)))#
+    return(out)#
+#
+  }
+generate.siber.group()
+generate.siber.group(c(-1,1), 10)
+# a function to generate a community comprised of a number of groups#
+  siber.generate.community <- function (n.groups, community.id, n.obs, mu.range, n.obs){#
+#
+    y <- NULL#
+    community <- NULL#
+    group <- NULL#
+#
+    for (i in 1:n.groups) {#
+    	tmp <- generate.siber.group(mu.range, n.obs)#
+    	y <- cbind(y, tmp)#
+        group <- cbind(group, rep(i, n.obs))#
+    }#
+#
+    out <- data.frame(iso1 <- y[,1], #
+    	              iso2 <- y[,2],#
+    	              group <- group,#
+    	              community <- rep(community.id, nrow(y)))#
+    return(out)#
+#
+  }
+# a function to generate a community comprised of a number of groups#
+  siber.generate.community <- function (n.groups, community.id, n.obs, mu.range){#
+#
+    y <- NULL#
+    community <- NULL#
+    group <- NULL#
+#
+    for (i in 1:n.groups) {#
+    	tmp <- generate.siber.group(mu.range, n.obs)#
+    	y <- cbind(y, tmp)#
+        group <- cbind(group, rep(i, n.obs))#
+    }#
+#
+    out <- data.frame(iso1 <- y[,1], #
+    	              iso2 <- y[,2],#
+    	              group <- group,#
+    	              community <- rep(community.id, nrow(y)))#
+    return(out)#
+#
+  }
+siber.generate.community(3,1, 10, c(-1,1))
+# a function to generate a community comprised of a number of groups#
+  siber.generate.community <- function (n.groups, community.id, n.obs, mu.range){#
+#
+    y <- NULL#
+    community <- NULL#
+    group <- NULL#
+#
+    for (i in 1:n.groups) {#
+    	tmp <- generate.siber.group(mu.range, n.obs)#
+    	y <- cbind(y, tmp)#
+        group <- cbind(group, rep(i, n.obs))#
+    }#
+#
+    out <- data.frame(iso1 = y[,1], #
+    	              iso2 = y[,2],#
+    	              group = group,#
+    	              community = rep(community.id, nrow(y)))#
+    return(out)#
+#
+  }
+siber.generate.community(3,1, 10, c(-1,1))
+# a function to generate a community comprised of a number of groups#
+  siber.generate.community <- function (n.groups, community.id, n.obs, mu.range){#
+#
+    y <- NULL#
+    community <- NULL#
+    group <- NULL#
+#
+    for (i in 1:n.groups) {#
+    	tmp <- generate.siber.group(mu.range, n.obs)#
+    	y <- cbind(y, tmp)#
+        group <- c(group, rep(i, n.obs))#
+    }#
+#
+    out <- data.frame(iso1 = y[,1], #
+    	              iso2 = y[,2],#
+    	              group = group,#
+    	              community = rep(community.id, nrow(y)))#
+    return(out)#
+#
+  }
+siber.generate.community(3,1, 10, c(-1,1))
+# a function to generate a community comprised of a number of groups#
+  siber.generate.community <- function (n.groups = 4, community.id = 1, n.obs = 30, mu.range = c(-1,1)){#
+#
+    y <- NULL#
+    community <- NULL#
+    group <- NULL#
+#
+    for (i in 1:n.groups) {#
+    	tmp <- generate.siber.group(mu.range, n.obs)#
+    	y <- cbind(y, tmp)#
+        group <- c(group, rep(i, n.obs))#
+    }#
+#
+    out <- data.frame(iso1 = y[,1], #
+    	              iso2 = y[,2],#
+    	              group = group,#
+    	              community = rep(community.id, nrow(y)))#
+    return(out)#
+#
+  }
+siber.generate.community()
+?source
+?data.frame
+?append
+?data.frame
+1:4
+a<-siber.generate.community()
+nrow(a)
+generate.siber.data <- function(n.groups = 3, n.communities = 2, n.obs = 30, mu.range = c(-1, 1) ){#
+  nn <- n.obs * n.groups * n.communities#
+  dummy <- rep(NA, nn)#
+#
+  simulated.data <- data.frame(iso1 = dummy,#
+  	                           iso2 = dummy,#
+  	                           group = dummy,#
+  	                           community = dummy)#
+#
+  idx.counter <- 1#
+#
+  for (i in 1:n.communities){#
+#
+  	y <- generate.siber.community(n.groups = 3, community.id = i, n.obs = n.obs, mu.range = mu.range)#
+#
+  	simulated.data[idx.counter:(idx.counter+nrow(y)-1), ] <- y#
+#
+  	idx.counter <- idx.counter + nrow(y)#
+#
+  }#
+}
+generate.siber.data()
+# a function to generate a community comprised of a number of groups#
+  generate.siber.community <- function (n.groups = 3, community.id = 1, n.obs = 30, mu.range = c(-1,1)){#
+#
+    y <- NULL#
+    community <- NULL#
+    group <- NULL#
+#
+    for (i in 1:n.groups) {#
+    	tmp <- generate.siber.group(mu.range, n.obs)#
+    	y <- cbind(y, tmp)#
+        group <- c(group, rep(i, n.obs))#
+    }#
+#
+    out <- data.frame(iso1 = y[,1], #
+    	              iso2 = y[,2],#
+    	              group = group,#
+    	              community = rep(community.id, nrow(y)))#
+    return(out)#
+#
+  }
+# a function to generate a single group#
+  generate.siber.group <- function (mu.range = c(-1, 1), n.obs = 30) {#
+    # pull a random set of means from the appropriate range#
+    mu <- runif(2, mu.range[1], mu.range[2])#
+#
+    # pull a covariance matrix from the wishart distribution#
+    sigma <- rwishart(2, diag(2))#
+#
+    y <- rmnorm(n.obs, mu, sigma$W)  #
+    return(y)#
+  }
+generate.siber.data <- function(n.groups = 3, n.communities = 2, n.obs = 30, mu.range = c(-1, 1) ){#
+  nn <- n.obs * n.groups * n.communities#
+  dummy <- rep(NA, nn)#
+#
+  simulated.data <- data.frame(iso1 = dummy,#
+  	                           iso2 = dummy,#
+  	                           group = dummy,#
+  	                           community = dummy)#
+#
+  idx.counter <- 1#
+#
+  for (i in 1:n.communities){#
+#
+  	y <- generate.siber.community(n.groups = 3, community.id = i, n.obs = n.obs, mu.range = mu.range)#
+#
+  	simulated.data[idx.counter:(idx.counter+nrow(y)-1), ] <- y#
+#
+  	idx.counter <- idx.counter + nrow(y)#
+#
+  }#
+}
+generate.siber.data
+generate.siber.data()
+# test script for generating random SIBER data#
+#
+rm(list=ls())#
+graphics.off()#
+#
+set.seed(1)#
+setwd("/Users/andrewjackson/documents/github/siber/R")#
+#
+source("generate.siber.data.R")#
+source("generate.siber.group.R")#
+source("generate.siber.community.R")#
+y <- generate.siber.data()#
+dev.new()#
+plot(y, pch = 21)
+y
+?by
+?runif

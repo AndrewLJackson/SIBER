@@ -1,5 +1,5 @@
  # a function to generate a community comprised of a number of groups
-  generate.siber.community <- function (n.groups = 3, community.id = 1, n.obs = 30, mu.range = c(-1,1)){
+  generate.siber.community <- function (n.groups = 3, community.id = 1, n.obs = 30, mu.range = c(-1, 1, -1, 1)){
 
     # create some random vectors which will be built as we go
     # I dont like this and will pre-define them at full length
@@ -15,7 +15,7 @@
     	tmp <- generate.siber.group(mu.range, n.obs)
     	
     	# add it on to the previous group
-    	y <- cbind(y, tmp)
+    	y <- rbind(y, tmp)
     	
     	# assign each cluster of data to an appropriate group identifier
         group <- c(group, rep(i, n.obs))

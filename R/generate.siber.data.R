@@ -1,4 +1,4 @@
-generate.siber.data <- function(n.groups = 3, n.communities = 2, n.obs = 30, mu.range = c(-1, 1) ){
+generate.siber.data <- function(n.groups = 3, n.communities = 2, n.obs = 30, mu.range = c(-1, 1, -1, 1) ){
   
   # calculate the number of observations (rows) to be created
   nn <- n.obs * n.groups * n.communities

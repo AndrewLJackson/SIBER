@@ -1,7 +1,10 @@
+# NB this file to be not included in the package
 # test script for generating random SIBER data
 
 rm(list=ls())
 graphics.off()
+library('bayesm')
+library('mnormt')
 
 set.seed(1)
 
@@ -19,3 +22,5 @@ y <- generate.siber.data()
 
 dev.new()
 plot(y, pch = 21)
+
+write.csv(y, file = "../data/demo.siber.data.csv")
