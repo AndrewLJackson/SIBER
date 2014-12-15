@@ -1,6 +1,6 @@
 # Rstudio files
-*.Rproj/
-*.Rproj.user/
+*.Rproj
+*.Rproj.user
 
 
 # R files
