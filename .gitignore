@@ -1,4 +1,9 @@
-.Rproj.user/
-.Rhistory
-.RData
+# Rstudio files
 .Rproj/
+.Rproj.user/
+
+
+# R files
+.Rhistory
+.Rapp.history
+.RData
