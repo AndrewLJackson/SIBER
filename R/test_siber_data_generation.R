@@ -1,19 +1,14 @@
 # NB this file to be not included in the package
 # test script for generating random SIBER data
 
-rm(list=ls())
-graphics.off()
-library('bayesm')
-library('mnormt')
+#rm(list=ls())
+#graphics.off()
+
 
 #set.seed(1)
 
+source("R/tmp.source.these.R")
 
-setwd("/Users/andrewjackson/documents/github/siber/R")
-
-source("generate.siber.data.R")
-source("generate.siber.group.R")
-source("generate.siber.community.R")
 
 
 y <- generate.siber.data(mu.range = c(-20, 0, 0, 9))
@@ -29,4 +24,4 @@ with(subset(y, y$community ==2), {
 	plot(iso1, iso2, col = group, pch = community)
 })
 
-write.csv(y, file = "../data/demo.siber.data.csv", row.names = F)
+#write.csv(y, file = "data/demo.siber.data.csv", row.names = F)
