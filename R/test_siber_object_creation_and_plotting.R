@@ -47,3 +47,8 @@ plot.siber.object(siber.example,
                   ellipses = T, n = 100, p = 0.95, lty = 2,
                   group.hulls = T, bty = "L",
                   iso.order = c(1,2))
+
+
+
+
+
