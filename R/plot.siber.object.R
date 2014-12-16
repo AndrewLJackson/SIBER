@@ -1,25 +1,37 @@
-plot.siber.object <- function(siber, iso.order = c(1,2), 
-                              ax.pad = 1, hulls = T, ellipses = T,
-                              group.hulls = F, bty = "L", ...){
+plot.siber.object <- function(siber, 
+                              iso.order = c(1,2), 
+                              ax.pad = 1,
+                              hulls = T, community.hulls.args = NULL, 
+                              ellipses = T, group.ellipses.args = NULL,
+                              group.hulls = F, group.hulls.args = NULL,
+                              bty = "L", 
+                              xlab = "Isotope 1", 
+                              ylab = "Isotope 2",
+                              ...){
 
+  # NOTE - this isotope ordering needs to be passed onwards to the plotting
+  # functions called below. Im not convinced its that straightforward.
   x <- iso.order[1]
   y <- iso.order[2]
 
   with(siber,{
 
-    # set up a blank plot
+    # set up a blank plot. X and Y limits are set by padding
+    # the plot by a fixed amount ax.pad beyond the extremes of 
+    # all the data.
   	plot(0, 0, type = "n",
   		       xlim = c(siber$iso.summary["min", x] - ax.pad , 
   		       	        siber$iso.summary["max", x] + ax.pad ),
   		       ylim = c(siber$iso.summary["min", y] - ax.pad , 
   		       	        siber$iso.summary["max", y] + ax.pad ),
-             ylab = paste('iso', y, sep = ""), 
-             xlab = paste('iso', x, sep = ""), 
+             xlab = xlab, 
+             ylab = ylab, 
              bty = bty
              
   		)
 
     
+    # add each of the data points
     for (i in 1:siber$n.communities){
 
     	points(siber$raw.data[[i]][,x], 
@@ -45,32 +57,15 @@ plot.siber.object <- function(siber, iso.order = c(1,2),
     # members for a community
     # --------------------------------------------------------------------------
     if (hulls) {
-      for (i in 1:siber$n.communities){
-  
-        # only attempt to draw hulls if there are more than 2 groups
-        if (siber$n.groups[2,i] > 2) {
-        	ch <- siber.convexhull( siber$ML.mu[[i]][1,1,] ,
-        		                      siber$ML.mu[[i]][1,2,] 
-                                  )
-    
-        	lines(ch$xcoords, ch$ycoords, col = "black")
-        }
-      }
+      # NOTE currently not working
+      plot.community.hulls(siber, community.hulls.args)
     } # end of if statement for community convex hull drawing
 
     # --------------------------------------------------------------------------
     # Add a ML ellipse to each group
     # --------------------------------------------------------------------------
     if (ellipses) {
-      for (i in 1:siber$n.communities){
-  
-          for (j in 1:siber$n.groups[2,i]){
-          	add.ellipse(siber$ML.mu[[i]][,,j],
-          		               siber$ML.cov[[i]][,,j],
-          		               col = j, ...)
-          }
-      	
-      }
+      plot.group.ellipses(siber, group.ellipses.args)
     } # end of if statement for ellipse drawing
     
   	# --------------------------------------------------------------------------
@@ -78,24 +73,7 @@ plot.siber.object <- function(siber, iso.order = c(1,2),
   	# --------------------------------------------------------------------------
     if (group.hulls){
       # code similar to group ellipses to go here
-      for (i in 1:siber$n.communities){
-        
-        for (j in 1:siber$n.groups[2,i]){
-          
-          # find the indices for the jth group
-          idx <- siber.example$raw.data[[i]]$group == j
-          
-          # calculate the hull around the jth group in the 
-          # ith community
-          ch <- siber.convexhull( siber.example$raw.data[[i]][idx, x], 
-                                  siber.example$raw.data[[i]][idx, y]
-                                 )
-          
-          # add the lines
-          lines(ch$xcoords, ch$ycoords, col = j)
-        }
-        
-      }
+      plot.group.hulls(siber, group.hull.args)
     } # end of if statement for group hull drawing
     
   	# ==========================================================================

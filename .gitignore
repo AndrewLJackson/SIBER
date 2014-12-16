@@ -9,3 +9,6 @@
 *.RData
 *.Rproj.user
 .Rproj.user
+
+# directories
+/plots

@@ -1,4 +1,4 @@
-add.ellipse <- function(mu, sigma, n = 100, p = NULL, ...){
+add.ellipse <- function(mu, sigma, n = 100, p = NULL , ...){
   
   # mu is the location of the ellipse (its bivariate mean)
   # sigma describes the shape and size of the ellipse
@@ -11,7 +11,10 @@ add.ellipse <- function(mu, sigma, n = 100, p = NULL, ...){
   # approximately proportion p of data by scaling r
   # based on the chi-squared distribution.
   # p defaults to NULL.
-  ifelse(is.null(p), r <- 1, r <- sqrt(qchisq(p,df=2)))
+  ifelse(is.null(p), 
+           r <- 1, 
+           r <- sqrt(qchisq(p, df=2))
+         )
 
   
   # get the eigenvalues and eigenvectors of sigma

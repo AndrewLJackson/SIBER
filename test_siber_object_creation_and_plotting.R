@@ -5,7 +5,7 @@ graphics.off()
 
 
 # this script itself sources the functions needed
-source("R/tmp.source.these.R")
+source("tmp.source.these.R")
 
 # read in the example dataset
 mydata <- read.csv("data/demo.siber.data.csv", header=T)
@@ -13,6 +13,10 @@ mydata <- read.csv("data/demo.siber.data.csv", header=T)
 # create the siber object
 siber.example <- create.siber.object(mydata) 
 
+
+# ==============================================================================
+# PLotting the raw data
+# ==============================================================================
 # and now call the basic graph making script
 # Community 1 comprises 3 groups and drawn as black, red and green circles
 # community 2 comprises 3 groups and drawn as black, red and green triangles
@@ -40,13 +44,37 @@ siber.example <- create.siber.object(mydata)
 # Convex hulls are draw around each group independently
 # with group.hulls = T.
 
+# create lists of plotting arguments for each of the types of plot
+community.hulls.args <- list(col = 1, lty = 2, lwd = 1)
+group.ellipses.args  <- list(n = 100, p = 0.95, lty = 1, lwd = 2)
+group.hull.args      <- list(lty = 2, col = "grey20")
+
+
+
 par(mfrow=c(1,1))
 plot.siber.object(siber.example,
                   ax.pad = 2, 
-                  hulls = F, 
-                  ellipses = T, n = 100, p = 0.95, lty = 2,
-                  group.hulls = T, bty = "L",
-                  iso.order = c(1,2))
+                  hulls = F, community.hulls.args, 
+                  ellipses = T, group.ellipses.args,
+                  group.hulls = T, group.hull.args,
+                  bty = "L",
+                  iso.order = c(1,2),
+                  xlab = "dC13",
+                  ylab = "dN15")
+
+# ==============================================================================
+# Some basic Maximum Likelihood analyses
+# ==============================================================================
+
+# Calculate sumamry statistics for each group: TA, SEA and SEAc
+# These are just the point estimates for now, the Bayesian estimates will 
+# follow.
+
+
+# Calculate the various Layman metrics on each of the communities.
+# These are just the point estimates for now, the Bayesian estimates will 
+# follow.
+
 
 
 

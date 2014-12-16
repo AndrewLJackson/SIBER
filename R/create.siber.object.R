@@ -6,6 +6,12 @@ create.siber.object <- function (data.in) {
   # its transforms, and various calculated metrics can be stored.
   siber <- list()
   
+  # keep the original data in its original format just in case
+  # In fact, it can be easier to work with this format, as tapply
+  # works well on it. I half wonder if i could just keep all the data like this
+  # if i were able to use tapply more effectively on multiple inputs.
+  siber$original.data <- data.in
+  
   
   # some basic summary stats helpful for plotting
   my.summary <- function(x){
