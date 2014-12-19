@@ -1,4 +1,8 @@
-plot.group.hulls <- function (siber, plot.args = NULL){
+plot.group.hulls <- function (siber, plot.args = NULL, iso.order = c(1,2)){
+  
+  # iso.order used to specify which data goes on which axis.
+  x <- iso.order[1]
+  y <- iso.order[2]
   
   for (i in 1:siber$n.communities){
     
@@ -9,8 +13,8 @@ plot.group.hulls <- function (siber, plot.args = NULL){
       
       # calculate the hull around the jth group in the 
       # ith community
-      ch <- siber.convexhull( siber.example$raw.data[[i]][idx, 1], 
-                              siber.example$raw.data[[i]][idx, 2]
+      ch <- siber.convexhull( siber.example$raw.data[[i]][idx, x], 
+                              siber.example$raw.data[[i]][idx, y]
       )
       
       # add the lines

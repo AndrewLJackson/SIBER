@@ -45,7 +45,7 @@ siber.example <- create.siber.object(mydata)
 # with group.hulls = T.
 
 # create lists of plotting arguments for each of the types of plot
-community.hulls.args <- list(col = 1, lty = 2, lwd = 1)
+community.hulls.args <- list(col = 1, lty = 1, lwd = 1)
 group.ellipses.args  <- list(n = 100, p = 0.95, lty = 1, lwd = 2)
 group.hull.args      <- list(lty = 2, col = "grey20")
 
@@ -74,6 +74,7 @@ plot.siber.object(siber.example,
 # Calculate the various Layman metrics on each of the communities.
 # These are just the point estimates for now, the Bayesian estimates will 
 # follow.
+community.ML <- siber.community.metrics.ML(siber.example)
 
 
 

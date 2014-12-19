@@ -53,15 +53,14 @@ plot.siber.object <- function(siber,
     # I might move this out block to its own function in the future
     # --------------------------------------------------------------------------
     if (hulls) {
-      # NOTE currently not working
-      plot.community.hulls(siber, community.hulls.args)
+      plot.community.hulls(siber, community.hulls.args, iso.order)
     } # end of if statement for community convex hull drawing
 
     # --------------------------------------------------------------------------
     # Add a ML ellipse to each group
     # --------------------------------------------------------------------------
     if (ellipses) {
-      plot.group.ellipses(siber, group.ellipses.args)
+      plot.group.ellipses(siber, group.ellipses.args, iso.order)
     } # end of if statement for ellipse drawing
     
   	# --------------------------------------------------------------------------
@@ -69,7 +68,7 @@ plot.siber.object <- function(siber,
   	# --------------------------------------------------------------------------
     if (group.hulls){
       # code similar to group ellipses to go here
-      plot.group.hulls(siber, group.hull.args)
+      plot.group.hulls(siber, group.hull.args, iso.order)
     } # end of if statement for group hull drawing
     
   }) # end of with() function
