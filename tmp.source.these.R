@@ -12,7 +12,7 @@ sourceDir <- function(path, trace = TRUE, ...) {
   }
 }
 
-dir.path <- paste(getwd(), "/R/", sep = "")
+dir.path <- paste(getwd(), "/R", sep = "")
 sourceDir(dir.path, trace = F)
 
 # source("R/siber.convexhull.R")

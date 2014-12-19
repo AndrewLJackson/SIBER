@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 plot.siber.object <- function(siber, 
                               iso.order = c(1,2), 
                               ax.pad = 1,
