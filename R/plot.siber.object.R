@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 plot.siber.object <- function(siber, 
                               iso.order = c(1,2), 
                               ax.pad = 1,
@@ -7,6 +8,14 @@ plot.siber.object <- function(siber,
                               bty = "L", 
                               xlab = "Isotope 1", 
                               ylab = "Isotope 2",
+=======
+plot.siber.object <- function(siber, iso.order = c(1,2), 
+                              ax.pad = 1, hulls = T, ellipses = T,
+                              group.hulls = F, bty = "L", 
+                              xlab = "x",
+                              ylab = "y",
+                              las = 1,
+>>>>>>> Stashed changes
                               ...){
 
   # NOTE - this isotope ordering needs to be passed onwards to the plotting
@@ -24,9 +33,16 @@ plot.siber.object <- function(siber,
   		       	        siber$iso.summary["max", x] + ax.pad ),
   		       ylim = c(siber$iso.summary["min", y] - ax.pad , 
   		       	        siber$iso.summary["max", y] + ax.pad ),
+<<<<<<< Updated upstream
              xlab = xlab, 
              ylab = ylab, 
              bty = bty
+=======
+             ylab = ylab,
+             xlab = xlab,
+             bty = bty,
+             las = las
+>>>>>>> Stashed changes
              
   		)
 

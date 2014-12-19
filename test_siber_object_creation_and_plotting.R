@@ -54,6 +54,7 @@ group.hull.args      <- list(lty = 2, col = "grey20")
 par(mfrow=c(1,1))
 plot.siber.object(siber.example,
                   ax.pad = 2, 
+<<<<<<< Updated upstream:test_siber_object_creation_and_plotting.R
                   hulls = F, community.hulls.args, 
                   ellipses = T, group.ellipses.args,
                   group.hulls = T, group.hull.args,
@@ -75,6 +76,15 @@ plot.siber.object(siber.example,
 # These are just the point estimates for now, the Bayesian estimates will 
 # follow.
 
+=======
+                  hulls = F, 
+                  ellipses = T, n = 100, p = 0.95, lty = 2,
+                  group.hulls = T, bty = "L",
+                  las = 1,
+                  xlab = "iso1",
+                  ylab = "iso2",
+                  iso.order = c(1,2))
+>>>>>>> Stashed changes:R/test_siber_object_creation_and_plotting.R
 
 
 
