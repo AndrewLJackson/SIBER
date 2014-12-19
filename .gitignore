@@ -8,7 +8,9 @@
 *.Rapp.history
 *.RData
 *.Rproj.user
+<<<<<<< HEAD
 .Rproj.user
 
 # directories
 /plots
+
