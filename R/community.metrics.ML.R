@@ -4,7 +4,7 @@
 # returned by this function are just the point estimates based on the 
 # maximum likelihood estimates of the underlying statistics.
 
-siber.community.metrics.ML <- function(siber) {
+community.metrics.ML <- function(siber) {
   
   out <- matrix(NA, nrow = 6,  ncol = siber$n.communities,
                 dimnames = list(c("dY_range", "dX_range",

@@ -69,12 +69,12 @@ plot.siber.object(siber.example,
 # Calculate sumamry statistics for each group: TA, SEA and SEAc
 # These are just the point estimates for now, the Bayesian estimates will 
 # follow.
-
+group.ML <- group.metrics.ML(siber.example)
 
 # Calculate the various Layman metrics on each of the communities.
 # These are just the point estimates for now, the Bayesian estimates will 
 # follow.
-community.ML <- siber.community.metrics.ML(siber.example)
+community.ML <- community.metrics.ML(siber.example)
 
 
 

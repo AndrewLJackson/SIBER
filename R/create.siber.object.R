@@ -20,6 +20,10 @@ create.siber.object <- function (data.in) {
   
   siber$iso.summary <- apply(data.in[,1:2], 2, my.summary)
   
+  siber$sample.sizes <- tapply(data.in[,1], 
+                               list(data.in[,4], data.in[,3]), 
+                               length)
+  
   # store the raw data as list split by the community variable
   # and rename the list components
   siber$raw.data <- split(data.in, data.in$community)
