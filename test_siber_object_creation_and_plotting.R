@@ -44,7 +44,8 @@ siber.example <- create.siber.object(mydata)
 # Convex hulls are draw around each group independently
 # with group.hulls = T.
 
-# create lists of plotting arguments for each of the types of plot
+# Create lists of plotting arguments to be passed onwards to each 
+# of the three plotting functions.
 community.hulls.args <- list(col = 1, lty = 1, lwd = 1)
 group.ellipses.args  <- list(n = 100, p = 0.95, lty = 1, lwd = 2)
 group.hull.args      <- list(lty = 2, col = "grey20")
@@ -59,8 +60,9 @@ plot.siber.object(siber.example,
                   group.hulls = T, group.hull.args,
                   bty = "L",
                   iso.order = c(1,2),
-                  xlab = "dC13",
-                  ylab = "dN15")
+                  xlab = expression(paste(delta^{13}, C , "‰", sep="")),
+                  ylab = expression(paste(delta^{15}, N , "‰", sep=""))
+                  )
 
 # ==============================================================================
 # Some basic Maximum Likelihood analyses
@@ -68,13 +70,46 @@ plot.siber.object(siber.example,
 
 # Calculate sumamry statistics for each group: TA, SEA and SEAc
 # These are just the point estimates for now, the Bayesian estimates will 
-# follow.
+# follow.This approach is used to make comparisons among the components of 
+# communities (i.e. groups), wither within or among communities. It is
+# similar to the analysis applied in [REF].
 group.ML <- group.metrics.ML(siber.example)
 
+print(group.ML)
+
+# ------------------------------------------------------------------------------
 # Calculate the various Layman metrics on each of the communities.
 # These are just the point estimates for now, the Bayesian estimates will 
-# follow.
-community.ML <- community.metrics.ML(siber.example)
+# follow. This approach is used to make comparisons between or among communities
+# and uses the approach described in [REF]
+community.ML <- community.metrics.ML(siber.example) 
+
+print(community.ML)
+
+
+# ==============================================================================
+# Fit Bayesian Ellipses to each of the groups.
+# SEA_B and the layman-metrics can be estimated afterwards.
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Fit JAGS IW prior
+# ------------------------------------------------------------------------------
+# fit same Inverse Wishart (IW) model using JAGS
+parms <- list()
+parms$n.iter <- 2 * 10^4   # number of iterations to run the model for
+parms$n.burnin <- 1 * 10^4 # discard the first set of values
+parms$n.thin <- 10         # thin the posterior by this many
+parms$n.chains <- 2        # run this many chains
+
+
+priors <- list()
+priors$R <- 1 * diag(2)
+priors$k <- 2
+priors$tau.mu <- 1.0E-3
+
+# fit the ellipses using the Inverse Wishart JAGS method.
+#SIBER2 <- bayesian.ellipses(x,y,group,method="IWJAGS",parms, priors)
 
 
 
