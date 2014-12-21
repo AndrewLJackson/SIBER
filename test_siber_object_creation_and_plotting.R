@@ -75,6 +75,10 @@ plot.siber.object(siber.example,
 # similar to the analysis applied in [REF].
 group.ML <- group.metrics.ML(siber.example)
 
+# You can add more ellipses by directly calling plot.group.ellipses()
+# In this case, with p=NULL we get the standard ellipse.
+plot.group.ellipses(siber.example, p = NULL, lty = 1)
+
 print(group.ML)
 
 # ------------------------------------------------------------------------------
