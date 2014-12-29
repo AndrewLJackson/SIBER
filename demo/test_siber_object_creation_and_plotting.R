@@ -5,7 +5,7 @@ graphics.off()
 
 
 # this script itself sources the functions needed
-source("tmp.source.these.R")
+source("demo/tmp.source.these.R")
 
 # read in the example dataset
 mydata <- read.csv("data/demo.siber.data.csv", header=T)
@@ -112,8 +112,15 @@ priors$R <- 1 * diag(2)
 priors$k <- 2
 priors$tau.mu <- 1.0E-3
 
+# some test code: extract one of the group's data
+xx <- siber.example[[1]][,1]
+yy <- siber.example[[1]][,2]
+gg <- siber.example[[1]][,3]
+
 # fit the ellipses using the Inverse Wishart JAGS method.
-#SIBER2 <- bayesian.ellipses(x,y,group,method="IWJAGS",parms, priors)
+ellipses.posterior <- bayesian.ellipses(xx, yy,
+                                        gg, method="IWJAGS", 
+                                        parms, priors)
 
 
 
