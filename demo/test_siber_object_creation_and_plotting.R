@@ -47,7 +47,7 @@ siber.example <- create.siber.object(mydata)
 # Create lists of plotting arguments to be passed onwards to each 
 # of the three plotting functions.
 community.hulls.args <- list(col = 1, lty = 1, lwd = 1)
-group.ellipses.args  <- list(n = 100, p = 0.95, lty = 1, lwd = 2)
+group.ellipses.args  <- list(n = 100, p.interval = 0.95, lty = 1, lwd = 2)
 group.hull.args      <- list(lty = 2, col = "grey20")
 
 
@@ -77,7 +77,16 @@ group.ML <- group.metrics.ML(siber.example)
 
 # You can add more ellipses by directly calling plot.group.ellipses()
 # In this case, with p=NULL we get the standard ellipse.
-plot.group.ellipses(siber.example, p = NULL, lty = 1)
+plot.group.ellipses(siber.example, p.interval = NULL, lty = 1)
+
+# Add an additional p.interval % prediction ellilpse
+#plot.group.ellipses(siber.example, n = 100, p.interval = 0.95,
+#                    lty = 1, lwd = 2)
+
+# or you can add the XX% confidence interval around the bivariate means
+# by specifying ci.mean = T along with whatever p.interval you want.
+plot.group.ellipses(siber.example, n = 100, p.interval = 0.95, ci.mean = T,
+                    lty = 2, lwd = 2)
 
 print(group.ML)
 
