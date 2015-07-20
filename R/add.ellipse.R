@@ -28,6 +28,8 @@ add.ellipse <- function(mu, sigma, m = NULL, n = 100, p.interval = NULL , ci.mea
 
   
   # get the eigenvalues and eigenvectors of sigma
+  # if ci.mean = T then the covariance matrix is divided by the sample size
+  # so as to produce confidence ellipses for the mean. Else it c.scale = 1.
   e = eigen(sigma / c.scale)
   
   # 
