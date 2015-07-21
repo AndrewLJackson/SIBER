@@ -1,6 +1,6 @@
 # function to add ellipses to each group
 
-plot.group.ellipses <- function(siber, plot.args = NULL, iso.order = c(1,2),
+plot.group.ellipses <- function(siber, plot.args = list(), iso.order = c(1,2),
                                 ...){
   
   # iso.order is used to relocate and reorientate the covariance matrix
@@ -14,10 +14,12 @@ plot.group.ellipses <- function(siber, plot.args = NULL, iso.order = c(1,2),
       
       do.call('add.ellipse',
                 c(list(mu = siber$ML.mu[[i]][,c(x,y),j],
-                     sigma = siber$ML.cov[[i]][c(x,y),c(x,y),j]),
-                     plot.args,
-                     col = j,
-                     ...))
+                       sigma = siber$ML.cov[[i]][c(x,y),c(x,y),j]),
+                       m = siber$sample.sizes[i,j],
+                       plot.args,
+                       col = j,
+                       ...))
+      
 #       add.ellipse(siber$ML.mu[[i]][,,j],
 #                   siber$ML.cov[[i]][,,j],
 #                   col = j, ...)

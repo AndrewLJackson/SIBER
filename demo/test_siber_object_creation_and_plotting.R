@@ -5,7 +5,7 @@ graphics.off()
 
 
 # this script itself sources the functions needed
-source("tmp.source.these.R")
+source("demo/tmp.source.these.R")
 
 # read in the example dataset
 mydata <- read.csv("data/demo.siber.data.csv", header=T)
@@ -47,7 +47,7 @@ siber.example <- create.siber.object(mydata)
 # Create lists of plotting arguments to be passed onwards to each 
 # of the three plotting functions.
 community.hulls.args <- list(col = 1, lty = 1, lwd = 1)
-group.ellipses.args  <- list(n = 100, p = 0.95, lty = 1, lwd = 2)
+group.ellipses.args  <- list(n = 100, p.interval = 0.95, lty = 1, lwd = 2)
 group.hull.args      <- list(lty = 2, col = "grey20")
 
 
@@ -77,7 +77,16 @@ group.ML <- group.metrics.ML(siber.example)
 
 # You can add more ellipses by directly calling plot.group.ellipses()
 # In this case, with p=NULL we get the standard ellipse.
-plot.group.ellipses(siber.example, p = NULL, lty = 1)
+plot.group.ellipses(siber.example, p.interval = NULL, lty = 1)
+
+# Add an additional p.interval % prediction ellilpse
+#plot.group.ellipses(siber.example, n = 100, p.interval = 0.95,
+#                    lty = 1, lwd = 2)
+
+# or you can add the XX% confidence interval around the bivariate means
+# by specifying ci.mean = T along with whatever p.interval you want.
+plot.group.ellipses(siber.example, n = 100, p.interval = 0.95, ci.mean = T,
+                    lty = 2, lwd = 2)
 
 print(group.ML)
 
@@ -99,21 +108,28 @@ print(community.ML)
 # ------------------------------------------------------------------------------
 # Fit JAGS IW prior
 # ------------------------------------------------------------------------------
-# fit same Inverse Wishart (IW) model using JAGS
-parms <- list()
-parms$n.iter <- 2 * 10^4   # number of iterations to run the model for
-parms$n.burnin <- 1 * 10^4 # discard the first set of values
-parms$n.thin <- 10         # thin the posterior by this many
-parms$n.chains <- 2        # run this many chains
-
-
-priors <- list()
-priors$R <- 1 * diag(2)
-priors$k <- 2
-priors$tau.mu <- 1.0E-3
-
-# fit the ellipses using the Inverse Wishart JAGS method.
-#SIBER2 <- bayesian.ellipses(x,y,group,method="IWJAGS",parms, priors)
+# # fit same Inverse Wishart (IW) model using JAGS
+# parms <- list()
+# parms$n.iter <- 2 * 10^4   # number of iterations to run the model for
+# parms$n.burnin <- 1 * 10^4 # discard the first set of values
+# parms$n.thin <- 10         # thin the posterior by this many
+# parms$n.chains <- 2        # run this many chains
+# 
+# 
+# priors <- list()
+# priors$R <- 1 * diag(2)
+# priors$k <- 2
+# priors$tau.mu <- 1.0E-3
+# 
+# # some test code: extract one of the group's data
+# xx <- siber.example[[1]][,1]
+# yy <- siber.example[[1]][,2]
+# gg <- siber.example[[1]][,3]
+# 
+# # fit the ellipses using the Inverse Wishart JAGS method.
+# ellipses.posterior <- bayesian.ellipses(xx, yy,
+#                                         gg, method="IWJAGS", 
+#                                         parms, priors)
 
 
 

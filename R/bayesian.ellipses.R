@@ -2,8 +2,19 @@
 # that performs a z-score transformation on the data prior to fitting
 # and then rescales the covariance matrix back up to the original scale.
 
+# NOTE - inputs (x,y,group) need to be replaced by the object siber.
+#    Then this function should loop over communities and groups within in 
+#    order to fit the ellipses. 
+#
+# NOTE - z-scores have already been calculated, and are held in input 
+# object siber.
+#
+# NOTE - Need to think about how best to save the posterior draws. I could
+#    put the sigmas into a 3d array rather than each draw being a vector of 
+#    length 4 as jags() currently outputs.
 bayesian.ellipses <- function (x, y, group, 
-                                 method=c("rmultireg","CholeskyJAGS","IWJAGS"), parms,priors) 
+                               method=c("rmultireg","CholeskyJAGS","IWJAGS"),
+                               parms,priors) 
 {
   
   
@@ -101,3 +112,13 @@ bayesian.ellipses <- function (x, y, group,
   
   return(ellipses)
 }
+
+
+
+
+
+
+
+
+
+

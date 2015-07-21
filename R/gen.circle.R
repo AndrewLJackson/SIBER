@@ -3,7 +3,7 @@
 # generating various SIBER ellipses.
 # Not intended for calling on its own.
 
-gen.circle = function(n,r) {
+gen.circle = function(n = 100, r) {
   # a uniform series of angles from 0 -> 2*pi
   theta = seq(0, 2*pi, length = n)
   

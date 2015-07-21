@@ -27,14 +27,16 @@ create.siber.object <- function (data.in) {
   # store the raw data as list split by the community variable
   # and rename the list components
   siber$raw.data <- split(data.in, data.in$community)
-  names(siber$raw.data) <- paste("community", unique(data.in$community), sep = "")
+  names(siber$raw.data) <- paste("community", 
+                                 unique(data.in$community), sep = "")
   
   # how many communities are there
   siber$n.communities <- length(unique(data.in$community))
   
   # now many groups are in each community
   siber$n.groups <- matrix(NA, 2, length(siber$raw.data), 
-  	                     dimnames = list(c("community", "n.groups"), c("","")))
+  	                     dimnames = list(c("community", "n.groups"), 
+                                         rep("", siber$n.communities)))
   siber$n.groups[1, ] <- unique(data.in$community)
   siber$n.groups[2, ] <- tapply(data.in$group, data.in$community, 
   	                           function(x){length(unique(x))})
