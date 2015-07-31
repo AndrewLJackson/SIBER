@@ -109,27 +109,22 @@ print(community.ML)
 # Fit JAGS IW prior
 # ------------------------------------------------------------------------------
 # # fit same Inverse Wishart (IW) model using JAGS
-# parms <- list()
-# parms$n.iter <- 2 * 10^4   # number of iterations to run the model for
-# parms$n.burnin <- 1 * 10^4 # discard the first set of values
-# parms$n.thin <- 10         # thin the posterior by this many
-# parms$n.chains <- 2        # run this many chains
-# 
-# 
-# priors <- list()
-# priors$R <- 1 * diag(2)
-# priors$k <- 2
-# priors$tau.mu <- 1.0E-3
-# 
-# # some test code: extract one of the group's data
-# xx <- siber.example[[1]][,1]
-# yy <- siber.example[[1]][,2]
-# gg <- siber.example[[1]][,3]
-# 
-# # fit the ellipses using the Inverse Wishart JAGS method.
-# ellipses.posterior <- bayesian.ellipses(xx, yy,
-#                                         gg, method="IWJAGS", 
-#                                         parms, priors)
+
+# options for running jags
+parms <- list()
+parms$n.iter <- 2 * 10^3   # number of iterations to run the model for
+parms$n.burnin <- 1 * 10^3 # discard the first set of values
+parms$n.thin <- 10         # thin the posterior by this many
+parms$n.chains <- 2        # run this many chains
+
+# define the priors
+priors <- list()
+priors$R <- 1 * diag(2)
+priors$k <- 2
+priors$tau.mu <- 1.0E-3
+
+# fit the ellipses using the Inverse Wishart JAGS method.
+ellipses.posterior <- siber.ellipses(siber.example, parms, priors)
 
 
 
