@@ -12,7 +12,7 @@ siardensityplot(dat, probs = c(95, 75, 50),
     xlab = "Group", ylab= "Value", xticklabels = NULL, yticklabels = NULL,
     type = "boxes", clr = gray((9:1)/10), scl = 1,
     xspc = 0.5, prn = F, leg = FALSE, ct = "mode",ylims=NULL,
-    lbound = -Inf, ubound = Inf, ylab.line = 2, main="",...)
+    lbound = -Inf, ubound = Inf,  main="", ylab.line = 2, ...)
 }
 \arguments{
   \item{dat}{ Data to be plotted as a matrix.}
