@@ -3,6 +3,10 @@
 rm(list=ls())
 graphics.off()
 
+# In this example, I set the seed each time so taht the results are comparable.
+# But this is only the case if you leave all the settings and data the same.
+set.seed(1)
+
 
 # this script itself sources the functions needed
 source("demo/tmp.source.these.R")
@@ -123,7 +127,6 @@ priors$k <- 2
 priors$tau.mu <- 1.0E-3
 
 # fit the ellipses using the Inverse Wishart JAGS method.
-set.seed(1)
 ellipses.posterior <- siber.MVN(siber.example, parms, priors)
 
 # ------------------------------------------------------------------------------
@@ -138,15 +141,71 @@ siardensityplot(SEA.B, xticklabels = colnames(group.ML),
                 xlab = c("Community | Group"),
                 ylab = expression("Standard Ellipse Area " ('\u2030' ^2) ),
                 bty = "L",
-                las = 1
+                las = 1,
+                main = "SIBER ellipses on each group"
                 )
 
-points(1:ncol(SEA.B), group.ML[3,], col="red", pch = "x")
+points(1:ncol(SEA.B), group.ML[3,], col="red", pch = "x", lwd = 2)
 
 # ------------------------------------------------------------------------------
 # We can also use the Layman metrics to compare the two communities in this 
 # example.
 # ------------------------------------------------------------------------------
+
+mu.post <- extract.posterior.means(siber.example, ellipses.posterior)
+
+
+layman.B <- bayesian.layman(mu.post)
+
+# now plot the metrics for each group. Here we do this manually for now, but 
+# this could be automated to loop over all communities if there were lots.
+
+# --------------------------------------
+# The first community
+# --------------------------------------
+siardensityplot(layman.B[[1]], xticklabels = colnames(layman.B[[1]]), 
+                bty="L", ylim = c(0,20))
+
+# add the ML estimates. Extract the correct means from the appropriate array
+# held within the overall array of means.
+comm1.layman.ml <- laymanmetrics(siber.example$ML.mu[[1]][1,1,],
+                                 siber.example$ML.mu[[1]][1,2,]
+                                 )
+points(1:6, comm1.layman.ml$metrics, col = "red", pch = "x", lwd = 2)
+
+# --------------------------------------
+# The second community
+# --------------------------------------
+siardensityplot(layman.B[[2]], xticklabels = colnames(layman.B[[2]]), 
+                bty="L", ylim = c(0,20))
+
+# add the ML estimates. Extract the correct means from the appropriate array
+# held within the overall array of means.
+comm2.layman.ml <- laymanmetrics(siber.example$ML.mu[[2]][1,1,],
+                                 siber.example$ML.mu[[2]][1,2,]
+)
+points(1:6, comm2.layman.ml$metrics, col = "red", pch = "x", lwd = 2)
+
+
+# --------------------------------------
+# Alternatively, pull out TA from both
+# and plot them together on one graph.
+# --------------------------------------
+siardensityplot(cbind(layman.B[[1]][,"TA"], layman.B[[2]][,"TA"]),
+                xticklabels = c("Community 1", "Community 2"), 
+                bty="L", ylim = c(0,20),
+                las = 1,
+                ylab = "TA - Convex Hull Area",
+                xlab = "")
+
+
+
+# ==============================================================================
+# END OF SCRIPT
+# ==============================================================================
+
+
+
 
 
 

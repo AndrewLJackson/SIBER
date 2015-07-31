@@ -12,7 +12,7 @@ siardensityplot(dat, probs = c(95, 75, 50),
     xlab = "Group", ylab= "Value", xticklabels = NULL, yticklabels = NULL,
     type = "boxes", clr = gray((9:1)/10), scl = 1,
     xspc = 0.5, prn = F, leg = FALSE, ct = "mode",ylims=NULL,
-    lbound = -Inf, ubound = Inf, main="",...)
+    lbound = -Inf, ubound = Inf, ylab.line = 2, main="",...)
 }
 \arguments{
   \item{dat}{ Data to be plotted as a matrix.}
@@ -46,6 +46,8 @@ siardensityplot(dat, probs = c(95, 75, 50),
   distribution. E.g. useful for proportions that must be strictly less than 
   one.}
   \item{main}{A title for the figure.}
+  \item{ylab.line}{Overrides the default line in which the ylabel is written. 
+  Default = 2}
   \item{...}{Additional parameters to be passed to \code{\link{plot}}}.
 }
 \author{ Andrew Jackson }
