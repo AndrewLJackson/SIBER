@@ -1,22 +1,19 @@
-fit.ellipses <- function (x, y, parms, priors) 
+fit.ellipse <- function (x, y, parms, priors) 
 {
-  # This is a wrapper function to fit individual multivariarate normal
-  # distributions to x,y data where both mean and Sigma are unknown.
-  # Ultimately, I want to create a new object class called SIBER
-  # in order to standardise the required output.
-  
+
   # ----------------------------------------------------------------------------
-  # JAGS code for fitting Inverse Wishart version of SIBER
+  # JAGS code for fitting Inverse Wishart version of SIBER to a single group
   # ----------------------------------------------------------------------------
   
-  IWEllipse <- function() {
+  modelstring <- '
     
+    model {
     # ----------------------------------
     # define the priors
     # ----------------------------------
     
     # this loop defines the priors for the means
-    for (i in 1:n.iso){
+    for (i in 1:n.iso) {
       mu[i] ~ dnorm (0, tau.mu)
     }
     
@@ -27,19 +24,20 @@ fit.ellipses <- function (x, y, parms, priors)
     Sigma2[1:n.iso, 1:n.iso] <- inverse(tau[1:n.iso, 1:n.iso]) 
     
     # calculate correlation coefficient
-    # rho <- Sigma2[1,2]/sqrt(Sigma2[1,1]*Sigma2[2,2])
+    # rho <- Sigma2[1,2]/sqrt(Sigma2[1,1]*Sigma 2[2,2])
     
     #----------------------------------------------------
     # specify the likelihood of the observed data
     #----------------------------------------------------
     
-    for (i in 1:n.obs) {                             
+    for(i in 1:n.obs) {                             
       Y[i,1:2] ~ dmnorm(mu[1:n.iso],tau[1:n.iso,1:n.iso])
     }
     
     
     
-  } # end of jags model script
+  }' # end of jags model script
+  
   
   # ----------------------------------------------------------------------------
   # Prepare objects for passing to jags
@@ -60,19 +58,24 @@ fit.ellipses <- function (x, y, parms, priors)
   
   
   # monitor all the parameters
-  parameters <- c("mu","Sigma2","rho")
+  parameters <- c("mu","Sigma2")
   
-  Iwishart <- jags(jags.data, inits=inits, parameters, 
-                   model.file=IWEllipse, n.chains=2, 
-                   n.iter=parms$n.iter, n.burnin=parms$n.burnin, n.thin=parms$n.thin, DIC=T)
+  model <- jags.model(textConnection(modelstring),
+                      data = jags.data, n.chains = 2)
   
-  # collect data for output
-  model- list ( mu = Iwishart$BUGSoutput$sims.matrix[,6:7],
-                S = Iwishart$BUGSoutput$sims.matrix[,1:4],
-                n.samps = ncol(model$mu)
-                )
+  output <- coda.samples(model = model,
+                      variable.names = c("mu",'Sigma2'),
+                      n.iter = parms$n.iter,
+                      thin = 10
+                      )
+  
+  print(summary(output))
+  print(dim(output[[1]]))
+  
+  
 
-  return(model)
+
+  return(output)
 
 
 }

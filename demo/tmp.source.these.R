@@ -26,4 +26,4 @@ sourceDir(dir.path, trace = F)
 # load dependent libraries
 #library('bayesm')
 library('mnormt')
-library('R2jags')
+library('rjags')
