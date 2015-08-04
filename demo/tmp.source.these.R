@@ -24,6 +24,6 @@ sourceDir(dir.path, trace = F)
 # source("R/add.ellipse.R")
 
 # load dependent libraries
-library('bayesm')
+#library('bayesm')
 library('mnormt')
-library('R2jags')
+library('rjags')

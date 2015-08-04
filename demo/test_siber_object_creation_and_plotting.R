@@ -3,6 +3,10 @@
 rm(list=ls())
 graphics.off()
 
+# In this example, I set the seed each time so taht the results are comparable.
+# But this is only the case if you leave all the settings and data the same.
+set.seed(1)
+
 
 # this script itself sources the functions needed
 source("demo/tmp.source.these.R")
@@ -60,8 +64,8 @@ plot.siber.object(siber.example,
                   group.hulls = T, group.hull.args,
                   bty = "L",
                   iso.order = c(1,2),
-                  xlab = expression(paste(delta^{13}, C , "‰", sep="")),
-                  ylab = expression(paste(delta^{15}, N , "‰", sep=""))
+                  xlab=expression({delta}^13*C~'\u2030'),
+                  ylab=expression({delta}^15*N~'\u2030')
                   )
 
 # ==============================================================================
@@ -106,30 +110,100 @@ print(community.ML)
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
-# Fit JAGS IW prior
+# Fit JAGS model with Inverse-Wishart prior
 # ------------------------------------------------------------------------------
-# # fit same Inverse Wishart (IW) model using JAGS
-# parms <- list()
-# parms$n.iter <- 2 * 10^4   # number of iterations to run the model for
-# parms$n.burnin <- 1 * 10^4 # discard the first set of values
-# parms$n.thin <- 10         # thin the posterior by this many
-# parms$n.chains <- 2        # run this many chains
-# 
-# 
-# priors <- list()
-# priors$R <- 1 * diag(2)
-# priors$k <- 2
-# priors$tau.mu <- 1.0E-3
-# 
-# # some test code: extract one of the group's data
-# xx <- siber.example[[1]][,1]
-# yy <- siber.example[[1]][,2]
-# gg <- siber.example[[1]][,3]
-# 
-# # fit the ellipses using the Inverse Wishart JAGS method.
-# ellipses.posterior <- bayesian.ellipses(xx, yy,
-#                                         gg, method="IWJAGS", 
-#                                         parms, priors)
+
+# options for running jags
+parms <- list()
+parms$n.iter <- 2 * 10^4   # number of iterations to run the model for
+parms$n.burnin <- 1 * 10^3 # discard the first set of values
+parms$n.thin <- 10     # thin the posterior by this many
+parms$n.chains <- 2        # run this many chains
+
+# define the priors
+priors <- list()
+priors$R <- 1 * diag(2)
+priors$k <- 2
+priors$tau.mu <- 1.0E-3
+
+# fit the ellipses using the Inverse Wishart JAGS method.
+ellipses.posterior <- siber.MVN(siber.example, parms, priors)
+
+# ------------------------------------------------------------------------------
+# Calculate SEA.B on each group and plot the posterior
+# ------------------------------------------------------------------------------
+
+# The posterior estimates of the ellipses for each group can be used to
+# calculate the SEA.B for each group.
+SEA.B <- siber.ellipses(ellipses.posterior)
+
+siardensityplot(SEA.B, xticklabels = colnames(group.ML), 
+                xlab = c("Community | Group"),
+                ylab = expression("Standard Ellipse Area " ('\u2030' ^2) ),
+                bty = "L",
+                las = 1,
+                main = "SIBER ellipses on each group"
+                )
+
+points(1:ncol(SEA.B), group.ML[3,], col="red", pch = "x", lwd = 2)
+
+# ------------------------------------------------------------------------------
+# We can also use the Layman metrics to compare the two communities in this 
+# example.
+# ------------------------------------------------------------------------------
+
+mu.post <- extract.posterior.means(siber.example, ellipses.posterior)
+
+
+layman.B <- bayesian.layman(mu.post)
+
+# now plot the metrics for each group. Here we do this manually for now, but 
+# this could be automated to loop over all communities if there were lots.
+
+# --------------------------------------
+# The first community
+# --------------------------------------
+siardensityplot(layman.B[[1]], xticklabels = colnames(layman.B[[1]]), 
+                bty="L", ylim = c(0,20))
+
+# add the ML estimates. Extract the correct means from the appropriate array
+# held within the overall array of means.
+comm1.layman.ml <- laymanmetrics(siber.example$ML.mu[[1]][1,1,],
+                                 siber.example$ML.mu[[1]][1,2,]
+                                 )
+points(1:6, comm1.layman.ml$metrics, col = "red", pch = "x", lwd = 2)
+
+# --------------------------------------
+# The second community
+# --------------------------------------
+siardensityplot(layman.B[[2]], xticklabels = colnames(layman.B[[2]]), 
+                bty="L", ylim = c(0,20))
+
+# add the ML estimates. Extract the correct means from the appropriate array
+# held within the overall array of means.
+comm2.layman.ml <- laymanmetrics(siber.example$ML.mu[[2]][1,1,],
+                                 siber.example$ML.mu[[2]][1,2,]
+)
+points(1:6, comm2.layman.ml$metrics, col = "red", pch = "x", lwd = 2)
+
+
+# --------------------------------------
+# Alternatively, pull out TA from both
+# and plot them together on one graph.
+# --------------------------------------
+siardensityplot(cbind(layman.B[[1]][,"TA"], layman.B[[2]][,"TA"]),
+                xticklabels = c("Community 1", "Community 2"), 
+                bty="L", ylim = c(0,20),
+                las = 1,
+                ylab = "TA - Convex Hull Area",
+                xlab = "")
+
+
+
+# ==============================================================================
+# END OF SCRIPT
+# ==============================================================================
+
 
 
 
