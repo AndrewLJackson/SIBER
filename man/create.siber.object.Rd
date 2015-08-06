@@ -7,7 +7,7 @@
 create.siber.object(data.in)
 }
 \arguments{
-\item{data.in}{a basic R data.frame or matrix comprising four columns.
+\item{data}{Specified In a basic R data.frame or matrix comprising 4 columns.
 The first two of which are typically isotope tracers, then the third is a
 column that indicates the group membership, and the fourth column indicates
 the community membership of an observation. Group and communities should be

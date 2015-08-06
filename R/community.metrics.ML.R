@@ -19,15 +19,8 @@ community.metrics.ML <- function(siber) {
     tmp <- laymanmetrics(siber$ML.mu[[i]][1,1,] ,
                   siber$ML.mu[[i]][1,2,])
     
-    out["dY_range",i] <- tmp$dY_range
-    out["dX_range",i] <- tmp$dX_range
-    out["TA",i]       <- tmp$hull$TA
-    out["CD",i]       <- tmp$CD
-    out["MNND",i]     <- tmp$MNND
-    out["SDNND",i]    <- tmp$SDNND
-    
       
-  
+  out[,i] <- tmp$metrics
   }
   
   return(out)

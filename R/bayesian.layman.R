@@ -13,13 +13,14 @@ bayesian.layman <- function(mu.post) {
     layman.B[[k]] <- matrix(NA, nrow = nr, ncol = 6) 
     
     
+    # AJ - IM PRETTY SURE THESE ARE NO LONGER REQUIRED
     # some vectors to store layman metrics
-    dNr <- numeric(nr)
-    dCr <- numeric(nr)
-    TA <- numeric(nr)
-    CD <- numeric(nr)
-    MNND <- numeric(nr)
-    SDNND <- numeric(nr)
+#     dNr <- numeric(nr)
+#     dCr <- numeric(nr)
+#     TA <- numeric(nr)
+#     CD <- numeric(nr)
+#     MNND <- numeric(nr)
+#     SDNND <- numeric(nr)
     
     
     for (i in 1:nr) {
