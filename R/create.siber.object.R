@@ -1,6 +1,6 @@
 #' Read in SIBER format data and generate the SIBER object
 #' 
-#' @param data.in a basic R data.frame or matrix comprising four columns. 
+#' @param data Specified In a basic R data.frame or matrix comprising 4 columns. 
 #' The first two of which are typically isotope tracers, then the third is a 
 #' column that indicates the group membership, and the fourth column indicates
 #' the community membership of an observation. Group and communities should be 
@@ -16,6 +16,10 @@
 #'   community}
 #'   \item {raw.data}{A list object of length equal to the number of communities}
 #' }
+#' #' @examples
+#' data(demo.siber.data)
+#' mydata <- create.siber.object(demo.siber.data)
+#' names(mydata)
  
 create.siber.object <- function (data.in) {
   

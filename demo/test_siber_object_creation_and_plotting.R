@@ -12,7 +12,7 @@ set.seed(1)
 source("demo/tmp.source.these.R")
 
 # read in the example dataset
-mydata <- read.csv("data/demo.siber.data.csv", header=T)
+mydata <- read.csv("inst/demo.siber.data.csv", header=T)
 
 # create the siber object
 siber.example <- create.siber.object(mydata) 

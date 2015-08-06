@@ -25,8 +25,14 @@ model fitting and plotting.
   community}
   \item {raw.data}{A list object of length equal to the number of communities}
 }
+#'
 }
 \description{
 Read in SIBER format data and generate the SIBER object
+}
+\examples{
+data(demo.siber.data)
+mydata <- create.siber.object(demo.siber.data)
+names(mydata)
 }
 

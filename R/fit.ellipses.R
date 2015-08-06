@@ -1,3 +1,50 @@
+#' Fit a multivariate normal distribution to x and y data using jags
+#' 
+#' @param x a vector of data representing the x-axis
+#' @param y a vector of data representing the y-axis
+#' @param parms a list containing four items providing details of the jags run
+#' to be sampled.
+#' \itemize{
+#'    \item {n.iter}{The number of iterations to sample}
+#'    \item {n.burnin}{The number of iterations to discard as a burnin from the
+#'                      start of sampling.}
+#'    \item {n.thin}{The number of samples to thin by.}
+#'    \item {n.chains}{The number of chains to fit.}
+#' }
+#' @param priors a list of three items specifying the priors to be passed to 
+#' the jags model.
+#' \itemize{
+#'    \item {R}{The scaling vector for the diagonal of Inverse Wishart
+#'    distribution prior on the covariance matrix Sigma. Typically 
+#'    set to a 2x2 matrix matrix(c(1, 0, 0, 1), 2, 2).}
+#'    \item {k}{The degrees of freedom of the Inverse Wishart distribution for 
+#'    the covariance matrix Sigma. Typically set to the dimensionality of Sigma,
+#'    which in this bivariate case is 2.}
+#'    \item {tau}{The precision on the normal prior on the means mu.}
+#' }
+#' @return A mcmc.list object of posterior samples created by jags.
+#' \itemize{
+#'   \item {original.data}{The original data as passed into this function}
+#'   \item {iso.summary}{The max, min, mean and median of the isotope data 
+#'   useful for plotting}
+#'   \item {sample.sizees}{The number of obsevations tabulated by group and 
+#'   community}
+#'   \item {raw.data}{A list object of length equal to the number of communities}
+#' }
+#' #' @examples
+#' x <- rnorm(50)
+#' y <- rnorm(50)
+#' parms <- list()
+#' parms$n.iter <- 2 * 10^3
+#' parms$n.burnin <- 500
+#' parms$n.thin <- 2     
+#' parms$n.chains <- 2    
+#' priors <- list()
+#' priors$R <- 1 * diag(2)
+#' priors$k <- 2
+#' priors$tau.mu <- 1.0E-3
+#' fit.ellipse(x, y, parms, priors)
+
 fit.ellipse <- function (x, y, parms, priors) 
 {
 
@@ -69,8 +116,8 @@ fit.ellipse <- function (x, y, parms, priors)
                       thin = 10
                       )
   
-  print(summary(output))
-  print(dim(output[[1]]))
+  #print(summary(output))
+  #print(dim(output[[1]]))
   
   
 
