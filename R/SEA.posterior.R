@@ -32,6 +32,7 @@ SEA.posterior <- function (post) {
     dim(estS) <- c(2, 2)
     
     # calculate the corresponding standard ellipse area
+    # AJ change from popSEA to sigma.SEA
     SEA.B[i] <- popSEA(estS)$SEA
     
   } # end loop over posterior draws

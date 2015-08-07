@@ -1,51 +1,91 @@
+#' Creates an isotope biplot and provides a wrapper to ellipse and hull plotting
+#' 
+#' This function takes a SIBER object as created by 
+#' \code{\link{create.siber.object}}, and loops over communities and their 
+#' groups, creating a biplot, and adding ellipses and hulls as desired. Ellipses 
+#' can be added to groups, while convex hulls can be added at both the group 
+#' and community level (the former for illustrative purposes only, with no
+#' analytical tools in SIBER to fit Bayesian hulls to individual groups. This is 
+#' not mathematically possible in a Bayesian framework.).
+#' @param siber a siber object as created by \code{\link{create.siber.object}}.
+#' @param iso.order a vector of length 2, either c(1,2) or c(2,1). The order 
+#'   determines which of the columns of raw data are plotted on the x (1) or y
+#'   (2) axis. N.B. this will be deprecated in a future release, and plotting 
+#'   order will be acheived at point of data-entry.
+#' @param hulls a logical defaulting to TRUE determining whether or not hulls 
+#' based on the means of groups within communities should be drawn. That is, a
+#' community-level convex hull.
+#' @param community.hulls.args a list of plotting arguments to pass to 
+#' \code{\link{plot.community.hulls}}. See \code{\link{plot.community.hulls}} 
+#' for further details.
+#' @param ellipses a logical defaulting to TRUE determining whether or not an
+#' ellipse should be drawn around each group within each community.
+#' @param group.ellipses.args a list of plotting arguments to pass to 
+#' \code{\link{plot.group.ellipses}}. See \code{\link{plot.group.ellipses}} for 
+#' further details.
+#' @param group.hulls a logical defaulting to FALSE determining whether or not
+#' convex hulls should be drawn around each group within each community.
+#' @param group.hulls.args a list of plotting options to pass to 
+#' \code{\link{plot.group.hulls}}. See \code{\link{plot.group.hulls}} for 
+#' further details.
+#' @param bty a string specifying the box type for the plot. See 
+#' \code{\link{par}} for details.
+#' @param xlab a string for the x-axis label.
+#' @param ylab a string for the y-axis label.
+#' @param las a scalar determining the rotation of the y-axis labels. Defaults 
+#' to horizontal with \code{las = 1}. See \code{\link{par}} for more details.
+#' @param ... additional arguments to be passed to \code{\link{plot}}.
+#' 
+#' @return An isotope biplot.
+
 
 plot.siber.object <- function(siber, 
                               iso.order = c(1,2), 
                               ax.pad = 1,
-                              hulls = T, community.hulls.args = NULL, 
-                              ellipses = T, group.ellipses.args = NULL,
-                              group.hulls = F, group.hulls.args = NULL,
+                              hulls = TRUE, community.hulls.args = NULL, 
+                              ellipses = TRUE, group.ellipses.args = NULL,
+                              group.hulls = FALSE, group.hulls.args = NULL,
                               bty = "L", 
                               xlab = "Isotope 1", 
                               ylab = "Isotope 2",
                               las = 1,
                               ...){
-
+  
   # NOTE - this isotope ordering needs to be passed onwards to the plotting
   # functions called below. Im not convinced its that straightforward.
   x <- iso.order[1]
   y <- iso.order[2]
-
+  
   with(siber,{
-
+    
     # set up a blank plot. X and Y limits are set by padding
     # the plot by a fixed amount ax.pad beyond the extremes of 
     # all the data.
-  	plot(0, 0, type = "n",
-  		       xlim = c(siber$iso.summary["min", x] - ax.pad , 
-  		       	        siber$iso.summary["max", x] + ax.pad ),
-  		       ylim = c(siber$iso.summary["min", y] - ax.pad , 
-  		       	        siber$iso.summary["max", y] + ax.pad ),
-             ylab = ylab,
-             xlab = xlab,
-             bty = bty,
-             las = las
-             
-  		)
-
+    plot(0, 0, type = "n",
+         xlim = c(siber$iso.summary["min", x] - ax.pad , 
+                  siber$iso.summary["max", x] + ax.pad ),
+         ylim = c(siber$iso.summary["min", y] - ax.pad , 
+                  siber$iso.summary["max", y] + ax.pad ),
+         ylab = ylab,
+         xlab = xlab,
+         bty = bty,
+         las = las
+         
+    )
+    
     
     # add each of the data points
     for (i in 1:siber$n.communities){
-
-    	points(siber$raw.data[[i]][,x], 
-    		   siber$raw.data[[i]][,y], 
-    		   col = siber$raw.data[[i]]$group, 
-    		   pch = i)
-    	
+      
+      points(siber$raw.data[[i]][,x], 
+             siber$raw.data[[i]][,y], 
+             col = siber$raw.data[[i]]$group, 
+             pch = i)
+      
     }
-
-
-
+    
+    
+    
     # --------------------------------------------------------------------------
     # Add a convex hull between the means of each group, i.e. a convex hull
     # for the community. Only applicable if there are more than 2 
@@ -55,7 +95,7 @@ plot.siber.object <- function(siber,
     if (hulls) {
       plot.community.hulls(siber, community.hulls.args, iso.order)
     } # end of if statement for community convex hull drawing
-
+    
     # --------------------------------------------------------------------------
     # Add a ML ellipse to each group
     # --------------------------------------------------------------------------
@@ -63,18 +103,18 @@ plot.siber.object <- function(siber,
       plot.group.ellipses(siber, group.ellipses.args, iso.order)
     } # end of if statement for ellipse drawing
     
-  	# --------------------------------------------------------------------------
-  	# Add convex hulls to each group here
-  	# --------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
+    # Add convex hulls to each group here
+    # --------------------------------------------------------------------------
     if (group.hulls){
       # code similar to group ellipses to go here
       plot.group.hulls(siber, group.hull.args, iso.order)
     } # end of if statement for group hull drawing
     
   }) # end of with() function
-
-
-
-
-	
+  
+  
+  
+  
+  
 } # end function

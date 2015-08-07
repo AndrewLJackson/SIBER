@@ -1,5 +1,31 @@
-# need to move this code over to the eigen value formulation... which is the 
-# form i thought it was in!
+#' Calculate metrics corresponding to the Standard Ellipse based on a 
+#' covariance matrix
+#' 
+#' This function takes a covariance 2x2 matrix Sigma and returns various 
+#' metrics relating to the corresponding Standard Ellipse.
+#' 
+#' @section Note: This function is currently based on the eigenvalue and 
+#'   eigenvector approach which is more flexible for higher dimensional problems
+#'   method for calculating the standard ellipse, and replaces the parametric
+#'   method used previously in siar and siber. Ellipse
+#' 
+#' @param sigma a 2x2 covariance ellipse.
+#' 
+#' @return A list comprising the following metrics for summarising the Standard 
+#' Ellipse
+#' #' \itemize{
+#'    \item {SEA}{the Standard Ellise Area (not sample size corrected)}
+#'    \item {eccentricity}{a measure of the elongation of the ellipse.}
+#'    \item {a}{the length of the semi-major axis}
+#'    \item {b}{the length of the semi-minor axis}
+#' }
+#' 
+#' @examples
+#' # A perfect circle
+#' sigma <- matrix( c(1, 0, 0, 1), 2, 2)
+#' sigma.SEA(sigma)
+#' 
+
 
 sigma.SEA <- function(sigma){
 
