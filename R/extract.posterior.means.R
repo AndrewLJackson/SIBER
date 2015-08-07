@@ -1,7 +1,24 @@
+#' Extract posterior means from call to \code{\link{siber.MVN}}
+#' 
+#' This function extracts the posterior means from a call to 
+#' \code{\link{siber.MVN}} which can then be used to calculate bayesian layman 
+#' metrics. This function is designed to create an array of posterior means 
+#' that is more easily interrogated for plotting and summary statistics.
+#' 
+#' @param siber a siber object as created by \code{\link{create.siber.object}}
+#' @param post a list containing the posterior estimated parameters fitted to 
+#' each group within every community. See \code{\link{siber.MVN}} which creates 
+#' this object for details.
+#' 
+#' @return A list of length n.communities with each entry representing a 
+#' \code{n.draws * 2 * n.groups} array of rows equal to the number of posterior
+#' samples, 2 columns representing the two means of the multivariate data and 
+#' n.groups the number of groups within the focal community.
+#' 
+
+
 extract.posterior.means <- function (siber, post) {
   
-  # function to extract the posterior means from a call to siber.MVN which can
-  # then be used to calculate bayesian layman metrics
   
   # community / group naming 
   tmp.names <- unique(paste(siber$original.data[,"community"],

@@ -1,9 +1,17 @@
 #' Fit a multivariate normal distribution to x and y data using jags
 #' 
+#' This function contains and defines the jags model script used to fit a
+#' bivariate normal distribution to a vector of x and y data. Although not
+#' intended for direct calling by users, it presents a quick way to fit a model
+#' to a single group of data. Advanced users should be able to manipulate the 
+#' contained jags model to fit more complex models using different likelihoods, 
+#' such as multivariate lognormal distributions, multivariate gamma
+#' distributions etc...
+#' 
 #' @param x a vector of data representing the x-axis
 #' @param y a vector of data representing the y-axis
-#' @param parms a list containing four items providing details of the jags run
-#' to be sampled.
+#' @param parms a list containing four items providing details of the
+#'  \code{\link{rjags}} run to be sampled.
 #' \itemize{
 #'    \item {n.iter}{The number of iterations to sample}
 #'    \item {n.burnin}{The number of iterations to discard as a burnin from the
@@ -23,15 +31,7 @@
 #'    \item {tau}{The precision on the normal prior on the means mu.}
 #' }
 #' @return A mcmc.list object of posterior samples created by jags.
-#' \itemize{
-#'   \item {original.data}{The original data as passed into this function}
-#'   \item {iso.summary}{The max, min, mean and median of the isotope data 
-#'   useful for plotting}
-#'   \item {sample.sizees}{The number of obsevations tabulated by group and 
-#'   community}
-#'   \item {raw.data}{A list object of length equal to the number of communities}
-#' }
-#' #' @examples
+#' @examples
 #' x <- rnorm(50)
 #' y <- rnorm(50)
 #' parms <- list()

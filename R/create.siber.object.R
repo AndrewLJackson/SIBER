@@ -1,5 +1,11 @@
 #' Read in SIBER format data and generate the SIBER object
 #' 
+#' This function takes raw isotope data and creates a SIBER object which 
+#' contains information in a structured manner that enables other functions to
+#' loop over groups and communities, fit Bayesian ellipses, and afterwards, 
+#' generate various plots, and additional analyses on the posterior 
+#' distributions.
+#' 
 #' @param data Specified In a basic R data.frame or matrix comprising 4 columns. 
 #' The first two of which are typically isotope tracers, then the third is a 
 #' column that indicates the group membership, and the fourth column indicates
@@ -18,8 +24,8 @@
 #' }
 #' #' @examples
 #' data(demo.siber.data)
-#' mydata <- create.siber.object(demo.siber.data)
-#' names(mydata)
+#' my.siber.data <- create.siber.object(demo.siber.data)
+#' names(my.siber.data)
  
 create.siber.object <- function (data.in) {
   

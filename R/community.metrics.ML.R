@@ -1,8 +1,20 @@
-# function to calculate the point estimates of the various Layman metrics
-# for comparing among communities. This is not the same as the function for
-# the corresponding Bayesian estimates of these same metrics. The values
-# returned by this function are just the point estimates based on the 
-# maximum likelihood estimates of the underlying statistics.
+#' Calculate the point estimates of the Layman metrics for each community
+#' 
+#' This function loops over each community, determines the centre of mass 
+#' (centroid) of each of the groups comprising the community using the basic 
+#' \code{\link{mean}} function independently on the marginal x and y vectors,
+#' and calculates the corresponding 6 Layman metrics based on these points.
+#' 
+#' @param siber a siber object as created by create.siber.object.R
+#' 
+#' @return A 6 x m matrix of the 6 Layman metrics of dX_range, dY_range, TA, 
+#' CD, MNND and SDNND in rows, for each community by column
+#' 
+#' @examples
+#' data(demo.siber.data)
+#' my.siber.data <- create.siber.object(demo.siber.data)
+#' community.metrics.ML(my.siber.data)
+
 
 community.metrics.ML <- function(siber) {
   

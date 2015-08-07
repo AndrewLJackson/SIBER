@@ -1,3 +1,23 @@
+#' Calculate Layman metrics on Bayesian postrior samples of a community
+#' 
+#' This function loops over the posterior distribution of group means within
+#' each community and generates the corresponding Bayesian estimate of the 6 
+#' Layman metrics.
+#'
+#' @param mu.post a list of length n.communities, with each list element 
+#' containing the estimated means of the groups comprising that community. The
+#' typical workflow to generate mu.post follows. The 
+#' Bayesian ellipses are fitted using \code{\link{siber.ellipses}}, then the 
+#' posterior means (centre of mass of each group) is extracted using 
+#' \code{\link{extract.posterior.means}}. See the example below.
+#' 
+#' @return A list of length n.communities, with each element containing a 
+#' matrix of 6 columns, each representing the Bayesian posterior distribution 
+#' of the 6 Layman metrics for each of the posterior draws recorded by the 
+#' fitting process (i.e. which determines the number of rows in this matrix).
+#' 
+
+
 bayesian.layman <- function(mu.post) {
   
   

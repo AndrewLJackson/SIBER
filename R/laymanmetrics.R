@@ -1,3 +1,28 @@
+#' Calculates the 6 Layman metrics on a vector of x and y data
+#' 
+#' This function takes two x and y vectors, and calculates the corresponding 
+#' 6 Layman metrics based on these points. Note that for generality, the 
+#' original metrics of dC_range and dN_range have been renamed dX_range and 
+#' dY_range respectively. These modified names represent the x and y axes in 
+#' terms of the order in which the data have been entered, and relate typically
+#' to how one plots the data. These x and y vectors could represent the means
+#' of the group members comprising a community as is preffered under the SIBER
+#' model framework. However, one could use them to calculate the point estimates
+#' of the 6 Layman metrics for an entire group of data. In fact, you are free
+#' to pass this function any set of \code{x} and \code{y} data you wish.
+#' 
+#' 
+#' @param x a vector of locations in the x-axis direction.
+#' @param y a vector of locations in the y-axis direction.
+#' 
+#' @return A vector of the 6 Layman metrics of dX_range, dY_range, TA, 
+#' CD, MNND and SDNND
+#' 
+#' @examples
+#' x <- runif(10)
+#' y <- runif(10)
+#' laymanmetrics(x, y)
+
 # NOTE - i have changed the name of dN_range to dY_range and 
 #  dC_range to dX_range to make it more generic.
 
