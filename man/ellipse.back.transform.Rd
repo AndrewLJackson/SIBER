@@ -8,12 +8,19 @@ ellipse.back.transform(jags.output, siber, idx.community, idx.group)
 }
 \arguments{
 \item{jags.output}{a mcmc.list object of posterior samples created by
-\code{\link{rjags}}.
-In siber this is created typically by \code{\link{fit.ellipses}}}
+\code{\link{rjags}}. In siber this is created typically by
+\code{\link{fit.ellipses}}}
+
+\item{siber}{a siber object as created by create.siber.object.}
+
+\item{idx.community}{an integer specifying which community to back-transform.}
+
+\item{idx.group}{an integer specifyging which group to back-transform.}
 }
 \value{
 A 6 x n matrix representing the back-transformed posterior
-distributions of the bivariate normal distribution, where n is the number of
+distributions of the bivariate normal distribution for a specified group
+within a specified community, where n is the number of
 posterior draws in the saved sample. The first four columns are the
 covariance matrix Sigma in vector format. This vector converts to the
 covariance matrix as \code{matrix(v[1:4], nrow = 2, ncol = 2)}. The

@@ -91,7 +91,7 @@ create.siber.object <- function (data.in) {
   	for (j in 1:siber$n.groups[2,i]) {
   
   		  
-  		tmp <- subset(siber$raw.data[[i]], group == j)	
+  		tmp <- subset(siber$raw.data[[i]], siber$raw.data[[i]]$group == j)	
   		
   	    mu.tmp <- colMeans(cbind(tmp$iso1, tmp$iso2))
   	    cov.tmp <- cov(cbind(tmp$iso1, tmp$iso2))

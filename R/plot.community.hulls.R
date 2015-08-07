@@ -26,9 +26,6 @@
 #' @return Convex hulls, drawn as lines on an existing figure.
 #' 
 
-community.hulls.args <- list(col = 1, lty = 1, lwd = 1)
-
-
 
 # function to loop over the communities, and add lines connecting the convex
 # hull defined by the centres of each of their component groups.

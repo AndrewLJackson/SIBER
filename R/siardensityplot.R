@@ -104,23 +104,23 @@ siardensityplot <- function (dat, probs = c(95, 75, 50),
     }
     for (k in 1:length(probs)) {
       temp2 <- temp$hdr[k, ]
-      if (type == "boxes") {
-        polygon(c(j - bwd[k], j - bwd[k], j + bwd[k], j + bwd[k]), 
-                c(max(c(min(temp2[!is.na(temp2)]), lbound)), 
-                  min(c(max(temp2[!is.na(temp2)]), ubound)), 
-                  min(c(max(temp2[!is.na(temp2)]), ubound)), 
-                  max(c(min(temp2[!is.na(temp2)]), lbound))), 
-                col = clrs[k])
-        if (ct == "mode") {
-          points(j, temp$mode, pch = 19)
-        }
-        if (ct == "mean") {
-          points(j, mean(dat[, j]), pch = 19)
-        }
-        if (ct == "median") {
-          points(j, median(dat[, j]), pch = 19)
-        }
+      
+      polygon(c(j - bwd[k], j - bwd[k], j + bwd[k], j + bwd[k]), 
+              c(max(c(min(temp2[!is.na(temp2)]), lbound)), 
+                min(c(max(temp2[!is.na(temp2)]), ubound)), 
+                min(c(max(temp2[!is.na(temp2)]), ubound)), 
+                max(c(min(temp2[!is.na(temp2)]), lbound))), 
+              col = clrs[k])
+      if (ct == "mode") {
+        points(j, temp$mode, pch = 19)
       }
+      if (ct == "mean") {
+        points(j, mean(dat[, j]), pch = 19)
+      }
+      if (ct == "median") {
+        points(j, median(dat[, j]), pch = 19)
+      }
+      
       if (prn == TRUE) {
         cat(paste("\t", probs[k], "% lower =",
                   format(max(min(temp2[!is.na(temp2)]), lbound), 

@@ -53,10 +53,10 @@ group.metrics.ML <- function(siber){
       # calculate the hull area around the jth group in the 
       # ith community
       # find the indices for the jth group
-      idx <- siber.example$raw.data[[i]]$group == j
+      idx <- siber$raw.data[[i]]$group == j
       
-      ch <- siber.convexhull( siber.example$raw.data[[i]][idx, 1], 
-                              siber.example$raw.data[[i]][idx, 2])
+      ch <- siber.convexhull( siber$raw.data[[i]][idx, 1], 
+                              siber$raw.data[[i]][idx, 2])
                               
       out["TA",cnt] <- ch$TA
       

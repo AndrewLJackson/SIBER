@@ -31,12 +31,12 @@ plot.group.hulls <- function (siber, plot.args = NULL, iso.order = c(1,2)){
     for (j in 1:siber$n.groups[2,i]){
       
       # find the indices for the jth group
-      idx <- siber.example$raw.data[[i]]$group == j
+      idx <- siber$raw.data[[i]]$group == j
       
       # calculate the hull around the jth group in the 
       # ith community
-      ch <- siber.convexhull( siber.example$raw.data[[i]][idx, x], 
-                              siber.example$raw.data[[i]][idx, y]
+      ch <- siber.convexhull( siber$raw.data[[i]][idx, x], 
+                              siber$raw.data[[i]][idx, y]
       )
       
       # add the lines
