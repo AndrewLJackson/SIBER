@@ -3,7 +3,7 @@ Type: Package
 Title: Stable Isotope Bayesian Ellipses in R
 Version: 2.0
 Date: 2015-7-31
-Depends: rjags, mnormt
+Depends: rjags, mnormt, hdrcde
 Author: Andrew Jackson and Andrew Parnell
 Maintainer: Andrew Jackson <a.jackson@tcd.ie>
 Description: This package takes data on organism isotopes and fits a

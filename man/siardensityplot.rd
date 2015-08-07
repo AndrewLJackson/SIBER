@@ -37,7 +37,7 @@ Defaults to 0.5.}
 should be printed to screen \code{prn = TRUE} or suppressed as per default
 \code{prn = FALSE}.}
 
-\item{ct}{a string of either \code{c("mode", "mean", "median)} which
+\item{ct}{a string of either \code{c("mode", "mean", "median")} which
 determines which measure of central tendancy will be plotted as a point in
 the middle of the boxes. Defaults to "mode".}
 

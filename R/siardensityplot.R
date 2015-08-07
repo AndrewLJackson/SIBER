@@ -21,7 +21,7 @@
 #' @param prn a logical value determining whether summary statisics of each column 
 #' should be printed to screen \code{prn = TRUE} or suppressed as per default 
 #' \code{prn = FALSE}.
-#' @param ct a string of either \code{c("mode", "mean", "median)} which 
+#' @param ct a string of either \code{c("mode", "mean", "median")} which 
 #' determines which measure of central tendancy will be plotted as a point in 
 #' the middle of the boxes. Defaults to "mode".
 #' @param ylims a vector of length two, specifying the lower and upper limits 
