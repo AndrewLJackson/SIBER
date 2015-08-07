@@ -4,12 +4,6 @@
 #' works with matrices of data, where each column is a different variable of
 #' interest. It has some limitations though....
 #' 
-#' @section Warning
-#' This function will not currently recognise and plot multimodal 
-#' distributions, unlike \code{\link{hdr.boxplot}}. You should take care, and 
-#' plot basic histograms of each variable (column in the object you are 
-#' passing) to \code{siardensityplot} and check that they are indeed unimodal 
-#' as expected.
 #' 
 #' @param dat a matrix of data for which density region boxplots will be 
 #' constructed and plotted for each column.
@@ -54,6 +48,7 @@
 #' @examples
 #' Y <- matrix(rnorm(1000), 250, 4)
 #' siardensityplot(Y)
+
 
 
 siardensityplot <- function (dat, probs = c(95, 75, 50),
@@ -136,3 +131,10 @@ siardensityplot <- function (dat, probs = c(95, 75, 50),
     }
   }
 }
+
+# @section Warning
+# This function will not currently recognise and plot multimodal 
+# distributions, unlike \code{\link{hdr.boxplot}}. You should take care, and 
+# plot basic histograms of each variable (column in the object you are 
+# passing) to \code{siardensityplot} and check that they are indeed unimodal 
+# as expected.

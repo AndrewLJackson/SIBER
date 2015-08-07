@@ -28,11 +28,15 @@ model fitting and plotting.
 #'
 }
 \description{
-Read in SIBER format data and generate the SIBER object
+This function takes raw isotope data and creates a SIBER object which
+contains information in a structured manner that enables other functions to
+loop over groups and communities, fit Bayesian ellipses, and afterwards,
+generate various plots, and additional analyses on the posterior
+distributions.
 }
 \examples{
 data(demo.siber.data)
-mydata <- create.siber.object(demo.siber.data)
-names(mydata)
+my.siber.data <- create.siber.object(demo.siber.data)
+names(my.siber.data)
 }
 
