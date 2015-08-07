@@ -1,8 +1,22 @@
-# function to calculate ML-based metrics on each group:
-# Hull Total Area, SEA, and SEAc
+#' Calculate maximum likelihood based measures of dispersion of bivariate data
+#' 
+#' This function loops over each group within each community and calculates the 
+#' convex hull total area, Standard Ellipse Area (SEA) and its corresponding 
+#' small sample size corrected version SEAc based on the maximum likelihood 
+#' estimates of the means and covariance matrices of each group.
+#' 
+#' @param siber a siber object as created by create.siber.object.
+#' 
+#' @return A 3 x m matrix of the 6 Layman metrics of dX_range, dY_range, TA, 
+#' CD, MNND and SDNND in rows, where each column is a different group nested
+#' within a community.
+#' 
+#' @examples
+#' data(demo.siber.data)
+#' my.siber.data <- create.siber.object(demo.siber.data)
+#' group.metrics.ML(my.siber.data)
 
-group.metrics.ML <- function(siber, plot.args = NULL, iso.order = c(1,2),
-                                ...){
+group.metrics.ML <- function(siber){
   
   # prepare a matrix for storing the results.
   # Each column is a group. Each row a different metric
