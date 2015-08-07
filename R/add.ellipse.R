@@ -1,4 +1,41 @@
-add.ellipse <- function(mu, sigma, m = NULL, n = 100, p.interval = NULL , ci.mean = F, ...){
+#' Adds an ellipse around some data to an existing plot
+#' 
+#' This function adds an ellipse based on means and covariance to an existing 
+#' plot. The ellipse can be scaled so as to represent any prediction interval 
+#' of the data you wish, or alternatively any confidence interval of the 
+#' bivariate means.
+#' 
+#' @param mu a vector of length two specifying the bivariate means
+#' @param sigma a 2x2 covariance matrix for the data
+#' @param m is the sample size of the dataset on which the ellipse is to be 
+#' plotted. This is only informative if calculating the confidence interval of 
+#' the bivariate mean, which requires a correction of \code{1/sqrt(m)}. 
+#' Defaults to NULL and has no effect.
+#' @param n the number of data points to be used to plot the ellipse. More 
+#' points makes for a smoother ellipse, especially if it has high eccentricity. 
+#' Defaults to \code{n = 100}.
+#' @param p.interval the quantile to be used to construct a prediction ellipse 
+#' that contains p.interval proportion of the data. By default, 
+#' \code{p.interval = NULL} and the Standard Ellipse is drawn which contains 
+#' approximately 40% of the data. Setting \code{p.interval = 0.95} will result 
+#' in an ellipse that contains approximately 95% of the data.
+#' @param ci.mean a logical that determines whether the ellipse drawn is a 
+#' prediction ellipse of the entire data, or a confidence interval of the 
+#' bivariate means. Defaults to \code{FALSE}. If set to \code{TRUE}, then 
+#' \code{p.interval} can be used to generate an appropriate % confidence 
+#' interval of the bivariate means.
+#' @param ... additional arguments as a list to be passed to \code{\link{plot}}.
+#' 
+#' @return A 6 x m matrix of the 6 Layman metrics of dX_range, dY_range, TA, 
+#' CD, MNND and SDNND in rows, for each community by column
+#' 
+#' @examples
+#' data(demo.siber.data)
+#' my.siber.data <- create.siber.object(demo.siber.data)
+#' community.metrics.ML(my.siber.data)
+
+add.ellipse <- function(mu, sigma, m = NULL, n = 100, p.interval = NULL , 
+                        ci.mean = FALSE, ...){
   
   # mu is the location of the ellipse (its bivariate mean)
   # sigma describes the shape and size of the ellipse

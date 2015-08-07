@@ -1,4 +1,18 @@
-# function to add ellipses to each group
+#' Adds ellipses to an existing plot for each of your groups 
+#' 
+#' This function loops over each community and group within, and plots an 
+#' ellipse around the data. See demonstration scipts for more examples.
+#' 
+#' @param siber a siber object as created by create.siber.object.R
+#' @param plot.args a list of plotting arguments for passing to 
+#' \code{\link{add.ellipse}}. See \code{\link{add.ellipse}} for details of the 
+#' options, and you can also pass additional arguments such as line widths
+#' and styles. See also the demonstration scripts for examples of use.
+#' 
+#' @return Ellipses, drawn as lines on an existing figure.
+#' 
+
+
 
 plot.group.ellipses <- function(siber, plot.args = list(), iso.order = c(1,2),
                                 ...){
