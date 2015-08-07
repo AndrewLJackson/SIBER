@@ -7,11 +7,13 @@
 siber.ellipses(corrected.posteriors)
 }
 \arguments{
-\item{siber}{a siber object as created by create.siber.object.R}
+\item{corrected.posteriors}{the Bayesian ellipses as fitted to z-score
+transformed data returned by \code{\link{siber.MVN}}.}
 }
 \value{
-A 6 x m matrix of the 6 Layman metrics of dX_range, dY_range, TA,
-CD, MNND and SDNND in rows, for each community by column
+A matrix of with each column representing a unique community.group
+combination, and each row an independent posterior estimate of the
+Standard Ellipse Area SEA_B.
 }
 \description{
 This function loops over each community, determines the centre of mass

@@ -16,9 +16,11 @@ options, and you can also pass additional arguments such as line widths
 and styles. See also the demonstration scripts for examples of use.}
 
 \item{iso.order}{a vector of length 2, either c(1,2) or c(2,1). The order
-  determines which of the columns of raw data are plotted on the x (1) or y
-  (2) axis. N.B. this will be deprecated in a future release, and plotting
-  order will be acheived at point of data-entry.}
+determines which of the columns of raw data are plotted on the x (1) or y
+(2) axis. N.B. this will be deprecated in a future release, and plotting
+order will be acheived at point of data-entry.}
+
+\item{...}{additional arguments to be passed to \code{\link{add.ellipse}}.}
 }
 \value{
 Ellipses, drawn as lines on an existing figure.

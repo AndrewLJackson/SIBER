@@ -8,6 +8,8 @@
 #' analytical tools in SIBER to fit Bayesian hulls to individual groups. This is 
 #' not mathematically possible in a Bayesian framework.).
 #' @param siber a siber object as created by \code{\link{create.siber.object}}.
+#' @param ax.pad a padding amount to apply to the x-axis either side of the 
+#' extremes of the data. Defaults to 1.
 #' @param iso.order a vector of length 2, either c(1,2) or c(2,1). The order 
 #'   determines which of the columns of raw data are plotted on the x (1) or y
 #'   (2) axis. N.B. this will be deprecated in a future release, and plotting 

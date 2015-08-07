@@ -18,6 +18,9 @@ determines which of the columns of raw data are plotted on the x (1) or y
 (2) axis. N.B. this will be deprecated in a future release, and plotting
 order will be acheived at point of data-entry.}
 
+\item{ax.pad}{a padding amount to apply to the x-axis either side of the
+extremes of the data. Defaults to 1.}
+
 \item{hulls}{a logical defaulting to TRUE determining whether or not hulls
 based on the means of groups within communities should be drawn. That is, a
 community-level convex hull.}

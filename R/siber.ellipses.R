@@ -5,11 +5,12 @@
 #' \code{\link{mean}} function independently on the marginal x and y vectors,
 #' and calculates the corresponding 6 Layman metrics based on these points.
 #' 
-#' @param siber a siber object as created by create.siber.object.R
+#' @param corrected.posteriors the Bayesian ellipses as fitted to z-score 
+#' transformed data returned by \code{\link{siber.MVN}}.
 #' 
-#' @return A 6 x m matrix of the 6 Layman metrics of dX_range, dY_range, TA, 
-#' CD, MNND and SDNND in rows, for each community by column
-#' 
+#' @return A matrix of with each column representing a unique community.group 
+#' combination, and each row an independent posterior estimate of the 
+#' Standard Ellipse Area SEA_B.
 #' @examples
 #' data(demo.siber.data)
 #' my.siber.data <- create.siber.object(demo.siber.data)
