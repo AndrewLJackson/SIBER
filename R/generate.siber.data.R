@@ -20,6 +20,8 @@
 #' 
 #' @examples
 #' generate.siber.data()
+#' 
+#'  @export
 
 generate.siber.data <- function(n.groups = 3, n.communities = 2, n.obs = 30, 
                                 mu.range = c(-1, 1, -1, 1) ){

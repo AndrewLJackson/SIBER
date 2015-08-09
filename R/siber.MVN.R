@@ -36,6 +36,8 @@
 #' transformed means, and the remaining four columns are the covariance matrix
 #' Sigma in vector format. This vector converts to the covariance matrix as
 #' \code{matrix(v[1:4], nrow = 2, ncol = 2)}. 
+#' 
+#'  @export
 
 siber.MVN <- function (siber, parms, priors) 
 {

@@ -19,6 +19,8 @@
 #'   order will be acheived at point of data-entry.
 #'   
 #' @return A series of convex hulls added to an existing plot.
+#' 
+#'  @export
 
 
 plot_group.hulls <- function (siber, plot.args = NULL, iso.order = c(1,2)){

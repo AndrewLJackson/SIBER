@@ -19,6 +19,8 @@
 #' indentifying column and a community identifying column, all of which are 
 #' numeric.
 #' 
+#'  @export
+#' 
 
 
 # a function to generate a community comprised of a number of groups

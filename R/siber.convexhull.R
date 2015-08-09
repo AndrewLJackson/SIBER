@@ -20,6 +20,8 @@
 #' x <- rnorm(15)
 #' y <- rnorm(15)
 #' siber.convexhull(x, y)
+#' 
+#'  @export
 
 siber.convexhull <- function(x,y){
 

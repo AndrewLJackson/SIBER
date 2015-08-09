@@ -26,21 +26,21 @@ based on the means of groups within communities should be drawn. That is, a
 community-level convex hull.}
 
 \item{community.hulls.args}{a list of plotting arguments to pass to
-\code{\link{plot.community.hulls}}. See \code{\link{plot.community.hulls}}
+\code{\link{plot_community.hulls}}. See \code{\link{plot_community.hulls}}
 for further details.}
 
 \item{ellipses}{a logical defaulting to TRUE determining whether or not an
 ellipse should be drawn around each group within each community.}
 
 \item{group.ellipses.args}{a list of plotting arguments to pass to
-\code{\link{plot.group.ellipses}}. See \code{\link{plot.group.ellipses}} for
+\code{\link{plot_group.ellipses}}. See \code{\link{plot_group.ellipses}} for
 further details.}
 
 \item{group.hulls}{a logical defaulting to FALSE determining whether or not
 convex hulls should be drawn around each group within each community.}
 
 \item{group.hulls.args}{a list of plotting options to pass to
-\code{\link{plot.group.hulls}}. See \code{\link{plot.group.hulls}} for
+\code{\link{plot_group.hulls}}. See \code{\link{plot_group.hulls}} for
 further details.}
 
 \item{bty}{a string specifying the box type for the plot. See

@@ -16,6 +16,9 @@ Description: This package takes data on organism isotopes and fits a
         SIBER routines in Linux distirubutions and now siardensityplot()'s
         main="my awesome graph" argument works. Version 4.2.2 fixes a bug in
         SIAR when running it on a single group of data.
+Imports:
+    rjags,
+    mnormt
 License: GPL (>= 2)
 LazyLoad: yes
 Packaged: 

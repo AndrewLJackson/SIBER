@@ -26,6 +26,8 @@
 #' data(demo.siber.data)
 #' my.siber.data <- create.siber.object(demo.siber.data)
 #' names(my.siber.data)
+#' 
+#'  @export
  
 create.siber.object <- function (data.in) {
   

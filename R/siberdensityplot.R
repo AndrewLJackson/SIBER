@@ -50,6 +50,8 @@
 #' @examples
 #' Y <- matrix(rnorm(1000), 250, 4)
 #' siberdensityplot(Y)
+#' 
+#'  @export
 
 
 
@@ -91,7 +93,7 @@ siberdensityplot <- function (dat, probs = c(95, 75, 50),
   }
   clrs <- rep(clr, 5)
   for (j in 1:n) {
-    temp <- hdr(dat[, j], probs, h = bw.nrd0(dat[, j]))
+    temp <- hdrcde::hdr(dat[, j], probs, h = bw.nrd0(dat[, j]))
     line_widths <- seq(2, 20, by = 4) * scl
     bwd <- c(0.1, 0.15, 0.2, 0.25, 0.3) * scl
     if (prn == TRUE) {

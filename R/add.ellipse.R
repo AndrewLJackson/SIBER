@@ -34,6 +34,7 @@
 #' data(demo.siber.data)
 #' my.siber.data <- create.siber.object(demo.siber.data)
 #' community.metrics.ML(my.siber.data)
+#'  @export
 
 add.ellipse <- function(mu, sigma, m = NULL, n = 100, p.interval = NULL , 
                         ci.mean = FALSE, ...){

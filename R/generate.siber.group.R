@@ -16,6 +16,8 @@
 #' 
 #' @examples
 #' # generate.siber.group()
+#' 
+#'  @export
 
 
 # a function to generate a single group

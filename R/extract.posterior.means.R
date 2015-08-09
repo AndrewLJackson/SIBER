@@ -15,6 +15,8 @@
 #' samples, 2 columns representing the two means of the multivariate data and 
 #' n.groups the number of groups within the focal community.
 #' 
+#'  @export
+#' 
 
 
 extract.posterior.means <- function (siber, post) {

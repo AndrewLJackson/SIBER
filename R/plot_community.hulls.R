@@ -25,6 +25,8 @@
 #'   
 #' @return Convex hulls, drawn as lines on an existing figure.
 #' 
+#'  @export
+#' 
 
 
 plot_community.hulls <- function(siber, 

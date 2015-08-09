@@ -16,6 +16,7 @@
 #' 
 #' @return Ellipses, drawn as lines on an existing figure.
 #' 
+#'  @export
 
 
 

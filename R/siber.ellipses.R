@@ -15,6 +15,8 @@
 #' data(demo.siber.data)
 #' my.siber.data <- create.siber.object(demo.siber.data)
 #' community.metrics.ML(my.siber.data)
+#' 
+#' @export
 
 siber.ellipses <- function (corrected.posteriors) {
   

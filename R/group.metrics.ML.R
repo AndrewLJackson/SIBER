@@ -15,6 +15,8 @@
 #' data(demo.siber.data)
 #' my.siber.data <- create.siber.object(demo.siber.data)
 #' group.metrics.ML(my.siber.data)
+#' 
+#'  @export
 
 group.metrics.ML <- function(siber){
   
