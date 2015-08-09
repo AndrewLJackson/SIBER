@@ -27,10 +27,7 @@
 #' 
 
 
-# function to loop over the communities, and add lines connecting the convex
-# hull defined by the centres of each of their component groups.
-
-plot.community.hulls <- function(siber, 
+plot_community.hulls <- function(siber, 
                                  plot.args = list(col = 1, lty = 2),
                                  iso.order = c(1,2),
                                  ...){

@@ -57,7 +57,7 @@ group.hull.args      <- list(lty = 2, col = "grey20")
 
 
 par(mfrow=c(1,1))
-plot.siber.object(siber.example,
+plot_siber.object(siber.example,
                   ax.pad = 2, 
                   hulls = F, community.hulls.args, 
                   ellipses = T, group.ellipses.args,
@@ -81,15 +81,15 @@ group.ML <- group.metrics.ML(siber.example)
 
 # You can add more ellipses by directly calling plot.group.ellipses()
 # In this case, with p=NULL we get the standard ellipse.
-# plot.group.ellipses(siber.example, p.interval = NULL, lty = 1)
+# plot_group.ellipses(siber.example, p.interval = NULL, lty = 1)
 
 # Add an additional p.interval % prediction ellilpse
-#plot.group.ellipses(siber.example, n = 100, p.interval = 0.95,
+#plot_group.ellipses(siber.example, n = 100, p.interval = 0.95,
 #                    lty = 1, lwd = 2)
 
 # or you can add the XX% confidence interval around the bivariate means
 # by specifying ci.mean = T along with whatever p.interval you want.
-plot.group.ellipses(siber.example, n = 100, p.interval = 0.95, ci.mean = T,
+plot_group.ellipses(siber.example, n = 100, p.interval = 0.95, ci.mean = T,
                     lty = 2, lwd = 2)
 
 print(group.ML)

@@ -19,7 +19,7 @@
 
 
 
-plot.group.ellipses <- function(siber, plot.args = list(), iso.order = c(1,2),
+plot_group.ellipses <- function(siber, plot.args = list(), iso.order = c(1,2),
                                 ...){
   
   # iso.order is used to relocate and reorientate the covariance matrix
