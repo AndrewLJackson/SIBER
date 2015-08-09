@@ -7,7 +7,7 @@
 #' @section Note: This function is currently based on the eigenvalue and 
 #'   eigenvector approach which is more flexible for higher dimensional problems
 #'   method for calculating the standard ellipse, and replaces the parametric
-#'   method used previously in siar and siber. Ellipse
+#'   method used previously in siar and siber. 
 #' 
 #' @param sigma a 2x2 covariance ellipse.
 #' 

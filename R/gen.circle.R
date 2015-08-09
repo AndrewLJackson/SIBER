@@ -3,15 +3,13 @@
 #' This is a helper function that creates a sequence of points on a circle of 
 #' radius \code{r} as a resolution determined by \code{n}. It is not intended 
 #' for direct calling, and is used by the ellipse plotting function 
-#' \code{\link{add.ellipse}}.
+#' \code{\link{add.ellipse}}. NB not an exported function.
 #' 
 #' @param n the number of points to create around the circle. Defaults to 100.
 #' @param r the radius of the circle to create.
 #' 
 #' @return A 2 x n matrix of x and y coordinates of points on a circle.
 #' 
-#' @examples
-#' plot(gen.circle(n = 20, r = 1), asp = 1, pch = 19, cex = 0.6)
 
 # function to generate a circle of data points which
 # can be transformed to form an ellipse. Intended for

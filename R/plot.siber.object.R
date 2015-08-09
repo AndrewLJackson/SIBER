@@ -31,13 +31,14 @@
 #' \code{\link{plot.group.hulls}}. See \code{\link{plot.group.hulls}} for 
 #' further details.
 #' @param bty a string specifying the box type for the plot. See 
-#' \code{\link{par}} for details.
+#'   \code{\link[graphics]{par}} for details.
 #' @param xlab a string for the x-axis label.
 #' @param ylab a string for the y-axis label.
 #' @param las a scalar determining the rotation of the y-axis labels. Defaults 
-#' to horizontal with \code{las = 1}. See \code{\link{par}} for more details.
-#' @param ... additional arguments to be passed to \code{\link{plot}}.
-#' 
+#'   to horizontal with \code{las = 1}. See \code{\link[graphics]{par}} for more
+#'   details.
+#' @param ... additional arguments to be passed to \code{\link[graphics]{plot}}.
+#'   
 #' @return An isotope biplot.
 
 

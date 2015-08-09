@@ -19,8 +19,7 @@
 #' indentifying column and a community identifying column, all of which are 
 #' numeric.
 #' 
-#' @examples
-#' generate.siber.community()
+
 
 # a function to generate a community comprised of a number of groups
 generate.siber.community <- function (n.groups = 3, community.id = 1, 

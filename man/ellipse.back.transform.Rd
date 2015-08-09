@@ -8,8 +8,8 @@ ellipse.back.transform(jags.output, siber, idx.community, idx.group)
 }
 \arguments{
 \item{jags.output}{a mcmc.list object of posterior samples created by
-\code{\link{rjags}}. In siber this is created typically by
-\code{\link{fit.ellipses}}}
+\code{\link[rjags]{rjags}}. In siber this is created typically by
+\code{\link{fit.ellipse}}}
 
 \item{siber}{a siber object as created by create.siber.object.}
 

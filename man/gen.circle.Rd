@@ -18,9 +18,6 @@ A 2 x n matrix of x and y coordinates of points on a circle.
 This is a helper function that creates a sequence of points on a circle of
 radius \code{r} as a resolution determined by \code{n}. It is not intended
 for direct calling, and is used by the ellipse plotting function
-\code{\link{add.ellipse}}.
-}
-\examples{
-plot(gen.circle(n = 20, r = 1), asp = 1, pch = 19, cex = 0.6)
+\code{\link{add.ellipse}}. NB not an exported function.
 }
 

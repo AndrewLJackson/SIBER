@@ -20,3 +20,5 @@ License: GPL (>= 2)
 LazyLoad: yes
 Packaged: 
 NeedsCompilation: yes
+Suggests: knitr
+VignetteBuilder: knitr

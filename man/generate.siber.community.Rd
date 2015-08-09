@@ -32,7 +32,4 @@ This function simulates data for a single community by sampling from a normal
 distribution with different means for each group within some specified
 boundaries.
 }
-\examples{
-generate.siber.community()
-}
 

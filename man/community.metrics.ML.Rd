@@ -16,7 +16,7 @@ CD, MNND and SDNND in rows, for each community by column
 \description{
 This function loops over each community, determines the centre of mass
 (centroid) of each of the groups comprising the community using the basic
-\code{\link{mean}} function independently on the marginal x and y vectors,
+\code{\link[base]{mean}} function independently on the marginal x and y vectors,
 and calculates the corresponding 6 Layman metrics based on these points.
 }
 \examples{

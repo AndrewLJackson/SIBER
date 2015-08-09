@@ -8,7 +8,7 @@
 #' containing the estimated means of the groups comprising that community. The
 #' typical workflow to generate mu.post follows. The 
 #' Bayesian ellipses are fitted using \code{\link{siber.ellipses}}, then the 
-#' posterior means (centre of mass of each group) is extracted using 
+#' posterior means (centre of mass of each group) is extracted using
 #' \code{\link{extract.posterior.means}}. See the example below.
 #' 
 #' @return A list of length n.communities, with each element containing a 

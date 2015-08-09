@@ -25,7 +25,6 @@ model fitting and plotting.
   community}
   \item {raw.data}{A list object of length equal to the number of communities}
 }
-#'
 }
 \description{
 This function takes raw isotope data and creates a SIBER object which

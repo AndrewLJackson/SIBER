@@ -5,10 +5,10 @@
 #' the demonstration scripts for example implementation.
 #' 
 #' @param siber a siber object as created by create.siber.object.R
-#' @param plot.args a list of plotting arguments with the following suggested,
-#' but non-exhaustive inputs. Additional plotting arguments for passing to the 
-#' internal call to \code{\link{plot}} can either be specified here, or as 
-#' additional arguments under the \code{...} method.
+#' @param plot.args a list of plotting arguments with the following suggested, 
+#'   but non-exhaustive inputs. Additional plotting arguments for passing to the
+#'   internal call to \code{\link[graphics]{plot}} can either be specified here,
+#'   or as additional arguments under the \code{...} method.
 #'  \itemize{
 #'    \item{col}{the color of the lines of the convex hull. See 
 #'    \code{link{lines}} for more details.}
@@ -18,10 +18,10 @@
 #'    \code{link{lines}} for more details.}
 #'  }
 #' @param iso.order a vector of length 2, either c(1,2) or c(2,1). The order 
-#'   determines which of the columns of raw data are plotted on the x (1) or y
+#'   determines which of the columns of raw data are plotted on the x (1) or y 
 #'   (2) axis. N.B. this will be deprecated in a future release, and plotting 
 #'   order will be acheived at point of data-entry.
-#' @param ... additional arguments for passing to \code{\link{plot}}.
+#' @param ... additional arguments for passing to \code{\link[graphics]{plot}}.
 #'   
 #' @return Convex hulls, drawn as lines on an existing figure.
 #' 

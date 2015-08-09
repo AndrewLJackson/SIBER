@@ -15,7 +15,7 @@
 #' numeric.
 #' 
 #' @examples
-#' generate.siber.group()
+#' # generate.siber.group()
 
 
 # a function to generate a single group

@@ -22,6 +22,7 @@
 #' x <- runif(10)
 #' y <- runif(10)
 #' laymanmetrics(x, y)
+#' @export
 
 # NOTE - i have changed the name of dN_range to dY_range and 
 #  dC_range to dX_range to make it more generic.

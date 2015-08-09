@@ -24,16 +24,17 @@ Defaults to \code{n = 100}.}
 \item{p.interval}{the quantile to be used to construct a prediction ellipse
 that contains p.interval proportion of the data. By default,
 \code{p.interval = NULL} and the Standard Ellipse is drawn which contains
-approximately 40 percent of the data. Setting \code{p.interval = 0.95} will result
-in an ellipse that contains approximately 95 percent of the data.}
+approximately 40\% of the data. Setting \code{p.interval = 0.95} will result
+in an ellipse that contains approximately 95\% of the data.}
 
 \item{ci.mean}{a logical that determines whether the ellipse drawn is a
 prediction ellipse of the entire data, or a confidence interval of the
 bivariate means. Defaults to \code{FALSE}. If set to \code{TRUE}, then
-\code{p.interval} can be used to generate an appropriate percent confidence
+\code{p.interval} can be used to generate an appropriate \% confidence
 interval of the bivariate means.}
 
-\item{...}{additional arguments as a list to be passed to \code{\link{plot}}.}
+\item{...}{additional arguments as a list to be passed to
+\code{\link[graphics]{plot}}.}
 }
 \value{
 A 6 x m matrix of the 6 Layman metrics of dX_range, dY_range, TA,

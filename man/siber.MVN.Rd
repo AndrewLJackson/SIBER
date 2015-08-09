@@ -10,7 +10,7 @@ siber.MVN(siber, parms, priors)
 \item{siber}{a siber object as created by \code{\link{create.siber.object}}}
 
 \item{parms}{a list containing four items providing details of the
- \code{\link{rjags}} run to be sampled.
+ \code{\link[rjags]{rjags}} run to be sampled.
 \itemize{
    \item {n.iter}{The number of iterations to sample}
    \item {n.burnin}{The number of iterations to discard as a burnin from the

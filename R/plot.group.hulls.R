@@ -10,13 +10,14 @@
 #' 
 #' @param siber a siber object as created by create.siber.object.R
 #' @param plot.args a list of plotting arguments for passing to 
-#' \code{\link{lines}}. See \code{\link{lines}} for details of the 
-#' options. See also the demonstration scripts for examples of use.
+#'   \code{\link[graphics]{lines}}. See \code{\link[graphics]{lines}} for
+#'   details of the options. See also the demonstration scripts for examples of
+#'   use.
 #' @param iso.order a vector of length 2, either c(1,2) or c(2,1). The order 
-#'   determines which of the columns of raw data are plotted on the x (1) or y
+#'   determines which of the columns of raw data are plotted on the x (1) or y 
 #'   (2) axis. N.B. this will be deprecated in a future release, and plotting 
 #'   order will be acheived at point of data-entry.
-#' 
+#'   
 #' @return A series of convex hulls added to an existing plot.
 
 

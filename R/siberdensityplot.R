@@ -1,6 +1,7 @@
-#' Plot credible intervals as shaded boxplots using \code{\link{hdr.boxplot}}
+#' Plot credible intervals as shaded boxplots using 
+#' \code{\link[hdrcde]{hdr.boxplot}}
 #' 
-#' This function is essentially \code{\link{hdr.boxplot}} but it more easily
+#' This function is essentially \code{\link[hdrcde]{hdr.boxplot}} but it more easily
 #' works with matrices of data, where each column is a different variable of
 #' interest. It has some limitations though....
 #' 
@@ -41,17 +42,18 @@
 #' tendancy to push the axis label off the plotting window margins. See the 
 #' \code{line} option in \code{\link{axis}} for more details as ylab.line 
 #' passes to this.
-#' @param ... further graphical parameters for passing to \code{\link{plot}}
+#' @param ... further graphical parameters for passing to 
+#' \code{\link[graphics]{plot}}
 #' 
 #' @return A new figure window.
 #' 
 #' @examples
 #' Y <- matrix(rnorm(1000), 250, 4)
-#' siardensityplot(Y)
+#' siberdensityplot(Y)
 
 
 
-siardensityplot <- function (dat, probs = c(95, 75, 50),
+siberdensityplot <- function (dat, probs = c(95, 75, 50),
                              xlab = "Group", ylab = "Value", 
                              xticklabels = NULL, yticklabels = NULL, 
                              clr = gray((9:1)/10), 

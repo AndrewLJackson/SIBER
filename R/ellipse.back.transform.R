@@ -4,8 +4,8 @@
 #' original location and scale. Not intended for direct call by users.
 #'
 #' @param jags.output a mcmc.list object of posterior samples created by 
-#' \code{\link{rjags}}. In siber this is created typically by 
-#' \code{\link{fit.ellipses}}
+#' \code{\link[rjags]{rjags}}. In siber this is created typically by 
+#' \code{\link{fit.ellipse}}
 #' @param siber a siber object as created by create.siber.object.
 #' @param idx.community an integer specifying which community to back-transform.
 #' @param idx.group an integer specifyging which group to back-transform.

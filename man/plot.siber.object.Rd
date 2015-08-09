@@ -44,16 +44,17 @@ convex hulls should be drawn around each group within each community.}
 further details.}
 
 \item{bty}{a string specifying the box type for the plot. See
-\code{\link{par}} for details.}
+\code{\link[graphics]{par}} for details.}
 
 \item{xlab}{a string for the x-axis label.}
 
 \item{ylab}{a string for the y-axis label.}
 
 \item{las}{a scalar determining the rotation of the y-axis labels. Defaults
-to horizontal with \code{las = 1}. See \code{\link{par}} for more details.}
+to horizontal with \code{las = 1}. See \code{\link[graphics]{par}} for more
+details.}
 
-\item{...}{additional arguments to be passed to \code{\link{plot}}.}
+\item{...}{additional arguments to be passed to \code{\link[graphics]{plot}}.}
 }
 \value{
 An isotope biplot.

@@ -12,7 +12,7 @@ fit.ellipse(x, y, parms, priors)
 \item{y}{a vector of data representing the y-axis}
 
 \item{parms}{a list containing four items providing details of the
- \code{\link{rjags}} run to be sampled.
+ \code{\link[rjags]{rjags}} run to be sampled.
 \itemize{
    \item {n.iter}{The number of iterations to sample}
    \item {n.burnin}{The number of iterations to discard as a burnin from the

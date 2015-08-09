@@ -22,7 +22,7 @@
 #'   community}
 #'   \item {raw.data}{A list object of length equal to the number of communities}
 #' }
-#' #' @examples
+#' @examples
 #' data(demo.siber.data)
 #' my.siber.data <- create.siber.object(demo.siber.data)
 #' names(my.siber.data)

@@ -3,13 +3,13 @@
 rm(list=ls())
 graphics.off()
 
-# In this example, I set the seed each time so taht the results are comparable.
+# In this example, I set the seed each time so that the results are comparable.
 # But this is only the case if you leave all the settings and data the same.
 set.seed(1)
 
 
 # this script itself sources the functions needed
-source("demo/tmp.source.these.R")
+library(SIBER)
 
 # read in the example dataset
 mydata <- read.csv("inst/demo.siber.data.csv", header=T)
@@ -76,12 +76,12 @@ plot.siber.object(siber.example,
 # These are just the point estimates for now, the Bayesian estimates will 
 # follow.This approach is used to make comparisons among the components of 
 # communities (i.e. groups), wither within or among communities. It is
-# similar to the analysis applied in [REF].
+# similar to the analysis applied in [REF - Craig Layman's papers].
 group.ML <- group.metrics.ML(siber.example)
 
 # You can add more ellipses by directly calling plot.group.ellipses()
 # In this case, with p=NULL we get the standard ellipse.
-plot.group.ellipses(siber.example, p.interval = NULL, lty = 1)
+# plot.group.ellipses(siber.example, p.interval = NULL, lty = 1)
 
 # Add an additional p.interval % prediction ellilpse
 #plot.group.ellipses(siber.example, n = 100, p.interval = 0.95,
@@ -137,7 +137,7 @@ ellipses.posterior <- siber.MVN(siber.example, parms, priors)
 # calculate the SEA.B for each group.
 SEA.B <- siber.ellipses(ellipses.posterior)
 
-siardensityplot(SEA.B, xticklabels = colnames(group.ML), 
+siberdensityplot(SEA.B, xticklabels = colnames(group.ML), 
                 xlab = c("Community | Group"),
                 ylab = expression("Standard Ellipse Area " ('\u2030' ^2) ),
                 bty = "L",
@@ -163,7 +163,7 @@ layman.B <- bayesian.layman(mu.post)
 # --------------------------------------
 # The first community
 # --------------------------------------
-siardensityplot(layman.B[[1]], xticklabels = colnames(layman.B[[1]]), 
+siberdensityplot(layman.B[[1]], xticklabels = colnames(layman.B[[1]]), 
                 bty="L", ylim = c(0,20))
 
 # add the ML estimates. Extract the correct means from the appropriate array
@@ -176,7 +176,7 @@ points(1:6, comm1.layman.ml$metrics, col = "red", pch = "x", lwd = 2)
 # --------------------------------------
 # The second community
 # --------------------------------------
-siardensityplot(layman.B[[2]], xticklabels = colnames(layman.B[[2]]), 
+siberdensityplot(layman.B[[2]], xticklabels = colnames(layman.B[[2]]), 
                 bty="L", ylim = c(0,20))
 
 # add the ML estimates. Extract the correct means from the appropriate array
@@ -191,7 +191,7 @@ points(1:6, comm2.layman.ml$metrics, col = "red", pch = "x", lwd = 2)
 # Alternatively, pull out TA from both
 # and plot them together on one graph.
 # --------------------------------------
-siardensityplot(cbind(layman.B[[1]][,"TA"], layman.B[[2]][,"TA"]),
+siberdensityplot(cbind(layman.B[[1]][,"TA"], layman.B[[2]][,"TA"]),
                 xticklabels = c("Community 1", "Community 2"), 
                 bty="L", ylim = c(0,20),
                 las = 1,

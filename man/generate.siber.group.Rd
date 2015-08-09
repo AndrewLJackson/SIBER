@@ -25,6 +25,6 @@ distribution with different means for each group within some specified
 boundaries.
 }
 \examples{
-generate.siber.group()
+# generate.siber.group()
 }
 
