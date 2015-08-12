@@ -1,6 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-/demo
-/plot
-#/vingettes
+demo/
+plot/
+#vingettes/
 README.md

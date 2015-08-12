@@ -1,13 +1,8 @@
-# Rstudio files
-*.Rproj
-*.Rproj.user
-
-# R files
+*~
+*.*~
+*.DS_Store
 *.Rhistory
-*.Rapp.history
 *.RData
-<<<<<<< HEAD
-.Rproj.user
-# directories
-/plots
-inst/doc
+*.Rbuildignore
+*.Rproj.user
+*.Rproj

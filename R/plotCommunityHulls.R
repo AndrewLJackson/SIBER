@@ -11,11 +11,11 @@
 #'   or as additional arguments under the \code{...} method.
 #'  \itemize{
 #'    \item{col}{the color of the lines of the convex hull. See 
-#'    \code{link[graphics]{lines}} for more details.}
+#'    \code{\link[graphics]{lines}} for more details.}
 #'    \item{lty}{the line type of the convex hull.See 
-#'    \code{link[graphics]{lines}} for more details.}
+#'    \code{\link[graphics]{lines}} for more details.}
 #'    \item{lwd}{the line width of the convex hulls. See 
-#'    \code{link[graphics]{lines}} for more details.}
+#'    \code{\link[graphics]{lines} for more details.}}
 #'  }
 #' @param iso.order a vector of length 2, either c(1,2) or c(2,1). The order 
 #'   determines which of the columns of raw data are plotted on the x (1) or y 
@@ -34,7 +34,7 @@ plotCommunityHulls <- function(siber,
   x <- iso.order[1]
   y <- iso.order[2]
   
-  for (i in 1:siber$n.communities){
+  for (i in 1:siber$n.communities) {
     
     # only attempt to draw hulls if there are more than 2 groups
     if (siber$n.groups[2,i] > 2) {
@@ -46,13 +46,12 @@ plotCommunityHulls <- function(siber,
       # use do.call to pass the list containing the plotting arguments
       # onwards. Need to add plot.args back in here. If it takes NULL
       # then the plotting does not happen
-#       lines(ch$xcoords, ch$ycoords)
       do.call('lines',
               c(list(x = ch$xcoords, 
                      y = ch$ycoords), 
                 plot.args)
-      ) # end of do.call
+              ) # end of do.call
       
-    }
-  }
-}
+    } # end of if statement
+  } # end of loop over communities
+} # end of function

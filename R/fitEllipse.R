@@ -109,14 +109,14 @@ fitEllipse <- function (x, y, parms, priors)
   # monitor all the parameters
   parameters <- c("mu","Sigma2")
   
-  model <- jags.model(textConnection(modelstring),
-                      data = jags.data, n.chains = 2)
+  model <- rjags::jags.model(textConnection(modelstring),
+                             data = jags.data, n.chains = 2)
   
-  output <- coda.samples(model = model,
-                      variable.names = c("mu",'Sigma2'),
-                      n.iter = parms$n.iter,
-                      thin = 10
-                      )
+  output <- rjags::coda.samples(model = model,
+                                variable.names = c("mu",'Sigma2'),
+                                n.iter = parms$n.iter,
+                                thin = 10
+                                )
   
   #print(summary(output))
   #print(dim(output[[1]]))
