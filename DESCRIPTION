@@ -4,6 +4,10 @@ Title: Stable Isotope Bayesian Ellipses in R
 Version: 2.0
 Date: 2015-7-31
 Depends: rjags, mnormt, hdrcde, R (>= 2.10)
+Imports: 
+    rjags,
+    mnormt,
+    hdrcde
 Author: Andrew Jackson and Andrew Parnell
 Maintainer: Andrew Jackson <a.jackson@tcd.ie>
 Description: Fits bivariate ellipses to stable isotope data using Bayesian 
