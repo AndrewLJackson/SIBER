@@ -109,10 +109,10 @@ fit.ellipse <- function (x, y, parms, priors)
   # monitor all the parameters
   parameters <- c("mu","Sigma2")
   
-  model <- jags.model(textConnection(modelstring),
+  model <- rjags::jags.model(textConnection(modelstring),
                       data = jags.data, n.chains = 2)
   
-  output <- coda.samples(model = model,
+  output <- rjags::coda.samples(model = model,
                       variable.names = c("mu",'Sigma2'),
                       n.iter = parms$n.iter,
                       thin = 10

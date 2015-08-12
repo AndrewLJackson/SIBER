@@ -33,7 +33,7 @@ generate.siber.group <- function (mu.range = c(-1, 1, -1, 1), n.obs = 30) {
   sigma <- matrix(stats::rWishart(1, 2, diag(2)), 2, 2)
   
   # the data are random normal
-  y <- rmnorm(n.obs, mu, sigma)  
+  y <- mnormt::rmnorm(n.obs, mu, sigma)  
   
   # output the simulated data for this group
   return(y)
