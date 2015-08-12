@@ -21,14 +21,14 @@
 #' @examples
 #' x <- runif(10)
 #' y <- runif(10)
-#' laymanmetrics(x, y)
+#' laymanMetrics(x, y)
 #' 
 #' @export
 
 # NOTE - i have changed the name of dN_range to dY_range and 
 #  dC_range to dX_range to make it more generic.
 
-laymanmetrics <- function(x,y){
+laymanMetrics <- function(x,y){
 
   out <- list()
   
@@ -49,7 +49,7 @@ laymanmetrics <- function(x,y){
   # some convex hull stuff
   # NOTE - should add a condition ehre that only calls this if there are more
   #   than 2 groups.
-  hull <- siber.convexhull(x,y)
+  hull <- siberConvexhull(x,y)
 
   metrics[3] <- hull$TA
   

@@ -18,7 +18,7 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>",
 This user manual introduces the basic functionality of this standalone version of SIBER, which was previously part of the [siar]("http://andrewljackson.github.io/siar") package. SIBER contains two types of analysis, although both are founded on the same principle of fitting ellipses to groups of data. The questions are very different though and it is important that you satisfy yourself with which one you want for the questions you have of your own data. There are additional learning resources available at [SIAR-examples-and-queries]("http://andrewljackson.github.io/siar"). N.B. these examples currently still use the SIBER functions embedded within the SIAR package, which I will update shortly, but the concepts are exactly the same.
 
 ## Setting up our R session for this demonstration
-In this example, we are going to work with a bundled example dataset that I created previously using the function `generate.siber.data()`. This dataset is loaded using `data("demo.siber.data")` but it is also provided as a raw *.csv file which is more usually the format you would work with when organising your own dataset for analysis using SIBER. We then use `create.siber.object()` to convert this raw data form into an object that contains information summary statistics that are useful for plotting, and a z-score transformed version of the data which is used in the model fitting process before being back-transformed using the summary statistic information.
+In this example, we are going to work with a bundled example dataset that I created previously using the function `generateSiberData()`. This dataset is loaded using `data("demo.siber.data")` but it is also provided as a raw *.csv file which is more usually the format you would work with when organising your own dataset for analysis using SIBER. We then use `createSiberObject()` to convert this raw data form into an object that contains information summary statistics that are useful for plotting, and a z-score transformed version of the data which is used in the model fitting process before being back-transformed using the summary statistic information.
 
 ```{r}
 # remove previously loaded items from the current environment and remove previous graphics.
@@ -37,7 +37,7 @@ library(SIBER)
 data("demo.siber.data")
 #
 # create the siber object
-siber.example <- create.siber.object(demo.siber.data)
+siber.example <- createSiberObject(demo.siber.data)
 
 
 # Or if working with your own data read in from a *.csv file, you would use
@@ -51,7 +51,7 @@ siber.example <- create.siber.object(demo.siber.data)
 # a template for how your own files should be formatted.
 
 # mydata <- read.csv(fname, header=T)
-# siber.example <- create.siber.object(mydata)
+# siber.example <- createSiberObject(mydata)
 
 
 
@@ -65,7 +65,7 @@ Community 1 comprises 3 groups and drawn as black, red and green circles
 community 2 comprises 3 groups and drawn as black, red and green triangles
 
 
-Various plotting options are collated into lists and then passed to the high-level SIBER plotting function `plot_siber.object` which is a wrapper function for easy plotting. We will access the more specific plotting functions directly a little later on to create more customised graphics.
+Various plotting options are collated into lists and then passed to the high-level SIBER plotting function `plotSiberObject` which is a wrapper function for easy plotting. We will access the more specific plotting functions directly a little later on to create more customised graphics.
 
 `ax.pad` determines the padding applied around the extremes of the data.
 
@@ -88,15 +88,15 @@ group.hull.args      <- list(lty = 2, col = "grey20")
 
 
 par(mfrow=c(1,1))
-plot_siber.object(siber.example,
+plotSiberObject(siber.example,
                   ax.pad = 2, 
                   hulls = F, community.hulls.args, 
                   ellipses = T, group.ellipses.args,
                   group.hulls = T, group.hull.args,
                   bty = "L",
                   iso.order = c(1,2),
-                  xlab=expression({delta}^13*C~'\u2030'),
-                  ylab=expression({delta}^15*N~'\u2030')
+                  xlab = expression({delta}^13*C~'\u2030'),
+                  ylab = expression({delta}^15*N~'\u2030')
                   )
 
 ```
@@ -117,7 +117,7 @@ group.hull.args      <- list(lty = 2, col = "grey20")
 
 # this time we will make the points a bit smaller by 
 # cex = 0.5
-plot_siber.object(siber.example,
+plotSiberObject(siber.example,
                   ax.pad = 2, 
                   hulls = F, community.hulls.args, 
                   ellipses = F, group.ellipses.args,
@@ -130,21 +130,21 @@ plot_siber.object(siber.example,
                   )
 
 # Calculate sumamry statistics for each group: TA, SEA and SEAc
-group.ML <- group.metrics.ML(siber.example)
+group.ML <- groupMetricsML(siber.example)
 print(group.ML)
 
 # Calculate the various Layman metrics on each of the communities.
-community.ML <- community.metrics.ML(siber.example) 
+community.ML <- communityMetricsML(siber.example) 
 print(community.ML)
 
 # You can add more ellipses by directly calling plot.group.ellipses()
 # Add an additional p.interval % prediction ellilpse
-plot_group.ellipses(siber.example, n = 100, p.interval = 0.95,
+plotGroupEllipses(siber.example, n = 100, p.interval = 0.95,
                     lty = 1, lwd = 2)
 
 # or you can add the XX% confidence interval around the bivariate means
 # by specifying ci.mean = T along with whatever p.interval you want.
-plot_group.ellipses(siber.example, n = 100, p.interval = 0.95, ci.mean = T,
+plotGroupEllipses(siber.example, n = 100, p.interval = 0.95, ci.mean = T,
                     lty = 1, lwd = 2)
 
 ```
@@ -154,7 +154,7 @@ Whether your intended analysis is to compare isotopic niche width among groups, 
 
 These multivariate normal distributions are fitted using the jags software run via the package `rjags`. This method relies on an interated Gibbs Sampling technique and some information on the length, number and iterations of sampling chains is required. Additionally, the prior distributions for the parameters need to be specified. In SIBER, these are bundled into two list objects: `parms` which holds the parameters defining how the sampling algorithm is to run; and `priors` which holds information on the prior distributions of the parameters to be estimated. Typically, the priors are left vague and you should use these same values in your own analysis. Since the data are z-scored internally before the models are fitted to the data, the expected means are inherently close to zero, and the mariginal variances close to one. This greatly aids the jags fitting process.
 
-After calling `siber.MVN()` you will see output in the command window indicating that the jags models are being fitted, one block of output for each group in your dataset. A subset of these blocks are shown below.
+After calling `siberMVN()` you will see output in the command window indicating that the jags models are being fitted, one block of output for each group in your dataset. A subset of these blocks are shown below.
 
 ```{r}
 
@@ -174,22 +174,22 @@ priors$tau.mu <- 1.0E-3
 # fit the ellipses which uses an Inverse Wishart prior
 # on the covariance matrix Sigma, and a vague normal prior on the 
 # means. Fitting is via the JAGS method.
-ellipses.posterior <- siber.MVN(siber.example, parms, priors)
+ellipses.posterior <- siberMVN(siber.example, parms, priors)
 
 ```
 
 ## Comparing among groups using the Standard Ellipse Area
 When comparing individual groups with each other, be it within a single community, or groups among communities, the Standard Ellipse Area (SEA) is the recommended method. Since the multivariate normal distributions have already been fitted to each group, it only remains to calculate the SEA on the posterior distribution of covariance matrice for each group, thereby yielding the Bayesian SEA or SEA-B. We can also use the summary statistics we calcluated earlier to add the maximum likelihood estimates of SEA-c to the Bayesian esimates.
 
-Plotting is via the function `siberdensityplot()` which is essentially the same as `siardensityplot()` from the older version of SIAR.
+Plotting is via the function `siberDensityPlot()` which is essentially the same as `siardensityplot()` from the older version of SIAR.
 
 ```{r}
 
 # The posterior estimates of the ellipses for each group can be used to
 # calculate the SEA.B for each group.
-SEA.B <- siber.ellipses(ellipses.posterior)
+SEA.B <- siberEllipses(ellipses.posterior)
 
-siberdensityplot(SEA.B, xticklabels = colnames(group.ML), 
+siberDensityPlot(SEA.B, xticklabels = colnames(group.ML), 
                 xlab = c("Community | Group"),
                 ylab = expression("Standard Ellipse Area " ('\u2030' ^2) ),
                 bty = "L",
@@ -210,21 +210,21 @@ The first thing to do is to extract the posterior means from the mcmc.list objec
 ```{r}
 
 # extract the posterior means
-mu.post <- extract.posterior.means(siber.example, ellipses.posterior)
+mu.post <- extractPosteriorMeans(siber.example, ellipses.posterior)
 
 # calculate the corresponding distribution of layman metrics
-layman.B <- bayesian.layman(mu.post)
+layman.B <- bayesianLayman(mu.post)
 
 
 # --------------------------------------
 # Visualise the first community
 # --------------------------------------
-siberdensityplot(layman.B[[1]], xticklabels = colnames(layman.B[[1]]), 
+siberDensityPlot(layman.B[[1]], xticklabels = colnames(layman.B[[1]]), 
                 bty="L", ylim = c(0,20))
 
 # add the ML estimates (if you want). Extract the correct means 
 # from the appropriate array held within the overall array of means.
-comm1.layman.ml <- laymanmetrics(siber.example$ML.mu[[1]][1,1,],
+comm1.layman.ml <- laymanMetrics(siber.example$ML.mu[[1]][1,1,],
                                  siber.example$ML.mu[[1]][1,2,]
                                  )
 points(1:6, comm1.layman.ml$metrics, col = "red", pch = "x", lwd = 2)
@@ -233,12 +233,12 @@ points(1:6, comm1.layman.ml$metrics, col = "red", pch = "x", lwd = 2)
 # --------------------------------------
 # Visualise the second community
 # --------------------------------------
-siberdensityplot(layman.B[[2]], xticklabels = colnames(layman.B[[2]]), 
+siberDensityPlot(layman.B[[2]], xticklabels = colnames(layman.B[[2]]), 
                 bty="L", ylim = c(0,20))
 
 # add the ML estimates. (if you want) Extract the correct means 
 # from the appropriate array held within the overall array of means.
-comm2.layman.ml <- laymanmetrics(siber.example$ML.mu[[2]][1,1,],
+comm2.layman.ml <- laymanMetrics(siber.example$ML.mu[[2]][1,1,],
                                  siber.example$ML.mu[[2]][1,2,]
 )
 points(1:6, comm2.layman.ml$metrics, col = "red", pch = "x", lwd = 2)
@@ -252,7 +252,7 @@ points(1:6, comm2.layman.ml$metrics, col = "red", pch = "x", lwd = 2)
 # go back to a 1x1 panel plot
 par(mfrow=c(1,1))
 
-siberdensityplot(cbind(layman.B[[1]][,"TA"], layman.B[[2]][,"TA"]),
+siberDensityPlot(cbind(layman.B[[1]][,"TA"], layman.B[[2]][,"TA"]),
                 xticklabels = c("Community 1", "Community 2"), 
                 bty="L", ylim = c(0,20),
                 las = 1,

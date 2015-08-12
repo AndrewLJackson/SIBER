@@ -49,13 +49,12 @@
 #' 
 #' @examples
 #' Y <- matrix(rnorm(1000), 250, 4)
-#' siberdensityplot(Y)
-#' 
-#'  @export
+#' siberDensityPlot(Y)
+#' @export
 
 
 
-siberdensityplot <- function (dat, probs = c(95, 75, 50),
+siberDensityPlot <- function (dat, probs = c(95, 75, 50),
                              xlab = "Group", ylab = "Value", 
                              xticklabels = NULL, yticklabels = NULL, 
                              clr = gray((9:1)/10), 
