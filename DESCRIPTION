@@ -3,24 +3,15 @@ Type: Package
 Title: Stable Isotope Bayesian Ellipses in R
 Version: 2.0
 Date: 2015-7-31
-Depends: rjags, mnormt, hdrcde
+Depends: rjags, mnormt, hdrcde, R (>= 2.10)
 Author: Andrew Jackson and Andrew Parnell
 Maintainer: Andrew Jackson <a.jackson@tcd.ie>
-Description: This package takes data on organism isotopes and fits a
-        Bayesian model to their dietary habits based upon a Gaussian
-        likelihood with a mixture dirichlet-distributed prior on the
-        mean. It also includes SiBER metrics. See siardemo() for an
-        example. Version 4.1.2 contains bug fixes to allow more than
-        isotope numbers other than 2. Version 4.2 fixes a bug that
-        stopped siar working on 64-bit systems. Version 4.2.1 fixes a bug in
-        SIBER routines in Linux distirubutions and now siardensityplot()'s
-        main="my awesome graph" argument works. Version 4.2.2 fixes a bug in
-        SIAR when running it on a single group of data.
-Imports:
-    rjags,
-    mnormt
+Description: Fits bivariate ellipses to stable isotope data using Bayesian 
+    inference with the aim being to describe and compare their isotopic
+    niche.
 License: GPL (>= 2)
 LazyLoad: yes
+Encoding: UTF-8
 Packaged: 
 NeedsCompilation: yes
 Suggests: knitr

@@ -2,7 +2,7 @@
 #' 
 #' Given the coordinates of a convex hull (i.e. a polygon), this function
 #' calculates its area. Not intended for direct use outside of 
-#' \code{\link{siber.convexhull}}.
+#' \code{\link{siberConvexhull}}.
 #' 
 #' @param x a vector of x-axis data
 #' @param y a vector of y-axis data
@@ -12,7 +12,7 @@
 #' 
 
 
-hullarea <- function (x,y) {
+hullArea <- function (x,y) {
 ne <- length(x)
 harea <- abs (0.5 * ( (x[1:(ne-1)] %*% y[2:ne]) - ( y[1:(ne-1)] %*% x[2:ne]) ) )
 harea
