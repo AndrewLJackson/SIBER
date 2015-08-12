@@ -19,7 +19,7 @@
 #' numeric.
 #' 
 #' @examples
-#' generate.siber.data()
+#' generateSiberData()
 #' 
 #'  @export
 

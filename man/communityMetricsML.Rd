@@ -22,6 +22,6 @@ and calculates the corresponding 6 Layman metrics based on these points.
 \examples{
 data(demo.siber.data)
 my.siber.data <- createSiberObject(demo.siber.data)
-community.metrics.ML(my.siber.data)
+communityMetricsML(my.siber.data)
 }
 

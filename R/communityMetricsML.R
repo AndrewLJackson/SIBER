@@ -13,7 +13,7 @@
 #' @examples
 #' data(demo.siber.data)
 #' my.siber.data <- createSiberObject(demo.siber.data)
-#' community.metrics.ML(my.siber.data)
+#' communityMetricsML(my.siber.data)
 #' 
 #'  @export
 

@@ -32,6 +32,6 @@ This function simulates data for a specified number of communities. It is a
 wrapper function for \code{\link{generateSiberCommunity}}.
 }
 \examples{
-generate.siber.data()
+generateSiberData()
 }
 
