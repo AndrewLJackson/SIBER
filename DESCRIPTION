@@ -15,6 +15,7 @@ Description: Fits bivariate ellipses to stable isotope data using Bayesian
     niche.
 License: GPL (>= 2)
 LazyLoad: yes
+LazyData: true
 Encoding: UTF-8
 Packaged: 
 NeedsCompilation: yes

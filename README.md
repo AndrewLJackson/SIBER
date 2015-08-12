@@ -3,7 +3,10 @@ SIBER
 
 Ellipse and convex hull fitting package to estimate niche width for stable isotope data (and potentially other relevant types of data)
 
-[MixSIAR](https://github.com/brianstock/MixSIAR) is intended to encompass all the mixing model functionality in the [SIAR package](http://www.tcd.ie/Zoology/research/research/theoretical/siar.php). SIAR development will stop at some point in the future (probably in 2015),
+[MixSIAR](https://github.com/brianstock/MixSIAR) is intended to encompass all the mixing model functionality in the [SIAR package](http://www.tcd.ie/Zoology/research/research/theoretical/siar.php). Additionally, we have updated the basic mixing model from SIAR and released this as a standalone pacakge for basic mixing model fitting as [simmr](https://cran.r-project.org/web/packages/simmr/). 
+
+## Important!!
+SIAR development will stop at some point in the future (probably in late 2015),
 and the SIBER routines will become orphaned. This is the start of a full recode of SIBER to be a standalone package. 
 Also intended are some major improvements to model fitting, via z-scoring and back-transforming to improve fitting 
 via MCMC in JAGS. 
@@ -11,8 +14,25 @@ via MCMC in JAGS.
 Comments and suggestions welcome. If anyone wants to contribute code, please let me know and we can chat about how 
 to proceed.
 
-## Instructions
-This package is currently not at a stage where it can be installed as a proper package, and needs to be run as a set of scripts and functions instead. Download this repo and set your working directory to the parent folder SIBER. Then open and/or source the file "test_siber_object_creation_and_plotting.R" which will source the functions it needs, load some example data, plot it and calculate some basic maximum likelihood based summary statistics. I am working on this example to add the Bayesian fitting and subsequent analyses for both the ellipse, and hull based metrics for among group and among community comparisons respectively. More information and examples from the current version of SIBER which is part of the SIAR package is available from [my website](http://www.tcd.ie/Zoology/research/research/theoretical/Rpodcasts.php#siber).
+## Installation
+This package is released on CRAN as v2.0. Type `install.packages("SIBER")`.
+
+Alternatively, you can install directly from github
+
+  - the stable release can be installed by
+    - `library(devtools)` # install if necessary
+    - install_github("andrewljackson/SIBER@release")
+    - library(SIBER)
+  - The development (**and not guaranteed stable**) release is the master branch
+    - `library(devtools)` # install if necessary
+    - install_github("andrewljackson/SIBER@master")
+    - library(SIBER)
+
+
+## Tutorials
+More information and examples from the previous version of SIBER which is part of the SIAR package is available from [my website](http://www.tcd.ie/Zoology/research/research/theoretical/Rpodcasts.php#siber). Much of this instructional content remains true, although the implementation of the code has changed substantially (for the better I hope).
+
+The package vingette provides working examples of the two main analysis types.
 
 ##Acknowledgments
 Some code and much input from my collaborator and co-author [Andrew Parnell](http://mathsci.ucd.ie/people/parnell_a) [@aparnellstats](https://twitter.com/aparnellstats). Thanks to Alex Bond [@thelabandfield](https://twitter.com/thelabandfield) for helping identify some problems in model fitting which will be resolved by z-scoring, fitting and back-transforming. This functionality is yet to be implemented here, but is currently available in my repo [SIBER-sandbox]( https://github.com/AndrewLJackson/SIBER-sandbox)
