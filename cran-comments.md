@@ -47,7 +47,8 @@ Fixed have strikethrough. The notes on importFrom below have been avoided by dir
 
 ## Test environments
 * local OS X 10.9.5 install, R 3.2.0
-* win-builder (release)
+* win-builder (R-release) via devtools::build_win()
+* win-builder (R-devel) via devtools::build_win()
 
 ## R CMD check results
 There were no ERRORs or WARNINGs. 
@@ -60,7 +61,7 @@ New submission
 
 This is a new submission and I am a first time maintainer, though i have been involved in co-maintaining the package siar.
 
-There were no NOTES from win-builder.
+There were no NOTES from win-builder on either release or devel.
 
 ## Downstream dependencies
 There are no downstream dependencies.

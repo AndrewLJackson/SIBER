@@ -85,7 +85,7 @@ siberDensityPlot <- function (dat, probs = c(95, 75, 50),
                  ...)
   
   # add xlabel text
-  title(xlab = xlab)
+  graphics::title(xlab = xlab)
   
   # add ylabel text at specific line
   graphics::title(ylab = ylab, line = ylab.line)
@@ -115,7 +115,7 @@ siberDensityPlot <- function (dat, probs = c(95, 75, 50),
     for (k in 1:length(probs)) {
       temp2 <- temp$hdr[k, ]
       
-      grahpics::polygon(c(j - bwd[k], j - bwd[k], j + bwd[k], j + bwd[k]), 
+      graphics::polygon(c(j - bwd[k], j - bwd[k], j + bwd[k], j + bwd[k]), 
                         c(max(c(min(temp2[!is.na(temp2)]), lbound)), 
                           min(c(max(temp2[!is.na(temp2)]), ubound)), 
                           min(c(max(temp2[!is.na(temp2)]), ubound)), 

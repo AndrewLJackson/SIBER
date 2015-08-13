@@ -27,8 +27,8 @@ This function calculates the area of the convex hull describing a set of
 bivariate points, and returns other information useful for plotting the hull.
 }
 \examples{
-x <- rnorm(15)
-y <- rnorm(15)
+x <- stats::rnorm(15)
+y <- stats::rnorm(15)
 siberConvexhull(x, y)
 }
 

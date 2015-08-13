@@ -46,8 +46,8 @@ such as multivariate lognormal distributions, multivariate gamma
 distributions etc...
 }
 \examples{
-x <- rnorm(50)
-y <- rnorm(50)
+x <- stats::rnorm(50)
+y <- stats::rnorm(50)
 parms <- list()
 parms$n.iter <- 2 * 10^3
 parms$n.burnin <- 500

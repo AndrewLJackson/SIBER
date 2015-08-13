@@ -96,7 +96,7 @@ createSiberObject <- function (data.in) {
   		tmp <- subset(siber$raw.data[[i]], siber$raw.data[[i]]$group == j)	
   		
   	    mu.tmp <- colMeans(cbind(tmp$iso1, tmp$iso2))
-  	    cov.tmp <- statsLLcov(cbind(tmp$iso1, tmp$iso2))
+  	    cov.tmp <- stats::cov(cbind(tmp$iso1, tmp$iso2))
   
   	    siber$ML.mu[[i]][,,j] <- mu.tmp
   	    siber$ML.cov[[i]][,,j] <- cov.tmp

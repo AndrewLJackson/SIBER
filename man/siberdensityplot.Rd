@@ -7,9 +7,9 @@
 \usage{
 siberDensityPlot(dat, probs = c(95, 75, 50), xlab = "Group",
   ylab = "Value", xticklabels = NULL, yticklabels = NULL,
-  clr = gray((9:1)/10), scl = 1, xspc = 0.5, prn = F, ct = "mode",
-  ylims = NULL, lbound = -Inf, ubound = Inf, main = "", ylab.line = 2,
-  ...)
+  clr = grDevices::gray((9:1)/10), scl = 1, xspc = 0.5, prn = F,
+  ct = "mode", ylims = NULL, lbound = -Inf, ubound = Inf, main = "",
+  ylab.line = 2, ...)
 }
 \arguments{
 \item{dat}{a matrix of data for which density region boxplots will be
@@ -27,16 +27,16 @@ Defaults to \code{c(95, 75, 50)}.}
 \item{yticklabels}{a vector of strings to override the y-axis tick labels.}
 
 \item{clr}{a vector of colours to use for shading each of the box regions.
-Defaults to greyscale \code{gray((9:1)/10)}.}
+Defaults to greyscale \code{grDevices::gray((9:1)/10)}.}
 
 \item{scl}{a scalar multiplier to scale the box widths. Defaults to 1.}
 
 \item{xspc}{a scalar determining the amount of spacing between each box.
 Defaults to 0.5.}
 
-\item{prn}{a logical value determining whether summary statisics of each column
-should be printed to screen \code{prn = TRUE} or suppressed as per default
-\code{prn = FALSE}.}
+\item{prn}{a logical value determining whether summary statisics of each
+column should be printed to screen \code{prn = TRUE} or suppressed as per
+default \code{prn = FALSE}.}
 
 \item{ct}{a string of either \code{c("mode", "mean", "median")} which
 determines which measure of central tendancy will be plotted as a point in
@@ -48,35 +48,42 @@ limits.}
 
 \item{lbound}{a lower boundary to specify on the distribution to avoid the
 density kernel estimating values beyond that which can be expecte a priori.
-Useful for example when plotting dietary proportions which must lie in
-the interval \code{0 <= Y <= 1}. Defaults to -Inf}
+Useful for example when plotting dietary proportions which must lie in the
+interval \code{0 <= Y <= 1}. Defaults to -Inf}
 
 \item{ubound}{an upper boundary to specify on the distribution to avoid the
 density kernel estimating values beyond that which can be expecte a priori.
-Useful for example when plotting dietary proportions which must lie in
-the interval \code{0 <= Y <= 1}. Defaults to +Inf.}
+Useful for example when plotting dietary proportions which must lie in the
+interval \code{0 <= Y <= 1}. Defaults to +Inf.}
 
 \item{main}{a title for the figure. Defaults to blank.}
 
 \item{ylab.line}{a postive scalar indicating the line spacing for rendering
 the y-axis label. This is included as using the permille symbol has a
 tendancy to push the axis label off the plotting window margins. See the
-\code{line} option in \code{\link{axis}} for more details as ylab.line
-passes to this.}
+\code{line} option in \code{\link[graphics]{axis}} for more details as
+ylab.line passes to this.}
 
 \item{...}{further graphical parameters for passing to
-\code{\link[graphics]{plot}}}
+  \code{\link[graphics]{plot}}}
 }
 \value{
 A new figure window.
 }
 \description{
-This function is essentially \code{\link[hdrcde]{hdr.boxplot}} but it more easily
-works with matrices of data, where each column is a different variable of
-interest. It has some limitations though....
+This function is essentially \code{\link[hdrcde]{hdr.boxplot}} but it more
+easily works with matrices of data, where each column is a different variable
+of interest. It has some limitations though....
+}
+\section{Warning}{
+: This function will not currently recognise and plot
+  multimodal distributions, unlike \code{\link[hdrcde]{hdr.boxplot}}. You
+  should take care, and plot basic histograms of each variable (column in the
+  object you are passing) to \code{siardensityplot} and check that they are
+  indeed unimodal as expected.
 }
 \examples{
-Y <- matrix(rnorm(1000), 250, 4)
+Y <- matrix(stats::rnorm(1000), 250, 4)
 siberDensityPlot(Y)
 }
 
