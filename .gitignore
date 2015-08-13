@@ -1,9 +1,4 @@
-*~
-*.*~
 *.DS_Store
 *.Rhistory
 *.RData
-*.Rbuildignore
 *.Rproj.user
-*.Rproj
-.Rproj.user
