@@ -17,15 +17,15 @@
 #'  }
 #' 
 #' @examples
-#' x <- rnorm(15)
-#' y <- rnorm(15)
+#' x <- stats::rnorm(15)
+#' y <- stats::rnorm(15)
 #' siberConvexhull(x, y)
 #' 
 #'  @export
 
 siberConvexhull <- function(x,y){
 
-chI <- chull(x,y)
+chI <- grDevices::chull(x,y)
 chI <- c(chI,chI[1])
 hullX <- x[chI]
 hullY <- y[chI]

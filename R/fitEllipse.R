@@ -32,8 +32,8 @@
 #' }
 #' @return A mcmc.list object of posterior samples created by jags.
 #' @examples
-#' x <- rnorm(50)
-#' y <- rnorm(50)
+#' x <- stats::rnorm(50)
+#' y <- stats::rnorm(50)
 #' parms <- list()
 #' parms$n.iter <- 2 * 10^3
 #' parms$n.burnin <- 500
@@ -101,8 +101,8 @@ fitEllipse <- function (x, y, parms, priors)
                     "R"= priors$R, "k" = priors$k, "tau.mu" = priors$tau.mu)
   
   inits <- list(
-    list(mu=rnorm(2,0,1)),
-    list(mu=rnorm(2,0,1))
+    list(mu = stats::rnorm(2,0,1)),
+    list(mu = stats::rnorm(2,0,1))
   )
   
   

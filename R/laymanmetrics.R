@@ -19,8 +19,8 @@
 #' CD, MNND and SDNND
 #' 
 #' @examples
-#' x <- runif(10)
-#' y <- runif(10)
+#' x <- stats::runif(10)
+#' y <- stats::runif(10)
 #' laymanMetrics(x, y)
 #' 
 #' @export
@@ -73,7 +73,7 @@ laymanMetrics <- function(x,y){
 
   # --------------------------------------
   # Layman metric # 6 - standard deviation of nearest neighbour distance SDNND
-  metrics[6] <- sd(NNDs)
+  metrics[6] <- stats::sd(NNDs)
 
   # --------------------------------------
   out$metrics <- metrics

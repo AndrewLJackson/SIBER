@@ -44,7 +44,7 @@ createSiberObject <- function (data.in) {
   
   # some basic summary stats helpful for plotting
   my.summary <- function(x){
-  	c(min = min(x), max = max(x), mean = mean(x), median = median(x))
+  	c(min = min(x), max = max(x), mean = mean(x), median = stats::median(x))
   }
   
   siber$iso.summary <- apply(data.in[,1:2], 2, my.summary)
@@ -96,7 +96,7 @@ createSiberObject <- function (data.in) {
   		tmp <- subset(siber$raw.data[[i]], siber$raw.data[[i]]$group == j)	
   		
   	    mu.tmp <- colMeans(cbind(tmp$iso1, tmp$iso2))
-  	    cov.tmp <- cov(cbind(tmp$iso1, tmp$iso2))
+  	    cov.tmp <- statsLLcov(cbind(tmp$iso1, tmp$iso2))
   
   	    siber$ML.mu[[i]][,,j] <- mu.tmp
   	    siber$ML.cov[[i]][,,j] <- cov.tmp

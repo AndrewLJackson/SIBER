@@ -62,7 +62,7 @@ addEllipse <- function(mu, sigma, m = NULL, n = 100, p.interval = NULL ,
   # p defaults to NULL.
   ifelse(is.null(p.interval), 
            r <- 1, 
-           r <- sqrt(qchisq(p.interval, df=2))
+           r <- sqrt(stats::qchisq(p.interval, df=2))
          )
 
   
@@ -91,7 +91,7 @@ addEllipse <- function(mu, sigma, m = NULL, n = 100, p.interval = NULL ,
   
   ML.ellipse = t(apply(cc,1, back.trans))
   
-  if(dev.cur() > 1) {lines(ML.ellipse, ...)}
+  if(grDevices::dev.cur() > 1) {graphics::lines(ML.ellipse, ...)}
 
   # optional return of x and y coordinates of the plotted ellipse
   return(ML.ellipse)
