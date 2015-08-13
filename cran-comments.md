@@ -51,17 +51,9 @@ Fixed have strikethrough. The notes on importFrom below have been avoided by dir
 * win-builder (R-devel) via devtools::build_win()
 
 ## R CMD check results
-There were no ERRORs or WARNINGs. 
+There were no ERRORs, WARNINGs or NOTES on my local build.
 
-There was 1 NOTE (on my local OS X build and check):
-
-* checking CRAN incoming feasibility ... NOTE
-Maintainer: ‘Andrew Jackson <a.jackson@tcd.ie>’
-New submission
-
-This is a new submission and I am a first time maintainer, though i have been involved in co-maintaining the package siar.
-
-There were no NOTES from win-builder on either release or devel.
+There were no ERRORS, WARNINGS or NOTES from win-builder on either release or devel.
 
 ## Downstream dependencies
 There are no downstream dependencies.
