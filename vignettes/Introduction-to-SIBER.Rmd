@@ -181,7 +181,7 @@ ellipses.posterior <- siberMVN(siber.example, parms, priors)
 ## Comparing among groups using the Standard Ellipse Area
 When comparing individual groups with each other, be it within a single community, or groups among communities, the Standard Ellipse Area (SEA) is the recommended method. Since the multivariate normal distributions have already been fitted to each group, it only remains to calculate the SEA on the posterior distribution of covariance matrice for each group, thereby yielding the Bayesian SEA or SEA-B. We can also use the summary statistics we calcluated earlier to add the maximum likelihood estimates of SEA-c to the Bayesian esimates.
 
-Plotting is via the function `siberDensityPlot()` which is essentially the same as `siardensityplot()` from the older version of SIAR.
+Plotting is via the function `siberDensityPlot()` which is essentially the same as `siardensityplot()` from the older version of SIAR. Credible intervals can be extracted by calling the function `hdr` from the `hdrcde` package.
 
 ```{r}
 
@@ -199,6 +199,23 @@ siberDensityPlot(SEA.B, xticklabels = colnames(group.ML),
 
 # Add red x's for the ML estimated SEA-c
 points(1:ncol(SEA.B), group.ML[3,], col="red", pch = "x", lwd = 2)
+
+# Calculate some credible intervals 
+cr.p <- c(0.95, 0.99) # vector of quantiles
+
+# call to hdrcde:hdr using lapply()
+SEA.B.credibles <- lapply(
+  as.data.frame(SEA.B), 
+  function(x,...){tmp<-hdrcde::hdr(x)$hdr},
+  prob = cr.p)
+
+# do similar to get the modes, taking care to pick up multimodal posterior
+# distributions if present
+SEA.B.modes <- lapply(
+  as.data.frame(SEA.B), 
+  function(x,...){tmp<-hdrcde::hdr(x)$mode},
+  prob = cr.p, all.modes=T)
+
 
 ```
 
