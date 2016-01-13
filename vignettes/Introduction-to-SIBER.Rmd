@@ -11,7 +11,9 @@ vignette: >
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", 
-                      fig.width = 5, fig.height = 5)
+                      fig.width = 6, fig.height = 5)
+library(viridis)
+palette(viridis(3))
 ```
 
 ## SIBER introduction and guide
@@ -129,13 +131,12 @@ plotSiberObject(siber.example,
                   cex = 0.5
                   )
 
+
+
 # Calculate sumamry statistics for each group: TA, SEA and SEAc
 group.ML <- groupMetricsML(siber.example)
 print(group.ML)
 
-# Calculate the various Layman metrics on each of the communities.
-community.ML <- communityMetricsML(siber.example) 
-print(community.ML)
 
 # You can add more ellipses by directly calling plot.group.ellipses()
 # Add an additional p.interval % prediction ellilpse
@@ -146,6 +147,39 @@ plotGroupEllipses(siber.example, n = 100, p.interval = 0.95,
 # by specifying ci.mean = T along with whatever p.interval you want.
 plotGroupEllipses(siber.example, n = 100, p.interval = 0.95, ci.mean = T,
                     lty = 1, lwd = 2)
+
+
+
+```
+
+Alternativly, we may wish to focus on comparing the two communities represented in these plots by the open circles and the open triangles. To illustrate these groupings, we might draw the convex hull between the means of each of the three groups comprising each community. Additionally, I have highlighted the location of each group by adding the 95% confidence interval of their bivariate mean.
+
+```{r}
+# A second plot provides information more suitable to comparing
+# the two communities based on the community-level Layman metrics
+
+# this time we will make the points a bit smaller by 
+# cex = 0.5
+plotSiberObject(siber.example,
+                  ax.pad = 2, 
+                  hulls = T, community.hulls.args, 
+                  ellipses = F, group.ellipses.args,
+                  group.hulls = F, group.hull.args,
+                  bty = "L",
+                  iso.order = c(1,2),
+                  xlab=expression({delta}^13*C~'\u2030'),
+                  ylab=expression({delta}^15*N~'\u2030'),
+                  cex = 0.5
+                  )
+
+# or you can add the XX% confidence interval around the bivariate means
+# by specifying ci.mean = T along with whatever p.interval you want.
+plotGroupEllipses(siber.example, n = 100, p.interval = 0.95,
+                  ci.mean = T, lty = 1, lwd = 2) 
+
+# Calculate the various Layman metrics on each of the communities.
+community.ML <- communityMetricsML(siber.example) 
+print(community.ML)
 
 ```
 
@@ -221,6 +255,10 @@ SEA.B.modes <- lapply(
 
 ## Comparison of entire communities using the Layman metrics
 Entire communities can be compared by recognising that convex hulls (or any other metric) based on the centroids of each group are subject to uncertainty in the location of the centroids. We can exploit this and calculate the distribution of convex hull areas (and the other 5 metrics) based on the posterior distribution of the means of each group's `x` and `y` data.
+
+```{r}
+
+```
 
 The first thing to do is to extract the posterior means from the mcmc.list object that jags creates to make plotting and analysis easier. Thereafter, we can plot their distribution using highest density region boxplots to visualise the credible intervals that describe it.
 

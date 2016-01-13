@@ -38,6 +38,9 @@ More information and examples from the previous version of SIBER which is part o
 
 The package vingette provides working examples of the two main analysis types.
 
+## Help, Assistance and Queries
+In the first instance, queries about analyses or problems with the software should be posted to [stackoverflow](https://stackoverflow.com/questions/tagged/siber) using the tag `siber`. If you are convinced you have discovered a bug or major problem in the software, you can raise an [issue here on github](https://github.com/AndrewLJackson/SIBER/issues).
+
 ##Acknowledgments
 Some code and much input from my collaborator and co-author [Andrew Parnell](http://mathsci.ucd.ie/people/parnell_a) [@aparnellstats](https://twitter.com/aparnellstats). Thanks to Alex Bond [@thelabandfield](https://twitter.com/thelabandfield) for helping identify some problems in model fitting which is now resolved by z-scoring, fitting and back-transforming. Although not affecting every analysis, the potential issue is exemplified in [SIBER-sandbox]( https://github.com/AndrewLJackson/SIBER-sandbox).
 
