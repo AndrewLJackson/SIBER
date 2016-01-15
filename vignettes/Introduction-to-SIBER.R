@@ -1,6 +1,8 @@
 ## ---- echo = FALSE-------------------------------------------------------
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", 
-                      fig.width = 5, fig.height = 5)
+                      fig.width = 6, fig.height = 5)
+library(viridis)
+palette(viridis(3))
 
 ## ------------------------------------------------------------------------
 # remove previously loaded items from the current environment and remove previous graphics.
@@ -83,13 +85,12 @@ plotSiberObject(siber.example,
                   cex = 0.5
                   )
 
+
+
 # Calculate sumamry statistics for each group: TA, SEA and SEAc
 group.ML <- groupMetricsML(siber.example)
 print(group.ML)
 
-# Calculate the various Layman metrics on each of the communities.
-community.ML <- communityMetricsML(siber.example) 
-print(community.ML)
 
 # You can add more ellipses by directly calling plot.group.ellipses()
 # Add an additional p.interval % prediction ellilpse
@@ -100,6 +101,36 @@ plotGroupEllipses(siber.example, n = 100, p.interval = 0.95,
 # by specifying ci.mean = T along with whatever p.interval you want.
 plotGroupEllipses(siber.example, n = 100, p.interval = 0.95, ci.mean = T,
                     lty = 1, lwd = 2)
+
+
+
+
+## ------------------------------------------------------------------------
+# A second plot provides information more suitable to comparing
+# the two communities based on the community-level Layman metrics
+
+# this time we will make the points a bit smaller by 
+# cex = 0.5
+plotSiberObject(siber.example,
+                  ax.pad = 2, 
+                  hulls = T, community.hulls.args, 
+                  ellipses = F, group.ellipses.args,
+                  group.hulls = F, group.hull.args,
+                  bty = "L",
+                  iso.order = c(1,2),
+                  xlab=expression({delta}^13*C~'\u2030'),
+                  ylab=expression({delta}^15*N~'\u2030'),
+                  cex = 0.5
+                  )
+
+# or you can add the XX% confidence interval around the bivariate means
+# by specifying ci.mean = T along with whatever p.interval you want.
+plotGroupEllipses(siber.example, n = 100, p.interval = 0.95,
+                  ci.mean = T, lty = 1, lwd = 2) 
+
+# Calculate the various Layman metrics on each of the communities.
+community.ML <- communityMetricsML(siber.example) 
+print(community.ML)
 
 
 ## ------------------------------------------------------------------------
@@ -139,6 +170,26 @@ siberDensityPlot(SEA.B, xticklabels = colnames(group.ML),
 
 # Add red x's for the ML estimated SEA-c
 points(1:ncol(SEA.B), group.ML[3,], col="red", pch = "x", lwd = 2)
+
+# Calculate some credible intervals 
+cr.p <- c(0.95, 0.99) # vector of quantiles
+
+# call to hdrcde:hdr using lapply()
+SEA.B.credibles <- lapply(
+  as.data.frame(SEA.B), 
+  function(x,...){tmp<-hdrcde::hdr(x)$hdr},
+  prob = cr.p)
+
+# do similar to get the modes, taking care to pick up multimodal posterior
+# distributions if present
+SEA.B.modes <- lapply(
+  as.data.frame(SEA.B), 
+  function(x,...){tmp<-hdrcde::hdr(x)$mode},
+  prob = cr.p, all.modes=T)
+
+
+
+## ------------------------------------------------------------------------
 
 
 ## ------------------------------------------------------------------------

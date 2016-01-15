@@ -1,8 +1,8 @@
 ---
-title: "test-function-for-nonnumeric-group-labels"
+title: "Test non-numeric group labels"
 author: "Andrew L Jackson"
-date: "15 January 2016"
-output: html_document
+date: "`r Sys.Date()`"
+output: html
 ---
 Some test code for checking that the group labels as strings works.
 
@@ -31,4 +31,7 @@ plotSiberObject(test,
                 xlab = expression({delta}^13*C~'\u2030'),
                 ylab = expression({delta}^15*N~'\u2030')
 )
+
+
+
 ```
