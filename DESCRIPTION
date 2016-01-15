@@ -13,7 +13,7 @@ Imports:
     grDevices
 Author: Andrew Jackson and Andrew Parnell
 Maintainer: Andrew Jackson <a.jackson@tcd.ie>
-Description: Fits bivariate ellipses to stable isotope data using Bayesian 
+Description: Fits bi-variate ellipses to stable isotope data using Bayesian 
     inference with the aim being to describe and compare their isotopic
     niche.
 License: GPL (>= 2)
@@ -22,5 +22,5 @@ LazyData: true
 Encoding: UTF-8
 Packaged: 
 NeedsCompilation: yes
-Suggests: knitr
+Suggests: knitr, viridis
 VignetteBuilder: knitr
