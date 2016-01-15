@@ -1,4 +1,13 @@
-library(SIBER)
+---
+title: "test-function-for-nonnumeric-group-labels"
+author: "Andrew L Jackson"
+date: "15 January 2016"
+output: html_document
+---
+Some test code for checking that the group labels as strings works.
+
+```{r}
+#library(SIBER)
 
 mydata <- read.csv(file.path(getwd(), "/inst/extdata/test.group.names.csv"), 
                    header = TRUE)
@@ -16,9 +25,10 @@ plotSiberObject(test,
                 ax.pad = 2, 
                 hulls = T, community.hulls.args, 
                 ellipses = T, group.ellipses.args,
-                group.hulls = F, group.hull.args,
+                group.hulls = T, group.hull.args,
                 bty = "L",
                 iso.order = c(1,2),
                 xlab = expression({delta}^13*C~'\u2030'),
                 ylab = expression({delta}^15*N~'\u2030')
 )
+```

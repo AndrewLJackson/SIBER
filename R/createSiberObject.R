@@ -41,6 +41,9 @@ siber <- list()
 # if i were able to use tapply more effectively on multiple inputs.
 siber$original.data <- data.in
 
+# store all the grouping labels
+siber$all.groups <- levels(data.in$group)
+
 
 # some basic summary stats helpful for plotting
 my.summary <- function(x){
@@ -76,6 +79,8 @@ siber$n.groups[2, ] <- tapply(data.in$group, data.in$community,
 siber$ML.mu  <- list()
 siber$ML.cov <- list()
 
+siber$group.names <- list()
+
 for (i in 1:siber$n.communities){
 
 	siber$ML.mu[[i]]  <- array(NA, dim=c(1, 2, siber$n.groups[2,i]) )
@@ -90,15 +95,13 @@ for (i in 1:siber$n.communities){
 # and use some of the apply() or analogue functions.
 for (i in 1:siber$n.communities) {
   
-  group.names <- levels(siber$raw.data[[i]]$group)
+  siber$group.names[[i]] <- unique(siber$raw.data[[i]]$group)
 
 	for (j in 1:siber$n.groups[2,i]) {
-	  
-	  
 
 		# AJ - issue - (group == j)
 		tmp <- subset(siber$raw.data[[i]], 
-		              siber$raw.data[[i]]$group == group.names[j])	
+		              siber$raw.data[[i]]$group == siber$group.names[[i]][j])	
 		
 	    mu.tmp <- colMeans(cbind(tmp$iso1, tmp$iso2))
 	    cov.tmp <- stats::cov(cbind(tmp$iso1, tmp$iso2))
