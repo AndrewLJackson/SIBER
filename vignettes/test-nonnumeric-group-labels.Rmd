@@ -1,0 +1,37 @@
+---
+title: "Test non-numeric group labels"
+author: "Andrew L Jackson"
+date: "`r Sys.Date()`"
+output: html
+---
+Some test code for checking that the group labels as strings works.
+
+```{r}
+#library(SIBER)
+
+mydata <- read.csv(file.path(getwd(), "/inst/extdata/test.group.names.csv"), 
+                   header = TRUE)
+
+test <- createSiberObject(mydata)
+
+community.hulls.args <- list(col = 1, lty = 1, lwd = 1)
+group.ellipses.args  <- list(n = 100, p.interval = 0.40, lty = 1, lwd = 2)
+group.hull.args      <- list(lty = 2, col = "grey20")
+
+
+
+par(mfrow=c(1,1))
+plotSiberObject(test,
+                ax.pad = 2, 
+                hulls = T, community.hulls.args, 
+                ellipses = T, group.ellipses.args,
+                group.hulls = T, group.hull.args,
+                bty = "L",
+                iso.order = c(1,2),
+                xlab = expression({delta}^13*C~'\u2030'),
+                ylab = expression({delta}^15*N~'\u2030')
+)
+
+
+
+```

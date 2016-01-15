@@ -36,7 +36,7 @@ plotGroupEllipses <- function(siber, plot.args = list(), iso.order = c(1,2),
                        sigma = siber$ML.cov[[i]][c(x,y),c(x,y),j]),
                        m = siber$sample.sizes[i,j],
                        plot.args,
-                       col = j,
+                       col = siber$group.names[[i]][j],
                        ...))
 
     } # end loop over groups
