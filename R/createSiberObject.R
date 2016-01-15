@@ -1,35 +1,36 @@
 #' Read in SIBER format data and generate the SIBER object
 #' 
 #' This function takes raw isotope data and creates a SIBER object which 
-#' contains information in a structured manner that enables other functions to
+#' contains information in a structured manner that enables other functions to 
 #' loop over groups and communities, fit Bayesian ellipses, and afterwards, 
 #' generate various plots, and additional analyses on the posterior 
 #' distributions.
 #' 
-#' @param data.in Specified In a basic R data.frame or matrix comprising 4 columns. 
-#' The first two of which are typically isotope tracers, then the third is a 
-#' column that indicates the group membership, and the fourth column indicates
-#' the community membership of an observation. Group and communities should be 
-#' entered  as sequetial numbers, and groups numbering should restart within a 
-#' community
-#' @return A siber list object, that contains data that helps with various 
-#' model fitting and plotting.
-#' \itemize{
-#'   \item {original.data}{The original data as passed into this function}
-#'   \item {iso.summary}{The max, min, mean and median of the isotope data 
-#'   useful for plotting}
-#'   \item {sample.sizees}{The number of obsevations tabulated by group and 
-#'   community}
-#'   \item {raw.data}{A list object of length equal to the number of communities}
-#' }
+#' @param data.in Specified In a basic R data.frame or matrix comprising 4 
+#'   columns. The first two of which are typically isotope tracers, then the 
+#'   third is a column that indicates the group membership, and the fourth 
+#'   column indicates the community membership of an observation. Communities 
+#'   labels should be entered  as sequetial numbers. As of v2.0.1 group labels 
+#'   can be entered as strings and/or numbers and need not be sequential.
+#' @return A siber list object, that contains data that helps with various model
+#'   fitting and plotting. \itemize{ \item {original.data}{The original data as
+#'   passed into this function} \item {iso.summary}{The max, min, mean and
+#'   median of the isotope data useful for plotting} \item {sample.sizees}{The
+#'   number of obsevations tabulated by group and community} \item {raw.data}{A
+#'   list object of length equal to the number of communities} }
 #' @examples
 #' data(demo.siber.data)
 #' my.siber.data <- createSiberObject(demo.siber.data)
 #' names(my.siber.data)
 #' 
-#'  @export
+#' @export
 
 createSiberObject <- function (data.in) {
+  
+if (!all(names(data.in) == c("iso1", "iso2", "group", "community"))){
+  stop('The header names in your data file must match 
+        c("iso1", "iso2", "group", "community") exactly')
+}
 
 # create an object that is a list, into which the raw data, 
 # its transforms, and various calculated metrics can be stored.

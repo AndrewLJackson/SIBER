@@ -2,7 +2,7 @@
 ## Resubmission
 
 * This is a resubmission. I have made the changes to the NOTES generated last time detailed below. Thanks.
-* The additional quoteations from the URL in the vingette have been removed.
+* The additional quotations from the URL in the vingette have been removed.
 * I have dealt with *no visible global function* NOTES by directly calling the function with package::function notation throughout the code, rather than using importFrom in NAMESPACE.
 
 

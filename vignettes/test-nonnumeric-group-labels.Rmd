@@ -7,7 +7,7 @@ output: html
 Some test code for checking that the group labels as strings works.
 
 ```{r}
-#library(SIBER)
+library(SIBER)
 
 mydata <- read.csv(file.path(getwd(), "/inst/extdata/test.group.names.csv"), 
                    header = TRUE)
