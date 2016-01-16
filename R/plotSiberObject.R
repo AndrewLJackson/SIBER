@@ -35,8 +35,14 @@
 #' @param xlab a string for the x-axis label.
 #' @param ylab a string for the y-axis label.
 #' @param las a scalar determining the rotation of the y-axis labels. Defaults 
-#'   to horizontal with \code{las = 1}. See \code{\link[graphics]{par}} for more
-#'   details.
+#' to horizontal with \code{las = 1}. See \code{\link[graphics]{par}} for more 
+#' details.
+#' @param x.limits allows you to specify a two-element vector of lower and upper
+#'   x-axis limits. Speficying this argument over-rides the automatic plotting
+#'   and ax.pad option. Defaults to NULL.
+#' @param y.limits allows you to specify a two-element vector of lower and upper
+#'   y-axis limits. Speficying this argument over-rides the automatic plotting
+#'   and ax.pad option. Defaults to NULL.
 #' @param ... additional arguments to be passed to \code{\link[graphics]{plot}}.
 #'   
 #' @return An isotope biplot.
@@ -53,6 +59,8 @@ plotSiberObject <- function(siber,
                               xlab = "Isotope 1", 
                               ylab = "Isotope 2",
                               las = 1,
+                              x.limits = NULL,
+                              y.limits = NULL,
                               ...){
   
   # NOTE - this isotope ordering needs to be passed onwards to the plotting
@@ -64,18 +72,34 @@ plotSiberObject <- function(siber,
     
     # set up a blank plot. X and Y limits are set by padding
     # the plot by a fixed amount ax.pad beyond the extremes of 
-    # all the data.
-    plot(0, 0, type = "n",
-         xlim = c(siber$iso.summary["min", x] - ax.pad , 
-                  siber$iso.summary["max", x] + ax.pad ),
-         ylim = c(siber$iso.summary["min", y] - ax.pad , 
-                  siber$iso.summary["max", y] + ax.pad ),
-         ylab = ylab,
-         xlab = xlab,
-         bty = bty,
-         las = las
-         
-    )
+    # all the data. This automatic axis scaling can be over-rided 
+    # by specifying x.limits and y.limits as input arguments.
+    
+    if(any(is.null(x.limits),is.null(y.limits)))
+           {plot(0, 0, type = "n",
+                xlim = c(siber$iso.summary["min", x] - ax.pad , 
+                         siber$iso.summary["max", x] + ax.pad ),
+                ylim = c(siber$iso.summary["min", y] - ax.pad , 
+                         siber$iso.summary["max", y] + ax.pad ),
+                ylab = ylab,
+                xlab = xlab,
+                bty = bty,
+                las = las
+                
+           )}
+    else
+           {plot(0, 0, type = "n",
+                ylab = ylab,
+                xlab = xlab,
+                bty = bty,
+                las = las,
+                xlim = x.limits,
+                ylim = y.limits,
+                ... 
+                ) # end of plot
+           }
+    
+    
     
     
     # add each of the data points

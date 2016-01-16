@@ -26,12 +26,18 @@
 #' @export
 
 createSiberObject <- function (data.in) {
-  
+
+# Check that the column headers have exactly the correct string
 if (!all(names(data.in) == c("iso1", "iso2", "group", "community"))){
   stop('The header names in your data file must match 
         c("iso1", "iso2", "group", "community") exactly')
 }
 
+# error if community is not a sequential numeric vector
+if (!is.numeric(data.in$community)){
+  stop('The community column must be a sequential numeric vector 
+       indicating the community membership of each observation.')
+} 
 # create an object that is a list, into which the raw data, 
 # its transforms, and various calculated metrics can be stored.
 siber <- list()
@@ -56,6 +62,20 @@ siber$iso.summary <- apply(data.in[,1:2], 2, my.summary)
 siber$sample.sizes <- tapply(data.in[,1], 
                              list(data.in[,4], data.in[,3]), 
                              length)
+
+if (any(siber$sample.sizes < 5, na.rm = TRUE)){
+  warning("At least one of your groups has less than 5 observations.
+          The absolute minimum sample size for each group is 3 in order
+          for the various ellipses and corresponding metrics to be 
+          calculated. More reasonably though, a minimum of 5 data points
+          are required to calculate the two means and the 2x2 covariance 
+          matrix and not run out of degrees of freedom. Check the item 
+          named 'sample.sizes' in the object returned by this function 
+          in order to locate the offending group. Bear in mind that NAs in 
+          the sample.size matrix simply indicate groups that are not 
+          present in that community, and is an acceptable data structure 
+          for these analyses.")
+}
 
 # store the raw data as list split by the community variable
 # and rename the list components

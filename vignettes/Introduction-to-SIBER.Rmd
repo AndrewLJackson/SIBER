@@ -7,7 +7,7 @@ vignette: >
   %\VignetteIndexEntry{Introduction to SIBER}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-  % \VignetteDepends{viridis}
+  %\VignetteDepends{viridis}
 ---
 
 ```{r, echo = FALSE}
