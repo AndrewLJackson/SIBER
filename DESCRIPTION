@@ -3,8 +3,9 @@ Type: Package
 Title: Stable Isotope Bayesian Ellipses in R
 Version: 2.0.1
 Date: 2016-1-15
-Depends: R (>= 2.10)
-Imports: 
+Depends:
+    R (>= 2.10)
+Imports:
     rjags,
     mnormt,
     hdrcde,
@@ -13,7 +14,7 @@ Imports:
     grDevices
 Author: Andrew Jackson and Andrew Parnell
 Maintainer: Andrew Jackson <a.jackson@tcd.ie>
-Description: Fits bi-variate ellipses to stable isotope data using Bayesian 
+Description: Fits bi-variate ellipses to stable isotope data using Bayesian
     inference with the aim being to describe and compare their isotopic
     niche.
 License: GPL (>= 2)
@@ -22,5 +23,8 @@ LazyData: true
 Encoding: UTF-8
 Packaged: 
 NeedsCompilation: yes
-Suggests: knitr, viridis
+Suggests:
+    knitr,
+    viridis
 VignetteBuilder: knitr
+RoxygenNote: 5.0.1

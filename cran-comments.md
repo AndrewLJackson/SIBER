@@ -1,4 +1,6 @@
 
+This release includes some minor updates.
+
 ## Resubmission
 N/A
 
