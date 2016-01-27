@@ -29,7 +29,7 @@ Alternatively, you can install directly from github
 
   - the stable release can be installed by
     - `library(devtools)` # install if necessary
-    - install_github("andrewljackson/SIBER@release")
+    - install_github("andrewljackson/SIBER@v2.0.1")
     - library(SIBER)
   - The development (**and not guaranteed stable**) release is the master branch
     - `library(devtools)` # install if necessary
