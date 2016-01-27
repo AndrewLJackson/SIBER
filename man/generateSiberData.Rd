@@ -34,6 +34,5 @@ wrapper function for \code{\link{generateSiberCommunity}}.
 \examples{
 generateSiberData()
 
- @export
 }
 

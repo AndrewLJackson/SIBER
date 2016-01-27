@@ -16,7 +16,7 @@
 #' of the 6 Layman metrics for each of the posterior draws recorded by the 
 #' fitting process (i.e. which determines the number of rows in this matrix).
 #' 
-#'  @export
+#' @export
 
 
 bayesianLayman <- function(mu.post) {

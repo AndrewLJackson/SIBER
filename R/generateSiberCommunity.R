@@ -19,7 +19,7 @@
 #' indentifying column and a community identifying column, all of which are 
 #' numeric.
 #' 
-#'  @export
+#' @export
 #' 
 
 

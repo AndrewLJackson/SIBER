@@ -27,6 +27,5 @@ boundaries.
 \examples{
 # generateSiberGroup()
 
- @export
 }
 

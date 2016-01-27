@@ -26,8 +26,6 @@ the x-axis, and the second two the min and max of the y-axis.  Defaults to
 A data.frame object comprising a column of x and y data, a group 
 indentifying column and a community identifying column, all of which are 
 numeric.
-
- @export
 }
 \description{
 This function simulates data for a single community by sampling from a normal

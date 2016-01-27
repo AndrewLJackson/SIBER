@@ -41,9 +41,7 @@ distributions of the bivariate normal distribution, where n is the number of
 posterior draws in the saved sample. The first two columns are the back-
 transformed means, and the remaining four columns are the covariance matrix
 Sigma in vector format. This vector converts to the covariance matrix as
-\code{matrix(v[1:4], nrow = 2, ncol = 2)}. 
-
- @export
+\code{matrix(v[1:4], nrow = 2, ncol = 2)}.
 }
 \description{
 This function loops over each community and then loops over each group 

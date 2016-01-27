@@ -35,7 +35,5 @@ metrics relating to the corresponding Standard Ellipse.
 sigma <- matrix( c(1, 0, 0, 1), 2, 2)
 sigmaSEA(sigma)
 
- @export
-
 }
 

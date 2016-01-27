@@ -45,7 +45,7 @@
 #' priors$tau.mu <- 1.0E-3
 #' fitEllipse(x, y, parms, priors)
 #' 
-#'  @export
+#' @export
 
 fitEllipse <- function (x, y, parms, priors) 
 {

@@ -19,8 +19,6 @@ A list of length n.communities, with each element containing a
 matrix of 6 columns, each representing the Bayesian posterior distribution 
 of the 6 Layman metrics for each of the posterior draws recorded by the 
 fitting process (i.e. which determines the number of rows in this matrix).
-
- @export
 }
 \description{
 This function loops over the posterior distribution of group means within

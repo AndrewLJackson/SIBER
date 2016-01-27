@@ -15,7 +15,7 @@
 #' my.siber.data <- createSiberObject(demo.siber.data)
 #' communityMetricsML(my.siber.data)
 #' 
-#'  @export
+#' @export
 
 communityMetricsML <- function(siber) {
   

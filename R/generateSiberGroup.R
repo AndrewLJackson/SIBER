@@ -17,7 +17,7 @@
 #' @examples
 #' # generateSiberGroup()
 #' 
-#'  @export
+#' @export
 
 
 # a function to generate a single group

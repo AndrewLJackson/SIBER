@@ -11,9 +11,9 @@
 #' 
 #' @return A vector of posterior Bayesian Standard Ellipse Areas (SEA_B)
 #' 
-#'  @export
+#' @export
 #' 
-#' 
+
  
 posteriorSEA <- function (post) {
   

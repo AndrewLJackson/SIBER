@@ -18,8 +18,6 @@ A list of length n.communities with each entry representing a
 \code{n.draws * 2 * n.groups} array of rows equal to the number of posterior
 samples, 2 columns representing the two means of the multivariate data and 
 n.groups the number of groups within the focal community.
-
- @export
 }
 \description{
 This function extracts the posterior means from a call to 

@@ -25,6 +25,5 @@ data(demo.siber.data)
 my.siber.data <- createSiberObject(demo.siber.data)
 groupMetricsML(my.siber.data)
 
- @export
 }
 

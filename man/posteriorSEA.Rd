@@ -13,8 +13,6 @@ object returned by \code{link{siberMVN}}.}
 }
 \value{
 A vector of posterior Bayesian Standard Ellipse Areas (SEA_B)
-
- @export
 }
 \description{
 This function loops over each posterior draw of a single group's 

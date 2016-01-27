@@ -21,7 +21,7 @@
 #' y <- stats::rnorm(15)
 #' siberConvexhull(x, y)
 #' 
-#'  @export
+#' @export
 
 siberConvexhull <- function(x,y){
 
