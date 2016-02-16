@@ -32,6 +32,13 @@ plotSiberObject(test,
                 ylab = expression({delta}^15*N~'\u2030')
 )
 
+# Calculate sumamry statistics for each group: TA, SEA and SEAc
+group.ML <- groupMetricsML(test)
+print(group.ML)
+
+# Calculate the various Layman metrics on each of the communities.
+community.ML <- communityMetricsML(test) 
+print(community.ML)
 
 ## ------------------------------------------------------------------------
 
@@ -51,7 +58,7 @@ priors$tau.mu <- 1.0E-3
 # fit the ellipses which uses an Inverse Wishart prior
 # on the covariance matrix Sigma, and a vague normal prior on the 
 # means. Fitting is via the JAGS method.
-ellipses.posterior <- siberMVN(siber.example, parms, priors)
+ellipses.posterior <- siberMVN(test, parms, priors)
 
 
 ## ------------------------------------------------------------------------
@@ -65,7 +72,8 @@ siberDensityPlot(SEA.B, xticklabels = colnames(group.ML),
                 ylab = expression("Standard Ellipse Area " ('\u2030' ^2) ),
                 bty = "L",
                 las = 1,
-                main = "SIBER ellipses on each group"
+                main = "SIBER ellipses on each group",
+                ylims = c(0, 70)
                 )
 
 # Add red x's for the ML estimated SEA-c
