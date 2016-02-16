@@ -23,12 +23,17 @@ groupMetricsML <- function(siber){
   # prepare a matrix for storing the results.
   # Each column is a group. Each row a different metric
   
-  # community / group naming 
-  tmp.names <- unique(paste(siber$original.data[,"community"],
-                            siber$original.data[,"group"],
-                            sep=".")
-                      )
-  
+  # community / group naming by looping over communites and pasting on the 
+  # correct group names within that community.
+  tmp.names <- NULL
+  for (i in 1:siber$n.communities){
+    tmp.names <- c(tmp.names, 
+                   paste(siber$all.communities[i], 
+                         siber$group.names[[i]], sep = ".")
+                   )
+  }
+
+  # prepare matrix for storing results.
   out <- matrix(NA, nrow = 3, ncol = sum(siber$n.groups[2,]),
                 dimnames = list(c("TA", "SEA", "SEAc"), tmp.names)
                 )

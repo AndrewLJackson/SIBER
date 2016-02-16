@@ -56,6 +56,9 @@ siber$original.data <- data.in
 # store all the grouping labels
 siber$all.groups <- levels(data.in$group)
 
+# store all the community labels
+siber$all.communities <- levels(data.in$community)
+
 
 # some basic summary stats helpful for plotting
 my.summary <- function(x){
@@ -146,7 +149,8 @@ for (i in 1:siber$n.communities) {
                                       siber$group.names[[i]])
 } # end of loop over communities
 
-
+names(siber$ML.mu) <- siber$all.communities
+names(siber$ML.cov) <- siber$all.communities
 
 # ------------------------------------------------------------------------------
 # create z-score transformed versions of the raw data.

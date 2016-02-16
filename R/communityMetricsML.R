@@ -22,8 +22,7 @@ communityMetricsML <- function(siber) {
   out <- matrix(NA, nrow = 6,  ncol = siber$n.communities,
                 dimnames = list(c("dY_range", "dX_range",
                                   "TA", "CD", "MNND", "SDNND"), 
-                                paste("community", 
-                                      1:siber$n.communities, sep = "")
+                                siber$all.communities
                                 )
                 )
   
