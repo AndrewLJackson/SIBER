@@ -32,8 +32,8 @@ plotGroupHulls <- function(siber, plot.args = NULL, iso.order = c(1,2)) {
     
     for (j in 1:siber$n.groups[2,i]){
       
-      # find the indices for the jth group
-      idx <- siber$raw.data[[i]]$group == j
+      # find the indices for the jth group in the kth community
+      idx <- siber$raw.data[[i]]$group == siber$group.names[[i]][j]
       
       # calculate the hull around the jth group in the 
       # ith community

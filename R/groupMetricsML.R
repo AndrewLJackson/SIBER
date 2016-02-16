@@ -46,7 +46,7 @@ groupMetricsML <- function(siber){
       out["SEA", cnt] <- tmp.SEA$SEA
       
       # extract the sample size for this group
-      n <- siber$sample.sizes[i,j]
+      n <- siber$sample.sizes[i,paste(siber$group.names[[i]][j])]
       
       out["SEAc", cnt] <- tmp.SEA$SEA * (n - 1) / ( n - 2) 
       
@@ -55,7 +55,7 @@ groupMetricsML <- function(siber){
       # calculate the hull area around the jth group in the 
       # ith community
       # find the indices for the jth group
-      idx <- siber$raw.data[[i]]$group == j
+      idx <- siber$raw.data[[i]]$group == siber$group.names[[i]][j]
       
       ch <- siberConvexhull( siber$raw.data[[i]][idx, 1], 
                               siber$raw.data[[i]][idx, 2])

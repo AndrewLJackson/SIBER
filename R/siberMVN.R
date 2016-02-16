@@ -64,7 +64,8 @@ siberMVN <- function (siber, parms, priors)
     # loop over groups within each community
     for (j in 1:siber$n.groups[2,k]) {
       
-      grp.j <- siber$zscore.data[[k]][,"group"] == j
+      # find the rows that match the jth group in the kth community
+      grp.j <- siber$zscore.data[[k]][,"group"] == siber$group.names[[k]][j]
       
       x.zscore <- siber$zscore.data[[k]][grp.j, 1]
       y.zscore <- siber$zscore.data[[k]][grp.j, 2]

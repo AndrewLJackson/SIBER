@@ -1,15 +1,19 @@
 ---
-title: "Test non-numeric group labels"
+title: "Test non-numeric community labels"
 author: "Andrew L Jackson"
 date: "`r Sys.Date()`"
 output: html
 ---
-Some test code for checking that the group labels as strings works.
+Some test code for checking that the community (and group) labels as strings works.
 
 ```{r}
 library(SIBER)
 
-mydata <- read.csv(file.path(getwd(), "/inst/extdata/test.group.names.csv"), 
+library(viridis)
+palette(viridis(5))
+
+
+mydata <- read.csv(file.path(getwd(), "/inst/extdata/test.community.names.csv"), 
                    header = TRUE)
 
 test <- createSiberObject(mydata)
