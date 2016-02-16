@@ -9,9 +9,6 @@ Ellipse and convex hull fitting package to estimate niche width for stable isoto
 
 [MixSIAR](https://github.com/brianstock/MixSIAR) is intended to encompass all the mixing model functionality in the [SIAR package](http://www.tcd.ie/Zoology/research/research/theoretical/siar.php). Additionally, we have updated the basic mixing model from SIAR and released this as a standalone pacakge for basic mixing model fitting as [simmr](https://cran.r-project.org/web/packages/simmr/). 
 
-### Version notes
-+ v2.0.1 allows character strings to be used as group labels in place of sequential numbering. Additionally, axes limits for `plotSiberObject()` can be manually specified using the new arguments `x.limits` and `y.limits`. See associated help files and vignettes for more information.
-+ v2.0.0 is a major update over the functions embedded in the related package `siar`. The two big internal changes are: 1) fitting is now done by JAGS; and 2) data are internally mean centred and standardised prior to fitting before being back-transformed. Both of these changes improve model fitting and convergence.
 
 ## Important!!
 SIAR development will stop at some point in the future (probably in late 2015),
