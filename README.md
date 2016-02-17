@@ -5,16 +5,14 @@ SIBER
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/SIBER?)](https://github.com/metacran/cranlogs.app)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/SIBER?color=82b4e8)](https://github.com/metacran/cranlogs.app)
 
-Ellipse and convex hull fitting package to estimate niche width for stable isotope data (and potentially other relevant types of data)
+Ellipse and convex hull fitting package to estimate niche width for stable isotope data (and potentially other relevant types of bivariate data).
 
 [MixSIAR](https://github.com/brianstock/MixSIAR) is intended to encompass all the mixing model functionality in the [SIAR package](http://www.tcd.ie/Zoology/research/research/theoretical/siar.php). Additionally, we have updated the basic mixing model from SIAR and released this as a standalone pacakge for basic mixing model fitting as [simmr](https://cran.r-project.org/web/packages/simmr/). 
 
 
 ## Important!!
-SIAR development will stop at some point in the future (probably in late 2015),
-and the SIBER routines will become orphaned. This is the start of a full recode of SIBER to be a standalone package. 
-Also intended are some major improvements to model fitting, via z-scoring and back-transforming to improve fitting 
-via MCMC in JAGS. 
+SIAR development has stopped as of late 2015 (except for important bug fixes and compatability fixes),
+and the SIBER routines will become deprecated and then defunct. This is the start of a full recode of SIBER to be a standalone package.  Model fitting is much improved via JAGS in the new code within SIBER.
 
 Comments and suggestions welcome. If anyone wants to contribute code, please let me know and we can chat about how 
 to proceed.
