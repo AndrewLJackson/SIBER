@@ -20,18 +20,23 @@ Comments and suggestions welcome. If anyone wants to contribute code, please let
 to proceed.
 
 ## Installation
-This package is released on CRAN as v2.0.1. Type `install.packages("SIBER")`.
+This package is released on CRAN as v2.0.2. Type `install.packages("SIBER")` in the command line.
 
 Alternatively, you can install directly from github
 
-  - the stable release can be installed by
-    - `library(devtools)` # install if necessary
-    - install_github("andrewljackson/SIBER@v2.0.1")
-    - library(SIBER)
-  - The development (**and not guaranteed stable**) release is the master branch
-    - `library(devtools)` # install if necessary
-    - install_github("andrewljackson/SIBER@master")
-    - library(SIBER)
+The stable release can be installed by
+  ```R
+    # install.packages("devtools") # install if necessary
+    devtool::install_github("andrewljackson/SIBER@v2.0.2")
+    library(SIBER)
+  ```
+
+The development (**and not guaranteed stable**) release is the master branch
+  ```R
+    # install.packages("devtools") # install if necessary
+    devtool::install_github("andrewljackson/SIBER")
+    library(SIBER)
+  ```
 
 
 ## Tutorials
