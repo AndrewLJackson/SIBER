@@ -1,25 +1,9 @@
----
-title: "Customising Plots Manually"
-author: "Andrew L Jackson"
-date: "3 August 2016"
-output: html_document
-vignette: >
-  %\VignetteIndexEntry{Customising Plots Manually}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
-  %\VignetteDepends{viridis}
----
-
-```{r, echo = FALSE}
+## ---- echo = FALSE-------------------------------------------------------
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", 
                       fig.width = 6, fig.height = 5)
 
-```
 
-## Creating a Blank Plot
-In the vignette **Introduction to Siber** we used the bundled functions `plotSiberObject()` to create plots with ellipses and hulls and saw how we can use `plotGroupEllipses()` to add some customised ellipses. Here we will look in more detail at how we can add customised elements to a blank plot by calling the underlying functions directly. Again we will use the bundled example dataset.
-
-```{r, echo = TRUE}
+## ---- echo = TRUE--------------------------------------------------------
 # remove previously loaded items from the current environment and remove previous graphics.
 rm(list=ls())
 graphics.off()
@@ -46,13 +30,8 @@ data("demo.siber.data")
 siber.example <- createSiberObject(demo.siber.data)
 
 
-```
 
-You dont even have to use `plotSiberObject()` to plot your raw data. You could plot it all yourself directly from your raw data using any points, colours and axes styles that you want.
-
-Next we want to add a single ellipse, fully customised to one of our clusters of data; i.e. one of the groups within a community. Here I define the group and community using two created variables so as you could adapt this run for any group/community combination you wanted, or perhaps more suitably, write a loop to traverse all your data.
-
-```{r, echo=TRUE}
+## ---- echo=TRUE----------------------------------------------------------
 plotSiberObject(siber.example,
                   ax.pad = 2, 
                   hulls = FALSE, 
@@ -97,7 +76,4 @@ coords <- addEllipse(siber.example$ML.mu[[c.id]][ , , g.id],
                      col = g.id,
                      lty = 3,
                      lwd = 2)
-```
-
-As this is just a simple base R graphics window, you can add lines, points and text as you like. You can also call the functions `plotGroupHulls(siber.example)` and `plotCommunityHulls(siber.example)` directly and customise their inputs as per the vignette **Introduction to Siber**.
 
