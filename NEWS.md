@@ -1,5 +1,8 @@
-# SIBER 2.0.2.9000
+# SIBER 2.0.3.9000
 + To be implemented...
+
+# SIBER 2.0.3
++ Added a new vignette illustrating how to add custom ellipses to each group manually
 
 # SIBER 2.0.2
 + Bug in Group labels as character strings fixed
