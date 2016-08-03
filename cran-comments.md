@@ -8,7 +8,7 @@ N/A
 N/A
 
 ## Test environments
-* local OS X 10.9.5 install, R 3.2.3
+* local OS X 10.9.5 install, R 3.3.1
 * win-builder (R-release) via devtools::build_win()
 * win-builder (R-devel) via devtools::build_win()
 

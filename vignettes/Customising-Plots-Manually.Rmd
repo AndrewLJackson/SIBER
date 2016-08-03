@@ -17,7 +17,7 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>",
 ```
 
 ## Creating a Blank Plot
-In the vignette **Introduction to Siber** we used the bundled functions `plotSiberObject()` to create plots with ellipses and hulls and saw how we can use `plotGroupEllipses()` to add some customised ellipses. Here we will look in more detail at how we can add customised elements to a blank plot by calling the underlying functions directly. Again we will use the bundled example dataset.
+In the vignette [Introduction to Siber](Introduction-to-SIBER.html) we used the bundled functions `plotSiberObject()` to create plots with ellipses and hulls and saw how we can use `plotGroupEllipses()` to add some customised ellipses. Here we will look in more detail at how we can add customised elements to a blank plot by calling the underlying functions directly. Again we will use the bundled example dataset.
 
 ```{r, echo = TRUE}
 # remove previously loaded items from the current environment and remove previous graphics.
@@ -99,5 +99,5 @@ coords <- addEllipse(siber.example$ML.mu[[c.id]][ , , g.id],
                      lwd = 2)
 ```
 
-As this is just a simple base R graphics window, you can add lines, points and text as you like. You can also call the functions `plotGroupHulls(siber.example)` and `plotCommunityHulls(siber.example)` directly and customise their inputs as per the vignette **Introduction to Siber**.
+As this is just a simple base R graphics window, you can add lines, points and text as you like. You can also call the functions `plotGroupHulls(siber.example)` and `plotCommunityHulls(siber.example)` directly and customise their inputs as per the vignette [Introduction to Siber](Introduction-to-SIBER.html).
 

@@ -4,6 +4,8 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>",
 library(viridis)
 palette(viridis(3))
 
+library(SIBER)
+
 ## ------------------------------------------------------------------------
 # remove previously loaded items from the current environment and remove previous graphics.
 rm(list=ls())
@@ -14,6 +16,39 @@ graphics.off()
 # get the same results as you, although random number generators change 
 # from time to time.
 set.seed(1)
+
+library(SIBER)
+
+# load in the included demonstration dataset
+data("demo.siber.data")
+#
+# create the siber object
+siber.example <- createSiberObject(demo.siber.data)
+
+
+# Or if working with your own data read in from a *.csv file, you would use
+# This *.csv file is included with this package. To find its location
+# type
+# fname <- system.file("extdata", "demo.siber.data.csv", package = "SIBER")
+# in your command window. You could load it directly by using the
+# returned path, or perhaps better, you could navigate to this folder
+# and copy this file to a folder of your own choice, and create a 
+# script from this vingette to analyse it. This *.csv file provides
+# a template for how your own files should be formatted.
+
+# mydata <- read.csv(fname, header=T)
+# siber.example <- createSiberObject(mydata)
+
+
+
+
+
+## ------------------------------------------------------------------------
+# Create lists of plotting arguments to be passed onwards to each 
+# of the three plotting functions.
+community.hulls.args <- list(col = 1, lty = 1, lwd = 1)
+group.ellipses.args  <- list(n = 100, p.interval = 0.95, lty = 1, lwd = 2)
+group.hull.args      <- list(lty = 2, col = "grey20")
 
 
 
