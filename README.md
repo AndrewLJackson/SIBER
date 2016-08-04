@@ -18,14 +18,14 @@ Comments and suggestions welcome. If anyone wants to contribute code, please let
 to proceed.
 
 ## Installation
-This package is released on CRAN as v2.0.2. Type `install.packages("SIBER")` in the command line.
+This package is released on CRAN as v2.0.3. Type `install.packages("SIBER")` in the command line.
 
 Alternatively, you can install directly from github
 
 The stable release can be installed by
   ```R
     # install.packages("devtools") # install if necessary
-    devtools::install_github("andrewljackson/SIBER@v2.0.2")
+    devtools::install_github("andrewljackson/SIBER@v2.0.3")
     library(SIBER)
   ```
 
@@ -40,7 +40,7 @@ The development (**and not guaranteed stable**) release is the master branch
 ## Tutorials
 More information and examples from the previous version of SIBER which is part of the SIAR package is available from [my website](http://www.tcd.ie/Zoology/research/research/theoretical/Rpodcasts.php#siber). Much of this instructional content remains true, although the implementation of the code has changed substantially (for the better I hope).
 
-The package vingette provides working examples of the two main analysis types.
+The package vingettes provide working examples of the two main analysis types.
 
 ## Help, Assistance and Queries
 In the first instance, queries about analyses or problems with the software should be posted to [stackoverflow](https://stackoverflow.com/questions/tagged/siber) using the tag `siber`. If you are convinced you have discovered a bug or major problem in the software, you can raise an [issue here on github](https://github.com/AndrewLJackson/SIBER/issues).
