@@ -53,7 +53,7 @@ test.these <- matrix(c(-5, 0, 4, -5,  2,
 Z <- t(apply(test.these,1,myfun))
 
 # and test they are within the radius
-inside = rowSums(Z ^ 2) < qchisq(0.95,df=2)
+inside = rowSums(Z ^ 2) < qchisq(0.95, df=2)
 
 points(test.these[,2]~test.these[,1], col = inside + 1, pch = "*")
 

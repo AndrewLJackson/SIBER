@@ -1,0 +1,26 @@
+#' Test whether a set of points are inside or outside a defined circle
+#' 
+#' Takes a 
+#' 
+#' @param Z the \code{i x d} matrix of data points to be tested
+#' @param p the percentile of the ellipse to be tested
+#' @param r a manulally defined radius of the circle to be used. Setting \code{r} 
+#' to be anything other than NULL will override the choice of \code{p}.
+#' 
+#' @return A logical vector indicating whether the point is inside or outside 
+#' the circle
+#' 
+#' @export
+
+ellipseInOut <- function(Z, p = 0.95, r = NULL){
+  
+  # if r is NULL as per default, calculate it based on p
+  if(is.null(r)) {r <- stats::qchisq(p, df=2)}
+  
+  # determine if each point is inside this radius or not
+  inside <- rowSums(Z ^ 2) < r
+  
+  # return this logical vector
+  return(inside)
+  
+}

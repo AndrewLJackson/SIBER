@@ -22,7 +22,9 @@ Ellipse
 }
 \description{
 This function takes a covariance 2x2 matrix Sigma and returns various 
-metrics relating to the corresponding Standard Ellipse.
+metrics relating to the corresponding Standard Ellipse. The function is 
+limited to the 2-dimensional case, as many of the ancilliary summary 
+statistics are not defined for higher dimensions (e.g. eccentricity).
 }
 \section{Note}{
  This function is currently based on the eigenvalue and 
