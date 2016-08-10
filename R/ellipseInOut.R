@@ -15,7 +15,7 @@
 ellipseInOut <- function(Z, p = 0.95, r = NULL){
   
   # if r is NULL as per default, calculate it based on p
-  if(is.null(r)) {r <- stats::qchisq(p, df=2)}
+  if(is.null(r)) {r <- stats::qchisq(p, df = ncol(Z))}
   
   # determine if each point is inside this radius or not
   inside <- rowSums(Z ^ 2) < r

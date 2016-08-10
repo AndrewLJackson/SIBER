@@ -84,3 +84,51 @@ points(test.these[,2] ~ test.these[,1],
        cex = 2)
 
 ```
+
+##3 and more dimensions
+These functions will work just the same with more than 2 dimensions of data. In three dimensions you are testing whether your data are inside or outside a ball that has a transformation to and from an ellipsoid (spherical, cigar or frisbee shaped). The concept is exactly the same in 4 and more dimensions. The problem is illustrating the ellipsoid is not possible in >3 dimensions, and I have not yet implemented 3d versions of the ellipsoids, but I am sure many tutorials exist on how to plot these. Alternatively, and for illustrative pursposes only you could plot each pair of your dimensions in turn, and add ellipses manually. The problrm is that some points might appear to be in or out of the ellipse in these marginal plots, but might conflict with the true situation when all dimensions are considered simultaneously.
+
+```{r highdim, echo = TRUE}
+# set the random seed generator so we get consistent results each time 
+# we run this code.
+#set.seed(2)
+
+# n random numbers
+n <- 10^4
+
+# number of dimensions
+d <- 3
+
+# vector of d means between -1 and +1
+mu <- stats::runif(d, -1, +1)
+  
+# a (d x d) covariance matrix
+# pull a precision matrix from the wishart distribution and invert it to 
+# get the corresponding covariance matrix.
+sigma <- solve(matrix(stats::rWishart(1, d, diag(d)), d, d))
+
+# n-dimensional multivariate random numbers for this test
+Y <- mnormt::rmnorm(n, mu, sigma)  
+
+# sample mean and covariance matrix
+mu <- colMeans(Y) # centre of the ellipse
+Sigma <- cov(Y) # covariance matrix of the ellipse
+
+# percentile of the ellipsoid to test
+p <- 0.95 
+
+# here i am just going to test whether my actual data points are inside
+# or outside the 95% ellipsoid but you could replace with your own 
+# data points as above
+
+# transform these points onto ellipsoid coordinates
+Z <- pointsToEllipsoid(Y, Sigma, mu)
+
+# determine whther or not these points are inside or outside the ellipse drawn 
+# with same p as above (percentile).
+inside <- ellipseInOut(Z, p = p)
+
+# how many of our points are inside our ellipse?
+sum(inside) / length(inside)
+
+```

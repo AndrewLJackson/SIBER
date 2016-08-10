@@ -29,8 +29,9 @@ generateSiberGroup <- function (mu.range = c(-1, 1, -1, 1), n.obs = 30) {
   mu[1] <- stats::runif(1, mu.range[1], mu.range[2])
   mu[2] <- stats::runif(1, mu.range[3], mu.range[4])
   
-  # pull a covariance matrix from the wishart distribution
-  sigma <- matrix(stats::rWishart(1, 2, diag(2)), 2, 2)
+  # pull a precision matrix from the wishart distribution and invert it to 
+  # get the corresponding covariance matrix.
+  sigma <- solve(matrix(stats::rWishart(1, 2, diag(2)), 2, 2))
   
   # the data are random normal
   y <- mnormt::rmnorm(n.obs, mu, sigma)  
