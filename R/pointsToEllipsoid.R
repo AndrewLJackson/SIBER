@@ -16,6 +16,22 @@
 
 pointsToEllipsoid <- function(X, Sigma, mu){
   
+  # ----------------------------------------------------------------------------
+  # some input checking
+  
+  # check Sigma is a square matrix
+  if(ncol(Sigma) != nrow(Sigma)) stop("Sigma must be a square matrix")
+  
+  # check X matches Sigma
+  if(ncol(X) != ncol(Sigma)) stop("number of columns in X must 
+                                  be of same dimension as Sigma")
+  
+  # check mu matches Sigma
+  if(length(mu) != ncol(Sigma)) stop("length of mu must 
+                                  be of same dimension as Sigma")
+  
+  # ----------------------------------------------------------------------------
+  
   # eigen values and vectors of the covariance matrix
   eig <- eigen(Sigma)
   

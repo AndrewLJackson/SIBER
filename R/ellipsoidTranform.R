@@ -13,5 +13,6 @@
 #' @export
 
 ellipsoidTransform = function(x, SigSqrt, mu) {
+  # input error checking is handled upstream in pointsToEllipsoid()
   return(solve(SigSqrt,x-mu))
 }  
