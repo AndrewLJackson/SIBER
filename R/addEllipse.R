@@ -37,7 +37,7 @@
 #' @export
 
 addEllipse <- function(mu, sigma, m = NULL, n = 100, p.interval = NULL , 
-                        ci.mean = FALSE, ...){
+                        ci.mean = FALSE, small.sample = FALSE, ...){
   
   # mu is the location of the ellipse (its bivariate mean)
   # sigma describes the shape and size of the ellipse
@@ -53,6 +53,13 @@ addEllipse <- function(mu, sigma, m = NULL, n = 100, p.interval = NULL ,
            c.scale <- m,
            c.scale <- 1
          )
+  
+  # The small.sample toggles on and off (default) the small sample size 
+  # correction to essentially plot the SEAc in place of the SEA. It can be 
+  # used inconjuction with any prediction ellipse.
+  ifelse(small.sample,
+           q <- (n - 1) / (n - 2),
+           q <- 1)
   
   
   # if p is NULL then plot a standard ellipse with r = 1
@@ -73,7 +80,7 @@ addEllipse <- function(mu, sigma, m = NULL, n = 100, p.interval = NULL ,
   e = eigen(sigma / c.scale)
   
   # 
-  SigSqrt = e$vectors %*% diag(sqrt(e$values)) %*% t(e$vectors)
+  SigSqrt = e$vectors %*% diag(sqrt(e$values * q)) %*% t(e$vectors)
   
   # create a unit radius circle to transform
   cc <- genCircle(n, r)

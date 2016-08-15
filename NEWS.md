@@ -1,8 +1,10 @@
 # SIBER 2.0.3.9000
-+ To be implemented...
++ Added functions to calculate whether arbitrary points are inside or outside ellipses or higher dimensional ellipsoids along with illustrative vignettes.
++ Changed method of calculation of angle of ellipse with x-axis to using `atan` in place of `asin` which is a more elegant way of ensuring the sign of the returned angle is correct.
++ Small sample size correction for drawing ellipses can now be toggled using addEllipse(small.sample = TRUE, m = m) effectively meaning SEAc or SEA can be illustrated.
 
 # SIBER 2.0.3
-+ Added a new vignette illustrating how to add custom ellipses to each group manually
++ Added a new vignette illustrating how to add custom ellipses to each group manually using the function `addEllipse`
 
 # SIBER 2.0.2
 + Bug in Group labels as character strings fixed
@@ -12,6 +14,7 @@
 + Group labels can now be strings and do not have to be sequential integers (#14)
 
 # SIBER 2.0
++ Major overhaul of all code and underlying fitting algorithms
 + Fitting is now via JAGS
 + Data are z-score transformed prior to fitting to improve convergence
 + Data structures have now changed from previous versions embedded within SIAR 
