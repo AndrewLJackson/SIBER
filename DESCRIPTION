@@ -25,6 +25,7 @@ Packaged:
 NeedsCompilation: yes
 Suggests:
     knitr,
-    viridis
+    viridis,
+    spatstat
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
