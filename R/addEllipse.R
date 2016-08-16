@@ -1,35 +1,43 @@
 #' Adds an ellipse around some data to an existing plot
 #' 
 #' This function adds an ellipse based on means and covariance to an existing 
-#' plot. The ellipse can be scaled so as to represent any prediction interval 
-#' of the data you wish, or alternatively any confidence interval of the 
-#' bivariate means.
+#' plot. The ellipse can be scaled so as to represent any prediction interval of
+#' the data you wish, or alternatively any confidence interval of the bivariate 
+#' means.
 #' 
 #' @param mu a vector of length two specifying the bivariate means
 #' @param sigma a 2x2 covariance matrix for the data
 #' @param m is the sample size of the dataset on which the ellipse is to be 
-#' plotted. This is only informative if calculating the confidence interval of 
-#' the bivariate mean, which requires a correction of \code{1/sqrt(m)}. 
-#' Defaults to NULL and has no effect.
+#'   plotted. This is only informative if calculating the confidence interval of
+#'   the bivariate mean, which requires a correction of \code{1/sqrt(m)}. 
+#'   Defaults to NULL and has no effect.
 #' @param n the number of data points to be used to plot the ellipse. More 
-#' points makes for a smoother ellipse, especially if it has high eccentricity. 
-#' Defaults to \code{n = 100}.
+#'   points makes for a smoother ellipse, especially if it has high 
+#'   eccentricity. Defaults to \code{n = 100}.
 #' @param p.interval the quantile to be used to construct a prediction ellipse 
-#' that contains p.interval proportion of the data. By default, 
-#' \code{p.interval = NULL} and the Standard Ellipse is drawn which contains 
-#' approximately 40\% of the data. Setting \code{p.interval = 0.95} will result 
-#' in an ellipse that contains approximately 95\% of the data.
+#'   that contains p.interval proportion of the data. By default, 
+#'   \code{p.interval = NULL} and the Standard Ellipse is drawn which contains 
+#'   approximately 40\% of the data. Setting \code{p.interval = 0.95} will 
+#'   result in an ellipse that contains approximately 95\% of the data.
 #' @param ci.mean a logical that determines whether the ellipse drawn is a 
-#' prediction ellipse of the entire data, or a confidence interval of the 
-#' bivariate means. Defaults to \code{FALSE}. If set to \code{TRUE}, then 
-#' \code{p.interval} can be used to generate an appropriate \% confidence 
-#' interval of the bivariate means.
+#'   prediction ellipse of the entire data, or a confidence interval of the 
+#'   bivariate means. Defaults to \code{FALSE}. If set to \code{TRUE}, then 
+#'   \code{p.interval} can be used to generate an appropriate \% confidence 
+#'   interval of the bivariate means.
+#' @param small.sample a logical that determines whether or not the small sample
+#'   size correction is to be applied (TRUE) or not (FALSE). Defaults to FALSE. 
+#'   This allows SEAc rather than SEA to be plotted, but the correction can be 
+#'   applied to any percentile ellipse.
+#' @param do.plot A logical that determines whether plotting should occur (TRUE 
+#'   and default) or not (FALSE). Setting to false is useful if you want to
+#'   access the coordinates of the ellipse in order to calculate overlap between
+#'   ellipses for example.
 #' @param ... additional arguments as a list to be passed to 
-#' \code{\link[graphics]{plot}}.
-#' 
-#' @return A 6 x m matrix of the 6 Layman metrics of dX_range, dY_range, TA, 
-#' CD, MNND and SDNND in rows, for each community by column
-#' 
+#'   \code{\link[graphics]{plot}}.
+#'   
+#' @return A 6 x m matrix of the 6 Layman metrics of dX_range, dY_range, TA, CD,
+#'   MNND and SDNND in rows, for each community by column
+#'   
 #' @examples
 #' data(demo.siber.data)
 #' my.siber.data <- createSiberObject(demo.siber.data)
@@ -37,7 +45,20 @@
 #' @export
 
 addEllipse <- function(mu, sigma, m = NULL, n = 100, p.interval = NULL , 
-                        ci.mean = FALSE, small.sample = FALSE, ...){
+                        ci.mean = FALSE, small.sample = FALSE, 
+                        do.plot = TRUE, ...){
+  
+  # ----------------------------------------------------------------------------
+  # Some error checking
+  if(small.sample & is.null(m)) message("A sample size number given by m is 
+                                        required when small.sample is TRUE")
+  
+  if(ci.mean & is.null(m)) message("A sample size number given by m is 
+                                        required when plotting confidence 
+                                   ellipses of the mean with ci.mean is TRUE")
+  
+  
+  # ----------------------------------------------------------------------------
   
   # mu is the location of the ellipse (its bivariate mean)
   # sigma describes the shape and size of the ellipse
@@ -98,7 +119,7 @@ addEllipse <- function(mu, sigma, m = NULL, n = 100, p.interval = NULL ,
   
   ML.ellipse = t(apply(cc,1, back.trans))
   
-  if(grDevices::dev.cur() > 1) {graphics::lines(ML.ellipse, ...)}
+  if(grDevices::dev.cur() > 1 & do.plot) {graphics::lines(ML.ellipse, ...)}
 
   # optional return of x and y coordinates of the plotted ellipse
   return(ML.ellipse)

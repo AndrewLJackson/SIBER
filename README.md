@@ -25,14 +25,16 @@ Alternatively, you can install directly from github
 The stable release can be installed by
   ```R
     # install.packages("devtools") # install if necessary
-    devtools::install_github("andrewljackson/SIBER@v2.0.3")
+    devtools::install_github("andrewljackson/SIBER@v2.0.3", 
+    build_vingettes = TRUE)
     library(SIBER)
   ```
 
 The development (**and not guaranteed stable**) release is the master branch
   ```R
     # install.packages("devtools") # install if necessary
-    devtools::install_github("andrewljackson/SIBER")
+    devtools::install_github("andrewljackson/SIBER",
+    build_vingettes = TRUE)
     library(SIBER)
   ```
 

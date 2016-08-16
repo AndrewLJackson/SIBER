@@ -89,7 +89,7 @@ plotSiberObject(siber.example,
 
 
 
-# Calculate sumamry statistics for each group: TA, SEA and SEAc
+# Calculate summary statistics for each group: TA, SEA and SEAc
 group.ML <- groupMetricsML(siber.example)
 print(group.ML)
 

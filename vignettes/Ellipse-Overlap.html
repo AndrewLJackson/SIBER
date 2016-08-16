@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Andrew L Jackson" />
+
+<meta name="date" content="2016-08-16" />
+
+<title>Ellipse Overlap</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Ellipse Overlap</h1>
+<h4 class="author"><em>Andrew L Jackson</em></h4>
+<h4 class="date"><em>2016-08-16</em></h4>
+
+
+
+<div id="calculating-the-area-of-overlap-between-two-ellipses" class="section level2">
+<h2>Calculating the Area of Overlap Between Two Ellipses</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># remove previously loaded items from the current environment and remove previous graphics.</span>
+<span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
+<span class="kw">graphics.off</span>()
+
+<span class="co"># Here, I set the seed each time so that the results are comparable. </span>
+<span class="co"># This is useful as it means that anyone that runs your code, *should*</span>
+<span class="co"># get the same results as you, although random number generators change </span>
+<span class="co"># from time to time.</span>
+<span class="kw">set.seed</span>(<span class="dv">1</span>)
+
+<span class="kw">library</span>(SIBER)
+
+<span class="co"># load in the included demonstration dataset</span>
+<span class="kw">data</span>(<span class="st">&quot;demo.siber.data&quot;</span>)
+<span class="co">#</span>
+<span class="co"># create the siber object</span>
+siber.example &lt;-<span class="st"> </span><span class="kw">createSiberObject</span>(demo.siber.data)
+
+
+<span class="co"># Or if working with your own data read in from a *.csv file, you would use</span>
+<span class="co"># This *.csv file is included with this package. To find its location</span>
+<span class="co"># type</span>
+<span class="co"># fname &lt;- system.file(&quot;extdata&quot;, &quot;demo.siber.data.csv&quot;, package = &quot;SIBER&quot;)</span>
+<span class="co"># in your command window. You could load it directly by using the</span>
+<span class="co"># returned path, or perhaps better, you could navigate to this folder</span>
+<span class="co"># and copy this file to a folder of your own choice, and create a </span>
+<span class="co"># script from this vingette to analyse it. This *.csv file provides</span>
+<span class="co"># a template for how your own files should be formatted.</span>
+
+<span class="co"># mydata &lt;- read.csv(fname, header=T)</span>
+<span class="co"># siber.example &lt;- createSiberObject(mydata)</span>
+
+
+<span class="co"># Create lists of plotting arguments to be passed onwards to the  </span>
+<span class="co"># plotting functions. With p.interval = NULL, these are SEA. NB not SEAc though</span>
+<span class="co"># which is what we will base our overlap calculations on. This implementation </span>
+<span class="co"># needs to be added in a future update. For now, the best way to plot SEAc is to</span>
+<span class="co"># add the ellipses manually following the vignette on this topic.</span>
+group.ellipses.args  &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">p.interval =</span> <span class="ot">NULL</span>, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
+
+
+
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))
+<span class="kw">plotSiberObject</span>(siber.example,
+                  <span class="dt">ax.pad =</span> <span class="dv">2</span>, 
+                  <span class="dt">hulls =</span> F, community.hulls.args, 
+                  <span class="dt">ellipses =</span> T, group.ellipses.args,
+                  <span class="dt">group.hulls =</span> F, group.hull.args,
+                  <span class="dt">bty =</span> <span class="st">&quot;L&quot;</span>,
+                  <span class="dt">iso.order =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),
+                  <span class="dt">xlab =</span> <span class="kw">expression</span>({delta}^<span class="dv">13</span>*C~<span class="st">'\u2030'</span>),
+                  <span class="dt">ylab =</span> <span class="kw">expression</span>({delta}^<span class="dv">15</span>*N~<span class="st">'\u2030'</span>)
+                  )
+<span class="co">#&gt; Warning in title(...): font metrics unknown for Unicode character U+2030</span>
+
+<span class="co">#&gt; Warning in title(...): font metrics unknown for Unicode character U+2030</span>
+<span class="co">#&gt; Warning in title(...): conversion failure on '‰' in 'mbcsToSbcs': dot</span>
+<span class="co">#&gt; substituted for &lt;e2&gt;</span>
+<span class="co">#&gt; Warning in title(...): conversion failure on '‰' in 'mbcsToSbcs': dot</span>
+<span class="co">#&gt; substituted for &lt;80&gt;</span>
+<span class="co">#&gt; Warning in title(...): conversion failure on '‰' in 'mbcsToSbcs': dot</span>
+<span class="co">#&gt; substituted for &lt;b0&gt;</span>
+<span class="co">#&gt; Warning in title(...): font metrics unknown for Unicode character U+2030</span>
+
+<span class="co">#&gt; Warning in title(...): font metrics unknown for Unicode character U+2030</span>
+<span class="co">#&gt; Warning in title(...): conversion failure on '‰' in 'mbcsToSbcs': dot</span>
+<span class="co">#&gt; substituted for &lt;e2&gt;</span>
+<span class="co">#&gt; Warning in title(...): conversion failure on '‰' in 'mbcsToSbcs': dot</span>
+<span class="co">#&gt; substituted for &lt;80&gt;</span>
+<span class="co">#&gt; Warning in title(...): conversion failure on '‰' in 'mbcsToSbcs': dot</span>
+<span class="co">#&gt; substituted for &lt;b0&gt;</span></code></pre></div>
+<p>In order now to calculate the overlap between two (or more) ellipses, we need to know the coordinates of each ellipse. This is done by manually calling <code>addEllipse(..., do.plot = FALSE)</code>. See the associated help file and the vignette <a href="Customising-Plots-Manually.html">Customising-Plots-Manually</a> for more information on optional inputs to addEllipse for different types of ellipse. Also, bear in mind that the option <code>n</code> controls how many points are used to draw the ellipse, and hence low <code>n</code> means clunky, edgier ellipses, compared with rounder, smoother ellipses for higher <code>n</code>. A higher <code>n</code> is more suitable when ellipses are more eccentric as their curvature is greater at the tips.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># In this example, I will calculate the overlap between ellipses for groups 2</span>
+<span class="co"># and 3 in community 1 (i.e. the green and yellow open circles of data).</span>
+c<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="dv">1</span> <span class="co"># specify the community ID</span>
+e<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="dv">2</span> <span class="co"># specify the first ellipse, i.e. group 2 in this case</span>
+
+c<span class="fl">.2</span> &lt;-<span class="st"> </span>c<span class="fl">.1</span> <span class="co"># same community in this example</span>
+e<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="dv">3</span> <span class="co"># specify the second ellipse for comparison; group 3 in this example</span>
+
+<span class="co"># see help file for addEllipse for more information. With p.interval = NULL and </span>
+<span class="co"># extracting the sample size from siber.examples$sample.sizes,</span>
+<span class="co"># I am drawing small sample size corrected, Standard Ellipses around the data.</span>
+coords<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">addEllipse</span>(siber.example$ML.mu[[c<span class="fl">.1</span>]][ , , e<span class="fl">.1</span>],
+                     siber.example$ML.cov[[c<span class="fl">.1</span>]][ , , e<span class="fl">.1</span>],
+                     <span class="dt">m =</span> siber.example$sample.sizes[c<span class="fl">.1</span>, e<span class="fl">.1</span>],
+                     <span class="dt">small.sample =</span> <span class="ot">TRUE</span>,
+                     <span class="dt">n =</span> <span class="dv">100</span>,
+                     <span class="dt">p.interval =</span> <span class="ot">NULL</span>,
+                     <span class="dt">ci.mean =</span> <span class="ot">FALSE</span>,
+                     <span class="dt">do.plot =</span> <span class="ot">FALSE</span>)
+
+coords<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">addEllipse</span>(siber.example$ML.mu[[c<span class="fl">.2</span>]][ , , e<span class="fl">.2</span>],
+                     siber.example$ML.cov[[c<span class="fl">.2</span>]][ , , e<span class="fl">.2</span>],
+                     <span class="dt">m =</span> siber.example$sample.sizes[c<span class="fl">.1</span>, e<span class="fl">.1</span>],
+                     <span class="dt">n =</span> <span class="dv">100</span>,
+                     <span class="dt">p.interval =</span> <span class="ot">NULL</span>,
+                     <span class="dt">ci.mean =</span> <span class="ot">FALSE</span>,
+                     <span class="dt">do.plot =</span> <span class="ot">FALSE</span>)
+
+<span class="co"># and now we can use the function spatstat::overlap.xypolygon to calculate the </span>
+<span class="co"># overlap, which is expressed in units, in this case permil squared.</span>
+overlap &lt;-<span class="st"> </span><span class="kw">abs</span>(spatstat::<span class="kw">overlap.xypolygon</span>(<span class="kw">list</span>(<span class="dt">x =</span> coords<span class="fl">.1</span>[,<span class="dv">1</span>],
+                                                <span class="dt">y =</span> coords<span class="fl">.2</span>[,<span class="dv">2</span>]), 
+                                           <span class="kw">list</span>(<span class="dt">x =</span> coords<span class="fl">.2</span>[,<span class="dv">1</span>],
+                                                <span class="dt">y =</span> coords<span class="fl">.2</span>[,<span class="dv">2</span>])
+                                           ))
+
+<span class="co"># you could then express this as a proportion of the total area of both these </span>
+<span class="co"># standard ellipses, or as a proportion of one or the other if you liked. </span>
+<span class="co"># There is no obvious choice here, and it depends on your question.</span>
+
+<span class="co"># Calculate sumamry statistics for each group: TA, SEA and SEAc</span>
+group.ML &lt;-<span class="st"> </span><span class="kw">groupMetricsML</span>(siber.example)
+<span class="kw">print</span>(group.ML)
+<span class="co">#&gt;            1.1       1.2       1.3       2.1       2.2       2.3</span>
+<span class="co">#&gt; TA   21.924922 10.917715 17.945127 3.0714363 11.476354 1.4818061</span>
+<span class="co">#&gt; SEA   5.783417  3.254484  5.131601 0.8623300  3.458824 0.4430053</span>
+<span class="co">#&gt; SEAc  5.989967  3.370715  5.314872 0.8931275  3.582354 0.4588269</span>
+
+<span class="co"># so in this case, the proportional overlap, would be</span>
+overlap /<span class="st"> </span>(group.ML[<span class="dv">3</span>,<span class="dv">2</span>] +<span class="st"> </span>group.ML[<span class="dv">3</span>,<span class="dv">3</span>])
+<span class="co">#&gt; [1] 0.039559</span></code></pre></div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
