@@ -12,6 +12,10 @@ Imports:
     graphics,
     stats,
     grDevices
+Suggests:
+    knitr,
+    viridis,
+    spatstat
 Author: Andrew Jackson and Andrew Parnell
 Maintainer: Andrew Jackson <a.jackson@tcd.ie>
 Description: Fits bi-variate ellipses to stable isotope data using Bayesian
@@ -23,9 +27,5 @@ LazyData: true
 Encoding: UTF-8
 Packaged: 
 NeedsCompilation: yes
-Suggests:
-    knitr,
-    viridis,
-    spatstat
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
