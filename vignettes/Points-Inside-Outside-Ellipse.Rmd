@@ -7,7 +7,6 @@ vignette: >
   %\VignetteIndexEntry{Points Inside or Outside Ellipse}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-  %\VignetteDepends{viridis}
 ---
 
 ```{r, echo = FALSE}

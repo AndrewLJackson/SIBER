@@ -7,7 +7,6 @@ vignette: >
   %\VignetteIndexEntry{Ellipse Overlap}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-  %\VignetteDepends{viridis, spatstat}
 ---
 
 ```{r, echo = FALSE}

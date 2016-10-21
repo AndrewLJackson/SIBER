@@ -7,16 +7,14 @@ vignette: >
   %\VignetteIndexEntry{Introduction to SIBER}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-  %\VignetteDepends{viridis}
 ---
 
-```{r, echo = FALSE}
+```{r setup, echo = FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", 
                       fig.width = 6, fig.height = 5)
 library(viridis)
 palette(viridis(3))
 
-library(SIBER)
 ```
 
 ## SIBER introduction and guide
@@ -25,7 +23,7 @@ This user manual introduces the basic functionality of this standalone version o
 ## Setting up our R session for this demonstration
 In this example, we are going to work with a bundled example dataset that I created previously using the function `generateSiberData()`. This dataset is loaded using `data("demo.siber.data")` but it is also provided as a raw *.csv file which is more usually the format you would work with when organising your own dataset for analysis using SIBER. We then use `createSiberObject()` to convert this raw data form into an object that contains information summary statistics that are useful for plotting, and a z-score transformed version of the data which is used in the model fitting process before being back-transformed using the summary statistic information.
 
-```{r}
+```{r load-data}
 # remove previously loaded items from the current environment and remove previous graphics.
 rm(list=ls())
 graphics.off()
@@ -83,7 +81,7 @@ Ellipses are drawn for each group independently with `ellipses = T`. These ellip
 
 Convex hulls are draw around each group independently with `group.hulls = T`.
 
-```{r}
+```{r plot-data}
 # Create lists of plotting arguments to be passed onwards to each 
 # of the three plotting functions.
 community.hulls.args <- list(col = 1, lty = 1, lwd = 1)
@@ -112,7 +110,7 @@ Although the intention of SIBER is to use Bayesian methods to allow us to make s
 
 One feature of the Standard Ellipse is that it contains approximately 40% of the data. SIBER now includes code to scale this ellipse so that it contains approximately any % of the data you wish. Additionally, the ellipse can be scaled so that it represents a % confidence ellipse of the bivariate means (rather than of the data). We create the bi-plot again here and this time add the additional ellipses overlayed on the basic plot that this time omits group hulls and group standard ellipses.
 
-```{r}
+```{r summary-stats}
 
 par(mfrow=c(1,1))
 
@@ -157,7 +155,7 @@ plotGroupEllipses(siber.example, n = 100, p.interval = 0.95, ci.mean = T,
 
 Alternativly, we may wish to focus on comparing the two communities represented in these plots by the open circles and the open triangles. To illustrate these groupings, we might draw the convex hull between the means of each of the three groups comprising each community. Additionally, I have highlighted the location of each group by adding the 95% confidence interval of their bivariate mean.
 
-```{r}
+```{r layman-metrics}
 # A second plot provides information more suitable to comparing
 # the two communities based on the community-level Layman metrics
 
@@ -193,7 +191,7 @@ These multivariate normal distributions are fitted using the jags software run v
 
 After calling `siberMVN()` you will see output in the command window indicating that the jags models are being fitted, one block of output for each group in your dataset. A subset of these blocks are shown below.
 
-```{r}
+```{r fit-mvn}
 
 # options for running jags
 parms <- list()
@@ -220,7 +218,7 @@ When comparing individual groups with each other, be it within a single communit
 
 Plotting is via the function `siberDensityPlot()` which is essentially the same as `siardensityplot()` from the older version of SIAR. Credible intervals can be extracted by calling the function `hdr` from the `hdrcde` package.
 
-```{r}
+```{r density-plots}
 
 # The posterior estimates of the ellipses for each group can be used to
 # calculate the SEA.B for each group.
@@ -259,13 +257,9 @@ SEA.B.modes <- lapply(
 ## Comparison of entire communities using the Layman metrics
 Entire communities can be compared by recognising that convex hulls (or any other metric) based on the centroids of each group are subject to uncertainty in the location of the centroids. We can exploit this and calculate the distribution of convex hull areas (and the other 5 metrics) based on the posterior distribution of the means of each group's `x` and `y` data.
 
-```{r}
-
-```
-
 The first thing to do is to extract the posterior means from the mcmc.list object that jags creates to make plotting and analysis easier. Thereafter, we can plot their distribution using highest density region boxplots to visualise the credible intervals that describe it.
 
-```{r}
+```{r bayesian-layman}
 
 # extract the posterior means
 mu.post <- extractPosteriorMeans(siber.example, ellipses.posterior)
