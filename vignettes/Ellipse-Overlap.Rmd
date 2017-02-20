@@ -16,6 +16,11 @@ library(viridis)
 palette(viridis(3))
 
 library(SIBER)
+
+if (!require(spatstat, quietly = TRUE)) "This vignette requires the package spatstat. 
+Please install manually using install.packages('spatstat') as this package is 
+not installed along with SIBER."
+
 ```
 
 ## Calculating the Area of Overlap Between Two Ellipses
@@ -77,59 +82,72 @@ plotSiberObject(siber.example,
 
 ```
 
-In order now to calculate the overlap between two (or more) ellipses, we need to know the coordinates of each ellipse. This is done by manually calling `addEllipse(..., do.plot = FALSE)`. See the associated help file and the vignette [Customising-Plots-Manually](Customising-Plots-Manually.html) for more information on optional inputs to addEllipse for different types of ellipse. Also, bear in mind that the option `n` controls how many points are used to draw the ellipse, and hence low `n` means clunky, edgier ellipses, compared with rounder, smoother ellipses for higher `n`. A higher `n` is more suitable when ellipses are more eccentric as their curvature is greater at the tips. 
+In order now to calculate the overlap between two (or more) ellipses, we need to know the coordinates of each ellipse. This is done by calling `addEllipse(..., do.plot = FALSE)`. See the associated help file and the vignette [Customising-Plots-Manually](Customising-Plots-Manually.html) for more information on optional inputs to addEllipse for different types of ellipse. Also, bear in mind that the option `n` controls how many points are used to draw the ellipse, and hence low `n` means clunky, edgier ellipses, compared with rounder, smoother ellipses for higher `n`. A higher `n` is more suitable when ellipses are more eccentric as their curvature is greater at the tips. The new functions `maxLikOverlap` and `bayesianOverlap` are wrapper functions that take care of the calls to `addEllipse` and the actual polygon overlap function in the package `spatstat`. The functions `maxLikOverlap` and `bayesianOverlap` return three values each: the computationally calculated area of the first ellipse, second ellipse, and the overlap between them. 
 
-```{r}
+```{r, MLoverlap}
 # In this example, I will calculate the overlap between ellipses for groups 2
 # and 3 in community 1 (i.e. the green and yellow open circles of data).
-c.1 <- 1 # specify the community ID
-e.1 <- 2 # specify the first ellipse, i.e. group 2 in this case
 
-c.2 <- c.1 # same community in this example
-e.2 <- 3 # specify the second ellipse for comparison; group 3 in this example
+# The first ellipse is referenced using a character string representation where 
+# in "x.y", "x" is the community, and "y" is the group within that community.
+# So in this example: community 1, group 2
+ellipse1 <- "1.2" 
 
-# see help file for addEllipse for more information. With p.interval = NULL and 
-# extracting the sample size from siber.examples$sample.sizes,
-# I am drawing small sample size corrected, Standard Ellipses around the data.
-coords.1 <- addEllipse(siber.example$ML.mu[[c.1]][ , , e.1],
-                     siber.example$ML.cov[[c.1]][ , , e.1],
-                     m = siber.example$sample.sizes[c.1, e.1],
-                     small.sample = TRUE,
-                     n = 100,
-                     p.interval = NULL,
-                     ci.mean = FALSE,
-                     do.plot = FALSE)
+# Ellipse two is similarly defined: community 1, group3
+ellipse2 <- "1.3"
 
-coords.2 <- addEllipse(siber.example$ML.mu[[c.2]][ , , e.2],
-                     siber.example$ML.cov[[c.2]][ , , e.2],
-                     m = siber.example$sample.sizes[c.2, e.2],
-                     n = 100,
-                     p.interval = NULL,
-                     ci.mean = FALSE,
-                     do.plot = FALSE)
+# The overlap of the maximum likelihood fitted standard ellipses are 
+# estimated using
+sea.overlap <- maxLikOverlap(ellipse1, ellipse2, siber.example, 
+                             p.interval = NULL, n = 100)
 
-# and now we can use the function spatstat::overlap.xypolygon to calculate the 
-# overlap, which is expressed in units, in this case permil squared.
-overlap <- abs(spatstat::overlap.xypolygon(list(x = coords.1[,1],
-                                                y = coords.1[,2]), 
-                                           list(x = coords.2[,1],
-                                                y = coords.2[,2])
-                                           ))
+# the overlap betweeen the corresponding 95% prediction ellipses is given by:
+ellipse95.overlap <- maxLikOverlap(ellipse1, ellipse2, siber.example, 
+                             p.interval = 0.95, n = 100)
 
-# you could then express this as a proportion of the total area of both these 
-# standard ellipses, or as a proportion of one or the other if you liked. 
-# There is no obvious choice here, and it depends on your question.
-
-# Calculate sumamry statistics for each group: TA, SEA and SEAc
-group.ML <- groupMetricsML(siber.example)
-print(group.ML)
-
-# so in this case, the proportional overlap, would be
-overlap / (group.ML[3,2] + group.ML[3,3])
+# so in this case, the overlap as a proportion of the two ellipses, would be
+prop.95.over <- ellipse95.overlap[3] / (ellipse95.overlap[2] + ellipse95.overlap[1])
 
 ```
 
+The function `bayesianOverlap` returns muliple rows of these three numbers, each representing the values for a particular draw from the posterior estimates so that you can build up a picture of the distribution of the estimated overlap. Calculating this overlap is computationally time consuming, and there are going to be thousands of posterior samples collected in a typical analysis. For this example, I will calculate the posterior overlap on the first 100 samples, but in reality you would probably want to do this on at least a few hundred, if not all your posterior samples in a longer (perhaps over-lunch or over-night) run.
 
+```{r, bayesOverlap}
+# options for running jags
+parms <- list()
+parms$n.iter <- 2 * 10^4   # number of iterations to run the model for
+parms$n.burnin <- 1 * 10^3 # discard the first set of values
+parms$n.thin <- 10     # thin the posterior by this many
+parms$n.chains <- 2        # run this many chains
+
+# define the priors
+priors <- list()
+priors$R <- 1 * diag(2)
+priors$k <- 2
+priors$tau.mu <- 1.0E-3
+
+# fit the ellipses which uses an Inverse Wishart prior
+# on the covariance matrix Sigma, and a vague normal prior on the 
+# means. Fitting is via the JAGS method.
+ellipses.posterior <- siberMVN(siber.example, parms, priors)
+
+# and teh corresponding Bayesian estimates for the overlap between the 
+# 95% ellipses is given by:
+bayes95.overlap <- bayesianOverlap(ellipse1, ellipse2, ellipses.posterior,
+                                   draws = 100, p.interval = 0.95, n = 100)
+
+# a histogram of the overlap
+hist(bayes95.overlap[,3], 10)
+
+# and as above, you can express this a proportion of one or other or both of
+# the two ellipses.
+bayes.prop.95.over <- (bayes95.overlap[,3] / 
+                         (bayes95.overlap[,2] + bayes95.overlap[,1])
+                       )
+
+hist(bayes.prop.95.over, 10)
+
+```
 
 
 

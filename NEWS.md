@@ -1,11 +1,13 @@
-# SIBER 2.0.4.xxx
+# SIBER 2.1.0.xxx
 
-# SIBER 2.0.4
+# SIBER 2.1.0
 + Added functions to calculate whether arbitrary points are inside or outside ellipses or higher dimensional ellipsoids along with illustrative vignettes.
 + Changed method of calculation of angle of ellipse with x-axis to using `atan` in place of `asin` which is a more elegant way of ensuring the sign of the returned angle is correct.
 + Small sample size correction for drawing ellipses can now be toggled using addEllipse(small.sample = TRUE, m = m) effectively meaning SEAc or SEA can be illustrated.
-+ New vignette added illustrating how to calculate overlap between two ellipses. The new process is not as straight forward as under SIAR, but I will work to improve the interface in future releases.
-+ Fixed three bugs in the ellise overlap vignette.
++ New vignette added illustrating how to calculate overlap between two ellipses. Two new functions detailed below greatly improve the ease with which this can be applied.
++ Fixed three bugs in the ellipse overlap vignette. Thanks to [Sarina](https://github.com/AndrewLJackson/SIBER/issues/13) for pointing this out. These are no longer an issue as the new functions detailed below replace this code in the vignette, but it was helpful for me during the creation of these functions. Thanks.
++ Added a new function `bayesianOverlap()` that calculates the posterior overlap between ellipses fitted to two groups. Thanks to Josh Stewart for forcing my hand on this long-overdue feature. 
++ Added a new function `maxLikOverlap()` to ease the calculation of overlap between ellipses using the ML estimated ellipses which previously required more manually coding than was ideal.
 
 # SIBER 2.0.3
 + Added a new vignette illustrating how to add custom ellipses to each group manually using the function `addEllipse`

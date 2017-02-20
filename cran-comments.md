@@ -1,5 +1,5 @@
 
-This release includes some minor updates.
+This release includes some new functions and minor updates.
 
 ## Resubmission
 N/A

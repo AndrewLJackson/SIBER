@@ -29,14 +29,14 @@
 #'   This allows SEAc rather than SEA to be plotted, but the correction can be 
 #'   applied to any percentile ellipse.
 #' @param do.plot A logical that determines whether plotting should occur (TRUE 
-#'   and default) or not (FALSE). Setting to false is useful if you want to
+#'   and default) or not (FALSE). Setting to false is useful if you want to 
 #'   access the coordinates of the ellipse in order to calculate overlap between
 #'   ellipses for example.
 #' @param ... additional arguments as a list to be passed to 
 #'   \code{\link[graphics]{plot}}.
 #'   
-#' @return A 6 x m matrix of the 6 Layman metrics of dX_range, dY_range, TA, CD,
-#'   MNND and SDNND in rows, for each community by column
+#' @return A \code{n x 2} matrix comprising the x and y coordinates of the
+#'   ellipse.
 #'   
 #' @examples
 #' data(demo.siber.data)
