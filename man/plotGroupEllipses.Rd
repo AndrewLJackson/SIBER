@@ -28,4 +28,3 @@ Ellipses, drawn as lines on an existing figure.
 This function loops over each community and group within, and plots an 
 ellipse around the data. See demonstration scipts for more examples.
 }
-

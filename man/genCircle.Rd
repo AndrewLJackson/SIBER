@@ -20,4 +20,3 @@ radius \code{r} as a resolution determined by \code{n}. It is not intended
 for direct calling, and is used by the ellipse plotting function 
 \code{\link{addEllipse}}. NB not an exported function.
 }
-

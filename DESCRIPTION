@@ -1,8 +1,8 @@
 Package: SIBER
 Type: Package
 Title: Stable Isotope Bayesian Ellipses in R
-Version: 2.0.3
-Date: 2016-8-3
+Version: 2.0.4
+Date: 2017-20-2
 Depends:
     R (>= 2.10)
 Imports:
@@ -28,4 +28,4 @@ Encoding: UTF-8
 Packaged: 
 NeedsCompilation: yes
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

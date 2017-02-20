@@ -1,8 +1,11 @@
-# SIBER 2.0.3.9000
+# SIBER 2.0.4.xxx
+
+# SIBER 2.0.4
 + Added functions to calculate whether arbitrary points are inside or outside ellipses or higher dimensional ellipsoids along with illustrative vignettes.
 + Changed method of calculation of angle of ellipse with x-axis to using `atan` in place of `asin` which is a more elegant way of ensuring the sign of the returned angle is correct.
 + Small sample size correction for drawing ellipses can now be toggled using addEllipse(small.sample = TRUE, m = m) effectively meaning SEAc or SEA can be illustrated.
 + New vignette added illustrating how to calculate overlap between two ellipses. The new process is not as straight forward as under SIAR, but I will work to improve the interface in future releases.
++ Fixed three bugs in the ellise overlap vignette.
 
 # SIBER 2.0.3
 + Added a new vignette illustrating how to add custom ellipses to each group manually using the function `addEllipse`

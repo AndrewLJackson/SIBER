@@ -85,7 +85,7 @@ coords.1 <- addEllipse(siber.example$ML.mu[[c.1]][ , , e.1],
 
 coords.2 <- addEllipse(siber.example$ML.mu[[c.2]][ , , e.2],
                      siber.example$ML.cov[[c.2]][ , , e.2],
-                     m = siber.example$sample.sizes[c.1, e.1],
+                     m = siber.example$sample.sizes[c.2, e.2],
                      n = 100,
                      p.interval = NULL,
                      ci.mean = FALSE,
@@ -94,7 +94,7 @@ coords.2 <- addEllipse(siber.example$ML.mu[[c.2]][ , , e.2],
 # and now we can use the function spatstat::overlap.xypolygon to calculate the 
 # overlap, which is expressed in units, in this case permil squared.
 overlap <- abs(spatstat::overlap.xypolygon(list(x = coords.1[,1],
-                                                y = coords.2[,2]), 
+                                                y = coords.1[,2]), 
                                            list(x = coords.2[,1],
                                                 y = coords.2[,2])
                                            ))

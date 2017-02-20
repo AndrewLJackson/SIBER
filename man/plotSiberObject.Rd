@@ -76,4 +76,3 @@ and community level (the former for illustrative purposes only, with no
 analytical tools in SIBER to fit Bayesian hulls to individual groups. This is 
 not mathematically possible in a Bayesian framework.).
 }
-

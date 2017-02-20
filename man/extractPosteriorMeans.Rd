@@ -25,4 +25,3 @@ This function extracts the posterior means from a call to
 metrics. This function is designed to create an array of posterior means 
 that is more easily interrogated for plotting and summary statistics.
 }
-

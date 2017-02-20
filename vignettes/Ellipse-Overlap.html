@@ -12,7 +12,7 @@
 
 <meta name="author" content="Andrew L Jackson" />
 
-<meta name="date" content="2016-10-21" />
+<meta name="date" content="2017-02-20" />
 
 <title>Ellipse Overlap</title>
 
@@ -70,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">Ellipse Overlap</h1>
 <h4 class="author"><em>Andrew L Jackson</em></h4>
-<h4 class="date"><em>2016-10-21</em></h4>
+<h4 class="date"><em>2017-02-20</em></h4>
 
 
 
@@ -170,7 +170,7 @@ coords<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">
 
 coords<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">addEllipse</span>(siber.example$ML.mu[[c<span class="fl">.2</span>]][ , , e<span class="fl">.2</span>],
                      siber.example$ML.cov[[c<span class="fl">.2</span>]][ , , e<span class="fl">.2</span>],
-                     <span class="dt">m =</span> siber.example$sample.sizes[c<span class="fl">.1</span>, e<span class="fl">.1</span>],
+                     <span class="dt">m =</span> siber.example$sample.sizes[c<span class="fl">.2</span>, e<span class="fl">.2</span>],
                      <span class="dt">n =</span> <span class="dv">100</span>,
                      <span class="dt">p.interval =</span> <span class="ot">NULL</span>,
                      <span class="dt">ci.mean =</span> <span class="ot">FALSE</span>,
@@ -179,7 +179,7 @@ coords<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">
 <span class="co"># and now we can use the function spatstat::overlap.xypolygon to calculate the </span>
 <span class="co"># overlap, which is expressed in units, in this case permil squared.</span>
 overlap &lt;-<span class="st"> </span><span class="kw">abs</span>(spatstat::<span class="kw">overlap.xypolygon</span>(<span class="kw">list</span>(<span class="dt">x =</span> coords<span class="fl">.1</span>[,<span class="dv">1</span>],
-                                                <span class="dt">y =</span> coords<span class="fl">.2</span>[,<span class="dv">2</span>]), 
+                                                <span class="dt">y =</span> coords<span class="fl">.1</span>[,<span class="dv">2</span>]), 
                                            <span class="kw">list</span>(<span class="dt">x =</span> coords<span class="fl">.2</span>[,<span class="dv">1</span>],
                                                 <span class="dt">y =</span> coords<span class="fl">.2</span>[,<span class="dv">2</span>])
                                            ))
@@ -198,7 +198,7 @@ group.ML &lt;-<span class="st"> </span><span class="kw">groupMetricsML</span>(si
 
 <span class="co"># so in this case, the proportional overlap, would be</span>
 overlap /<span class="st"> </span>(group.ML[<span class="dv">3</span>,<span class="dv">2</span>] +<span class="st"> </span>group.ML[<span class="dv">3</span>,<span class="dv">3</span>])
-<span class="co">#&gt; [1] 0.039559</span></code></pre></div>
+<span class="co">#&gt; [1] 0.007456709</span></code></pre></div>
 </div>
 
 
