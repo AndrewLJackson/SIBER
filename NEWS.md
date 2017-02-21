@@ -8,6 +8,7 @@
 + Fixed three bugs in the ellipse overlap vignette. Thanks to [Sarina](https://github.com/AndrewLJackson/SIBER/issues/13) for pointing this out. These are no longer an issue as the new functions detailed below replace this code in the vignette, but it was helpful for me during the creation of these functions. Thanks.
 + Added a new function `bayesianOverlap()` that calculates the posterior overlap between ellipses fitted to two groups. Thanks to Josh Stewart for forcing my hand on this long-overdue feature. 
 + Added a new function `maxLikOverlap()` to ease the calculation of overlap between ellipses using the ML estimated ellipses which previously required more manually coding than was ideal.
++ added new functions `ellipseInOut()` and `pointsToEllipsoid` to enable testing of whether points lie inside or outside an n-dimensinoal ellipsoid, including the bivariate ellipse. These are useful for testing that the quantile prediction ellipses do indeed contain the expected number of data points from a sample. It might also be useful for assignment, identification of outliers, or measures of overlap of individual data points with other ellipses.
 
 # SIBER 2.0.3
 + Added a new vignette illustrating how to add custom ellipses to each group manually using the function `addEllipse`

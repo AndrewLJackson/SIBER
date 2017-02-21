@@ -32,10 +32,10 @@ statistics are not defined for higher dimensions (e.g. eccentricity).
   method for calculating the standard ellipse, and replaces the parametric
   method used previously in siar and siber.
 }
+
 \examples{
 # A perfect circle
 sigma <- matrix( c(1, 0, 0, 1), 2, 2)
 sigmaSEA(sigma)
 
 }
-

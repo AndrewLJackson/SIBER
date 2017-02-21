@@ -20,4 +20,3 @@ Given the coordinates of a convex hull (i.e. a polygon), this function
 calculates its area. Not intended for direct use outside of 
 \code{\link{siberConvexhull}}.
 }
-

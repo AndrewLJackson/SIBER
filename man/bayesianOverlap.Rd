@@ -45,4 +45,3 @@ A data.frame comprising three columns: the area of overlap, the area
 This function loops over the posterior distribution of the means and 
 covariances matrices of two specified groups.
 }
-

@@ -33,4 +33,3 @@ y <- stats::runif(10)
 laymanMetrics(x, y)
 
 }
-

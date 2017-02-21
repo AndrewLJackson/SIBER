@@ -38,4 +38,3 @@ This function loops over each community and plots the convex hull
 based on the centres of each of the groups that make up the community. See 
 the demonstration scripts for example implementation.
 }
-

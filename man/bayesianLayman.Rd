@@ -25,4 +25,3 @@ This function loops over the posterior distribution of group means within
 each community and generates the corresponding Bayesian estimate of the 6 
 Layman metrics.
 }
-

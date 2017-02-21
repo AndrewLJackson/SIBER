@@ -82,8 +82,8 @@ of interest. It has some limitations though....
   object you are passing) to \code{siardensityplot} and check that they are
   indeed unimodal as expected.
 }
+
 \examples{
 Y <- matrix(stats::rnorm(1000), 250, 4)
 siberDensityPlot(Y)
 }
-

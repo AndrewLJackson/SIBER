@@ -60,4 +60,3 @@ priors$tau.mu <- 1.0E-3
 fitEllipse(x, y, parms, priors)
 
 }
-
