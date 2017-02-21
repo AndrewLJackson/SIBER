@@ -35,3 +35,4 @@ wrapper function for \code{\link{generateSiberCommunity}}.
 generateSiberData()
 
 }
+

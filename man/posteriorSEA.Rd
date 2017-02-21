@@ -20,3 +20,4 @@ Bayesian bivariate ellipse and calculates the Standard Ellipse Area (SEA)
 for each draw, thereby generating a distribution of SEA esimates. Not 
 intended for direct calling outside of \code{\link{siberEllipses}}.
 }
+

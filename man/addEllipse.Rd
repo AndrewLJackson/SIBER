@@ -61,3 +61,4 @@ data(demo.siber.data)
 my.siber.data <- createSiberObject(demo.siber.data)
 communityMetricsML(my.siber.data)
 }
+

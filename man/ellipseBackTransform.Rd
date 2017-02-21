@@ -30,3 +30,4 @@ remaining two columns are the back-transformed means.
 Back-transforms a bivariate siber ellipse fitted to z-scored data to the 
 original location and scale. Not intended for direct call by users.
 }
+

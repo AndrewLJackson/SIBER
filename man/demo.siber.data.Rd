@@ -23,3 +23,4 @@ to generate the vingette and illustrates the main functionality of SIBER.
 Andrew Jackson
 }
 \keyword{datasets}
+

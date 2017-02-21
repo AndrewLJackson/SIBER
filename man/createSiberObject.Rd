@@ -35,3 +35,4 @@ my.siber.data <- createSiberObject(demo.siber.data)
 names(my.siber.data)
 
 }
+

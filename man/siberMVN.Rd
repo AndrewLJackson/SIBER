@@ -48,3 +48,4 @@ This function loops over each community and then loops over each group
 member, fitting a Bayesian multivariate (bivariate in this case) normal 
 distribution to each group of data. Not intended for direct calling by users.
 }
+

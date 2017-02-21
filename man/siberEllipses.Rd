@@ -21,3 +21,4 @@ This function loops over each community, determines the centre of mass
 \code{\link[base]{mean}} function independently on the marginal x and y vectors,
 and calculates the corresponding 6 Layman metrics based on these points.
 }
+

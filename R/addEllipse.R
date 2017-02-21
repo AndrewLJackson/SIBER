@@ -79,7 +79,7 @@ addEllipse <- function(mu, sigma, m = NULL, n = 100, p.interval = NULL ,
   # correction to essentially plot the SEAc in place of the SEA. It can be 
   # used inconjuction with any prediction ellipse.
   ifelse(small.sample,
-           q <- (n - 1) / (n - 2),
+           q <- (m - 1) / (m - 2),
            q <- 1)
   
   

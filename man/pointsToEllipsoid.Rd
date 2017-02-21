@@ -23,3 +23,4 @@ space considered, and \code{i} is the number of points and returns
 d-dimensional ellipsoid defined by a covariance matrix \code{Sigma} and 
 vector of means \code{mu}.
 }
+

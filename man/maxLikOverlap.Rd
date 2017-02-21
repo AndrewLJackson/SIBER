@@ -40,3 +40,4 @@ A vector comprising three columns: the area of overlap, the area of
 This function uses the ML estimated means and covariances matrices of two
 specified groups to calculate the area of overlap.
 }
+
