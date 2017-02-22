@@ -1,4 +1,4 @@
-# SIBER 2.1.0.xxx
+# SIBER 2.1.0.9000
 + hotfix for bug in bayesianOverlap - thanks Mark Nowak
 
 # SIBER 2.1.0

@@ -18,14 +18,16 @@ Comments and suggestions welcome. If anyone wants to contribute code, please let
 to proceed.
 
 ## Installation
-This package is released on CRAN as v2.0.3. Type `install.packages("SIBER")` in the command line.
+This package is released on CRAN as v2.1.0. Type `install.packages("SIBER")` in the command line.
+
+**Annoyingly** there is a bug in the `bayesianOverlap()` function in v2.1.0 both on CRAN and github. If you want to use this function, please install the development relese from the master branch as per the instructions below where I have fixed this. I will upload a hotfix to CRAN as soon as possible.
 
 Alternatively, you can install directly from github
 
 The stable release can be installed by
   ```R
     # install.packages("devtools") # install if necessary
-    devtools::install_github("andrewljackson/SIBER@v2.0.3", 
+    devtools::install_github("andrewljackson/SIBER@v2.1.0", 
     build_vingettes = TRUE)
     library(SIBER)
   ```
