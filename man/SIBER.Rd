@@ -12,8 +12,3 @@ distributions can then be used to calculate probability
 distributions of Standard Ellise Areas for comparing groups of data,
 or to calculate the 6 Layman metrics for comparing entire communities.
 }
-\section{SIBER functions}{
-
-The SIBER functions ...
-}
-

@@ -11,7 +11,7 @@ ellipseInOut(Z, p = 0.95, r = NULL)
 
 \item{p}{the percentile of the ellipse to be tested}
 
-\item{r}{a manulally defined radius of the circle to be used. Setting \code{r} 
+\item{r}{a manually defined radius of the circle to be used. Setting \code{r} 
 to be anything other than NULL will override the choice of \code{p}.}
 }
 \value{

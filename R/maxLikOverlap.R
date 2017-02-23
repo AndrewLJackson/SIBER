@@ -1,7 +1,7 @@
 #' Calculate the overlap between two ellipses based on the maximum likelihood 
 #' fitted ellipses.
 #' 
-#' This function uses the ML estimated means and covariances matrices of two
+#' This function uses the ML estimated means and covariances matrices of two 
 #' specified groups to calculate the area of overlap.
 #' 
 #' @param ellipse1 character code of the form \code{"x.y"} where \code{x} is an 
@@ -11,8 +11,8 @@
 #'   
 #' @param ellipse2 same as \code{ellipse1} specifiying a second ellipse.
 #'   
-#' @param siber.object an object created by  \code{\link{createSiberObject}}
-#'   which contains the ML estimates for the means and covariance matrices for
+#' @param siber.object an object created by  \code{\link{createSiberObject}} 
+#'   which contains the ML estimates for the means and covariance matrices for 
 #'   each group.
 #'   
 #' @param p.interval the prediction interval used to scale the ellipse as per 
@@ -26,10 +26,26 @@
 #'   numebr od \code{draws} so as to visualise a relatively small number of the 
 #'   posterior ellipses. Defaults to \code{FALSE}.
 #'   
-#' @return A vector comprising three columns: the area of overlap, the area of
+#' @return A vector comprising three columns: the area of overlap, the area of 
 #'   the first ellipse and the area of the second ellipse and as many rows as 
 #'   specified by \code{draws}.
 #'   
+#' @examples 
+#' # load in the included demonstration dataset data("demo.siber.data")
+#' siber.example <- createSiberObject(demo.siber.data) 
+#' 
+#' # The first ellipse is referenced using a character string representation 
+#' # where in "x.y", "x" is the community, and "y" is the group within that 
+#' # community.
+#' ellipse1 <- "1.2" 
+#' 
+#' # Ellipse two is similarly defined: community 1, group3 
+#' ellipse2 <- "1.3"
+#' 
+#' # the overlap betweeen the corresponding 95% prediction ellipses is given by: 
+#' ellipse95.overlap <- maxLikOverlap(ellipse1, ellipse2, siber.example,
+#' p.interval = 0.95, n = 100)
+#' 
 #' @export
 
 

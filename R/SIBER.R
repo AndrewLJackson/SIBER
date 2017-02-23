@@ -7,8 +7,6 @@
 #' or to calculate the 6 Layman metrics for comparing entire communities.
 #' 
 #' 
-#' @section SIBER functions:
-#' The SIBER functions ...
 #'
 #' @docType package
 #' @name SIBER

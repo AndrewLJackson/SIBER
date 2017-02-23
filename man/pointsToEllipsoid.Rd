@@ -23,3 +23,13 @@ space considered, and \code{i} is the number of points and returns
 d-dimensional ellipsoid defined by a covariance matrix \code{Sigma} and 
 vector of means \code{mu}.
 }
+\examples{
+X <- matrix(runif(200,-2.5, 2.5), ncol = 2, nrow = 100)
+SIG <- matrix(c(1,0,0,1), ncol = 2, nrow = 2)
+mu <- c(0, 0)
+Z <- pointsToEllipsoid(X, SIG, mu)
+test <- ellipseInOut(Z, p = 0.95)
+plot(X, col = test + 1, xlim = c(-3, 3), ylim = c(-3, 3), asp = 1)
+addEllipse(mu, SIG, p.interval = 0.95)
+
+}

@@ -1,5 +1,5 @@
 
-This release includes some new functions and minor updates.
+This release fixes an important bug in one of the new functions. It also adds two examples to the new functions.
 
 ## Resubmission
 N/A
@@ -15,10 +15,13 @@ N/A
 ## R CMD check results
 There were no ERRORs, WARNINGs or NOTES on my local build.
 
-There were no ERRORS, WARNINGS or NOTES from win-builder on either release or devel.
+There were no ERRORS or WARNINGS from win-builder on either release or devel. There was one NOTE:
+* checking CRAN incoming feasibility ... NOTE. Maintainer: 'Andrew Jackson <a.jackson@tcd.ie>'. Days since last update: 1
 
-## https://cran.rstudio.com/web/checks/check_results_SIBER.html
-There was one error thrown by Rstudio's remote checks. I am not concerned about this error as it occurred on the r-oldrel-windows-ix86+x86_64 build and appears to result from an incorrect, inappropriate or missing installation of JAGS on which SIBER depends.
+My email address and name is correct. I uploaded this package only 1 day ago. A user spotted a small but important bug in one of the new functions which I have fixed in this version.
+
+## CRAN Package Check Results for Package SIBER
+There was one error thrown by CRAN's remote checks: https://cran.rstudio.com/web/checks/check_results_SIBER.html. I am not concerned about this error as it occurred on the r-oldrel-windows-ix86+x86_64 build and appears to result from an incorrect, inappropriate or missing installation of JAGS on which SIBER depends via the packatge rjags which also fails on this release with the same error.
 + error: The environment variable JAGS_HOME is set to "c:/Program Files/JAGS/JAGS-4.0.0" but no JAGS installation can be found there.
 
 ## Downstream dependencies

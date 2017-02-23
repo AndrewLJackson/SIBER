@@ -12,7 +12,7 @@
 #' 
 #' @return A matrix of transformed data points corresponding to \code{X}
 #' 
-#' @example 
+#' @examples 
 #' X <- matrix(runif(200,-2.5, 2.5), ncol = 2, nrow = 100)
 #' SIG <- matrix(c(1,0,0,1), ncol = 2, nrow = 2)
 #' mu <- c(0, 0)

@@ -1,6 +1,9 @@
-# SIBER 2.1.0.9000
-+ hotfix for bug in bayesianOverlap - thanks Mark Nowak
+# SIBER 2.1.1.9000
+
+# SIBER 2.1.1
++ hotfix for bug in bayesianOverlap - thanks Mark Nowak for spotting this.
 + **Important:** install from github if you want to use `bayesianOverlap` for now until I can push a hotfix to CRAN. `devtools::install_github("andrewljackson/SIBER", build_vingettes = TRUE)`
++ examples added to `maxLikOverlap()` and `pointsToEllipsoid()`.
 
 # SIBER 2.1.0
 + Added functions to calculate whether arbitrary points are inside or outside ellipses or higher dimensional ellipsoids along with illustrative vignettes.
