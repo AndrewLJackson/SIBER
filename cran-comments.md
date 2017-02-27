@@ -16,9 +16,9 @@ N/A
 There were no ERRORs, WARNINGs or NOTES on my local build.
 
 There were no ERRORS or WARNINGS from win-builder on either release or devel. There was one NOTE:
-* checking CRAN incoming feasibility ... NOTE. Maintainer: 'Andrew Jackson <a.jackson@tcd.ie>'. Days since last update: 1
+* checking CRAN incoming feasibility ... NOTE. Maintainer: 'Andrew Jackson <a.jackson@tcd.ie>'. Days since last update: 5
 
-My email address and name is correct. I uploaded this package only 1 day ago. A user spotted a small but important bug in one of the new functions which I have fixed in this version. Please accept my apologies for this.
+My email address and name is correct. I uploaded this package only 5 days ago. A user spotted a small but important bug in one of the new functions which I have fixed in this version. Please accept my apologies for this.
 
 ## CRAN Package Check Results for Package SIBER
 There was one error thrown by CRAN's remote checks: https://cran.rstudio.com/web/checks/check_results_SIBER.html. I am not concerned about this error as it occurred on the r-oldrel-windows-ix86+x86_64 build and appears to result from an incorrect, inappropriate or missing installation of JAGS on which SIBER depends via the packatge rjags which also fails on this release with the same error.
