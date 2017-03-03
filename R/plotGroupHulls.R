@@ -22,7 +22,7 @@
 #' @export
 
 
-plotGroupHulls <- function(siber, plot.args = NULL, iso.order = c(1,2)) {
+plotGroupHulls <- function(siber, plot.args = NULL, iso.order = c(1,2), ...) {
   
   # iso.order used to specify which data goes on which axis.
   x <- iso.order[1]
