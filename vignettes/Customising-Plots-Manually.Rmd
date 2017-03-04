@@ -48,7 +48,7 @@ siber.example <- createSiberObject(demo.siber.data)
 
 ```
 
-You dont even have to use `plotSiberObject()` to plot your raw data. You could plot it all yourself directly from your raw data using any points, colours and axes styles that you want.
+You dont even have to use `plotSiberObject()` to plot your raw data. You could plot it all yourself directly from your raw data using any points, colours and axes styles that you want. In this example, I override the default points order using the option argument `points.order`. See the help file for the base graphics `points()` function which lists the mapping of the integers `1:25` to the corresponding point type. In this case I use the order `c(24, 22)` which corresponds to open triangles and open squares.
 
 Next we want to add a single ellipse, fully customised to one of our clusters of data; i.e. one of the groups within a community. Here I define the group and community using two created variables so as you could adapt this run for any group/community combination you wanted, or perhaps more suitably, write a loop to traverse all your data.
 
@@ -61,7 +61,8 @@ plotSiberObject(siber.example,
                   bty = "L",
                   iso.order = c(1,2),
                   xlab = expression({delta}^13*C~'\u2030'),
-                  ylab = expression({delta}^15*N~'\u2030')
+                  ylab = expression({delta}^15*N~'\u2030'),
+                  points.order = c(24,22)
                   )
 # Call addEllipse directly on each group to customise the plot fully
 

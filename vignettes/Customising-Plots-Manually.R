@@ -40,7 +40,8 @@ plotSiberObject(siber.example,
                   bty = "L",
                   iso.order = c(1,2),
                   xlab = expression({delta}^13*C~'\u2030'),
-                  ylab = expression({delta}^15*N~'\u2030')
+                  ylab = expression({delta}^15*N~'\u2030'),
+                  points.order = c(24,22)
                   )
 # Call addEllipse directly on each group to customise the plot fully
 
