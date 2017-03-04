@@ -4,7 +4,7 @@
 \alias{plotGroupHulls}
 \title{Plots illustrative convex hulls for each group within all communities}
 \usage{
-plotGroupHulls(siber, plot.args = NULL, iso.order = c(1, 2))
+plotGroupHulls(siber, plot.args = NULL, iso.order = c(1, 2), ...)
 }
 \arguments{
 \item{siber}{a siber object as created by createSiberObject}

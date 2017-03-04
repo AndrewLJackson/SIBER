@@ -1,4 +1,6 @@
 # SIBER 2.1.1.9000
++ added ability to specify custom pch point orders in `plotSiberObject()`
++ added `...` to plotGroupHulls
 
 # SIBER 2.1.1
 + hotfix for bug in bayesianOverlap - thanks Mark Nowak for spotting this.
