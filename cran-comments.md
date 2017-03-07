@@ -1,5 +1,4 @@
-
-This release fixes an important bug in one of the new functions. It also adds two examples to the new functions.
+A problem on the CRAN side meant that v2.1.1 was not uploaded appropriately. I was advised to resubmit by Kurt Hornik. I have moved on to v2.1.2 which includes very minor updates to only two functions.
 
 ## Resubmission
 N/A
