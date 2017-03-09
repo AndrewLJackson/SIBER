@@ -5,16 +5,16 @@ Version: 2.1.2
 Depends:
     R (>= 3.1.0)
 Imports:
-    rjags,
-    mnormt,
     hdrcde,
     graphics,
+    grDevices,
+    mnormt,
+    rjags,
+    spatstat,
     stats,
-    grDevices
-Suggests:
-    knitr,
     viridis,
-    spatstat
+Suggests:
+    knitr
 Author: Andrew Jackson and Andrew Parnell
 Maintainer: Andrew Jackson <a.jackson@tcd.ie>
 Description: Fits bi-variate ellipses to stable isotope data using Bayesian
