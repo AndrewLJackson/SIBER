@@ -82,7 +82,8 @@ plotSiberObject(siber.example,
 
 ```
 
-In order now to calculate the overlap between two (or more) ellipses, we need to know the coordinates of each ellipse. This is done by calling `addEllipse(..., do.plot = FALSE)`. See the associated help file and the vignette [Customising-Plots-Manually](Customising-Plots-Manually.html) for more information on optional inputs to addEllipse for different types of ellipse. Also, bear in mind that the option `n` controls how many points are used to draw the ellipse, and hence low `n` means clunky, edgier ellipses, compared with rounder, smoother ellipses for higher `n`. A higher `n` is more suitable when ellipses are more eccentric as their curvature is greater at the tips. The new functions `maxLikOverlap` and `bayesianOverlap` are wrapper functions that take care of the calls to `addEllipse` and the actual polygon overlap function in the package `spatstat`. The functions `maxLikOverlap` and `bayesianOverlap` return three values each: the computationally calculated area of the first ellipse, second ellipse, and the overlap between them. 
+In order now to calculate the overlap between two (or more) ellipses, we need to know the coordinates of each ellipse. This is done by calling `addEllipse(..., do.plot = FALSE)`. See the associated help file and the vignette [Customising-Plots-Manually](Customising-Plots-Manually.html) for more information on optional inputs to addEllipse for different types of ellipse. Also, bear in mind that the option `n` controls how many points are used to draw the ellipse, and hence low `n` means clunky, edgier ellipses, compared with rounder, smoother ellipses for higher `n`. A higher `n` is more suitable when ellipses are more eccentric as their curvature is greater at the tips. The new functions `maxLikOverlap` and `bayesianOverlap` are wrapper functions that take care of the calls to `addEllipse` and the actual polygon overlap function in the package `spatstat`. The functions `maxLikOverlap` and `bayesianOverlap` return three values each: the computationally calculated area of the first ellipse, second ellipse, and the overlap between them. It is not entirely obvious to me that there is a single choice if you wish to express your overlap as a proportion, since there are several options for the choice of denominator. One can imagine that expressing the overlap as a proportion of the sum of the non-overlapping areas of the ellipses seems suitable in a general sense, since this will range from 0 when the ellipses are completely distinct, to 1 when the ellipses are conpletely coincidental.
+
 
 ```{r, MLoverlap}
 # In this example, I will calculate the overlap between ellipses for groups 2
@@ -105,8 +106,11 @@ sea.overlap <- maxLikOverlap(ellipse1, ellipse2, siber.example,
 ellipse95.overlap <- maxLikOverlap(ellipse1, ellipse2, siber.example, 
                              p.interval = 0.95, n = 100)
 
-# so in this case, the overlap as a proportion of the two ellipses, would be
-prop.95.over <- ellipse95.overlap[3] / (ellipse95.overlap[2] + ellipse95.overlap[1])
+# so in this case, the overlap as a proportion of the non-overlapping area of 
+# the two ellipses, would be
+prop.95.over <- ellipse95.overlap[3] / (ellipse95.overlap[2] + 
+                                          ellipse95.overlap[1] -
+                                          ellipse95.overlap[3])
 
 ```
 
@@ -139,10 +143,11 @@ bayes95.overlap <- bayesianOverlap(ellipse1, ellipse2, ellipses.posterior,
 # a histogram of the overlap
 hist(bayes95.overlap[,3], 10)
 
-# and as above, you can express this a proportion of one or other or both of
-# the two ellipses.
-bayes.prop.95.over <- (bayes95.overlap[,3] / 
-                         (bayes95.overlap[,2] + bayes95.overlap[,1])
+# and as above, you can express this a proportion of the non-overlapping area of 
+# the two ellipses, would be
+bayes.prop.95.over <- (bayes95.overlap[,3] / (bayes95.overlap[,2] + 
+                                                bayes95.overlap[,1] -
+                                                bayes95.overlap[,3])
                        )
 
 hist(bayes.prop.95.over, 10)
