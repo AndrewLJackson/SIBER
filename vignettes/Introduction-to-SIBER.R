@@ -1,6 +1,7 @@
 ## ----setup, echo = FALSE-------------------------------------------------
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", 
                       fig.width = 6, fig.height = 5)
+
 library(viridis)
 palette(viridis(3))
 

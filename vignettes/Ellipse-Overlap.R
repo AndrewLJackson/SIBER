@@ -88,8 +88,11 @@ sea.overlap <- maxLikOverlap(ellipse1, ellipse2, siber.example,
 ellipse95.overlap <- maxLikOverlap(ellipse1, ellipse2, siber.example, 
                              p.interval = 0.95, n = 100)
 
-# so in this case, the overlap as a proportion of the two ellipses, would be
-prop.95.over <- ellipse95.overlap[3] / (ellipse95.overlap[2] + ellipse95.overlap[1])
+# so in this case, the overlap as a proportion of the non-overlapping area of 
+# the two ellipses, would be
+prop.95.over <- ellipse95.overlap[3] / (ellipse95.overlap[2] + 
+                                          ellipse95.overlap[1] -
+                                          ellipse95.overlap[3])
 
 
 ## ---- bayesOverlap-------------------------------------------------------
@@ -119,10 +122,11 @@ bayes95.overlap <- bayesianOverlap(ellipse1, ellipse2, ellipses.posterior,
 # a histogram of the overlap
 hist(bayes95.overlap[,3], 10)
 
-# and as above, you can express this a proportion of one or other or both of
-# the two ellipses.
-bayes.prop.95.over <- (bayes95.overlap[,3] / 
-                         (bayes95.overlap[,2] + bayes95.overlap[,1])
+# and as above, you can express this a proportion of the non-overlapping area of 
+# the two ellipses, would be
+bayes.prop.95.over <- (bayes95.overlap[,3] / (bayes95.overlap[,2] + 
+                                                bayes95.overlap[,1] -
+                                                bayes95.overlap[,3])
                        )
 
 hist(bayes.prop.95.over, 10)
