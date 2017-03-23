@@ -81,9 +81,10 @@ bayesianOverlap <- function(ellipse1, ellipse2, ellipses.posterior,
     
     # --------------------------------------------------------------------------
     # and then the overlap between the two
-    # and now we can use the function spatstat::overlap.xypolygon to calculate 
-    # the overlap, which is expressed in units, in this case permil squared.
-    overlap <- abs(spatstat::overlap.xypolygon(list(x = coords.1[,1],
+    # and now we can use the function spatstat.utils::overlap.xypolygon to 
+    # calculate the overlap, which is expressed in units, in this case permil 
+    # squared.
+    overlap <- abs(spatstat.utils::overlap.xypolygon(list(x = coords.1[,1],
                                                     y = coords.1[,2]), 
                                                list(x = coords.2[,1],
                                                     y = coords.2[,2]) ) )

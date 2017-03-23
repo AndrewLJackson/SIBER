@@ -1,4 +1,4 @@
-A problem on the CRAN side meant that v2.1.1 was not uploaded after passing the submission process. I was advised to resubmit by Kurt Hornik. I have moved on to v2.1.2 which includes very minor updates to only two functions.
+An update to the package `spatstat` on which `SIBER` depends has precipiated a minor version update. My package now uses `spatsat.utils` as per the advice of the package maintainers.
 
 ## Resubmission
 N/A

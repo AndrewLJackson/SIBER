@@ -1,0 +1,72 @@
+#' Plot the pairwise distances and angles describing the difference between 
+#' centroids
+#' 
+#' Plots the posterior densities
+#' 
+#' @param centroids the list containing distance and angle matrices as returned 
+#'   by \code{\link{siberCentroids}}.
+#' @param upper a logical determining whether to plot the upper or lower 
+#'   triangle of angles. DEfaults to TRUE which is the upper triangle and 
+#'   returns the angle from the second ellipse to the first by centering on the 
+#'   first centroid.
+#'   
+#' @return A nice plot. You can get the corresponding matrices used to generate
+#'   the plots if you ask for it nicely: thedata <-
+#'   plotCentroidVectors(centroids)
+#'   
+#' @export
+
+plotCentroidVectors <- function (centroids, upper = TRUE) {
+  
+  dd <- dim(centroids$r)
+  
+  # number of pairwise comparisons
+  n.comp <- ((dd[1] ^ 2) - dd[1]) / 2
+  
+  # prep the matrices for passing to the plotting function
+  angles <- distances <- matrix(0, dd[3], n.comp)
+  
+  new.names <- rep("NA", n.comp)
+  
+  # loop and extract the data in to the matrix
+  # AJ - I NEED TO IMPLEMENT A SWITCH FOR THE LOWER TRIANGLE FOR ANGLES
+  
+  ct <- 1 # a counter
+  
+  for (i in 1:(dd[1] - 1 )){
+    
+    for (j in (i+1):dd[1]){
+      
+      distances[,ct] <- centroids$r[i,j,]
+      
+      if(upper) {angles[,ct] <- centroids$theta[i,j,]}
+      
+      if(!upper) {angles[,ct] <- centroids$theta[j,i,]}
+      
+      
+      new.names[ct]<- centroids$labels[i,j]
+      
+      ct <- ct + 1
+      
+    }
+    
+    
+    
+  }
+  
+  browser()
+  colnames(distances) <- new.names
+  colnames(angles)    <- new.names
+  
+  siberDensityPlot(distances)
+  siberDensityPlot(angles)
+  
+  
+  out <- list
+  out$distances <- distances
+  out$angles <- angles
+  
+  invisible(angles)
+  
+  
+}

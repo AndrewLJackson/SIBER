@@ -1,14 +1,7 @@
 ## ---- echo = FALSE-------------------------------------------------------
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", 
                       fig.width = 6, fig.height = 5)
-library(viridis)
-palette(viridis(3))
 
-library(SIBER)
-
-if (!require(spatstat, quietly = TRUE)) "This vignette requires the package spatstat. 
-Please install manually using install.packages('spatstat') as this package is 
-not installed along with SIBER."
 
 
 ## ------------------------------------------------------------------------
@@ -22,7 +15,11 @@ graphics.off()
 # from time to time.
 set.seed(1)
 
+# load SIBER
 library(SIBER)
+
+# set a new three-colour palette from the viridis package
+palette(viridis::viridis(3))
 
 # load in the included demonstration dataset
 data("demo.siber.data")

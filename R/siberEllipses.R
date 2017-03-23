@@ -1,17 +1,14 @@
-#' Calculate the point estimates of the Layman metrics for each community
+#' Calculate the bayesian Standard Ellipse Area for all groups
 #' 
-#' This function loops over each community, determines the centre of mass 
-#' (centroid) of each of the groups comprising the community using the basic 
-#' \code{\link[base]{mean}} function independently on the marginal x and y vectors,
-#' and calculates the corresponding 6 Layman metrics based on these points.
+#' This function loops over each group within each community and calculates the 
+#' posterior distribution describing the corresponding Standard Ellipse Area.
 #' 
-#' @param corrected.posteriors the Bayesian ellipses as fitted to z-score 
-#' transformed data returned by \code{\link{siberMVN}}.
-#' 
-#' @return A matrix of with each column representing a unique community.group 
-#' combination, and each row an independent posterior estimate of the 
-#' Standard Ellipse Area SEA_B.
-#' 
+#' @param corrected.posteriors the Bayesian ellipses as returned by
+#'   \code{\link{siberMVN}}.
+#'   
+#' @return A matrix of with each column containing the posterior estimates of 
+#'   the SEA.
+#'   
 #' @export
 
 siberEllipses <- function (corrected.posteriors) {

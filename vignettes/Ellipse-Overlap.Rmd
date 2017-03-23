@@ -12,14 +12,7 @@ vignette: >
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", 
                       fig.width = 6, fig.height = 5)
-library(viridis)
-palette(viridis(3))
 
-library(SIBER)
-
-if (!require(spatstat, quietly = TRUE)) "This vignette requires the package spatstat. 
-Please install manually using install.packages('spatstat') as this package is 
-not installed along with SIBER."
 
 ```
 
@@ -36,7 +29,11 @@ graphics.off()
 # from time to time.
 set.seed(1)
 
+# load SIBER
 library(SIBER)
+
+# set a new three-colour palette from the viridis package
+palette(viridis::viridis(3))
 
 # load in the included demonstration dataset
 data("demo.siber.data")
@@ -82,7 +79,7 @@ plotSiberObject(siber.example,
 
 ```
 
-In order now to calculate the overlap between two (or more) ellipses, we need to know the coordinates of each ellipse. This is done by calling `addEllipse(..., do.plot = FALSE)`. See the associated help file and the vignette [Customising-Plots-Manually](Customising-Plots-Manually.html) for more information on optional inputs to addEllipse for different types of ellipse. Also, bear in mind that the option `n` controls how many points are used to draw the ellipse, and hence low `n` means clunky, edgier ellipses, compared with rounder, smoother ellipses for higher `n`. A higher `n` is more suitable when ellipses are more eccentric as their curvature is greater at the tips. The new functions `maxLikOverlap` and `bayesianOverlap` are wrapper functions that take care of the calls to `addEllipse` and the actual polygon overlap function in the package `spatstat`. The functions `maxLikOverlap` and `bayesianOverlap` return three values each: the computationally calculated area of the first ellipse, second ellipse, and the overlap between them. It is not entirely obvious to me that there is a single choice if you wish to express your overlap as a proportion, since there are several options for the choice of denominator. One can imagine that expressing the overlap as a proportion of the sum of the non-overlapping areas of the ellipses seems suitable in a general sense, since this will range from 0 when the ellipses are completely distinct, to 1 when the ellipses are conpletely coincidental.
+In order now to calculate the overlap between two (or more) ellipses, we need to know the coordinates of each ellipse. This is done by calling `addEllipse(..., do.plot = FALSE)`. See the associated help file and the vignette [Customising-Plots-Manually](Customising-Plots-Manually.html) for more information on optional inputs to addEllipse for different types of ellipse. Also, bear in mind that the option `n` controls how many points are used to draw the ellipse, and hence low `n` means clunky, edgier ellipses, compared with rounder, smoother ellipses for higher `n`. A higher `n` is more suitable when ellipses are more eccentric as their curvature is greater at the tips. The new functions `maxLikOverlap` and `bayesianOverlap` are wrapper functions that take care of the calls to `addEllipse` and the actual polygon overlap function in the package `spatstat.utils`. The functions `maxLikOverlap` and `bayesianOverlap` return three values each: the computationally calculated area of the first ellipse, second ellipse, and the overlap between them. It is not entirely obvious to me that there is a single choice if you wish to express your overlap as a proportion, since there are several options for the choice of denominator. One can imagine that expressing the overlap as a proportion of the sum of the non-overlapping areas of the ellipses seems suitable in a general sense, since this will range from 0 when the ellipses are completely distinct, to 1 when the ellipses are conpletely coincidental.
 
 
 ```{r, MLoverlap}
