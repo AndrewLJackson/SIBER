@@ -1,28 +1,11 @@
----
-title: "Vector Statistics on Centroids"
-author: "Andrew L Jackson"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Introduction to SIBER}
-  %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
----
-
-```{r setup, echo = FALSE}
+## ----setup, echo = FALSE-------------------------------------------------
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", 
                       fig.width = 6, fig.height = 5)
 
 library(viridis)
 palette(viridis(3))
-```
 
-## Load up some data to illustrate the vector-based metrics
-
-We will use the same demo data as per the main introductory vignette. We plot it just to remind us.
-
-
-```{r load-data}
+## ----load-data-----------------------------------------------------------
 # remove previously loaded items from the current environment and remove previous graphics.
 rm(list=ls())
 graphics.off()
@@ -62,11 +45,8 @@ plotSiberObject(siber.example,
                   )
 
 
-```
 
-As before, we fit the Bayesian model describing the ellipses.
-
-```{r fit-mvn}
+## ----fit-mvn-------------------------------------------------------------
 
 # options for running jags
 parms <- list()
@@ -86,21 +66,11 @@ priors$tau.mu <- 1.0E-3
 # means. Fitting is via the JAGS method.
 ellipses.posterior <- siberMVN(siber.example, parms, priors)
 
-```
 
-## Introducing the vector-based statistics.
-
-Now we can extract the centroid data and plot the vector data.
-
-```{r extract-centroids}
+## ----extract-centroids---------------------------------------------------
 
 centroids <- siberCentroids(ellipses.posterior)
 
 plotCentroidVectors(centroids)
-
-```
-
-
-
 
 

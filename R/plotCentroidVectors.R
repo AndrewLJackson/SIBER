@@ -54,7 +54,7 @@ plotCentroidVectors <- function (centroids, upper = TRUE) {
     
   }
   
-  browser()
+  # browser()
   colnames(distances) <- new.names
   colnames(angles)    <- new.names
   
@@ -62,7 +62,7 @@ plotCentroidVectors <- function (centroids, upper = TRUE) {
   siberDensityPlot(angles)
   
   
-  out <- list
+  out <- list()
   out$distances <- distances
   out$angles <- angles
   
