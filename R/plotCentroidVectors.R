@@ -64,9 +64,9 @@ plotCentroidVectors <- function (centroids, upper = TRUE) {
   
   out <- list()
   out$distances <- distances
-  out$angles <- angles
+  out$angles    <- angles
   
-  invisible(angles)
+  invisible(out)
   
   
 }
