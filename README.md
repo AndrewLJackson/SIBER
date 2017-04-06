@@ -35,7 +35,7 @@ The latest development version is on the master branch. Often this includes some
 
   ```R
     # install.packages("devtools") # install if necessary
-    devtools::install_github("andrewljackson/SIBER",
+    devtools::install_github("andrewljackson/SIBER@master",
     build_vingettes = TRUE)
     library(SIBER)
   ```
