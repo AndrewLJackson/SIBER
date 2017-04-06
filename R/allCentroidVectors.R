@@ -1,5 +1,5 @@
 #' Plot the pairwise distances and angles describing the difference between 
-#' centroids
+#' centroids of all groups
 #' 
 #' Plots the posterior densities
 #' 
@@ -9,14 +9,17 @@
 #'   triangle of angles. DEfaults to TRUE which is the upper triangle and 
 #'   returns the angle from the second ellipse to the first by centering on the 
 #'   first centroid.
+#' @param do.plot a logical indicating whether plotting should be done or not.
+#'   Defaults to TRUE.
+#' @param ... additional arguments to pass onwards, not currently implemented.
 #'   
-#' @return A nice plot. You can get the corresponding matrices used to generate
-#'   the plots if you ask for it nicely: thedata <-
+#' @return A nice plot. You can get the corresponding matrices used to generate 
+#'   the plots if you ask for it nicely: thedata <- 
 #'   plotCentroidVectors(centroids)
 #'   
 #' @export
 
-plotCentroidVectors <- function (centroids, upper = TRUE) {
+allCentroidVectors <- function (centroids, upper = TRUE, do.plot = TRUE, ...) {
   
   dd <- dim(centroids$r)
   
@@ -54,19 +57,19 @@ plotCentroidVectors <- function (centroids, upper = TRUE) {
     
   }
   
-  # browser()
-  colnames(distances) <- new.names
-  colnames(angles)    <- new.names
+  # convert from wide to long format
+  long_data_angles <- tidyr::gather(data.frame(angles),
+                             key = comparison, value = angle)
   
-  siberDensityPlot(distances)
-  siberDensityPlot(angles)
+  long_data_distances <- tidyr::gather(data.frame(distances),
+                                key = comparison, value = distances)
+  
+  angles_distances <- long_data_angles
+  angles_distances$distances <- long_data_distances$distances
   
   
-  out <- list()
-  out$distances <- distances
-  out$angles    <- angles
-  
-  invisible(out)
+  # return if asked
+  invisible(angles_distances)
   
   
 }

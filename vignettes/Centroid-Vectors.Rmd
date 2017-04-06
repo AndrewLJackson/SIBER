@@ -96,7 +96,7 @@ Now we can extract the centroid data and plot the vector data.
 
 centroids <- siberCentroids(ellipses.posterior)
 
-plotCentroidVectors(centroids)
+allCentroidVectors(centroids)
 
 ```
 

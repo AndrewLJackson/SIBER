@@ -71,6 +71,6 @@ ellipses.posterior <- siberMVN(siber.example, parms, priors)
 
 centroids <- siberCentroids(ellipses.posterior)
 
-plotCentroidVectors(centroids)
+allCentroidVectors(centroids)
 
 

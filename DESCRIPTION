@@ -13,6 +13,9 @@ Imports:
     spatstat.utils,
     stats,
     viridis,
+    tidyr,
+    dplyr,
+    ggplot2
 Suggests:
     knitr
 Author: Andrew Jackson and Andrew Parnell
