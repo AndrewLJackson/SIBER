@@ -57,6 +57,9 @@ allCentroidVectors <- function (centroids, upper = TRUE, do.plot = TRUE, ...) {
     
   }
   
+  colnames(distances) <- new.names
+  colnames(angles)    <- new.names
+  
   # convert from wide to long format
   long_data_angles <- tidyr::gather(data.frame(angles),
                              key = comparison, value = angle)
