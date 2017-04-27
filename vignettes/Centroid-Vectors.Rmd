@@ -6,7 +6,7 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Introduction to SIBER}
   %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
+  %\usepackage[utf8]{inputenc}
 ---
 
 ```{r setup, echo = FALSE}
@@ -102,28 +102,28 @@ centroids <- siberCentroids(ellipses.posterior)
 
 # calculate pairwise polar vectors among all groups
 # this is not actually used in this example
-vector_data <- allCentroidVectors(centroids, do.plot = FALSE)
+angles_distances <- allCentroidVectors(centroids, do.plot = FALSE)
 
 
 ```
 
-We could if we want only compare specific pairs of groups by defining the combinations here (code below not run in this example).
+<!-- We could if we want only compare specific pairs of groups by defining the combinations here (code below not run in this example). -->
 
-```{r specific-vectors, eval = FALSE}
-# here we define the character vector of pairwise names so that we 
-# only compare between pre-monsoon and monsoon data for the same 
-# species
-paired.names <- paste0(paste0(siber_rodents$all.communities[2], ".",
-                           siber_rodents$group.names[[1]]), "|",
-                    paste0(siber_rodents$all.communities[1], ".",
-                           siber_rodents$group.names[[1]]))
+<!-- ```{r specific-vectors, eval = FALSE} -->
+<!-- # here we define the character vector of pairwise names so that we  -->
+<!-- # only compare between pre-monsoon and monsoon data for the same  -->
+<!-- # species -->
+<!-- paired.names <- paste0(paste0(siber.example$all.communities[2], ".", -->
+<!--                            siber.example$group.names[[1]]), "|", -->
+<!--                     paste0(siber.example$all.communities[1], ".", -->
+<!--                            siber.example$group.names[[1]])) -->
 
-# use this new function to calculate only these specific comparisons
-angles_distances <- specificCentroidVectors(centroids,
-                                              paired.names, do.plot = FALSE)
+<!-- # use this new function to calculate only these specific comparisons -->
+<!-- angles_distances <- specificCentroidVectors(centroids, -->
+<!--                                               paired.names, do.plot = FALSE) -->
 
 
-```
+<!-- ``` -->
 
 
 The posterior distributions of the angles can then be visualise as a polar histograms, since the data wrap between $-\pi$ and $\pi$. For some reason, I cant get the gridline associate with $\pi$ to appear.
@@ -146,7 +146,7 @@ return(X)
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
 # calculate the points for each group's ellipse
-hist.by.groups <- vector_data %>% group_by(comparison) %>%
+hist.by.groups <- angles_distances %>% group_by(comparison) %>%
                              do(my.hist(.))
 
 all.roses <- ggplot(data = hist.by.groups, aes(x = mids, y = counts.stdzd)) +
@@ -165,11 +165,13 @@ print(all.roses)
 
 Try some fancy 2-d density plots. These boxes represent the density of the tips of the polar vectors describing the relative position between pairs of individuals. The median vector is shown as an arrow, with the 2-dimensional heatmaps showing where the tip is likely to be. To do this, we have to convert our polar coordinates to cartesian space using the formulae: $(x,y) = (r\cos(\theta),r\sin(\theta))$.
 
+The names for each comparison are not the prettiest or most informative. Here the "X" is superfluous and has appeared via the dplyr code above. The panel label 'X1.1.1.2' reads as community 1 group 1, compared with community 1 group 2. You could relabel the groups in the field `cart_positions$comparison` below. 
+
 
 
 ```{r polar-density, fig.width = 10, fig.height = 7 }
 
-median_vectors <- dplyr::summarise(group_by(vector_data, comparison),
+median_vectors <- dplyr::summarise(group_by(angles_distances, comparison),
           medAngle = median(angle), medDist = median(distances))
 
 origins <- data.frame(comparison = median_vectors$comparison, 
@@ -184,21 +186,21 @@ ends    <- with(median_vectors, data.frame(comparison = comparison,
 for_arrows <- dplyr::bind_rows(origins, ends)
 
 # rename the comparison label for nice plot labels below
-aa <- unlist(strsplit(as.character(for_arrows$comparison), "[.]"))
-aa <- aa[seq(3,length(aa),5)]
-for_arrows$comparison2 <- factor(aa)
+# aa <- unlist(strsplit(as.character(for_arrows$comparison), "[.]"))
+# aa <- aa[seq(3,length(aa),5)]
+# for_arrows$comparison2 <- factor(aa)
 
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 # create the cartesian points for the estimated tips of the arrows
-cart_positions <- with(vector_data, data.frame(x = distances * cos(angle),
+cart_positions <- with(angles_distances, data.frame(x = distances * cos(angle),
                              y = distances * sin(angle),
                              comparison = comparison ))
 
 # rename as above
-bb <- unlist(strsplit(as.character(vector_data$comparison), "[.]"))
-bb <- bb[seq(3,length(bb),5)]
-cart_positions$comparison2 <- factor(bb)
+# bb <- unlist(strsplit(as.character(angles_distances$comparison), "[.]"))
+# bb <- bb[seq(3,length(bb),5)]
+# cart_positions$comparison2 <- factor(bb)
 
 
 
@@ -207,8 +209,8 @@ cart_positions$comparison2 <- factor(bb)
 ggplot(cart_positions, aes(x,y) ) + 
   geom_bin2d(bins = 20) +
   scale_fill_gradient(low = "white", high = "black") +
-  coord_cartesian(xlim = c(-3, +3), ylim = c(-3, +3)) +
-  facet_wrap( ~ comparison2, scales = "fixed") + 
+  coord_cartesian(xlim = c(-20, +20), ylim = c(-20, +20)) +
+  facet_wrap( ~ comparison, scales = "fixed") + 
   theme_classic() +
   geom_path(data = for_arrows, 
             arrow = arrow(type = "open", length = unit(0.2, "cm")),

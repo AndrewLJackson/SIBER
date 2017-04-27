@@ -1,7 +1,7 @@
-# SIBER 2.1.2.9000
+# SIBER 2.1.3
 + Contains a hotfix owing to a change to 'spatstat' detailed below
 + swapped package `spatstat` for `spatstat.utils` as per instructions from their package maintainers 23/03/2017
-+ please install via `devtools::install_github("andrewljackson/SIBER", build_vingettes = TRUE)`
++ New functions `siberCentroids`, `specificCentroidVectors` and `allCentoidVectors` added to allow pairwise comparison of the locations of two groups using vectors. Illustrated in an accompanying vignette.
 
 # SIBER 2.1.2
 + added ability to specify custom pch point orders in `plotSiberObject()`
