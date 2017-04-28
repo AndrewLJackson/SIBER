@@ -15,7 +15,8 @@ Imports:
     viridis,
     tidyr,
     dplyr,
-    ggplot2
+    ggplot2,
+    magrittr
 Suggests:
     knitr
 Author: Andrew Jackson and Andrew Parnell

@@ -133,7 +133,7 @@ The posterior distributions of the angles can then be visualise as a polar histo
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 # function to do the histograms on each group
 my.hist <- function(df){
-  test <- hist(df$angle, 
+  test <- hist(df$angles, 
              breaks = seq(from = -pi, to = pi, length = 60), 
              plot = FALSE)
 
@@ -172,7 +172,7 @@ The names for each comparison are not the prettiest or most informative. Here th
 ```{r polar-density, fig.width = 10, fig.height = 7 }
 
 median_vectors <- dplyr::summarise(group_by(angles_distances, comparison),
-          medAngle = median(angle), medDist = median(distances))
+          medAngle = median(angles), medDist = median(distances))
 
 origins <- data.frame(comparison = median_vectors$comparison, 
                       x = 0, y = 0)
@@ -193,8 +193,8 @@ for_arrows <- dplyr::bind_rows(origins, ends)
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 # create the cartesian points for the estimated tips of the arrows
-cart_positions <- with(angles_distances, data.frame(x = distances * cos(angle),
-                             y = distances * sin(angle),
+cart_positions <- with(angles_distances, data.frame(x = distances * cos(angles),
+                             y = distances * sin(angles),
                              comparison = comparison ))
 
 # rename as above

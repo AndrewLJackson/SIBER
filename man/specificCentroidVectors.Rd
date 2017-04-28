@@ -12,6 +12,10 @@ specificCentroidVectors(centroids, do.these, upper = TRUE, do.plot = TRUE,
 \item{centroids}{the list containing distance and angle matrices as returned 
 by \code{\link{siberCentroids}}.}
 
+\item{do.these}{a character vector of the pattern used to find paired matches in
+the matrix of all comparisons. Usually the group names within any of the 
+communities.}
+
 \item{upper}{a logical determining whether to plot the upper or lower 
 triangle of angles. DEfaults to TRUE which is the upper triangle and 
 returns the angle from the second ellipse to the first by centering on the 
@@ -21,10 +25,6 @@ first centroid.}
 Defaults to TRUE.}
 
 \item{...}{additional arguments to pass onwards, not currently implemented.}
-
-\item{txt}{a character vector of the pattern used to find paired matches in
-the matrix of all comparisons. Usually the group names within any of the 
-communities.}
 }
 \value{
 A nice plot. You can get the corresponding matrices used to generate 

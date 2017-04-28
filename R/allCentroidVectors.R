@@ -17,9 +17,15 @@
 #'   the plots if you ask for it nicely: thedata <- 
 #'   plotCentroidVectors(centroids)
 #'   
+#' @importFrom magrittr %>%
+#' 
 #' @export
+# magrittr::`%>%`
 
 allCentroidVectors <- function (centroids, upper = TRUE, do.plot = TRUE, ...) {
+  
+  # appease CRAN checks
+  comparison <- NULL
   
   dd <- dim(centroids$r)
   
@@ -60,9 +66,16 @@ allCentroidVectors <- function (centroids, upper = TRUE, do.plot = TRUE, ...) {
   colnames(distances) <- new.names
   colnames(angles)    <- new.names
   
+  if(do.plot){
+    siberDensityPlot(distances)
+    siberDensityPlot(angles)
+  }
+  
+  # browser()
+  
   # convert from wide to long format
   long_data_angles <- tidyr::gather(data.frame(angles),
-                             key = comparison, value = angle)
+                             key = comparison, value = angles)
   
   long_data_distances <- tidyr::gather(data.frame(distances),
                                 key = comparison, value = distances)

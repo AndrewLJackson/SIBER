@@ -5,7 +5,7 @@
 #' 
 #' @param centroids the list containing distance and angle matrices as returned 
 #'   by \code{\link{siberCentroids}}.
-#' @param txt a character vector of the pattern used to find paired matches in
+#' @param do.these a character vector of the pattern used to find paired matches in
 #'   the matrix of all comparisons. Usually the group names within any of the 
 #'   communities.
 #' @param upper a logical determining whether to plot the upper or lower 
@@ -19,15 +19,16 @@
 #' @return A nice plot. You can get the corresponding matrices used to generate 
 #'   the plots if you ask for it nicely: thedata <- 
 #'   plotCentroidVectors(centroids)
-#'   
+#' @importFrom magrittr %>%
+#' 
 #' @export
+# magrittr::`%>%`
 
 specificCentroidVectors <- function (centroids, do.these, upper = TRUE, 
                                    do.plot = TRUE, ...) {
   
-  # first i need to find all the indices for which the same group name appears 
-  # in the centroid$labels so I can extract them only.
-  # ** ACTUALLY THIS IS GOING TO BE DONE OUTSIDE**
+  # appease CRAN checks
+  comparison <- NULL
   
   # how big is the data array
   dd <- dim(centroids$r)
@@ -86,7 +87,7 @@ specificCentroidVectors <- function (centroids, do.these, upper = TRUE,
   
   # convert from wide to long format
   long_data_angles <- tidyr::gather(data.frame(angles),
-                             key = comparison, value = angle)
+                             key = comparison, value = angles)
   
   long_data_distances <- tidyr::gather(data.frame(distances),
                                 key = comparison, value = distances)
