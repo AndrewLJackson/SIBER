@@ -1,3 +1,6 @@
+# SIBER 2.1.3.9000
++ asdf
+
 # SIBER 2.1.3
 + Contains a hotfix owing to a change to 'spatstat' detailed below
 + swapped package `spatstat` for `spatstat.utils` as per instructions from their package maintainers 23/03/2017
