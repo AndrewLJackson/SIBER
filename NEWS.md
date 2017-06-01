@@ -1,5 +1,6 @@
 # SIBER 2.1.3.9000
-+ asdf
++ added new vignette `Plot-posterior-ellipses` that shows how to plot multiple posterior ellipse draws on top of data using `ggplot2`.
+
 
 # SIBER 2.1.3
 + Contains a hotfix owing to a change to 'spatstat' detailed below
