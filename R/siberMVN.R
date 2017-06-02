@@ -70,9 +70,12 @@ siberMVN <- function (siber, parms, priors)
       x.zscore <- siber$zscore.data[[k]][grp.j, 1]
       y.zscore <- siber$zscore.data[[k]][grp.j, 2]
       
+      # create a label for passing to fitEllipse to help identify 
+      # the model output if it is saved.
+      id <- paste0("community", k, "_group", j)
       
       # fit the ellipses to each group in the dataset
-      model <- fitEllipse(x.zscore,y.zscore,parms,priors)
+      model <- fitEllipse(x.zscore, y.zscore, parms, priors, id)
       
       corrected.posteriors <- ellipseBackTransform(model, siber, k, j)
       
