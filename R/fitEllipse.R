@@ -50,6 +50,15 @@
 
 fitEllipse <- function (x, y, parms, priors, id = NULL) 
 {
+  
+  # some input argument checking
+  if (!is.null(parms$save.output) && parms$save.output && 
+      is.null(parms$save.dir)) {
+    stop("You set parms$save.output <- T, so you must provide 
+         a valid directory in which to save the files. This might 
+         be parms$save.dir <- getwd() to set it to your current 
+         working directory.")
+  }
 
   # ----------------------------------------------------------------------------
   # JAGS code for fitting Inverse Wishart version of SIBER to a single group
@@ -119,8 +128,10 @@ fitEllipse <- function (x, y, parms, priors, id = NULL)
                                 thin = parms$n.thin
                                 )
   
-  if (!is.null(id) & parms$save.output) {
-    save(output, file = paste0(parms$save.dir, "/jags_output_", id, ".RData"))}
+  if (!is.null(id) && !is.null(parms$save.output) && parms$save.output) {
+    save(output, 
+         file = paste0(parms$save.dir, "/jags_output_", id, ".RData"))
+    }
   
   #print(summary(output))
   #print(dim(output[[1]]))

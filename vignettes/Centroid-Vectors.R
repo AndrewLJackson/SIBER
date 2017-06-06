@@ -59,6 +59,9 @@ parms$n.burnin <- 1 * 10^3 # discard the first set of values
 parms$n.thin <- 10     # thin the posterior by this many
 parms$n.chains <- 2        # run this many chains
 
+parms$save.output = FALSE
+parms$save.dir = tempdir()
+
 # define the priors
 priors <- list()
 priors$R <- 1 * diag(2)
