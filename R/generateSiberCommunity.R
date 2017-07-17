@@ -14,6 +14,10 @@
 #' distribution within this range. The first two entries are the min and max of 
 #' the x-axis, and the second two the min and max of the y-axis.  Defaults to 
 #' \code{c(-1, 1, -1, 1)}.
+#' @param wishSigmaScale is a simple multiplier for the call to
+#'   \code{\link{stats::rWishart}} which scales the diagonal sigma matrix using
+#'   \code{wishSigmaScale * diag(2)} that is ultimately passed on to 
+#'   \code{\link{generateSiberGroup}}.
 #' 
 #' @return A data.frame object comprising a column of x and y data, a group 
 #' indentifying column and a community identifying column, all of which are 
@@ -26,7 +30,8 @@
 # a function to generate a community comprised of a number of groups
 generateSiberCommunity <- function (n.groups = 3, community.id = 1, 
                                       n.obs = 30, 
-                                      mu.range = c(-1, 1, -1, 1)) {
+                                      mu.range = c(-1, 1, -1, 1), 
+                                      wishSigmaScale = 1) {
   
   # create some random vectors which will be built as we go
   # I dont like this and will pre-define them at full length
@@ -39,7 +44,9 @@ generateSiberCommunity <- function (n.groups = 3, community.id = 1,
   for (i in 1:n.groups) {
     
     # create each group one-by-one
-    tmp <- generateSiberGroup(mu.range, n.obs)
+    tmp <- generateSiberGroup(mu.range = mu.range, 
+                              n.obs = n.obs,
+                              wishSigmaScale = wishSigmaScale)
     
     # add it on to the previous group
     y <- rbind(y, tmp)

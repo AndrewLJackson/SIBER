@@ -9,6 +9,9 @@
 #' distribution within this range. The first two entries are the min and max of 
 #' the x-axis, and the second two the min and max of the y-axis.
 #' @param n.obs the number of observations to draw per group. Defaults to 30.
+#' @param wishSigmaScale is a simple multiplier for the call to
+#'   \code{\link{stats::rWishart}} which scales the diagonal sigma matrix using
+#'   \code{wishSigmaScale * diag(2)}.
 #' 
 #' @return A data.frame object comprising a column of x and y data, a group 
 #' indentifying column and a community identifying column, all of which are 
@@ -21,7 +24,8 @@
 
 
 # a function to generate a single group
-generateSiberGroup <- function (mu.range = c(-1, 1, -1, 1), n.obs = 30) {
+generateSiberGroup <- function (mu.range = c(-1, 1, -1, 1), n.obs = 30, 
+                                wishSigmaScale = 1) {
   
   # pull a random set of means from the appropriate range
   # Code allows for different ranges for each isotope.
@@ -31,7 +35,9 @@ generateSiberGroup <- function (mu.range = c(-1, 1, -1, 1), n.obs = 30) {
   
   # pull a precision matrix from the wishart distribution and invert it to 
   # get the corresponding covariance matrix.
-  sigma <- solve(matrix(stats::rWishart(1, 2, diag(2)), 2, 2))
+  sigma <- solve(matrix(stats::rWishart(1, 2, 
+                                        wishSigmaScale*diag(2)), 
+                        nrow = 2, ncol = 2))
   
   # the data are random normal
   y <- mnormt::rmnorm(n.obs, mu, sigma)  

@@ -5,7 +5,7 @@
 \title{A utility function to simulate a single community comprised of groups}
 \usage{
 generateSiberCommunity(n.groups = 3, community.id = 1, n.obs = 30,
-  mu.range = c(-1, 1, -1, 1))
+  mu.range = c(-1, 1, -1, 1), wishSigmaScale = 1)
 }
 \arguments{
 \item{n.groups}{the an integer specifying the number of groups to simulate. 
@@ -21,6 +21,11 @@ values to sample means from. Group means are sampled from a uniform
 distribution within this range. The first two entries are the min and max of 
 the x-axis, and the second two the min and max of the y-axis.  Defaults to 
 \code{c(-1, 1, -1, 1)}.}
+
+\item{wishSigmaScale}{is a simple multiplier for the call to
+\code{\link{stats::rWishart}} which scales the diagonal sigma matrix using
+\code{wishSigmaScale * diag(2)} that is ultimately passed on to 
+\code{\link{generateSiberGroup}}.}
 }
 \value{
 A data.frame object comprising a column of x and y data, a group 

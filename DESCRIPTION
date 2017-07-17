@@ -16,7 +16,8 @@ Imports:
     tidyr,
     dplyr,
     ggplot2,
-    magrittr
+    magrittr,
+    purrr
 Suggests:
     knitr
 Author: Andrew Jackson and Andrew Parnell

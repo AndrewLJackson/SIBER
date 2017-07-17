@@ -4,27 +4,32 @@
 #' wrapper function for \code{\link{generateSiberCommunity}}.
 #' 
 #' @param n.groups the an integer specifying the number of groups per community 
-#' to simulate. Defaults to 3.
-#' @param n.communities the number of communities to simulate data for. Defaults 
-#' to 2.
+#'   to simulate. Defaults to 3.
+#' @param n.communities the number of communities to simulate data for. Defaults
+#'   to 2.
 #' @param n.obs the number of observations to draw per group.
 #' @param mu.range a vector of length 4, specifying the mix and max x and y 
-#' values to sample means from. Group means are sampled from a uniform 
-#' distribution within this range. The first two entries are the min and max of 
-#' the x-axis, and the second two the min and max of the y-axis. Defaults to 
-#' \code{c(-1, 1, -1, 1)}.
-#' 
+#'   values to sample means from. Group means are sampled from a uniform 
+#'   distribution within this range. The first two entries are the min and max
+#'   of the x-axis, and the second two the min and max of the y-axis. Defaults
+#'   to \code{c(-1, 1, -1, 1)}.
+#' @param wishSigmaScale is a simple multiplier for the call to
+#'   \code{\link{stats::rWishart}} which scales the diagonal sigma matrix using
+#'   \code{wishSigmaScale * diag(2)} that is ultimately passed on to 
+#'   \code{\link{generateSiberGroup}}.
+#'   
 #' @return A data.frame object comprising a column of x and y data, a group 
-#' indentifying column and a community identifying column, all of which are 
-#' numeric.
-#' 
+#'   indentifying column and a community identifying column, all of which are 
+#'   numeric.
+#'   
 #' @examples
 #' generateSiberData()
 #' 
 #' @export
 
 generateSiberData <- function(n.groups = 3, n.communities = 2, n.obs = 30, 
-                                mu.range = c(-1, 1, -1, 1) ){
+                                mu.range = c(-1, 1, -1, 1),
+                              wishSigmaScale = 1){
   
   # calculate the number of observations (rows) to be created
   nn <- n.obs * n.groups * n.communities
@@ -46,7 +51,9 @@ generateSiberData <- function(n.groups = 3, n.communities = 2, n.obs = 30,
   for (i in 1:n.communities){
 
     # create a random community
-  	y <- generateSiberCommunity(n.groups = 3, community.id = i, n.obs = n.obs, mu.range = mu.range)
+  	y <- generateSiberCommunity(n.groups = 3, community.id = i, n.obs = n.obs, 
+  	                            mu.range = mu.range, 
+  	                            wishSigmaScale = wishSigmaScale)
 
     # add the random community to the dataframe "simulated.data"
   	simulated.data[idx.counter:(idx.counter+nrow(y)-1), ] <- y
