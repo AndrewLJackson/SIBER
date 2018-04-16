@@ -6,8 +6,8 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Customising Plots Manually}
   %\VignetteEngine{knitr::rmarkdown}
-  %\usepackage[utf8]{inputenc}
   %\VignetteDepends{viridis}
+  \usepackage[utf8]{inputenc}
 ---
 
 ```{r, echo = FALSE}
