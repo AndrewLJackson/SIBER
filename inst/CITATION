@@ -10,12 +10,12 @@ citEntry(entry = "Article",
   year         = "2011",
   number       = "3",
   pages        = "595--602",
-  url          = "http://dx.doi.org/10.1111/j.1365-2656.2011.01806.x",
+  url          = "https://doi.org/10.1111/j.1365-2656.2011.01806.x",
 
   textVersion  =
   paste("Andrew L Jackson, Andrew C Parnell,
         Richard Inger and Stuart Bearhop (2011).",
         "Comparing isotopic niche widths among and within communities:           SIBER - Stable Isotope Bayesian Ellipses in R",
         "Journal of Animal Ecology, 80, 595-602.",
-        "URL http://dx.doi.org/10.1111/j.1365-2656.2011.01806.x.")
+        "URL https://doi.org/10.1111/j.1365-2656.2011.01806.x.")
 )
