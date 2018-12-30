@@ -27,7 +27,7 @@ siberKapow <- function(dtf, isoNames = c("iso1", "iso2"),
     
     mu <- dd %>% select(isoNames) %>% colMeans()
     
-    Sigma <- dd  %>% select(isoNames) %>% cov()
+    Sigma <- dd  %>% select(isoNames) %>% stats::cov()
     
     # turn the mean and covariance matrix into a set of xy coordinates 
     # demarcating the ellipse boundary. SIBER::addellipse()
@@ -50,8 +50,9 @@ siberKapow <- function(dtf, isoNames = c("iso1", "iso2"),
   # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
   
-  # apply our function to each gruop to calcluate the ellipse boundaries
-  ellCoords <- dtf %>% ungroup() %>% droplevels() %>% group_by(.dots = group) %>%
+  # apply our function to each group to calcluate the ellipse boundaries
+  ellCoords <- dtf %>% ungroup() %>% droplevels() %>% 
+    group_by(.dots = group) %>%
     do(calcBoundaries(.))
   
   # split the dataset by the defined grouping parameter

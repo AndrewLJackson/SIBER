@@ -4,7 +4,7 @@ author: "Andrew L Jackson"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to SIBER}
+  %\VignetteIndexEntry{Vector Statistics on Centroids}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---

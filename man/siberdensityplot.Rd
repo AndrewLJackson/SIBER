@@ -8,8 +8,8 @@
 siberDensityPlot(dat, probs = c(95, 75, 50), xlab = "Group",
   ylab = "Value", xticklabels = NULL, yticklabels = NULL,
   clr = grDevices::gray((9:1)/10), scl = 1, xspc = 0.5, prn = F,
-  ct = "mode", ylims = NULL, lbound = -Inf, ubound = Inf, main = "",
-  ylab.line = 2, ...)
+  ct = "mode", ylims = NULL, lbound = -Inf, ubound = Inf,
+  main = "", ylab.line = 2, ...)
 }
 \arguments{
 \item{dat}{a matrix of data for which density region boxplots will be 

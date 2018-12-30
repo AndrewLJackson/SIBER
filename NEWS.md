@@ -1,4 +1,5 @@
-# SIBER 2.1.3.9000
+# SIBER 2.1.4
++ fixed "vignettes with duplicate titles" warning
 + added new vignette `Plot-posterior-ellipses` that shows how to plot multiple posterior ellipse draws on top of data using `ggplot2`.
 + fixed `fitEllipse` so that it now correctly inherits `parms$n.chains` and `parms$n.thin` from input
 + added ability to save the raw `jags` output to `*.RData` file to enable convergence diagnostics for each ellipse within `fitEllipse`. This option is set in the higher level user-specified object `parms$save.output`.
