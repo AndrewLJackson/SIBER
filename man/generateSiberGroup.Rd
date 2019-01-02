@@ -16,7 +16,7 @@ the x-axis, and the second two the min and max of the y-axis.}
 \item{n.obs}{the number of observations to draw per group. Defaults to 30.}
 
 \item{wishSigmaScale}{is a simple multiplier for the call to
-\code{\link{stats::rWishart}} which scales the diagonal sigma matrix using
+\code{\link[stats]{rWishart}} which scales the diagonal sigma matrix using
 \code{wishSigmaScale * diag(2)}.}
 }
 \value{

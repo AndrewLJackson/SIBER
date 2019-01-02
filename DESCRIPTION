@@ -12,6 +12,7 @@ Imports:
     grDevices,
     mnormt,
     rjags,
+    spatstat,
     spatstat.utils,
     stats,
     viridis,
@@ -23,7 +24,7 @@ Imports:
 Suggests:
     knitr
 Author: Andrew Jackson and Andrew Parnell
-Maintainer: Andrew Jackson <a.jackson@tcd.ie>
+Maintainer: Andrew Jackson <jacksoan@tcd.ie>
 Description: Fits bi-variate ellipses to stable isotope data using Bayesian
     inference with the aim being to describe and compare their isotopic
     niche.

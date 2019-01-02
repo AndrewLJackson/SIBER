@@ -15,7 +15,7 @@
 #' the x-axis, and the second two the min and max of the y-axis.  Defaults to 
 #' \code{c(-1, 1, -1, 1)}.
 #' @param wishSigmaScale is a simple multiplier for the call to
-#'   \code{\link{stats::rWishart}} which scales the diagonal sigma matrix using
+#'   \code{\link[stats]{rWishart}} which scales the diagonal sigma matrix using
 #'   \code{wishSigmaScale * diag(2)} that is ultimately passed on to 
 #'   \code{\link{generateSiberGroup}}.
 #' 

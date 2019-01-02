@@ -10,7 +10,7 @@
 #' the x-axis, and the second two the min and max of the y-axis.
 #' @param n.obs the number of observations to draw per group. Defaults to 30.
 #' @param wishSigmaScale is a simple multiplier for the call to
-#'   \code{\link{stats::rWishart}} which scales the diagonal sigma matrix using
+#'   \code{\link[stats]{rWishart}} which scales the diagonal sigma matrix using
 #'   \code{wishSigmaScale * diag(2)}.
 #' 
 #' @return A data.frame object comprising a column of x and y data, a group 

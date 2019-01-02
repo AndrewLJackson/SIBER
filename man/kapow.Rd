@@ -14,7 +14,7 @@ kapow(cd = 7, ng = 25, n = 50, sc = 15, do.plot = TRUE)
 \item{n}{the number of data points to simluate per group, but never displayed}
 
 \item{sc}{the scaling factor the rwishart sigma called by 
-\code{\link{stats::rWishart}}}
+\code{\link[stats]{rWishart}}}
 
 \item{do.plot}{a logical indicating whether the plot should be printed
 (defaults to TRUE).}
