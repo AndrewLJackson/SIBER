@@ -34,7 +34,7 @@ kapow <- function(cd = 7, ng = 25, n = 50, sc = 15, do.plot = TRUE) {
   ellY <- siberKapow(Y, isoNames = c("iso1","iso2"), group = "group")
   
   p <- ggplot(ellY$ell.coords, 
-              mapping = aes(x = X1, y = X2, color = group, fill = group)) + 
+              mapping = aes_string(x = 'X1', y = 'X2', color = 'group', fill = 'group')) + 
     geom_polygon(alpha = 0.1) + 
     scale_color_discrete(guide = FALSE) + 
     # geom_text(mapping = aes(x = 0, y = 0, label = "KAPOW!",

@@ -16,6 +16,10 @@
 #' @return an object of class \code{owin} containing the numerically calculated
 #'   ellipses and their union along with the raw ellipse boundaries in both raw
 #'   and \code{owin} format.
+#' 
+#' @import ggplot2
+#' @import dplyr
+#' @import magrittr
 #'   
 #' @export
 
@@ -52,8 +56,8 @@ siberKapow <- function(dtf, isoNames = c("iso1", "iso2"),
   
   # apply our function to each group to calcluate the ellipse boundaries
   ellCoords <- dtf %>% ungroup() %>% droplevels() %>% 
-    group_by(.dots = group) %>%
-    do(calcBoundaries(.))
+    group_by_(.dots = "group") %>%
+    do(calcBoundaries(.data))
   
   # split the dataset by the defined grouping parameter
   ellCoords.list <- ellCoords %>% split(., .[,group])

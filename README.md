@@ -46,6 +46,10 @@ More information and examples from the previous version of SIBER which is part o
 
 The package vingettes provide working examples of the two main analysis types.
 
+## Frequently Asked Questions (FAQs)
+
+* __How do I make isotope plots in ggplot?__ - see this [code example]() 
+
 ## Help, Assistance and Queries
 In the first instance, queries about analyses or problems with the software can be posted [here on github](https://github.com/AndrewLJackson/SIBER/issues). Failing  If you are convinced you have discovered a bug or major problem in the software, you can raise an [issue here on github](https://github.com/AndrewLJackson/SIBER/issues).
 
