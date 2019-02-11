@@ -19,7 +19,7 @@
 #' 
 #' @import ggplot2
 #' @import dplyr
-#' @import magrittr
+#' @importFrom magrittr "%>%"
 #'   
 #' @export
 

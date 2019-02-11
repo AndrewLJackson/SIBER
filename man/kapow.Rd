@@ -4,7 +4,7 @@
 \alias{kapow}
 \title{KAPOW!}
 \usage{
-kapow(cd = 7, ng = 25, n = 50, sc = 15, do.plot = TRUE)
+kapow(cd = 7, ng = 25, n = 50, sc = 10, do.plot = TRUE)
 }
 \arguments{
 \item{cd}{sets the random seed to this}
