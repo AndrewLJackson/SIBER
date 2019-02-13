@@ -7,16 +7,16 @@
 posteriorSEA(post)
 }
 \arguments{
-\item{post}{a matrix of postior covariance matrix and mean estimates for a 
-bivariate ellipse. In SIBER, this is typically one list element of the
+\item{post}{a matrix of posterior covariance matrices and mean estimates for
+a bivariate ellipse. In SIBER, this is typically one list element of the
 object returned by \code{link{siberMVN}}.}
 }
 \value{
 A vector of posterior Bayesian Standard Ellipse Areas (SEA_B)
 }
 \description{
-This function loops over each posterior draw of a single group's 
-Bayesian bivariate ellipse and calculates the Standard Ellipse Area (SEA) 
-for each draw, thereby generating a distribution of SEA esimates. Not 
-intended for direct calling outside of \code{\link{siberEllipses}}.
+This function loops over each posterior draw of a single group's Bayesian
+bivariate ellipse and calculates the Standard Ellipse Area (SEA) for each
+draw, thereby generating a distribution of SEA estimates. Not intended for
+direct calling outside of \code{\link{siberEllipses}}.
 }

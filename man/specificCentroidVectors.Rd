@@ -17,7 +17,7 @@ the matrix of all comparisons. Usually the group names within any of the
 communities.}
 
 \item{upper}{a logical determining whether to plot the upper or lower 
-triangle of angles. DEfaults to TRUE which is the upper triangle and 
+triangle of angles. Defaults to TRUE which is the upper triangle and 
 returns the angle from the second ellipse to the first by centering on the 
 first centroid.}
 

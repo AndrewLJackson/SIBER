@@ -57,7 +57,9 @@ the data you wish, or alternatively any confidence interval of the bivariate
 means.
 }
 \examples{
-data(demo.siber.data)
-my.siber.data <- createSiberObject(demo.siber.data)
-communityMetricsML(my.siber.data)
+#-- NOT RUN --
+# data(demo.siber.data)
+# my.siber.data <- createSiberObject(demo.siber.data)
+# communityMetricsML(my.siber.data)
+# -- END --
 }

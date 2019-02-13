@@ -8,7 +8,7 @@
 #' \code{\link{fitEllipse}}
 #' @param siber a siber object as created by createSiberObject.
 #' @param idx.community an integer specifying which community to back-transform.
-#' @param idx.group an integer specifyging which group to back-transform.
+#' @param idx.group an integer specifying which group to back-transform.
 #' 
 #' 
 #' @return A 6 x n matrix representing the back-transformed posterior 

@@ -6,7 +6,7 @@
 #' 
 #' @param dtf a data.frame object comprising bivariate data as a requirement, 
 #'   and possibly other variables too but these are currently ignored.
-#' @param isoNames a charecter vector of length 2 providing the names of the 
+#' @param isoNames a character vector of length 2 providing the names of the 
 #'   variables containing the x and y data respectively.
 #' @param group a character vector of length 1 providing the name of the 
 #'   grouping variable on which to calculate the KAPOW ellipse.

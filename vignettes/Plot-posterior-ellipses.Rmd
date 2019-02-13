@@ -4,7 +4,7 @@ author: "Andrew L Jackson"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to SIBER}
+  %\VignetteIndexEntry{Plot Some Posterior Ellipses}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
@@ -67,7 +67,7 @@ siberDensityPlot(SEA.B, xticklabels = colnames(group.ML),
 
 ```
 
-Now we want to create some plots of some sample ellipses from these distributions. We need to create a data.frame object of all the ellipses for each group. In this exmaple we simply take the frist 10 posterior draws assuming them to be independent of one another, but you could take a random sample if you prefer.
+Now we want to create some plots of some sample ellipses from these distributions. We need to create a data.frame object of all the ellipses for each group. In this example we simply take the first 10 posterior draws assuming them to be independent of one another, but you could take a random sample if you prefer.
 
 ```{r create-ellipse-df}
 

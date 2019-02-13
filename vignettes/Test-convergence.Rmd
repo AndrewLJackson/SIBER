@@ -4,7 +4,7 @@ author: "Andrew L Jackson"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to SIBER}
+  %\VignetteIndexEntry{Test Convergence}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
@@ -57,7 +57,7 @@ ellipses.posterior <- siberMVN(siber.example, parms, priors)
 
 ```
 
-Now we want to determine whether our models have converged. There are separate models for each ellipse, and there should be one for each saved in our `parms$save.dir` directory. Note that the `gelman.diag` function does not seem to deal with the multivariate covariance matrix properly. We can calculate the statistic on the marginal parameters of the covariance matrix separately by seeting `multivariate = FALSE`. See `?gelman.diag` for more advice and assistance with interpreting this statistic: basically, we are looking for scale reduction factors less than 1.1. These models tend to behave well since we have z-scored the data for each ellipse prior to fitting and so convergence should not be an issue in most cases.
+Now we want to determine whether our models have converged. There are separate models for each ellipse, and there should be one for each saved in our `parms$save.dir` directory. Note that the `gelman.diag` function does not seem to deal with the multivariate covariance matrix properly. We can calculate the statistic on the marginal parameters of the covariance matrix separately by setting `multivariate = FALSE`. See `?gelman.diag` for more advice and assistance with interpreting this statistic: basically, we are looking for scale reduction factors less than 1.1. These models tend to behave well since we have z-scored the data for each ellipse prior to fitting and so convergence should not be an issue in most cases.
 
 **_N.B._** the parameter estimates we are performing these convergence tests on are the based on the estimates for the *z-scored* data as fitted by the `jags` model and as saved to file, and so are not the same scale as your actual raw data. In this regard, the means should approximate 0, and the diagonals of the covariance matrix close to 1, with a non-zero off-diagonal. These are back-transformed within SIBER when calculating the subsequent statistics such as SEA or shifts in the bivariate means.
 

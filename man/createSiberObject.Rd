@@ -11,15 +11,15 @@ createSiberObject(data.in)
 columns. The first two of which are typically isotope tracers, then the 
 third is a column that indicates the group membership, and the fourth 
 column indicates the community membership of an observation. Communities 
-labels should be entered  as sequetial numbers. As of v2.0.1 group labels 
+labels should be entered  as sequential numbers. As of v2.0.1 group labels 
 can be entered as strings and/or numbers and need not be sequential.}
 }
 \value{
 A siber list object, that contains data that helps with various model
   fitting and plotting. \itemize{ \item {original.data}{The original data as
   passed into this function} \item {iso.summary}{The max, min, mean and
-  median of the isotope data useful for plotting} \item {sample.sizees}{The
-  number of obsevations tabulated by group and community} \item {raw.data}{A
+  median of the isotope data useful for plotting} \item {sample.sizes}{The
+  number of observations tabulated by group and community} \item {raw.data}{A
   list object of length equal to the number of communities} }
 }
 \description{

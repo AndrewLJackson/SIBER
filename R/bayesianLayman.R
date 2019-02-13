@@ -1,4 +1,4 @@
-#' Calculate Layman metrics on Bayesian postrior samples of a community
+#' Calculate Layman metrics on Bayesian posterior samples of a community
 #' 
 #' This function loops over the posterior distribution of group means within
 #' each community and generates the corresponding Bayesian estimate of the 6 

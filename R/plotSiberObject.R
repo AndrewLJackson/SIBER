@@ -13,7 +13,7 @@
 #' @param iso.order a vector of length 2, either c(1,2) or c(2,1). The order 
 #'   determines which of the columns of raw data are plotted on the x (1) or y 
 #'   (2) axis. N.B. this will be deprecated in a future release, and plotting 
-#'   order will be acheived at point of data-entry.
+#'   order will be achieved at point of data-entry.
 #' @param hulls a logical defaulting to TRUE determining whether or not hulls 
 #'   based on the means of groups within communities should be drawn. That is, a
 #'   community-level convex hull.
@@ -38,10 +38,10 @@
 #'   to horizontal with \code{las = 1}. See \code{\link[graphics]{par}} for more
 #'   details.
 #' @param x.limits allows you to specify a two-element vector of lower and upper
-#'   x-axis limits. Speficying this argument over-rides the automatic plotting 
+#'   x-axis limits. Specifying this argument over-rides the automatic plotting 
 #'   and ax.pad option. Defaults to NULL.
 #' @param y.limits allows you to specify a two-element vector of lower and upper
-#'   y-axis limits. Speficying this argument over-rides the automatic plotting 
+#'   y-axis limits. Specifying this argument over-rides the automatic plotting 
 #'   and ax.pad option. Defaults to NULL.
 #' @param points.order a vector of integers specifying the order of point types 
 #'   to use. See \code{\link[graphics]{points}} for how integers map onto point 

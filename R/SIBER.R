@@ -3,7 +3,7 @@
 #' The SIBER package provides tools for fitting multivariate normal 
 #' distributions to bivariate data using Bayesian Inference. These
 #' distributions can then be used to calculate probability 
-#' distributions of Standard Ellise Areas for comparing groups of data,
+#' distributions of Standard Ellipse Areas for comparing groups of data,
 #' or to calculate the 6 Layman metrics for comparing entire communities.
 #' 
 #' 

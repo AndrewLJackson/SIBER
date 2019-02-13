@@ -11,7 +11,7 @@ siberKapow(dtf, isoNames = c("iso1", "iso2"), group = "group",
 \item{dtf}{a data.frame object comprising bivariate data as a requirement, 
 and possibly other variables too but these are currently ignored.}
 
-\item{isoNames}{a charecter vector of length 2 providing the names of the 
+\item{isoNames}{a character vector of length 2 providing the names of the 
 variables containing the x and y data respectively.}
 
 \item{group}{a character vector of length 1 providing the name of the 

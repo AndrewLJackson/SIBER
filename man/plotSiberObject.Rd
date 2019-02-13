@@ -17,7 +17,7 @@ plotSiberObject(siber, iso.order = c(1, 2), ax.pad = 1, hulls = TRUE,
 \item{iso.order}{a vector of length 2, either c(1,2) or c(2,1). The order 
 determines which of the columns of raw data are plotted on the x (1) or y 
 (2) axis. N.B. this will be deprecated in a future release, and plotting 
-order will be acheived at point of data-entry.}
+order will be achieved at point of data-entry.}
 
 \item{ax.pad}{a padding amount to apply to the x-axis either side of the 
 extremes of the data. Defaults to 1.}
@@ -56,11 +56,11 @@ to horizontal with \code{las = 1}. See \code{\link[graphics]{par}} for more
 details.}
 
 \item{x.limits}{allows you to specify a two-element vector of lower and upper
-x-axis limits. Speficying this argument over-rides the automatic plotting 
+x-axis limits. Specifying this argument over-rides the automatic plotting 
 and ax.pad option. Defaults to NULL.}
 
 \item{y.limits}{allows you to specify a two-element vector of lower and upper
-y-axis limits. Speficying this argument over-rides the automatic plotting 
+y-axis limits. Specifying this argument over-rides the automatic plotting 
 and ax.pad option. Defaults to NULL.}
 
 \item{points.order}{a vector of integers specifying the order of point types 

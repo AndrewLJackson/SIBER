@@ -39,9 +39,11 @@
 #'   ellipse.
 #'   
 #' @examples
-#' data(demo.siber.data)
-#' my.siber.data <- createSiberObject(demo.siber.data)
-#' communityMetricsML(my.siber.data)
+#' #-- NOT RUN --
+#' # data(demo.siber.data)
+#' # my.siber.data <- createSiberObject(demo.siber.data)
+#' # communityMetricsML(my.siber.data)
+#' # -- END --
 #' @export
 
 addEllipse <- function(mu, sigma, m = NULL, n = 100, p.interval = NULL , 

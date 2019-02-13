@@ -3,7 +3,7 @@
 #' 
 #' This function takes a covariance 2x2 matrix Sigma and returns various 
 #' metrics relating to the corresponding Standard Ellipse. The function is 
-#' limited to the 2-dimensional case, as many of the ancilliary summary 
+#' limited to the 2-dimensional case, as many of the ancillary summary 
 #' statistics are not defined for higher dimensions (e.g. eccentricity).
 #' 
 #' @section Note: This function is currently based on the eigenvalue and 
@@ -16,7 +16,7 @@
 #' @return A list comprising the following metrics for summarising the Standard 
 #' Ellipse
 #' #' \itemize{
-#'    \item {SEA}{ the Standard Ellise Area (not sample size corrected)}
+#'    \item {SEA}{ the Standard Ellipse Area (not sample size corrected)}
 #'    \item {eccentricity}{ a measure of the elongation of the ellipse.}
 #'    \item {a}{ the length of the semi-major axis}
 #'    \item {b}{ the length of the semi-minor axis}

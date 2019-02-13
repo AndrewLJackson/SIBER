@@ -2,7 +2,7 @@
 % Please edit documentation in R/bayesianLayman.R
 \name{bayesianLayman}
 \alias{bayesianLayman}
-\title{Calculate Layman metrics on Bayesian postrior samples of a community}
+\title{Calculate Layman metrics on Bayesian posterior samples of a community}
 \usage{
 bayesianLayman(mu.post)
 }

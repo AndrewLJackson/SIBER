@@ -6,7 +6,7 @@
 #' owing to strong sample size bias. Use of ellipse area is recommended instead. 
 #' This feature is provided for illustrative purposes only, and because some 
 #' people have expressed a desire for this feature for figure generation. See 
-#' demonstration scipts for more examples.
+#' demonstration scripts for more examples.
 #' 
 #' @param siber a siber object as created by createSiberObject
 #' @param plot.args a list of plotting arguments for passing to 
@@ -16,7 +16,7 @@
 #' @param iso.order a vector of length 2, either \code{c(1,2)} or \code{c(2,1)}.
 #'   The order determines which of the columns of raw data are plotted on the x
 #'   (1) or y (2) axis. N.B. this will be deprecated in a future release, and
-#'   plotting order will be acheived at point of data-entry.
+#'   plotting order will be achieved at point of data-entry.
 #' @param ... additional arguments to be passed to \code{\link{addEllipse}}.
 #'   
 #' @return A series of convex hulls added to an existing plot.

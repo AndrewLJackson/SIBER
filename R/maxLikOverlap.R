@@ -9,7 +9,7 @@
 #'   within that community. This specifies the first of two ellipses whose 
 #'   overlap will be compared.
 #'   
-#' @param ellipse2 same as \code{ellipse1} specifiying a second ellipse.
+#' @param ellipse2 same as \code{ellipse1} specifying a second ellipse.
 #'   
 #' @param siber.object an object created by  \code{\link{createSiberObject}} 
 #'   which contains the ML estimates for the means and covariance matrices for 
@@ -23,7 +23,7 @@
 #'   
 #' @param do.plot logical switch to determine whether the corresponding ellipses
 #'   should be plotted or not. A use-case would be in conjunction with a low 
-#'   numebr od \code{draws} so as to visualise a relatively small number of the 
+#'   numbered \code{draws} so as to visualise a relatively small number of the 
 #'   posterior ellipses. Defaults to \code{FALSE}.
 #'   
 #' @return A vector comprising three columns: the area of overlap, the area of 

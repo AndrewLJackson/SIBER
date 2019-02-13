@@ -8,7 +8,7 @@ SIBER
 
 Ellipse and convex hull fitting package to estimate niche width for stable isotope data (and potentially other relevant types of bivariate data).
 
-[MixSIAR](https://github.com/brianstock/MixSIAR) is intended to encompass all the mixing model functionality in the [SIAR package](http://www.tcd.ie/Zoology/research/groups/jackson/projects/siar.php). Additionally, we have updated the basic mixing model from SIAR and released this as a standalone pacakge for basic mixing model fitting as [simmr](https://cran.r-project.org/web/packages/simmr/). 
+[MixSIAR](https://github.com/brianstock/MixSIAR) is intended to encompass all the mixing model functionality in the [SIAR package](http://www.tcd.ie/Zoology/research/groups/jackson/projects/siar.php). Additionally, we have updated the basic mixing model from SIAR and released this as a standalone package for basic mixing model fitting as [simmr](https://cran.r-project.org/web/packages/simmr/). 
 
 
 ## Important!!
@@ -27,7 +27,7 @@ The stable release can be installed by
   ```R
     # install.packages("devtools") # install if necessary
     devtools::install_github("andrewljackson/SIBER@v2.1.3", 
-    build_vingettes = TRUE)
+    build_vignettes = TRUE)
     library(SIBER)
   ```
 
@@ -36,7 +36,7 @@ The latest development version is on the master branch. Often this includes some
   ```R
     # install.packages("devtools") # install if necessary
     devtools::install_github("andrewljackson/SIBER@master",
-    build_vingettes = TRUE)
+    build_vignettes = TRUE)
     library(SIBER)
   ```
 
@@ -44,7 +44,7 @@ The latest development version is on the master branch. Often this includes some
 ## Tutorials
 More information and examples from the previous version of SIBER which is part of the SIAR package is available from [my website](http://www.tcd.ie/Zoology/research/groups/jackson/projects/Rpodcasts.php#siber). Much of this instructional content remains true, although the implementation of the code has changed substantially (for the better I hope).
 
-The package vingettes provide working examples of the two main analysis types.
+The package vignettes provide working examples of the two main analysis types.
 
 ## Frequently Asked Questions (FAQs)
 

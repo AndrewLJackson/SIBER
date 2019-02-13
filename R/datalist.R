@@ -1,7 +1,7 @@
 #' Simulated d13C and d15N isotope-space data
 #'
 #' Data for two communities, created by \code{\link{generateSiberData}} used
-#' to generate the vingette and illustrates the main functionality of SIBER.
+#' to generate the vignette and illustrates the main functionality of SIBER.
 #'
 #' @docType data
 #'
@@ -25,7 +25,7 @@
 #' Simulated d13C and d15N isotope-space data
 #'
 #' Data for two communities, created by \code{\link{generateSiberData}} used
-#' to generate the vingette and illustrates the main functionality of SIBER.
+#' to generate the vignette and illustrates the main functionality of SIBER.
 #'
 #' @docType data
 #'

@@ -17,7 +17,7 @@ data(demo.siber.data)
 }
 \description{
 Data for two communities, created by \code{\link{generateSiberData}} used
-to generate the vingette and illustrates the main functionality of SIBER.
+to generate the vignette and illustrates the main functionality of SIBER.
 }
 \author{
 Andrew Jackson

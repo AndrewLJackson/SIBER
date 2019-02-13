@@ -15,7 +15,7 @@ ellipseBackTransform(jags.output, siber, idx.community, idx.group)
 
 \item{idx.community}{an integer specifying which community to back-transform.}
 
-\item{idx.group}{an integer specifyging which group to back-transform.}
+\item{idx.group}{an integer specifying which group to back-transform.}
 }
 \value{
 A 6 x n matrix representing the back-transformed posterior 

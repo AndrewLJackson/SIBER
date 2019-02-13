@@ -14,13 +14,13 @@ siberCentroids(corrected.posteriors)
 A list containing two arrays, one \code{r} contains the pairwise 
   distances between ellipse centroids in as the first two dimensions, with 
   the third dimension containing the same for each posterior draw defining 
-  ghe ellipse. The second array \code{theta} has the same structure and
+  the ellipse. The second array \code{theta} has the same structure and
   contains the angle in radians (from 0 to 2*pi) between the pairs. A third
   object \code{labels} refers to  which community.group combination is in
   each of the first two dimensions of the arrays.
 }
 \description{
 This function loops over each group within each community and calculates the 
-vector in polar form between the esimated centroids of each ellipse to each 
+vector in polar form between the estimated centroids of each ellipse to each 
 other ellipse.
 }

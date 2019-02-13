@@ -17,7 +17,7 @@ styles. See also the demonstration scripts for examples of use.}
 \item{iso.order}{a vector of length 2, either \code{c(1,2)} or \code{c(2,1)}.
 The order determines which of the columns of raw data are plotted on the x
 (1) or y (2) axis. N.B. this will be deprecated in a future release, and
-plotting order will be acheived at point of data-entry.}
+plotting order will be achieved at point of data-entry.}
 
 \item{...}{additional arguments to be passed to \code{\link{addEllipse}}.}
 }
@@ -26,5 +26,5 @@ Ellipses, drawn as lines on an existing figure.
 }
 \description{
 This function loops over each community and group within, and plots an 
-ellipse around the data. See demonstration scipts for more examples.
+ellipse around the data. See demonstration scripts for more examples.
 }
