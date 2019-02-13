@@ -41,6 +41,12 @@ parms$n.chains <- 3        # run this many chains
 
 # set save.output = TRUE
 parms$save.output = TRUE
+
+# you might want to change the directory to your local directory or a 
+# sub folder in your current working directory. I have to set it to a 
+# temporary directory that R creates and can use for the purposes of this 
+# generic vignette that has to run on any computer as the package is 
+# built and installed.
 parms$save.dir = tempdir()
 
 # define the priors
