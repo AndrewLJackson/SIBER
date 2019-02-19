@@ -1,7 +1,7 @@
 Some checks highlighted in correspondance from Brian Ripley regarding new checks on vignettes that SIBER failed. I have rectified these in this release. SIBER was removed from CRAN with the note "Archived on 2019-01-23 as check issues were not corrected in time."
 
 ## Resubmission
-* N/A 
+* A submission on 14-Feb-2019 was automatically rejected owing to a failed vignette re-build. I have rectified by adding `library(SIBER)` to this 'Points-Inside-Outside-Ellipse.Rmd'.
 
 
 ### Previous NOTES
@@ -26,7 +26,7 @@ could not find function "generateSiberGroup"
 
 ## R CMD check results
 * There were no ERRORs or WARNINGs 
-* There were 2 NOTES. 
+* There were 2 NOTEs. 
     * The first arises owing to this being a new submission that overwrites the archived version of the same name which was removed owing to it failing checks.
     * The second results from 3 instances of "no visible binding for global variable 'VAR'" all relating to the function `kapow()` and `siberKapow()`. These all arise from use of `ggplot2` and 'dplyr'. This note can be ignored as the data.frame object passed into `kapow()` and `siberKapow()` will have these variable names. 
 

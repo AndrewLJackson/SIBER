@@ -20,6 +20,8 @@ First we will create some random data and draw an ellipse around it, and then we
 
 ```{r gendata, echo = TRUE}
 
+library(SIBER)
+
 # set the random seed generator so we get consistent results each time 
 # we run this code.
 set.seed(2)
