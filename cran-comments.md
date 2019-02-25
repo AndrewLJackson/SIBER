@@ -1,7 +1,6 @@
-Some checks highlighted in correspondance from Brian Ripley regarding new checks on vignettes that SIBER failed. I have rectified these in this release. SIBER was removed from CRAN with the note "Archived on 2019-01-23 as check issues were not corrected in time."
-
 ## Resubmission
-* A submission on 14-Feb-2019 was automatically rejected owing to a failed vignette re-build. I have rectified by adding `library(SIBER)` to this 'Points-Inside-Outside-Ellipse.Rmd'.
+* Thanks Uwe for responding to my last submission on 19-FEB-2019 clarifying the need to remove the "no visible binding for variable 'xyz'" arising from my use of piped syntax with dplyr. I have removed these two NOTEs. Not by adding global variables, but in both instances by using base syntax and directly naming the variable using dollar sign notation within the data.frame, e.g. `df$group`. Thanks for taking the time to resond in person and hopefully now my submission on all CRAN test environments be O errors, 0 warnings and 0 notes as per my local environment.
+* win-builder reports 1 NOTE under "checking CRAN incoming feasibility ... NOTE" pointing out, I believe, that this is a New submission that overrides a version that was removed owing to check issues not corrected in time.
 
 
 ### Previous NOTES
@@ -16,19 +15,16 @@ Error: processing vignette 'Points-Inside-Outside-Ellipse.Rmd' failed with diagn
 could not find function "generateSiberGroup"
 --- failed re-building ‘Points-Inside-Outside-Ellipse.Rmd’
 
-* I cant reproduce this warning in either the local or remote test environments, but have added `Suggets: rmarkdown` to DESCRIPTION which from reading various help boards I believe will prevent it.
+* I cant reproduce this warning in either the local or remote test environments, but have added `Suggets: rmarkdown` to DESCRIPTION which from reading various help boards I believe  prevents it.
 
 ## Test environments
 * local OS X 10.14.2 install, R 3.5.2
-* win-builder release
-* win-builder development
+* win-builder release - generates 1 NOTE pointing out this is a New submission that overrides a version that was removed owing to check issues not corrected in time.
+* win-builder development - generates 1 NOTE pointing out this is a New submission that overrides a version that was removed owing to check issues not corrected in time.
 
 
 ## R CMD check results
-* There were no ERRORs or WARNINGs 
-* There were 2 NOTEs. 
-    * The first arises owing to this being a new submission that overwrites the archived version of the same name which was removed owing to it failing checks.
-    * The second results from 3 instances of "no visible binding for global variable 'VAR'" all relating to the function `kapow()` and `siberKapow()`. These all arise from use of `ggplot2` and 'dplyr'. This note can be ignored as the data.frame object passed into `kapow()` and `siberKapow()` will have these variable names. 
+* There were no ERRORs or WARNINGs or NOTEs on my local environment.
 
 ## CRAN Package Check Results for Package SIBER
 * As per note at the start, this package failed the latest round of checks owing to vignette title naming bugs. I have rectified all.

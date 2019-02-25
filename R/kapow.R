@@ -25,7 +25,10 @@ kapow <- function(cd = 7, ng = 25, n = 50, sc = 10, do.plot = TRUE) {
   
   Y <- generateSiberCommunity(n.groups = ng, n.obs = n, wishSigmaScale = sc)
   
-  Y <- Y %>% mutate(group = factor(group))
+  # dplyr version causes NOTE to be generated with
+  # "no visible binding for global variable ‘group’"
+  # Y <- Y %>% mutate(group = factor(group))
+  Y$group <- factor(Y$group)
   
   # myScale <- function(x){ (x - mean(x)) / sd(x)}
   # Y <- Y %>% group_by(group) %>% mutate(iso1 = myScale(iso1), 

@@ -40,7 +40,6 @@ siberKapow <- function(dtf, isoNames = c("iso1", "iso2"),
                       n = 360 * 1,
                       p.interval = pEll,
                       ci.mean = FALSE,
-                      col = i,
                       lty = 3,
                       lwd = 2,
                       small.sample = TRUE,
@@ -60,7 +59,10 @@ siberKapow <- function(dtf, isoNames = c("iso1", "iso2"),
     do(calcBoundaries(.data))
   
   # split the dataset by the defined grouping parameter
-  ellCoords.list <- ellCoords %>% split(., .[,group])
+  # The piped version causes NOTEs
+  # "no visible binding for global variable ‘group’"
+  # ellCoords.list <- ellCoords %>% split(., .[,group])
+  ellCoords.list <- split(ellCoords, ellCoords$group)
   
   # Define a short custom function and then apply it over the list
   # using map()
