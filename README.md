@@ -26,7 +26,7 @@ Alternatively, you can install directly from github
 The stable release can be installed by
   ```R
     # install.packages("devtools") # install if necessary
-    devtools::install_github("andrewljackson/SIBER@v2.1.3", 
+    devtools::install_github("andrewljackson/SIBER@v2.1.4", 
     build_vignettes = TRUE)
     library(SIBER)
   ```

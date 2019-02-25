@@ -1,3 +1,7 @@
+# SIBER 2.1.4.9000
++ in progress
+
+
 # SIBER 2.1.4
 + fixed "vignettes with duplicate titles" warning
 + added new vignette `Plot-posterior-ellipses` that shows how to plot multiple posterior ellipse draws on top of data using `ggplot2`.
