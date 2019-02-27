@@ -49,6 +49,7 @@ The package vignettes provide working examples of the two main analysis types.
 ## Frequently Asked Questions (FAQs)
 
 * __How do I make isotope plots in ggplot?__ - see this [code example]() 
+* __Why are my community-level estimates of TA are zero or NA__ - This will arise if you have less than three groups (e.g. species) comprising a community. A triangle with three non-collinear points is the minimum requirement to draw a polygon and so if you have only one or two groups, the area of the TA is zero at best or possibly NA.
 
 ## Help, Assistance and Queries
 In the first instance, queries about analyses or problems with the software can be posted [here on github](https://github.com/AndrewLJackson/SIBER/issues). Failing  If you are convinced you have discovered a bug or major problem in the software, you can raise an [issue here on github](https://github.com/AndrewLJackson/SIBER/issues).
