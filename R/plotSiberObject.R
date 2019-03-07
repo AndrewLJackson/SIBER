@@ -92,30 +92,55 @@ plotSiberObject <- function(siber,
     # all the data. This automatic axis scaling can be over-rided 
     # by specifying x.limits and y.limits as input arguments.
     
-    if(any(is.null(x.limits),is.null(y.limits)))
-           {plot(0, 0, type = "n",
-                xlim = c(siber$iso.summary["min", x] - ax.pad , 
-                         siber$iso.summary["max", x] + ax.pad ),
-                ylim = c(siber$iso.summary["min", y] - ax.pad , 
-                         siber$iso.summary["max", y] + ax.pad ),
-                ylab = ylab,
-                xlab = xlab,
-                bty = bty,
-                las = las
-                
-           )}
-    else
-           {plot(0, 0, type = "n",
-                ylab = ylab,
-                xlab = xlab,
-                bty = bty,
-                las = las,
-                xlim = x.limits,
-                ylim = y.limits,
-                ... 
-                ) # end of plot
-           }
+    # if the default limits are used, then pad teh data around the max
+    # min values, else use the user specified values.
+    if (is.null(x.limits)) {
+      x.limits <- c(siber$iso.summary["min", x] - ax.pad , 
+                    siber$iso.summary["max", x] + ax.pad )
+    }
     
+    if (is.null(y.limits)) {
+      y.limits <- c(siber$iso.summary["min", y] - ax.pad , 
+                    siber$iso.summary["max", y] + ax.pad )
+    }
+    
+    
+    plot(0, 0, type = "n",
+         ylab = ylab,
+         xlab = xlab,
+         bty = bty,
+         las = las,
+         xlim = x.limits,
+         ylim = y.limits,
+         ...
+    ) # end of plot
+    
+    # ==========================================================================
+    # OLD CODE 7/MAR/19 - to be deleted
+    # if(any(is.null(x.limits),is.null(y.limits)))
+    #        {plot(0, 0, type = "n",
+    #             xlim = c(siber$iso.summary["min", x] - ax.pad , 
+    #                      siber$iso.summary["max", x] + ax.pad ),
+    #             ylim = c(siber$iso.summary["min", y] - ax.pad , 
+    #                      siber$iso.summary["max", y] + ax.pad ),
+    #             ylab = ylab,
+    #             xlab = xlab,
+    #             bty = bty,
+    #             las = las
+    #             
+    #        )}
+    # else
+    #        {plot(0, 0, type = "n",
+    #             ylab = ylab,
+    #             xlab = xlab,
+    #             bty = bty,
+    #             las = las,
+    #             xlim = x.limits,
+    #             ylim = y.limits,
+    #             ... 
+    #             ) # end of plot
+    #        }
+    # ==========================================================================
     
     
     

@@ -11,15 +11,8 @@ Ellipse and convex hull fitting package to estimate niche width for stable isoto
 [MixSIAR](https://github.com/brianstock/MixSIAR) is intended to encompass all the mixing model functionality in the [SIAR package](http://www.tcd.ie/Zoology/research/groups/jackson/projects/siar.php). Additionally, we have updated the basic mixing model from SIAR and released this as a standalone package for basic mixing model fitting as [simmr](https://cran.r-project.org/web/packages/simmr/). 
 
 
-## Important!!
-SIAR development has stopped as of late 2015 (except for important bug fixes and compatability fixes),
-and the SIBER routines will become deprecated and then defunct. This is the start of a full recode of SIBER to be a standalone package.  Model fitting is much improved via JAGS in the new code within SIBER.
-
-Comments and suggestions welcome. If anyone wants to contribute code, please let me know and we can chat about how 
-to proceed.
-
 ## Installation
-The latest stable release package is released on CRAN as v2.1.3. Type `install.packages("SIBER")` in the command line.
+The latest stable release package is released on CRAN as v2.1.4. Type `install.packages("SIBER")` in the command line.
 
 Alternatively, you can install directly from github
 
@@ -30,6 +23,7 @@ The stable release can be installed by
     build_vignettes = TRUE)
     library(SIBER)
   ```
+[Release notes]("NEWS.md") are available for each version.
 
 The latest development version is on the master branch. Often this includes some new things that I am working on, but I can't guarantee that the package is stable and it might not install sometimes if I have broken something; usually though I tend to break things on a separate branch and try to keep the master stable as a package even if bits and pieces of the new stuff is not working correctly.
 

@@ -1,5 +1,5 @@
 # SIBER 2.1.4.9000
-+ in progress
++ fixed bug in `plotSiberObject` that meant both x.limits and y.limits had to be specified to invoke manual axis setting. Either or can now be specified on their own with the other reverting to the default which is the max and min values of the corresponding data axis +/- the specified `ax.pad` value which defaults to 1.
 
 
 # SIBER 2.1.4

@@ -38,3 +38,4 @@ vignettes/*.pdf
 # OS X files
 .DS_Store
 .DS_Store?
+.Rproj.user
