@@ -1,16 +1,16 @@
 #' Read in SIBER format data and generate the SIBER object
-#' 
-#' This function takes raw isotope data and creates a SIBER object which 
-#' contains information in a structured manner that enables other functions to 
-#' loop over groups and communities, fit Bayesian ellipses, and afterwards, 
-#' generate various plots, and additional analyses on the posterior 
+#'
+#' This function takes raw isotope data and creates a SIBER object which
+#' contains information in a structured manner that enables other functions to
+#' loop over groups and communities, fit Bayesian ellipses, and afterwards,
+#' generate various plots, and additional analyses on the posterior
 #' distributions.
-#' 
-#' @param data.in Specified In a basic R data.frame or matrix comprising 4 
-#'   columns. The first two of which are typically isotope tracers, then the 
-#'   third is a column that indicates the group membership, and the fourth 
-#'   column indicates the community membership of an observation. Communities 
-#'   labels should be entered  as sequential numbers. As of v2.0.1 group labels 
+#'
+#' @param data.in Specified In a basic R data.frame or matrix comprising 4
+#'   columns. The first two of which are typically isotope tracers, then the
+#'   third is a column that indicates the group membership, and the fourth
+#'   column indicates the community membership of an observation. Communities
+#'   labels should be entered  as sequential numbers. As of v2.0.1 group labels
 #'   can be entered as strings and/or numbers and need not be sequential.
 #' @return A siber list object, that contains data that helps with various model
 #'   fitting and plotting. \itemize{ \item {original.data}{The original data as
@@ -22,7 +22,7 @@
 #' data(demo.siber.data)
 #' my.siber.data <- createSiberObject(demo.siber.data)
 #' names(my.siber.data)
-#' 
+#'
 #' @export
 
 createSiberObject <- function (data.in) {
