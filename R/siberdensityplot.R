@@ -92,6 +92,16 @@ siberDensityPlot <- function (dat, probs = c(95, 75, 50),
                  (max(dat)))
   }
   
+  # check that the matrix of colours is of sufficient size
+  if (ncol(dat) > ncol(clr)) {
+    stop("number of columns of matrix `clr` is insufficient for number of 
+         groups. There should be at least as many columns in `clr` 
+         as there are in `dat`")}
+  if (nrow(clr) < length(probs)) {
+    stop("Number of rows of matrix `clr` is insufficient for number of 
+         specified confidence regions in argument `probs`")
+  }
+  
   # set up a blank plot
   graphics::plot(1, 1, xlab = "", ylab = "",
                  main = main,
