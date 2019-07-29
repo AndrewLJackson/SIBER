@@ -61,13 +61,16 @@
 
 
 siberDensityPlot <- function (dat, probs = c(95, 75, 50),
-                             xlab = "Group", ylab = "Value", 
-                             xticklabels = NULL, yticklabels = NULL, 
-                             clr = grDevices::gray((9:1)/10), 
-                             scl = 1, xspc = 0.5, prn = F, 
-                             ct = "mode", ylims = NULL, 
-                             lbound = -Inf, ubound = Inf, main = "", 
-                             ylab.line = 2, ...) 
+                              xlab = "Group", ylab = "Value", 
+                              xticklabels = NULL, yticklabels = NULL, 
+                              clr = matrix(rep(grDevices::gray((9:1)/10),
+                                               length(probs)), 
+                                           nrow = 9, 
+                                           ncol = length(probs)), 
+                              scl = 1, xspc = 0.5, prn = F, 
+                              ct = "mode", ylims = NULL, 
+                              lbound = -Inf, ubound = Inf, main = "", 
+                              ylab.line = 2, ...) 
 {
   n <- ncol(dat)
   if (is.null(ylims)) {
@@ -96,7 +99,7 @@ siberDensityPlot <- function (dat, probs = c(95, 75, 50),
   else {
     graphics::axis(side = 1, at = 1:n, labels = (xticklabels))
   }
-  clrs <- rep(clr, 5)
+  # clrs <- rep(clr, 5)
   for (j in 1:n) {
     temp <- hdrcde::hdr(dat[, j], probs, h = stats::bw.nrd0(dat[, j]))
     line_widths <- seq(2, 20, by = 4) * scl
@@ -120,7 +123,7 @@ siberDensityPlot <- function (dat, probs = c(95, 75, 50),
                           min(c(max(temp2[!is.na(temp2)]), ubound)), 
                           min(c(max(temp2[!is.na(temp2)]), ubound)), 
                           max(c(min(temp2[!is.na(temp2)]), lbound))), 
-                        col = clrs[k])
+                        col = clr[k, j])
       if (ct == "mode") {
         graphics::points(j, temp$mode, pch = 19)
       }
