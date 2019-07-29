@@ -20,8 +20,13 @@
 #' @param ylab a string of the y-axis label. Defaults to \code{"Value"}.
 #' @param xticklabels a vector of strings to override the x-axis tick labels.
 #' @param yticklabels a vector of strings to override the y-axis tick labels.
-#' @param clr a vector of colours to use for shading each of the box regions.
-#'   Defaults to greyscale \code{grDevices::gray((9:1)/10)}.
+#' @param clr a matrix of colours to use for shading each of the box regions.
+#'   Defaults to greyscale \code{grDevices::gray((9:1)/10)} replicated for as
+#'   many columns as there are in \code{dat}. When specified by the user, rows
+#'   contain the colours of each of the confidence regions specified in
+#'   \code{probs} and columns represent ecah of the columns of data in
+#'   \code{dat}. In this way, one could have shades of blue, red and yellow for
+#'   each of the groups.
 #' @param scl a scalar multiplier to scale the box widths. Defaults to 1.
 #' @param xspc a scalar determining the amount of spacing between each box.
 #'   Defaults to 0.5.
@@ -54,8 +59,17 @@
 #' @return A new figure window.
 #'
 #' @examples
+#' # A basic default greyscale density plot
 #' Y <- matrix(stats::rnorm(1000), 250, 4)
 #' siberDensityPlot(Y)
+#' 
+#' # A more colourful example
+#' my_clrs <- matrix(c("lightblue", "blue", "darkblue",
+#' "red1", "red3", "red4",
+#' "yellow1", "yellow3", "yellow4",
+#' "turquoise", "turquoise3", "turquoise4"), nrow = 3, ncol = 4)
+#' siberDensityPlot(Y, clr = my_clrs)
+#' 
 #' @export
 
 
@@ -64,7 +78,7 @@ siberDensityPlot <- function (dat, probs = c(95, 75, 50),
                               xlab = "Group", ylab = "Value", 
                               xticklabels = NULL, yticklabels = NULL, 
                               clr = matrix(rep(grDevices::gray((9:1)/10),
-                                               length(probs)), 
+                                               ncol(dat)), 
                                            nrow = 9, 
                                            ncol = length(probs)), 
                               scl = 1, xspc = 0.5, prn = F, 
