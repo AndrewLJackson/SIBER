@@ -1,0 +1,34 @@
+---
+title: "Layman metrics on each group"
+output: html_notebook
+---
+
+
+```{r setup}
+
+library(SIBER)
+library(tidyverse)
+
+```
+
+
+```{r example}
+
+data(demo.siber.data)
+
+# add a column that uniquely identifies each group
+demo.siber.data <- demo.siber.data %>% 
+  mutate(grp_unq = paste(group, community, sep = "_")) 
+
+# apply function laymanMetrics over each unique group
+lay_grp <- demo.siber.data %>% 
+  split(.$grp_unq) %>% 
+  map( ~laymanMetrics(x = .$iso1,
+                      y = .$iso2))
+
+# its not a pretty print out but this looks right
+print(lay_grp)
+
+```
+
+
