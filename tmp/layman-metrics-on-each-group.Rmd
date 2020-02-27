@@ -29,6 +29,14 @@ lay_grp <- demo.siber.data %>%
 # its not a pretty print out but this looks right
 print(lay_grp)
 
+
+foo <- function(dd){
+  tmp <- laymanMetrics(dd$iso1, dd$iso2)
+  c(tmp$metrics, TA = tmp$hull$TA)
+}
+
+aj <- demo.siber.data %>% group_by(group, community) %>% group_map(~foo(.))
+
 ```
 
 
