@@ -1777,19 +1777,19 @@ library(SIBER)</code></pre>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWogPC0gZGVtby5zaWJlci5kYXRhICU+JSBncm91cF9ieShncnBfdW5xKSAlPiUgZ3JvdXBfbWFwKH5mb28oLikpXG5cbmBgYCJ9 -->
-<pre class="r"><code>aj &lt;- demo.siber.data %&gt;% group_by(grp_unq) %&gt;% group_map(~foo(.))
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWogPC0gZGVtby5zaWJlci5kYXRhICU+JSBncm91cF9ieShncm91cCwgY29tbXVuaXR5KSAlPiUgZ3JvdXBfbWFwKH5mb28oLiksIGtlZXAgPSBUUlVFKSAlPiUgXG4gIGJpbmRfcm93cygpXG5cbmBgYCJ9 -->
+<pre class="r"><code>aj &lt;- demo.siber.data %&gt;% group_by(group, community) %&gt;% group_map(~foo(.), keep = TRUE) %&gt;% 
+  bind_rows()
 </code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiVW5rbm93biBvciB1bmluaXRpYWxpc2VkIGNvbHVtbjogJ3knLm5vIG5vbi1taXNzaW5nIGFyZ3VtZW50cyB0byBtYXg7IHJldHVybmluZyAtSW5mbm8gbm9uLW1pc3NpbmcgYXJndW1lbnRzIHRvIG1pbjsgcmV0dXJuaW5nIEluZlVua25vd24gb3IgdW5pbml0aWFsaXNlZCBjb2x1bW46ICd4Jy5ubyBub24tbWlzc2luZyBhcmd1bWVudHMgdG8gbWF4OyByZXR1cm5pbmcgLUluZm5vIG5vbi1taXNzaW5nIGFyZ3VtZW50cyB0byBtaW47IHJldHVybmluZyBJbmZFcnJvciBpbiB4WzE6KG5lIC0gMSldICUqJSB5WzI6bmVdIDogXG4gIHJlcXVpcmVzIG51bWVyaWMvY29tcGxleCBtYXRyaXgvdmVjdG9yIGFyZ3VtZW50c1xuIn0= -->
-<pre><code>Unknown or uninitialised column: 'y'.no non-missing arguments to max; returning -Infno non-missing arguments to min; returning InfUnknown or uninitialised column: 'x'.no non-missing arguments to max; returning -Infno non-missing arguments to min; returning InfError in x[1:(ne - 1)] %*% y[2:ne] : 
-  requires numeric/complex matrix/vector arguments</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IEFyZ3VtZW50IDEgbXVzdCBoYXZlIG5hbWVzXG4ifQ== -->
+<pre><code>Error: Argument 1 must have names</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiTGF5bWFuIG1ldHJpY3Mgb24gZWFjaCBncm91cCIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKCmBgYHtyIHNldHVwfQoKbGlicmFyeShTSUJFUikKbGlicmFyeSh0aWR5dmVyc2UpCgpgYGAKCgpgYGB7ciBleGFtcGxlfQoKZGF0YShkZW1vLnNpYmVyLmRhdGEpCgojIGFkZCBhIGNvbHVtbiB0aGF0IHVuaXF1ZWx5IGlkZW50aWZpZXMgZWFjaCBncm91cApkZW1vLnNpYmVyLmRhdGEgPC0gZGVtby5zaWJlci5kYXRhICU+JSAKICBtdXRhdGUoZ3JwX3VucSA9IHBhc3RlKGdyb3VwLCBjb21tdW5pdHksIHNlcCA9ICJfIikpIAoKIyBhcHBseSBmdW5jdGlvbiBsYXltYW5NZXRyaWNzIG92ZXIgZWFjaCB1bmlxdWUgZ3JvdXAKbGF5X2dycCA8LSBkZW1vLnNpYmVyLmRhdGEgJT4lIAogIHNwbGl0KC4kZ3JwX3VucSkgJT4lIAogIG1hcCggfmxheW1hbk1ldHJpY3MoeCA9IC4kaXNvMSwKICAgICAgICAgICAgICAgICAgICAgIHkgPSAuJGlzbzIpKQoKIyBpdHMgbm90IGEgcHJldHR5IHByaW50IG91dCBidXQgdGhpcyBsb29rcyByaWdodApwcmludChsYXlfZ3JwKQoKCmZvbyA8LSBmdW5jdGlvbihkZCl7CiAgdG1wIDwtIGxheW1hbk1ldHJpY3MoZGQkaXNvMSwgZGQkaXNvMikKICBjKHRtcCRtZXRyaWNzLCBUQSA9IHRtcCRodWxsJFRBKQp9CgphaiA8LSBkZW1vLnNpYmVyLmRhdGEgJT4lIGdyb3VwX2J5KGdyb3VwLCBjb21tdW5pdHkpICU+JSBncm91cF9tYXAofmZvbyguKSkKCmBgYAoKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiTGF5bWFuIG1ldHJpY3Mgb24gZWFjaCBncm91cCIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKCmBgYHtyIHNldHVwfQoKbGlicmFyeShTSUJFUikKbGlicmFyeSh0aWR5dmVyc2UpCgpgYGAKCgpgYGB7ciBleGFtcGxlfQoKZGF0YShkZW1vLnNpYmVyLmRhdGEpCgojIGFkZCBhIGNvbHVtbiB0aGF0IHVuaXF1ZWx5IGlkZW50aWZpZXMgZWFjaCBncm91cApkZW1vLnNpYmVyLmRhdGEgPC0gZGVtby5zaWJlci5kYXRhICU+JSAKICBtdXRhdGUoZ3JwX3VucSA9IHBhc3RlKGdyb3VwLCBjb21tdW5pdHksIHNlcCA9ICJfIikpIAoKIyBhcHBseSBmdW5jdGlvbiBsYXltYW5NZXRyaWNzIG92ZXIgZWFjaCB1bmlxdWUgZ3JvdXAKbGF5X2dycCA8LSBkZW1vLnNpYmVyLmRhdGEgJT4lIAogIHNwbGl0KC4kZ3JwX3VucSkgJT4lIAogIG1hcCggfmxheW1hbk1ldHJpY3MoeCA9IC4kaXNvMSwKICAgICAgICAgICAgICAgICAgICAgIHkgPSAuJGlzbzIpKQoKIyBpdHMgbm90IGEgcHJldHR5IHByaW50IG91dCBidXQgdGhpcyBsb29rcyByaWdodApwcmludChsYXlfZ3JwKQoKCmZvbyA8LSBmdW5jdGlvbihkZCl7CiAgdG1wIDwtIGxheW1hbk1ldHJpY3MoZGQkaXNvMSwgZGQkaXNvMikKICBjKHRtcCRtZXRyaWNzLCBUQSA9IHRtcCRodWxsJFRBKQp9CgphaiA8LSBkZW1vLnNpYmVyLmRhdGEgJT4lIGdyb3VwX2J5KGdyb3VwLCBjb21tdW5pdHkpICU+JSBncm91cF9tYXAofmZvbyguKSwga2VlcCA9IFRSVUUpICU+JSAKICBiaW5kX3Jvd3MoKQoKYGBgCgoK</div>
 
 
 

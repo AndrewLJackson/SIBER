@@ -35,7 +35,8 @@ foo <- function(dd){
   c(tmp$metrics, TA = tmp$hull$TA)
 }
 
-aj <- demo.siber.data %>% group_by(group, community) %>% group_map(~foo(.))
+aj <- demo.siber.data %>% group_by(group, community) %>% group_map(~foo(.), keep = TRUE) %>% 
+  bind_rows()
 
 ```
 
