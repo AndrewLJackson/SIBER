@@ -20,22 +20,35 @@ data(demo.siber.data)
 demo.siber.data <- demo.siber.data %>% 
   mutate(grp_unq = paste(group, community, sep = "_")) 
 
+
+# define a function to extract the relevant information from laymanMetrics()
+# and return as a data.frame
+foo <- function(dd){
+  tmp <- laymanMetrics(dd$iso1, dd$iso2)
+  data.frame(as.list(c(tmp$metrics, TA = tmp$hull$TA)))
+}
+
 # apply function laymanMetrics over each unique group
 lay_grp <- demo.siber.data %>% 
-  split(.$grp_unq) %>% 
-  map( ~laymanMetrics(x = .$iso1,
-                      y = .$iso2))
+  # split the data into a list with each entry being 
+  split(.$group) %>% 
+  # apply the function `foo` over all the list entries
+  map( ~foo(.)) %>% 
+  # bind the data.frames together and create a new 
+  # factor column using the key
+  bind_rows(., .id = "Group_Community")
 
 # its not a pretty print out but this looks right
 print(lay_grp)
 
 
-foo <- function(dd){
-  tmp <- laymanMetrics(dd$iso1, dd$iso2)
-  c(tmp$metrics, TA = tmp$hull$TA)
-}
 
-aj <- demo.siber.data %>% group_by(group, community) %>% group_map(~foo(.), keep = TRUE)
+# Tried to implement this via group_by() syntax but am failing
+# because i cant pass the names (keys) of the grouped subsets which 
+# then means i cant bind_rows() at the end.
+#
+# aj <- demo.siber.data %>% group_by(group, community)  %>%
+#   group_map(~foo(.), keep = TRUE)
 
 ```
 
