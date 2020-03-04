@@ -1763,13 +1763,13 @@ library(SIBER)</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
 <pre class="r"><code>library(tidyverse)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXHUwMDFiWzMwbeKUgOKUgCBcdTAwMWJbMW1BdHRhY2hpbmcgcGFja2FnZXNcdTAwMWJbMjJtIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2UgMS4yLjEg4pSA4pSAXHUwMDFiWzM5bVxuXHUwMDFiWzMwbVx1MDAxYlszMm3inJRcdTAwMWJbMzBtIFx1MDAxYlszNG1nZ3Bsb3QyXHUwMDFiWzMwbSAzLjIuMSAgICAgXHUwMDFiWzMybeKclFx1MDAxYlszMG0gXHUwMDFiWzM0bXB1cnJyICBcdTAwMWJbMzBtIDAuMy4yXG5cdTAwMWJbMzJt4pyUXHUwMDFiWzMwbSBcdTAwMWJbMzRtdGliYmxlIFx1MDAxYlszMG0gMi4xLjMgICAgIFx1MDAxYlszMm3inJRcdTAwMWJbMzBtIFx1MDAxYlszNG1kcGx5ciAgXHUwMDFiWzMwbSAwLjguM1xuXHUwMDFiWzMybeKclFx1MDAxYlszMG0gXHUwMDFiWzM0bXRpZHlyICBcdTAwMWJbMzBtIDEuMC4wICAgICBcdTAwMWJbMzJt4pyUXHUwMDFiWzMwbSBcdTAwMWJbMzRtc3RyaW5nclx1MDAxYlszMG0gMS40LjBcblx1MDAxYlszMm3inJRcdTAwMWJbMzBtIFx1MDAxYlszNG1yZWFkciAgXHUwMDFiWzMwbSAxLjMuMSAgICAgXHUwMDFiWzMybeKclFx1MDAxYlszMG0gXHUwMDFiWzM0bWZvcmNhdHNcdTAwMWJbMzBtIDAuNC4wXHUwMDFiWzM5bVxuXHUwMDFiWzMwbeKUgOKUgCBcdTAwMWJbMW1Db25mbGljdHNcdTAwMWJbMjJtIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2VfY29uZmxpY3RzKCkg4pSA4pSAXG5cdTAwMWJbMzFt4pyWXHUwMDFiWzMwbSBcdTAwMWJbMzRtZHBseXJcdTAwMWJbMzBtOjpcdTAwMWJbMzJtZmlsdGVyKClcdTAwMWJbMzBtIG1hc2tzIFx1MDAxYlszNG1zdGF0c1x1MDAxYlszMG06OmZpbHRlcigpXG5cdTAwMWJbMzFt4pyWXHUwMDFiWzMwbSBcdTAwMWJbMzRtZHBseXJcdTAwMWJbMzBtOjpcdTAwMWJbMzJtbGFnKClcdTAwMWJbMzBtICAgIG1hc2tzIFx1MDAxYlszNG1zdGF0c1x1MDAxYlszMG06OmxhZygpXHUwMDFiWzM5bVxuIn0= -->
-<pre><code>[30m── [1mAttaching packages[22m ────────────────────────── tidyverse 1.2.1 ──[39m
+<!-- rnb-output-begin eyJkYXRhIjoiXHUwMDFiWzMwbeKUgOKUgCBcdTAwMWJbMW1BdHRhY2hpbmcgcGFja2FnZXNcdTAwMWJbMjJtIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2UgMS4yLjEg4pSA4pSAXHUwMDFiWzM5bVxuXHUwMDFiWzMwbVx1MDAxYlszMm3inJRcdTAwMWJbMzBtIFx1MDAxYlszNG1nZ3Bsb3QyXHUwMDFiWzMwbSAzLjIuMSAgICAgXHUwMDFiWzMybeKclFx1MDAxYlszMG0gXHUwMDFiWzM0bXB1cnJyICBcdTAwMWJbMzBtIDAuMy4yXG5cdTAwMWJbMzJt4pyUXHUwMDFiWzMwbSBcdTAwMWJbMzRtdGliYmxlIFx1MDAxYlszMG0gMi4xLjMgICAgIFx1MDAxYlszMm3inJRcdTAwMWJbMzBtIFx1MDAxYlszNG1kcGx5ciAgXHUwMDFiWzMwbSAwLjguM1xuXHUwMDFiWzMybeKclFx1MDAxYlszMG0gXHUwMDFiWzM0bXRpZHlyICBcdTAwMWJbMzBtIDEuMC4wICAgICBcdTAwMWJbMzJt4pyUXHUwMDFiWzMwbSBcdTAwMWJbMzRtc3RyaW5nclx1MDAxYlszMG0gMS40LjBcblx1MDAxYlszMm3inJRcdTAwMWJbMzBtIFx1MDAxYlszNG1yZWFkciAgXHUwMDFiWzMwbSAxLjMuMSAgICAgXHUwMDFiWzMybeKclFx1MDAxYlszMG0gXHUwMDFiWzM0bWZvcmNhdHNcdTAwMWJbMzBtIDAuNC4wXHUwMDFiWzM5bVxuXHUwMDFiWzMwbeKUgOKUgCBcdTAwMWJbMW1Db25mbGljdHNcdTAwMWJbMjJtIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2VfY29uZmxpY3RzKCkg4pSA4pSAXG5cdTAwMWJbMzFt4pyWXHUwMDFiWzMwbSBcdTAwMWJbMzRtZHBseXJcdTAwMWJbMzBtOjpcdTAwMWJbMzJtZmlsdGVyKClcdTAwMWJbMzBtIG1hc2tzIFx1MDAxYlszNG1zdGF0c1x1MDAxYlszMG06OmZpbHRlcigpXG5cdTAwMWJbMzFt4pyWXHUwMDFiWzMwbSBcdTAwMWJbMzRtZHBseXJcdTAwMWJbMzBtOjpcdTAwMWJbMzJtbGFnKClcdTAwMWJbMzBtICAgIG1hc2tzIFx1MDAxYlszNG1zdGF0c1x1MDAxYlszMG06OmxhZygpXHUwMDFiWzM5bVxuIn0= -->
+<pre><code>[30m── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──[39m
 [30m[32m✔[30m [34mggplot2[30m 3.2.1     [32m✔[30m [34mpurrr  [30m 0.3.2
 [32m✔[30m [34mtibble [30m 2.1.3     [32m✔[30m [34mdplyr  [30m 0.8.3
 [32m✔[30m [34mtidyr  [30m 1.0.0     [32m✔[30m [34mstringr[30m 1.4.0
 [32m✔[30m [34mreadr  [30m 1.3.1     [32m✔[30m [34mforcats[30m 0.4.0[39m
-[30m── [1mConflicts[22m ───────────────────────────── tidyverse_conflicts() ──
+[30m── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 [31m✖[30m [34mdplyr[30m::[32mfilter()[30m masks [34mstats[30m::filter()
 [31m✖[30m [34mdplyr[30m::[32mlag()[30m    masks [34mstats[30m::lag()[39m</code></pre>
 <!-- rnb-output-end -->
@@ -1777,7 +1777,7 @@ library(SIBER)</code></pre>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5kYXRhKGRlbW8uc2liZXIuZGF0YSlcblxuIyBhZGQgYSBjb2x1bW4gdGhhdCB1bmlxdWVseSBpZGVudGlmaWVzIGVhY2ggZ3JvdXBcbmRlbW8uc2liZXIuZGF0YSA8LSBkZW1vLnNpYmVyLmRhdGEgJT4lIFxuICBtdXRhdGUoZ3JwX3VucSA9IHBhc3RlKGdyb3VwLCBjb21tdW5pdHksIHNlcCA9IFwiX1wiKSkgXG5cblxuIyBkZWZpbmUgYSBmdW5jdGlvbiB0byBleHRyYWN0IHRoZSByZWxldmFudCBpbmZvcm1hdGlvbiBmcm9tIGxheW1hbk1ldHJpY3MoKVxuIyBhbmQgcmV0dXJuIGFzIGEgZGF0YS5mcmFtZVxuZm9vIDwtIGZ1bmN0aW9uKGRkKXtcbiAgdG1wIDwtIGxheW1hbk1ldHJpY3MoZGQkaXNvMSwgZGQkaXNvMilcbiAgZGF0YS5mcmFtZShhcy5saXN0KGModG1wJG1ldHJpY3MsIFRBID0gdG1wJGh1bGwkVEEpKSlcbn1cblxuIyBhcHBseSBmdW5jdGlvbiBsYXltYW5NZXRyaWNzIG92ZXIgZWFjaCB1bmlxdWUgZ3JvdXBcbmxheV9ncnAgPC0gZGVtby5zaWJlci5kYXRhICU+JSBcbiAgIyBzcGxpdCB0aGUgZGF0YSBpbnRvIGEgbGlzdCB3aXRoIGVhY2ggZW50cnkgYmVpbmcgXG4gIHNwbGl0KC4kZ3JvdXApICU+JSBcbiAgIyBhcHBseSB0aGUgZnVuY3Rpb24gYGZvb2Agb3ZlciBhbGwgdGhlIGxpc3QgZW50cmllc1xuICBtYXAoIH5mb28oLikpICU+JSBcbiAgIyBiaW5kIHRoZSBkYXRhLmZyYW1lcyB0b2dldGhlciBhbmQgY3JlYXRlIGEgbmV3IFxuICAjIGZhY3RvciBjb2x1bW4gdXNpbmcgdGhlIGtleVxuICBiaW5kX3Jvd3MoLiwgLmlkID0gXCJHcm91cF9Db21tdW5pdHlcIilcblxuIyBpdHMgbm90IGEgcHJldHR5IHByaW50IG91dCBidXQgdGhpcyBsb29rcyByaWdodFxucHJpbnQobGF5X2dycClcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5kYXRhKGRlbW8uc2liZXIuZGF0YSlcblxuIyBhZGQgYSBjb2x1bW4gdGhhdCB1bmlxdWVseSBpZGVudGlmaWVzIGVhY2ggZ3JvdXBcbmRlbW8uc2liZXIuZGF0YSA8LSBkZW1vLnNpYmVyLmRhdGEgJT4lIFxuICBtdXRhdGUoZ3JwX3VucSA9IHBhc3RlKGdyb3VwLCBjb21tdW5pdHksIHNlcCA9IFwiX1wiKSkgXG5cblxuIyBkZWZpbmUgYSBmdW5jdGlvbiB0byBleHRyYWN0IHRoZSByZWxldmFudCBpbmZvcm1hdGlvbiBmcm9tIGxheW1hbk1ldHJpY3MoKVxuIyBhbmQgcmV0dXJuIGFzIGEgZGF0YS5mcmFtZVxuZm9vIDwtIGZ1bmN0aW9uKGRkKXtcbiAgdG1wIDwtIGxheW1hbk1ldHJpY3MoZGQkaXNvMSwgZGQkaXNvMilcbiAgc3RyKGRkKVxuICBkYXRhLmZyYW1lKGFzLmxpc3QoYyh0bXAkbWV0cmljcywgVEEgPSB0bXAkaHVsbCRUQSkpKVxufVxuXG4jIGFwcGx5IGZ1bmN0aW9uIGxheW1hbk1ldHJpY3Mgb3ZlciBlYWNoIHVuaXF1ZSBncm91cFxubGF5X2dycCA8LSBkZW1vLnNpYmVyLmRhdGEgJT4lIFxuICAjIHNwbGl0IHRoZSBkYXRhIGludG8gYSBsaXN0IHdpdGggZWFjaCBlbnRyeSBiZWluZyBcbiAgc3BsaXQoLiRncm91cCkgJT4lIFxuICAjIGFwcGx5IHRoZSBmdW5jdGlvbiBgZm9vYCBvdmVyIGFsbCB0aGUgbGlzdCBlbnRyaWVzXG4gIG1hcCggfmZvbyguKSkgJT4lIFxuICAjIGJpbmQgdGhlIGRhdGEuZnJhbWVzIHRvZ2V0aGVyIGFuZCBjcmVhdGUgYSBuZXcgXG4gICMgZmFjdG9yIGNvbHVtbiB1c2luZyB0aGUga2V5XG4gIGJpbmRfcm93cyguLCAuaWQgPSBcIkdyb3VwX0NvbW11bml0eVwiKVxuYGBgIn0= -->
 <pre class="r"><code>
 data(demo.siber.data)
 
@@ -1790,6 +1790,7 @@ demo.siber.data &lt;- demo.siber.data %&gt;%
 # and return as a data.frame
 foo &lt;- function(dd){
   tmp &lt;- laymanMetrics(dd$iso1, dd$iso2)
+  str(dd)
   data.frame(as.list(c(tmp$metrics, TA = tmp$hull$TA)))
 }
 
@@ -1801,9 +1802,30 @@ lay_grp &lt;- demo.siber.data %&gt;%
   map( ~foo(.)) %&gt;% 
   # bind the data.frames together and create a new 
   # factor column using the key
-  bind_rows(., .id = &quot;Group_Community&quot;)
-
-# its not a pretty print out but this looks right
+  bind_rows(., .id = &quot;Group_Community&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJ2RhdGEuZnJhbWUnOlx0NjAgb2JzLiBvZiAgNSB2YXJpYWJsZXM6XG4gJCBpc28xICAgICA6IG51bSAgLTExLjA1IC04LjgxIC05LjI2IC04LjM4IC0xMC40IC4uLlxuICQgaXNvMiAgICAgOiBudW0gIDEuMDIgMS45OCAzLjI5IC0xLjk2IC0zLjEyIC4uLlxuICQgZ3JvdXAgICAgOiBpbnQgIDEgMSAxIDEgMSAxIDEgMSAxIDEgLi4uXG4gJCBjb21tdW5pdHk6IGludCAgMSAxIDEgMSAxIDEgMSAxIDEgMSAuLi5cbiAkIGdycF91bnEgIDogY2hyICBcIjFfMVwiIFwiMV8xXCIgXCIxXzFcIiBcIjFfMVwiIC4uLlxuJ2RhdGEuZnJhbWUnOlx0NjAgb2JzLiBvZiAgNSB2YXJpYWJsZXM6XG4gJCBpc28xICAgICA6IG51bSAgLTE4LjIgLTE2LjggLTE3LjkgLTE3LjIgLTE3LjcgLi4uXG4gJCBpc28yICAgICA6IG51bSAgMy44MSA1LjE2IDMuNDggNC41NSAyLjkxIC4uLlxuICQgZ3JvdXAgICAgOiBpbnQgIDIgMiAyIDIgMiAyIDIgMiAyIDIgLi4uXG4gJCBjb21tdW5pdHk6IGludCAgMSAxIDEgMSAxIDEgMSAxIDEgMSAuLi5cbiAkIGdycF91bnEgIDogY2hyICBcIjJfMVwiIFwiMl8xXCIgXCIyXzFcIiBcIjJfMVwiIC4uLlxuJ2RhdGEuZnJhbWUnOlx0NjAgb2JzLiBvZiAgNSB2YXJpYWJsZXM6XG4gJCBpc28xICAgICA6IG51bSAgLTEzLjQgLTE1LjIgLTEyLjQgLTExLjMgLTE0LjEgLi4uXG4gJCBpc28yICAgICA6IG51bSAgOC44NSA3IDguNDcgNi40NCA2LjM3IC4uLlxuICQgZ3JvdXAgICAgOiBpbnQgIDMgMyAzIDMgMyAzIDMgMyAzIDMgLi4uXG4gJCBjb21tdW5pdHk6IGludCAgMSAxIDEgMSAxIDEgMSAxIDEgMSAuLi5cbiAkIGdycF91bnEgIDogY2hyICBcIjNfMVwiIFwiM18xXCIgXCIzXzFcIiBcIjNfMVwiIC4uLlxuIn0= -->
+<pre><code>'data.frame':   60 obs. of  5 variables:
+ $ iso1     : num  -11.05 -8.81 -9.26 -8.38 -10.4 ...
+ $ iso2     : num  1.02 1.98 3.29 -1.96 -3.12 ...
+ $ group    : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ community: int  1 1 1 1 1 1 1 1 1 1 ...
+ $ grp_unq  : chr  &quot;1_1&quot; &quot;1_1&quot; &quot;1_1&quot; &quot;1_1&quot; ...
+'data.frame':   60 obs. of  5 variables:
+ $ iso1     : num  -18.2 -16.8 -17.9 -17.2 -17.7 ...
+ $ iso2     : num  3.81 5.16 3.48 4.55 2.91 ...
+ $ group    : int  2 2 2 2 2 2 2 2 2 2 ...
+ $ community: int  1 1 1 1 1 1 1 1 1 1 ...
+ $ grp_unq  : chr  &quot;2_1&quot; &quot;2_1&quot; &quot;2_1&quot; &quot;2_1&quot; ...
+'data.frame':   60 obs. of  5 variables:
+ $ iso1     : num  -13.4 -15.2 -12.4 -11.3 -14.1 ...
+ $ iso2     : num  8.85 7 8.47 6.44 6.37 ...
+ $ group    : int  3 3 3 3 3 3 3 3 3 3 ...
+ $ community: int  1 1 1 1 1 1 1 1 1 1 ...
+ $ grp_unq  : chr  &quot;3_1&quot; &quot;3_1&quot; &quot;3_1&quot; &quot;3_1&quot; ...</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpdHMgbm90IGEgcHJldHR5IHByaW50IG91dCBidXQgdGhpcyBsb29rcyByaWdodFxucHJpbnQobGF5X2dycClcbmBgYCJ9 -->
+<pre class="r"><code># its not a pretty print out but this looks right
 print(lay_grp)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6OCwibnJvdyI6M30sInJkZiI6Ikg0c0lBQUFBQUFBQUF3dHlpVERtaXVCaVlHQmdabUJtWTJSZ1pnVXlHVmhEUTl4MExSZ1lXSmlBSEVZR0ZnWk9FRjBCVkNRTVpIQUFzUUJZQjFUQ0VNWXdnakdNZ1FRZlNJbUQxSmZhSGd2SnBRN2kyeDhwWnJlL2RSRE5tZnRyMzRZeXVMeXlSMkRKYXRWOURzWkNVWXZ2SHM1MDBEVTlYR3FwN0FHWGQ5cG9lZXhyN0RtSEFCc2w3NzZFSlE0ZXk0S1RUbHJjZ011ejlvYTcvN2I2NUNEOUtxSTJld3E3ZzlpM0ZlNnRqWXd3ZWZ2YkozNmZySjJaYjM5TGNhZGdVazY2L1RYLzNtekZReVp3K1JzT3FqdlBkSzJ5djJHWnJIZjRicHo5NVpTZ3hTMzNsaEsySHlWc1dQTVNjMU9Mb2VIQ0FSWGtkeS9LTHkySWQ4N1B6UzNOeXl5cGhBcHpwRVRHRnlYbXBhZkMrUkVvZktZUVJ4akwyUVhLWXZiemd6RlpnMTBRSEpZUVJ6MUROTGR3RnVXWDY4SGN3d3N5cG9FQkRKalJIWjJjazFnTWN6Uk1rQ3Nsc1NSUkw2MElxQi9JKzRlbWhUMi9vQ1F6UHcrb2lRbVVFbGpSTkRNV29RbXdwMVlrNWhia2dJemlBZ3REQUMrVXpZekU1b0JZeGZRZmFnUXIxQWkyMUx6MHpEeFk0TERtSkNhbDVrQTVmRUNmZ2oycVYxQ1VtVmNDOHdGUXRGaXZKTDhrRWFhT0t6ay9CeVlDOWhQRFB3QlJRRGt0K0FJQUFBPT0ifQ== -->
@@ -1813,7 +1835,7 @@ print(lay_grp)</code></pre>
   </script>
 </div>
 <!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5cblxuIyBUcmllZCB0byBpbXBsZW1lbnQgdGhpcyB2aWEgZ3JvdXBfYnkoKSBzeW50YXggYnV0IGFtIGZhaWxpbmdcbiMgYmVjYXVzZSBpIGNhbnQgcGFzcyB0aGUgbmFtZXMgKGtleXMpIG9mIHRoZSBncm91cGVkIHN1YnNldHMgd2hpY2ggXG4jIHRoZW4gbWVhbnMgaSBjYW50IGJpbmRfcm93cygpIGF0IHRoZSBlbmQuXG4jXG4jIGFqIDwtIGRlbW8uc2liZXIuZGF0YSAlPiUgZ3JvdXBfYnkoZ3JvdXAsIGNvbW11bml0eSkgICU+JVxuIyAgIGdyb3VwX21hcCh+Zm9vKC4pLCBrZWVwID0gVFJVRSlcblxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5cblxuIyBUcmllZCB0byBpbXBsZW1lbnQgdGhpcyB2aWEgZ3JvdXBfYnkoKSBzeW50YXggYnV0IGFtIGZhaWxpbmdcbiMgYmVjYXVzZSBpIGNhbnQgcGFzcyB0aGUgbmFtZXMgKGtleXMpIG9mIHRoZSBncm91cGVkIHN1YnNldHMgd2hpY2ggXG4jIHRoZW4gbWVhbnMgaSBjYW50IGJpbmRfcm93cygpIGF0IHRoZSBlbmQuXG4jXG4jIGFqIDwtIGRlbW8uc2liZXIuZGF0YSAlPiUgZ3JvdXBfYnkoZ3JvdXAsIGNvbW11bml0eSkgICU+JVxuIyAgIGdyb3VwX21hcCh+Zm9vKC4pLCBrZWVwID0gVFJVRSkgIyU+JSBldmFsKG5hbWVzKC4pIDwtIClcblxuYGBgIn0= -->
 <pre class="r"><code>
 
 
@@ -1822,14 +1844,14 @@ print(lay_grp)</code></pre>
 # then means i cant bind_rows() at the end.
 #
 # aj &lt;- demo.siber.data %&gt;% group_by(group, community)  %&gt;%
-#   group_map(~foo(.), keep = TRUE)
+#   group_map(~foo(.), keep = TRUE) #%&gt;% eval(names(.) &lt;- )
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiTGF5bWFuIG1ldHJpY3Mgb24gZWFjaCBncm91cCIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKCmBgYHtyIHNldHVwfQoKbGlicmFyeShTSUJFUikKbGlicmFyeSh0aWR5dmVyc2UpCgpgYGAKCgpgYGB7ciBleGFtcGxlfQoKZGF0YShkZW1vLnNpYmVyLmRhdGEpCgojIGFkZCBhIGNvbHVtbiB0aGF0IHVuaXF1ZWx5IGlkZW50aWZpZXMgZWFjaCBncm91cApkZW1vLnNpYmVyLmRhdGEgPC0gZGVtby5zaWJlci5kYXRhICU+JSAKICBtdXRhdGUoZ3JwX3VucSA9IHBhc3RlKGdyb3VwLCBjb21tdW5pdHksIHNlcCA9ICJfIikpIAoKCiMgZGVmaW5lIGEgZnVuY3Rpb24gdG8gZXh0cmFjdCB0aGUgcmVsZXZhbnQgaW5mb3JtYXRpb24gZnJvbSBsYXltYW5NZXRyaWNzKCkKIyBhbmQgcmV0dXJuIGFzIGEgZGF0YS5mcmFtZQpmb28gPC0gZnVuY3Rpb24oZGQpewogIHRtcCA8LSBsYXltYW5NZXRyaWNzKGRkJGlzbzEsIGRkJGlzbzIpCiAgZGF0YS5mcmFtZShhcy5saXN0KGModG1wJG1ldHJpY3MsIFRBID0gdG1wJGh1bGwkVEEpKSkKfQoKIyBhcHBseSBmdW5jdGlvbiBsYXltYW5NZXRyaWNzIG92ZXIgZWFjaCB1bmlxdWUgZ3JvdXAKbGF5X2dycCA8LSBkZW1vLnNpYmVyLmRhdGEgJT4lIAogICMgc3BsaXQgdGhlIGRhdGEgaW50byBhIGxpc3Qgd2l0aCBlYWNoIGVudHJ5IGJlaW5nIAogIHNwbGl0KC4kZ3JvdXApICU+JSAKICAjIGFwcGx5IHRoZSBmdW5jdGlvbiBgZm9vYCBvdmVyIGFsbCB0aGUgbGlzdCBlbnRyaWVzCiAgbWFwKCB+Zm9vKC4pKSAlPiUgCiAgIyBiaW5kIHRoZSBkYXRhLmZyYW1lcyB0b2dldGhlciBhbmQgY3JlYXRlIGEgbmV3IAogICMgZmFjdG9yIGNvbHVtbiB1c2luZyB0aGUga2V5CiAgYmluZF9yb3dzKC4sIC5pZCA9ICJHcm91cF9Db21tdW5pdHkiKQoKIyBpdHMgbm90IGEgcHJldHR5IHByaW50IG91dCBidXQgdGhpcyBsb29rcyByaWdodApwcmludChsYXlfZ3JwKQoKCgojIFRyaWVkIHRvIGltcGxlbWVudCB0aGlzIHZpYSBncm91cF9ieSgpIHN5bnRheCBidXQgYW0gZmFpbGluZwojIGJlY2F1c2UgaSBjYW50IHBhc3MgdGhlIG5hbWVzIChrZXlzKSBvZiB0aGUgZ3JvdXBlZCBzdWJzZXRzIHdoaWNoIAojIHRoZW4gbWVhbnMgaSBjYW50IGJpbmRfcm93cygpIGF0IHRoZSBlbmQuCiMKIyBhaiA8LSBkZW1vLnNpYmVyLmRhdGEgJT4lIGdyb3VwX2J5KGdyb3VwLCBjb21tdW5pdHkpICAlPiUKIyAgIGdyb3VwX21hcCh+Zm9vKC4pLCBrZWVwID0gVFJVRSkKCmBgYAoKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiTGF5bWFuIG1ldHJpY3Mgb24gZWFjaCBncm91cCIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKCmBgYHtyIHNldHVwfQoKbGlicmFyeShTSUJFUikKbGlicmFyeSh0aWR5dmVyc2UpCgpgYGAKCgpgYGB7ciBleGFtcGxlfQoKZGF0YShkZW1vLnNpYmVyLmRhdGEpCgojIGFkZCBhIGNvbHVtbiB0aGF0IHVuaXF1ZWx5IGlkZW50aWZpZXMgZWFjaCBncm91cApkZW1vLnNpYmVyLmRhdGEgPC0gZGVtby5zaWJlci5kYXRhICU+JSAKICBtdXRhdGUoZ3JwX3VucSA9IHBhc3RlKGdyb3VwLCBjb21tdW5pdHksIHNlcCA9ICJfIikpIAoKCiMgZGVmaW5lIGEgZnVuY3Rpb24gdG8gZXh0cmFjdCB0aGUgcmVsZXZhbnQgaW5mb3JtYXRpb24gZnJvbSBsYXltYW5NZXRyaWNzKCkKIyBhbmQgcmV0dXJuIGFzIGEgZGF0YS5mcmFtZQpmb28gPC0gZnVuY3Rpb24oZGQpewogIHRtcCA8LSBsYXltYW5NZXRyaWNzKGRkJGlzbzEsIGRkJGlzbzIpCiAgc3RyKGRkKQogIGRhdGEuZnJhbWUoYXMubGlzdChjKHRtcCRtZXRyaWNzLCBUQSA9IHRtcCRodWxsJFRBKSkpCn0KCiMgYXBwbHkgZnVuY3Rpb24gbGF5bWFuTWV0cmljcyBvdmVyIGVhY2ggdW5pcXVlIGdyb3VwCmxheV9ncnAgPC0gZGVtby5zaWJlci5kYXRhICU+JSAKICAjIHNwbGl0IHRoZSBkYXRhIGludG8gYSBsaXN0IHdpdGggZWFjaCBlbnRyeSBiZWluZyAKICBzcGxpdCguJGdyb3VwKSAlPiUgCiAgIyBhcHBseSB0aGUgZnVuY3Rpb24gYGZvb2Agb3ZlciBhbGwgdGhlIGxpc3QgZW50cmllcwogIG1hcCggfmZvbyguKSkgJT4lIAogICMgYmluZCB0aGUgZGF0YS5mcmFtZXMgdG9nZXRoZXIgYW5kIGNyZWF0ZSBhIG5ldyAKICAjIGZhY3RvciBjb2x1bW4gdXNpbmcgdGhlIGtleQogIGJpbmRfcm93cyguLCAuaWQgPSAiR3JvdXBfQ29tbXVuaXR5IikKCiMgaXRzIG5vdCBhIHByZXR0eSBwcmludCBvdXQgYnV0IHRoaXMgbG9va3MgcmlnaHQKcHJpbnQobGF5X2dycCkKCgoKIyBUcmllZCB0byBpbXBsZW1lbnQgdGhpcyB2aWEgZ3JvdXBfYnkoKSBzeW50YXggYnV0IGFtIGZhaWxpbmcKIyBiZWNhdXNlIGkgY2FudCBwYXNzIHRoZSBuYW1lcyAoa2V5cykgb2YgdGhlIGdyb3VwZWQgc3Vic2V0cyB3aGljaCAKIyB0aGVuIG1lYW5zIGkgY2FudCBiaW5kX3Jvd3MoKSBhdCB0aGUgZW5kLgojCiMgYWogPC0gZGVtby5zaWJlci5kYXRhICU+JSBncm91cF9ieShncm91cCwgY29tbXVuaXR5KSAgJT4lCiMgICBncm91cF9tYXAofmZvbyguKSwga2VlcCA9IFRSVUUpICMlPiUgZXZhbChuYW1lcyguKSA8LSApCgpgYGAKCgo=</div>
 
 
 

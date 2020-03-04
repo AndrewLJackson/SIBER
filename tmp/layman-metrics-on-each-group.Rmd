@@ -25,6 +25,7 @@ demo.siber.data <- demo.siber.data %>%
 # and return as a data.frame
 foo <- function(dd){
   tmp <- laymanMetrics(dd$iso1, dd$iso2)
+  str(dd)
   data.frame(as.list(c(tmp$metrics, TA = tmp$hull$TA)))
 }
 
@@ -48,7 +49,7 @@ print(lay_grp)
 # then means i cant bind_rows() at the end.
 #
 # aj <- demo.siber.data %>% group_by(group, community)  %>%
-#   group_map(~foo(.), keep = TRUE)
+#   group_map(~foo(.), keep = TRUE) #%>% eval(names(.) <- )
 
 ```
 
