@@ -162,15 +162,40 @@ names(siber$ML.cov) <- siber$all.communities
 siber$zscore.data <-  siber$raw.data
 
 for (i in 1:siber$n.communities) {
-
+  
+  # BUG - discovered 2020/5/11 per emails with Edward Doherty.
+  # Incorrect ordering by tapply() meant z-scores were not correctly
+  # applied within groups.
+  
+  
+  # -- BUGGED CODE BEGIN --
   # apply z-score transform to each group within the community via tapply()
   # using the function scale()
-  siber$zscore.data[[i]][,1] <- unlist(tapply(siber$raw.data[[i]]$iso1, 
-  	                                          siber$raw.data[[i]]$group,
-  	                                          scale))
-  siber$zscore.data[[i]][,2] <- unlist(tapply(siber$raw.data[[i]]$iso2, 
-  	                                          siber$raw.data[[i]]$group, 
-  	                                          scale))
+  # siber$zscore.data[[i]][,1] <- unlist(tapply(siber$raw.data[[i]]$iso1, 
+  # 	                                          siber$raw.data[[i]]$group,
+  # 	                                          scale))
+  # siber$zscore.data[[i]][,2] <- unlist(tapply(siber$raw.data[[i]]$iso2, 
+  # 	                                          siber$raw.data[[i]]$group, 
+  # 	                                          scale))
+  
+  # -- BUGGED CODE END --
+  
+  
+  
+  
+  
+  ## -- HOT FIX BEGIN -- 
+  # (plan to tidyverse the whole package)
+  
+  # take the raw data, group by "group" and 
+  # transform iso1 and iso2 by scaling them and
+  # finally converting to data.frame.
+  siber$zscore[[i]] <- siber$raw.data[[i]] %>% 
+    group_by(group) %>% mutate(iso1 = scale(iso1),
+                               iso2 = scale(iso2)) %>% 
+    data.frame()
+  
+  ## -- HOT FIX END   --
 
 	
 }
