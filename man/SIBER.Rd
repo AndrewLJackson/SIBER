@@ -3,7 +3,6 @@
 \docType{package}
 \name{SIBER}
 \alias{SIBER}
-\alias{SIBER-package}
 \title{SIBER: A package for fitting Bayesian Ellipses to Stable Isotope Data}
 \description{
 The SIBER package provides tools for fitting multivariate normal 

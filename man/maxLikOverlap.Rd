@@ -5,8 +5,14 @@
 \title{Calculate the overlap between two ellipses based on the maximum likelihood 
 fitted ellipses.}
 \usage{
-maxLikOverlap(ellipse1, ellipse2, siber.object, p.interval = 0.95,
-  n = 100, do.plot = FALSE)
+maxLikOverlap(
+  ellipse1,
+  ellipse2,
+  siber.object,
+  p.interval = 0.95,
+  n = 100,
+  do.plot = FALSE
+)
 }
 \arguments{
 \item{ellipse1}{character code of the form \code{"x.y"} where \code{x} is an 

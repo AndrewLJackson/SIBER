@@ -4,8 +4,12 @@
 \alias{plotCommunityHulls}
 \title{Adds convex hulls to each community to an existing plot}
 \usage{
-plotCommunityHulls(siber, plot.args = list(col = 1, lty = 2),
-  iso.order = c(1, 2), ...)
+plotCommunityHulls(
+  siber,
+  plot.args = list(col = 1, lty = 2),
+  iso.order = c(1, 2),
+  ...
+)
 }
 \arguments{
 \item{siber}{a siber object as created by createSiberObject.R}

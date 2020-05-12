@@ -4,8 +4,17 @@
 \alias{addEllipse}
 \title{Adds an ellipse around some data to an existing plot}
 \usage{
-addEllipse(mu, sigma, m = NULL, n = 100, p.interval = NULL,
-  ci.mean = FALSE, small.sample = FALSE, do.plot = TRUE, ...)
+addEllipse(
+  mu,
+  sigma,
+  m = NULL,
+  n = 100,
+  p.interval = NULL,
+  ci.mean = FALSE,
+  small.sample = FALSE,
+  do.plot = TRUE,
+  ...
+)
 }
 \arguments{
 \item{mu}{a vector of length two specifying the bivariate means}

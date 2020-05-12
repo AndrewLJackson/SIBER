@@ -5,7 +5,8 @@
 #' loop over groups and communities, fit Bayesian ellipses, and afterwards,
 #' generate various plots, and additional analyses on the posterior
 #' distributions.
-#'
+#' 
+#' @name createSiberObject
 #' @param data.in Specified In a basic R data.frame or matrix comprising 4
 #'   columns. The first two of which are typically isotope tracers, then the
 #'   third is a column that indicates the group membership, and the fourth
@@ -24,6 +25,13 @@
 #' names(my.siber.data)
 #'
 #' @export
+
+## Define a set of global variables so tidyverse calles dont generate
+# "no visible binding for global variable" warnings.
+if(getRversion() >= "2.15.1")  utils::globalVariables(c("iso1", 
+                                                        "iso2",
+                                                        "group", 
+                                                        "community"))
 
 createSiberObject <- function (data.in) {
 

@@ -4,8 +4,13 @@
 \alias{generateSiberCommunity}
 \title{A utility function to simulate a single community comprised of groups}
 \usage{
-generateSiberCommunity(n.groups = 3, community.id = 1, n.obs = 30,
-  mu.range = c(-1, 1, -1, 1), wishSigmaScale = 1)
+generateSiberCommunity(
+  n.groups = 3,
+  community.id = 1,
+  n.obs = 30,
+  mu.range = c(-1, 1, -1, 1),
+  wishSigmaScale = 1
+)
 }
 \arguments{
 \item{n.groups}{the an integer specifying the number of groups to simulate. 

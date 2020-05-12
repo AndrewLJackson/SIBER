@@ -4,8 +4,7 @@
 \alias{generateSiberGroup}
 \title{A utility function to simulate a single group of data}
 \usage{
-generateSiberGroup(mu.range = c(-1, 1, -1, 1), n.obs = 30,
-  wishSigmaScale = 1)
+generateSiberGroup(mu.range = c(-1, 1, -1, 1), n.obs = 30, wishSigmaScale = 1)
 }
 \arguments{
 \item{mu.range}{a vector of length 4, specifying the mix and max x and y 
