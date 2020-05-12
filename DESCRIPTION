@@ -6,8 +6,6 @@ Depends:
     R (>= 4.0.0)
 SystemRequirements: JAGS (>= 4.1)
 Imports:
-    coda,
-    ellipse,
     hdrcde,
     graphics,
     grDevices,
@@ -16,15 +14,17 @@ Imports:
     spatstat,
     spatstat.utils,
     stats,
-    viridis,
     tidyr,
     dplyr,
     ggplot2,
     magrittr,
     purrr
 Suggests:
+    coda,
+    ellipse,
     knitr,
-    rmarkdown
+    rmarkdown,
+    viridis
 Author: Andrew Jackson and Andrew Parnell
 Maintainer: Andrew Jackson <jacksoan@tcd.ie>
 Description: Fits bi-variate ellipses to stable isotope data using Bayesian

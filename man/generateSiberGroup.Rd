@@ -20,7 +20,7 @@ the x-axis, and the second two the min and max of the y-axis.}
 }
 \value{
 A data.frame object comprising a column of x and y data, a group 
-indentifying column and a community identifying column, all of which are 
+identifying column and a community identifying column, all of which are 
 numeric.
 }
 \description{

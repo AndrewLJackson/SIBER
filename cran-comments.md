@@ -8,6 +8,7 @@
 ## Test environments
 * local OS X 10.15.w install, R 4.0.0
 * win-builder development - OK
+* R-hub - OK
 
 
 ## R CMD check results
@@ -19,4 +20,3 @@
 ## Downstream dependencies
 There are no downstream dependencies.
 
-devt
