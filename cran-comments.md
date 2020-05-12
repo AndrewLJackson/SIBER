@@ -7,8 +7,7 @@
 
 ## Test environments
 * local OS X 10.15.w install, R 4.0.0
-* win-builder release - generates 1 NOTE pointing out this is a New submission that overrides a version that was removed owing to check issues not corrected in time.
-* win-builder development - generates 1 NOTE pointing out this is a New submission that overrides a version that was removed owing to check issues not corrected in time.
+* win-builder development - OK
 
 
 ## R CMD check results
@@ -20,3 +19,4 @@
 ## Downstream dependencies
 There are no downstream dependencies.
 
+devt
