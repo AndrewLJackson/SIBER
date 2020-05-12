@@ -3,15 +3,12 @@
 \name{createSiberObject}
 \alias{createSiberObject}
 \title{Read in SIBER format data and generate the SIBER object}
-\usage{
-createSiberObject(data.in)
-}
 \arguments{
-\item{data.in}{Specified In a basic R data.frame or matrix comprising 4 
-columns. The first two of which are typically isotope tracers, then the 
-third is a column that indicates the group membership, and the fourth 
-column indicates the community membership of an observation. Communities 
-labels should be entered  as sequential numbers. As of v2.0.1 group labels 
+\item{data.in}{Specified In a basic R data.frame or matrix comprising 4
+columns. The first two of which are typically isotope tracers, then the
+third is a column that indicates the group membership, and the fourth
+column indicates the community membership of an observation. Communities
+labels should be entered  as sequential numbers. As of v2.0.1 group labels
 can be entered as strings and/or numbers and need not be sequential.}
 }
 \value{
@@ -23,10 +20,10 @@ A siber list object, that contains data that helps with various model
   list object of length equal to the number of communities} }
 }
 \description{
-This function takes raw isotope data and creates a SIBER object which 
-contains information in a structured manner that enables other functions to 
-loop over groups and communities, fit Bayesian ellipses, and afterwards, 
-generate various plots, and additional analyses on the posterior 
+This function takes raw isotope data and creates a SIBER object which
+contains information in a structured manner that enables other functions to
+loop over groups and communities, fit Bayesian ellipses, and afterwards,
+generate various plots, and additional analyses on the posterior
 distributions.
 }
 \examples{

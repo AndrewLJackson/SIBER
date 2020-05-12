@@ -4,12 +4,25 @@
 \alias{plotSiberObject}
 \title{Creates an isotope biplot and provides a wrapper to ellipse and hull plotting}
 \usage{
-plotSiberObject(siber, iso.order = c(1, 2), ax.pad = 1, hulls = TRUE,
-  community.hulls.args = NULL, ellipses = TRUE,
-  group.ellipses.args = NULL, group.hulls = FALSE,
-  group.hulls.args = NULL, bty = "L", xlab = "Isotope 1",
-  ylab = "Isotope 2", las = 1, x.limits = NULL, y.limits = NULL,
-  points.order = 1:25, ...)
+plotSiberObject(
+  siber,
+  iso.order = c(1, 2),
+  ax.pad = 1,
+  hulls = TRUE,
+  community.hulls.args = NULL,
+  ellipses = TRUE,
+  group.ellipses.args = NULL,
+  group.hulls = FALSE,
+  group.hulls.args = NULL,
+  bty = "L",
+  xlab = "Isotope 1",
+  ylab = "Isotope 2",
+  las = 1,
+  x.limits = NULL,
+  y.limits = NULL,
+  points.order = 1:25,
+  ...
+)
 }
 \arguments{
 \item{siber}{a siber object as created by \code{\link{createSiberObject}}.}

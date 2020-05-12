@@ -5,8 +5,15 @@
 \title{Calculate the overlap between two ellipses based on their posterior 
 distributions.}
 \usage{
-bayesianOverlap(ellipse1, ellipse2, ellipses.posterior, draws = 10,
-  p.interval = 0.95, n = 100, do.plot = FALSE)
+bayesianOverlap(
+  ellipse1,
+  ellipse2,
+  ellipses.posterior,
+  draws = 10,
+  p.interval = 0.95,
+  n = 100,
+  do.plot = FALSE
+)
 }
 \arguments{
 \item{ellipse1}{character code of the form \code{"x.y"} where \code{x} is an 

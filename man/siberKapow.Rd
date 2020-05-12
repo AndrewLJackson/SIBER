@@ -4,8 +4,12 @@
 \alias{siberKapow}
 \title{Calculates the boundary of a union of ellipses}
 \usage{
-siberKapow(dtf, isoNames = c("iso1", "iso2"), group = "group",
-  pEll = stats::pchisq(1, df = 2))
+siberKapow(
+  dtf,
+  isoNames = c("iso1", "iso2"),
+  group = "group",
+  pEll = stats::pchisq(1, df = 2)
+)
 }
 \arguments{
 \item{dtf}{a data.frame object comprising bivariate data as a requirement, 

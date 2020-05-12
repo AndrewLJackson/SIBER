@@ -5,8 +5,7 @@
 \title{Calculate the pairwise distances and angles describing the difference between
 centroids of paired groups}
 \usage{
-specificCentroidVectors(centroids, do.these, upper = TRUE,
-  do.plot = TRUE, ...)
+specificCentroidVectors(centroids, do.these, upper = TRUE, do.plot = TRUE, ...)
 }
 \arguments{
 \item{centroids}{the list containing distance and angle matrices as returned 

@@ -5,7 +5,8 @@
 #' loop over groups and communities, fit Bayesian ellipses, and afterwards,
 #' generate various plots, and additional analyses on the posterior
 #' distributions.
-#'
+#' 
+#' @name createSiberObject
 #' @param data.in Specified In a basic R data.frame or matrix comprising 4
 #'   columns. The first two of which are typically isotope tracers, then the
 #'   third is a column that indicates the group membership, and the fourth
@@ -24,6 +25,13 @@
 #' names(my.siber.data)
 #'
 #' @export
+
+## Define a set of global variables so tidyverse calles dont generate
+# "no visible binding for global variable" warnings.
+if(getRversion() >= "2.15.1")  utils::globalVariables(c("iso1", 
+                                                        "iso2",
+                                                        "group", 
+                                                        "community"))
 
 createSiberObject <- function (data.in) {
 
@@ -171,13 +179,13 @@ for (i in 1:siber$n.communities) {
   # -- BUGGED CODE BEGIN --
   # apply z-score transform to each group within the community via tapply()
   # using the function scale()
-  siber$zscore.data[[i]][,1] <- unlist(tapply(siber$raw.data[[i]]$iso1,
-  	                                          siber$raw.data[[i]]$group,
-  	                                          scale))
-  siber$zscore.data[[i]][,2] <- unlist(tapply(siber$raw.data[[i]]$iso2,
-  	                                          siber$raw.data[[i]]$group,
-  	                                          scale))
-  
+  # siber$zscore.data[[i]][,1] <- unlist(tapply(siber$raw.data[[i]]$iso1,
+  # 	                                          siber$raw.data[[i]]$group,
+  # 	                                          scale))
+  # siber$zscore.data[[i]][,2] <- unlist(tapply(siber$raw.data[[i]]$iso2,
+  # 	                                          siber$raw.data[[i]]$group,
+  # 	                                          scale))
+  # 
   # -- BUGGED CODE END --
   
   
@@ -190,10 +198,10 @@ for (i in 1:siber$n.communities) {
   # take the raw data, group by "group" and 
   # transform iso1 and iso2 by scaling them and
   # finally converting to data.frame.
-  # siber$zscore[[i]] <- siber$raw.data[[i]] %>% 
-  #   group_by(group) %>% mutate(iso1 = scale(iso1),
-  #                              iso2 = scale(iso2)) %>% 
-  #   data.frame()
+  siber$zscore.data[[i]] <- siber$raw.data[[i]] %>%
+    group_by(group) %>% mutate(iso1 = scale(iso1),
+                               iso2 = scale(iso2)) %>%
+    data.frame()
   # 
   ## -- HOT FIX END   --
 
