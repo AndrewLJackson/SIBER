@@ -87,16 +87,16 @@ Convex hulls are draw around each group independently with `group.hulls = T`.
 # of the three plotting functions.
 community.hulls.args <- list(col = 1, lty = 1, lwd = 1)
 group.ellipses.args  <- list(n = 100, p.interval = 0.95, lty = 1, lwd = 2)
-group.hull.args      <- list(lty = 2, col = "grey20")
+group.hulls.args      <- list(lty = 2, col = "grey20")
 
 
 
 par(mfrow=c(1,1))
 plotSiberObject(siber.example,
                   ax.pad = 2, 
-                  hulls = F, community.hulls.args, 
-                  ellipses = T, group.ellipses.args,
-                  group.hulls = T, group.hull.args,
+                  hulls = F, community.hulls.args = community.hulls.args, 
+                  ellipses = T, group.ellipses.args = group.ellipses.args,
+                  group.hulls = T, group.hulls.args = group.hulls.args,
                   bty = "L",
                   iso.order = c(1,2),
                   xlab = expression({delta}^13*C~'\u2030'),
