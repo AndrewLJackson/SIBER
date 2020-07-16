@@ -7,3 +7,5 @@ tmp/
 README.md
 cran-comments.md
 
+^doc$
+^Meta$

@@ -38,4 +38,4 @@ Encoding: UTF-8
 Packaged: 
 NeedsCompilation: yes
 VignetteBuilder: knitr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

@@ -1,5 +1,5 @@
 ---
-title: "Comparing populations in isotope-space"
+title: "Comparing populations"
 author: "Andrew L Jackson"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -8,6 +8,9 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
+
+Let us return to the original figure we explored in [Introduction-to-SIBER](Introduction-to-SIBER.html) where we had multiple populations and we wanted to ask whether they differed in how they are distributed in isotope-space. Specifically we want to test whether two or more ellipses are different from one another.
+
 
 ```{r, echo=FALSE, message = FALSE, fig.width = 7, fig.height = 7}
 
@@ -19,8 +22,10 @@ library(viridis)
 palette(viridis(4))
 
 # read in the data
-mydata <- read.csv("../data/example_layman_data_all.csv",
-                   header=T)
+# Replace this line with a call to read.csv() or similar pointing to your 
+# own dataset.
+data("demo.siber.data")
+mydata <- demo.siber.data
 
 # create the siber object
 siber.example <- createSiberObject(mydata)
@@ -65,8 +70,10 @@ rm(list = ls()) # clear the memory of objects
 library(SIBER)
 
 # read in the data
-mydata <- read.csv("../data/example_layman_data_all.csv",
-                   header=T)
+# Replace this line with a call to read.csv() or similar pointing to your 
+# own dataset.
+data("demo.siber.data")
+mydata <- demo.siber.data
 
 # create the siber object
 siber.example <- createSiberObject(mydata)
@@ -109,7 +116,7 @@ print(group.ML)
 
 # add a legend
 legend("topright", colnames(group.ML), 
-       pch = c(1,1,1,1,2,2,2,2), col = c(1:4, 1:4), lty = 1)
+       pch = c(1,1,1,2,2,2), col = c(1:3, 1:3), lty = 1)
 
 ```
 
@@ -190,72 +197,74 @@ SEA.B.modes <- lapply(
 print(SEA.B.modes)
 ```
 
-***
 
 ## Comparing the posterior distributions
 
-In order to test whether one group's ellipse is smaller or larger than another, we can simply calculate the probability that its posterior distribution is smaller (or larger). This is acheived by comparing each pair of posterior draws for both groups, and dtermining which is smaller in magnitude. We then find the proportion of draws that are smaller, and this is a direct proxy for the probability that one group's posterior distribution (of ellipse size in this case) is smaller than the other.
+In order to test whether one group's ellipse is smaller or larger than another, we can simply calculate the probability that its posterior distribution is smaller (or larger). This is achieved by comparing each pair of posterior draws for both groups, and dtermining which is smaller in magnitude. We then find the proportion of draws that are smaller, and this is a direct proxy for the probability that one group's posterior distribution (of ellipse size in this case) is smaller than the other.
 
 
 Here, we first calculate the proportion, and hence probability, of the SEA.B for group 1 being smaller than the SEA.B for group 2.
 
 ```{r prob-diff-g12}
-Pg1.lt.g2 <- sum( SEA.B[,1] < SEA.B[,2] ) / nrow(SEA.B)
-print(Pg1.lt.g2)
+Pg1.1_lt_g1.2 <- sum( SEA.B[,1] < SEA.B[,2] ) / nrow(SEA.B)
+print(Pg1.1_lt_g1.2)
 ```
 
-So, in this case, all of the estimates for groups 1's ellipse are smaller than for group 2; although we could probably guess at this given that there appears to be no overlap between then 95% credible intervals of the two groups (see the figure above).
+So, in this case, less than 2% of groups 1's ellipse are smaller than for group 2, which implies that 98% of the posterior ellipses are larger for group 2.1; which matches well with what we can see in the density plot above where there is little overlap between the 95% credible intervals.
 
-Then we can do exactly the same for groups 1 and 3.
+Then we can do exactly the same for groups 1.1 and 1.3.
 
 ```{r prob-diff-g13}
-Pg1.lt.g3 <- sum( SEA.B[,1] < SEA.B[,3] ) / nrow(SEA.B)
-print(Pg1.lt.g3 )
+Pg1.1_lt_g1.3 <- sum( SEA.B[,1] < SEA.B[,3] ) / nrow(SEA.B)
+print(Pg1.1_lt_g1.3)
 ```
 
-And then for the other pairings:
+And then for some of the other pairings:
 
 ```{r prob-diff-all}
-Pg1.lt.g4 <- sum( SEA.B[,1] < SEA.B[,4] ) / nrow(SEA.B)
-print(Pg1.lt.g4)
+Pg1.1_lt_g2.1 <- sum( SEA.B[,1] < SEA.B[,4] ) / nrow(SEA.B)
+print(Pg1.1_lt_g2.1)
 
-Pg2.lt.g3 <- sum( SEA.B[,2] < SEA.B[,3] ) / nrow(SEA.B)
-print(Pg2.lt.g3)
+Pg1.2_lt_g1.3 <- sum( SEA.B[,2] < SEA.B[,3] ) / nrow(SEA.B)
+print(Pg1.2_lt_g1.3)
 
-Pg3.lt.g4 <- sum( SEA.B[,3] < SEA.B[,4] ) / nrow(SEA.B)
-print(Pg3.lt.g4)
+Pg1.3_lt_g2.1 <- sum( SEA.B[,3] < SEA.B[,4] ) / nrow(SEA.B)
+print(Pg1.3_lt_g2.1)
+
+Pg2.2_lt_g2.3 <- sum( SEA.B[,5] < SEA.B[,6] ) / nrow(SEA.B)
+print(Pg2.2_lt_g2.3)
+
 ```
 
-***
 
 ## Overlap Between Ellipses
 One can calculate the overlap between two (or more) ellipses. In the first instance, this overlap is simply the area, in units of per mil squared, contained by the shape that lies within the overlapping region. This overlap is most easily calculated by using the SEAc of each ellipse.
 
-The overlap between the SEAc for groups 3 and 4 is given by:
+The overlap between the SEAc for groups 1.2 and 1.3 is given by:
 
 ```{r ML-overlap}
 
-overlap.G3.G4 <- maxLikOverlap("1.3", "1.4", siber.example, p = 0.95, n =)
+overlap.G1.2.G1.3 <- maxLikOverlap("1.2", "1.3", siber.example, p = 0.95, n =)
 
 ```
 
-One might then wish to calculate the proportion overlap; athough one then runs into a choice as to what the demoninator will be in the equation. You could for instance calculate the proportion of A that overlaps with B, the proporiton of B that overlaps with A, or the proportion of A and B that overlap with each other.
+One might then wish to calculate the proportion overlap; although one then runs into a choice as to what the denominator will be in the equation. You could for instance calculate the proportion of A that overlaps with B, the proportion of B that overlaps with A, or the proportion of A and B that overlap with each other.
 
 ```{r ML-overlap-proportions}
-prop.of.first <- as.numeric(overlap.G3.G4["overlap"] / overlap.G3.G4["area.1"])
+prop.of.first <- as.numeric(overlap.G1.2.G1.3["overlap"] / overlap.G1.2.G1.3["area.1"])
 print(prop.of.first)
 
-prop.of.second <- as.numeric(overlap.G3.G4["overlap"] / overlap.G3.G4["area.2"])
+prop.of.second <- as.numeric(overlap.G1.2.G1.3["overlap"] / overlap.G1.2.G1.3["area.2"])
 print(prop.of.second)
 
-prop.of.both <- as.numeric(overlap.G3.G4["overlap"] / (overlap.G3.G4["area.1"] + overlap.G3.G4["area.2"]))
+prop.of.both <- as.numeric(overlap.G1.2.G1.3["overlap"] / (overlap.G1.2.G1.3["area.1"] + overlap.G1.2.G1.3["area.2"]))
 print(prop.of.both)
 ```
 
-A problem with this simple overlap calculation is that it yields a point-estimate of overlap based on the maximum likelihood estimated SEA_c. One can instead calculate a distribution of overlap based on the posterior distirbutions of the fitted ellipses. It can be a bit slow to calculate this overlap, so you may want to drop the number of `draws` if your computer is slow.
+A problem with this simple overlap calculation is that it yields a point-estimate of overlap based on the maximum likelihood estimated SEA_c. One can instead calculate a distribution of overlap based on the posterior distributions of the fitted ellipses. It can be a bit slow to calculate this overlap, so you may want to drop the number of `draws` if your computer is slow.
 
 ```{r bayesian-overlap}
-bayes.overlap.G2.G3 <- bayesianOverlap("1.3", "1.4", ellipses.posterior, 
+bayes.overlap.G2.G3 <- bayesianOverlap("1.2", "1.3", ellipses.posterior, 
                                        draws = 10, p.interval = 0.95,
                                        n = 360)
 print(bayes.overlap.G2.G3)

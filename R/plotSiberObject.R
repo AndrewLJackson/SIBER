@@ -1,8 +1,8 @@
-#' Creates an isotope biplot and provides a wrapper to ellipse and hull plotting
+#' Creates an isotope scatterplot and provides a wrapper to ellipse and hull plotting
 #' 
 #' This function takes a SIBER object as created by 
 #' \code{\link{createSiberObject}}, and loops over communities and their groups,
-#' creating a biplot, and adding ellipses and hulls as desired. Ellipses can be 
+#' creating a scatterplot, and adding ellipses and hulls as desired. Ellipses can be 
 #' added to groups, while convex hulls can be added at both the group and 
 #' community level (the former for illustrative purposes only, with no 
 #' analytical tools in SIBER to fit Bayesian hulls to individual groups. This is
@@ -51,7 +51,7 @@
 #'   \code{1:25}.
 #' @param ... additional arguments to be passed to \code{\link[graphics]{plot}}.
 #'   
-#' @return An isotope biplot.
+#' @return An isotope scatterplot.
 #' @export
 
 
@@ -178,7 +178,7 @@ plotSiberObject <- function(siber,
     # --------------------------------------------------------------------------
     if (group.hulls){
       # code similar to group ellipses to go here
-      plotGroupHulls(siber, group.hull.args, iso.order)
+      plotGroupHulls(siber, group.hulls.args, iso.order)
     } # end of if statement for group hull drawing
     
   }) # end of with() function

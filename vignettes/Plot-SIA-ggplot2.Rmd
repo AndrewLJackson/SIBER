@@ -4,7 +4,7 @@ author: "Andrew L Jackson"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to SIBER}
+  %\VignetteIndexEntry{SIA plots using ggplot2}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
@@ -75,11 +75,11 @@ print(classic.first.plot)
 ```
 
 
-# Errorbar biplots
+# Errorbar scatterplots
 
-Adding the means and error bars in both directions to create the classic isotope biplot requires adding these as additional layers. We could re-write all the lines of code for the original plot above, or we can simply create a new ggplot object based on the original, and then add the layers we want, and print. We need some summary data for each of the groups to plot the intervals: we use `dplyr::summarise` as in the previous script today except this time we store the output into a new object which I call `sbg`. When we add the layers for the means and the errorbars, we need to tell the layers to use a new aesthetic mapping using the new x and y data: `mapping = aes(x = mC, y = mN, ...)`.
+Adding the means and error bars in both directions to create the classic isotope scatterplot requires adding these as additional layers. We could re-write all the lines of code for the original plot above, or we can simply create a new ggplot object based on the original, and then add the layers we want, and print. We need some summary data for each of the groups to plot the intervals: we use `dplyr::summarise` as in the previous script today except this time we store the output into a new object which I call `sbg`. When we add the layers for the means and the errorbars, we need to tell the layers to use a new aesthetic mapping using the new x and y data: `mapping = aes(x = mC, y = mN, ...)`.
 
-```{r classic-biplot}
+```{r classic-scatterplot}
 
 # Summarise By Group (sbg)
 sbg <- demo_data %>% 

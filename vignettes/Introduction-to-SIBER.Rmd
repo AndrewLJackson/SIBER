@@ -63,7 +63,7 @@ siber.example <- createSiberObject(demo.siber.data)
 ```
 
 ## Plotting the raw data
-With the `siber` object created, we can now use various functions to create isotope biplots of the data, and also calculate some summary statistics on each group and/or community in the dataset.
+With the `siber` object created, we can now use various functions to create isotope scatterplots of the data, and also calculate some summary statistics on each group and/or community in the dataset.
 
 Community 1 comprises 3 groups and drawn as black, red and green circles
 community 2 comprises 3 groups and drawn as black, red and green triangles
@@ -87,7 +87,7 @@ Convex hulls are draw around each group independently with `group.hulls = T`.
 # of the three plotting functions.
 community.hulls.args <- list(col = 1, lty = 1, lwd = 1)
 group.ellipses.args  <- list(n = 100, p.interval = 0.95, lty = 1, lwd = 2)
-group.hulls.args      <- list(lty = 2, col = "grey20")
+group.hulls.args     <- list(lty = 2, col = "grey20")
 
 
 

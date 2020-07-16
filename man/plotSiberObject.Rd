@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotSiberObject.R
 \name{plotSiberObject}
 \alias{plotSiberObject}
-\title{Creates an isotope biplot and provides a wrapper to ellipse and hull plotting}
+\title{Creates an isotope scatterplot and provides a wrapper to ellipse and hull plotting}
 \usage{
 plotSiberObject(
   siber,
@@ -86,12 +86,12 @@ else a warning will be issued, and the order will default to the sequence
 \item{...}{additional arguments to be passed to \code{\link[graphics]{plot}}.}
 }
 \value{
-An isotope biplot.
+An isotope scatterplot.
 }
 \description{
 This function takes a SIBER object as created by 
 \code{\link{createSiberObject}}, and loops over communities and their groups,
-creating a biplot, and adding ellipses and hulls as desired. Ellipses can be 
+creating a scatterplot, and adding ellipses and hulls as desired. Ellipses can be 
 added to groups, while convex hulls can be added at both the group and 
 community level (the former for illustrative purposes only, with no 
 analytical tools in SIBER to fit Bayesian hulls to individual groups. This is

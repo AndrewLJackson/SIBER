@@ -42,7 +42,7 @@ The package vignettes provide working examples of the two main analysis types.
 
 ## Frequently Asked Questions (FAQs)
 
-* __How do I make isotope plots in ggplot?__ - see this [code example](https://github.com/andrewcparnell/simms_course/blob/master/aj-content/practicals/day-1-pm1/first-biplot.Rmd) or the new vignette "Plot-SIA-ggplot2" included in the development version >2.1.5.9000. Install via `devtools::install_github("andrewljackson/SIBER@master",
+* __How do I make isotope plots in ggplot?__ - see this [code example](https://github.com/andrewcparnell/simms_course/blob/master/aj-content/practicals/day-1-pm1/first-scatterplot.Rmd) or the new vignette "Plot-SIA-ggplot2" included in the development version >2.1.5.9000. Install via `devtools::install_github("andrewljackson/SIBER@master",
   build_vignettes = TRUE)`
 * __Why are my community-level estimates of TA are zero or NA__ - This will arise if you have less than three groups (e.g. species) comprising a community. A triangle with three non-collinear points is the minimum requirement to draw a polygon and so if you have only one or two groups, the area of the TA is zero at best or possibly NA.
 

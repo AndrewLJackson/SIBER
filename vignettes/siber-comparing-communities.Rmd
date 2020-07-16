@@ -1,5 +1,5 @@
 ---
-title: "Comparing communities in isotope-space"
+title: "Comparing communities"
 author: "Andrew L Jackson"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -13,6 +13,7 @@ vignette: >
 library(viridis)
 palette(viridis(4))
 ```
+
 Let us return to the original figure we explored in [Introduction-to-SIBER](Introduction-to-SIBER.html) where we had two communities side-by-side, and we wanted to ask whether they differed in how the individuals and populations within were distributed in isotope-space.
 
 
@@ -22,8 +23,11 @@ library(SIBER, quietly = TRUE,
         verbose = FALSE,
         logical.return = FALSE)
 
-mydata <- read.csv("../data/example_layman_data_all.csv", 
-                   header = TRUE)
+# read in the data
+# Replace this line with a call to read.csv() or similar pointing to your 
+# own dataset.
+data("demo.siber.data")
+mydata <- demo.siber.data
 
 # create the siber object
 siber.example <- createSiberObject(mydata)
@@ -160,17 +164,19 @@ siberDensityPlot(cbind(layman.B[[1]][ , "TA"],
 ```
 
 
-And that pretty is pretty much that for comparing these metrics across communities, except perhaps to make a probabalistic statement about how dNr (for example) differs between __Community 1__ and __Community 2__. In this case, what is the probabily that dNr in Community 1 is less than dNr in Community 2?
+And that pretty is pretty much that for comparing these metrics across communities, except perhaps to make a probabalistic statement about how convex hull area TA (for example) differs between __Community 1__ and __Community 2__. In this case, what is the probabily that TA in Community 1 is almost the same as that in Community 2?
 
 ```{r}
 
-dNr1.lt.dNr2 <- sum(layman.B[[1]][,"dY_range"] < 
-                      layman.B[[2]][,"dY_range"]) / 
+TA1_lt_TA2 <- sum(layman.B[[1]][,"TA"] < 
+                      layman.B[[2]][,"TA"]) / 
                 length(layman.B[[1]][,"TA"])
 
-print(dNr1.lt.dNr2)
+print(TA1_lt_TA2)
 
 ```
+
+And we can conclude that 45% (which is almost 50%) of the TA values estimated for Community 1 are less than Community 2. At exactly 50% the two distributions would have identical medians.
 
 
 
