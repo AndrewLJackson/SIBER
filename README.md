@@ -42,11 +42,12 @@ The package vignettes provide working examples of the two main analysis types.
 
 ## Frequently Asked Questions (FAQs)
 
-* __How do I make isotope plots in ggplot?__ - see this [code example](https://github.com/andrewcparnell/simms_course/blob/master/aj-content/practicals/day-1-pm1/first-biplot.Rmd) or the new vignette "Plot-SIA-ggplot2" included in the development version.  
+* __How do I make isotope plots in ggplot?__ - see this [code example](https://github.com/andrewcparnell/simms_course/blob/master/aj-content/practicals/day-1-pm1/first-biplot.Rmd) or the new vignette "Plot-SIA-ggplot2" included in the development version >2.1.5.9000. `devtools::install_github("andrewljackson/SIBER@master",
+  build_vignettes = TRUE)`
 * __Why are my community-level estimates of TA are zero or NA__ - This will arise if you have less than three groups (e.g. species) comprising a community. A triangle with three non-collinear points is the minimum requirement to draw a polygon and so if you have only one or two groups, the area of the TA is zero at best or possibly NA.
 
 ## Help, Assistance and Queries
-In the first instance, queries about analyses or problems with the software can be posted [here on github](https://github.com/AndrewLJackson/SIBER/issues). Failing  If you are convinced you have discovered a bug or major problem in the software, you can raise an [issue here on github](https://github.com/AndrewLJackson/SIBER/issues).
+In the first instance, queries about analyses or problems with the software can be posted [here on github](https://github.com/AndrewLJackson/SIBER/issues). Please post minimal worked examples so that we can recreate the problem and offer solutions.
 
 ##Acknowledgments
 Some code and much input from my collaborator and co-author [Andrew Parnell](http://mathsci.ucd.ie/people/parnell_a) [@aparnellstats](https://twitter.com/aparnellstats). Thanks to Alex Bond [@thelabandfield](https://twitter.com/thelabandfield) for helping identify some problems in model fitting which is now resolved by z-scoring, fitting and back-transforming. Although not affecting every analysis, the potential issue is exemplified in [SIBER-sandbox]( https://github.com/AndrewLJackson/SIBER-sandbox). Thanks to [Edward Doherty](https://github.com/Edward-Doherty) for finding the bug that turned out to be in the creating of z-scores in `createSiberObject`.
