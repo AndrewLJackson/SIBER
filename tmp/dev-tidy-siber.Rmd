@@ -1,0 +1,35 @@
+---
+title: "Testing tidyverse SIBER"
+output: html_notebook
+---
+
+
+A notebook to test and develop tidyverse version of SIBER.
+
+
+load some libraries
+
+```{r}
+library(tidyverse)
+library(magrittr)
+```
+
+
+
+```{r}
+
+# load the test data
+load("../data/demo_siber_data.rda")
+
+# source the new files
+source("../R/createSiberObject.R")
+source("../R/sigmaSEA.R")
+
+# create the siber object
+my_siber <- createSiberObject(demo_siber_data)
+
+
+
+
+```
+

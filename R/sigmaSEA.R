@@ -46,12 +46,15 @@ sigmaSEA <- function(sigma){
   SEA <- pi*a*b
   
 
-  out <- list()
-  out$SEA <- pi*a*b
-  out$eccentricity <- sqrt(1-((b^2)/(a^2)))
-  out$a <- a
-  out$b <- b
-  out$theta <- theta
-
-  return(out)
+  # out <- list()
+  # out$SEA <- pi*a*b
+  # out$eccentricity <- sqrt(1-((b^2)/(a^2)))
+  # out$a <- a
+  # out$b <- b
+  # out$theta <- theta
+  
+  
+  
+  return(c(SEA = pi*a*b, eccentricity = sqrt(1-((b^2)/(a^2))), 
+           a = a, b = b, theta = theta))
 }
