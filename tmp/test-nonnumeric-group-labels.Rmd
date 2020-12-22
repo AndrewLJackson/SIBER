@@ -2,20 +2,20 @@
 title: "Test non-numeric group labels"
 author: "Andrew L Jackson"
 date: "`r Sys.Date()`"
-output: html
+output: html_notebook
 ---
 Some test code for checking that the group labels as strings works.
 
 ```{r}
 library(SIBER)
 
-mydata <- read.csv(file.path(getwd(), "/inst/extdata/test.group.names.csv"), 
+mydata <- read.csv(file.path("../inst/extdata/test.group.names.csv"), 
                    header = TRUE)
 
 test <- createSiberObject(mydata)
 
 community.hulls.args <- list(col = 1, lty = 1, lwd = 1)
-group.ellipses.args  <- list(n = 100, p.interval = 0.40, lty = 1, lwd = 2)
+group.ellipses.args  <- list(n = 100, p.interval = 0.95, lty = 1, lwd = 2)
 group.hull.args      <- list(lty = 2, col = "grey20")
 
 
@@ -81,3 +81,28 @@ points(1:ncol(SEA.B), group.ML[3,], col="red", pch = "x", lwd = 2)
 
 
 ```
+
+## Test overlap calculations
+
+Maximum likelihood
+
+```{r}
+testML <- maxLikOverlap("1.C", "1.D", 
+                        test, 
+                        p.interval = 0.95)
+```
+
+Bayesian overlap
+
+```{r}
+
+testBayes <- bayesianOverlap("1.C", "1.D", 
+                             ellipses.posterior, 
+                             p.interval = 0.95, 
+                             draws = 1000)
+
+summary(testBayes)
+```
+
+
+
