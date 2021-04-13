@@ -13,12 +13,13 @@
 #' @param pEll the probability ellipse to draw for each group. Defaults to the 
 #'   Standard Ellipse with \code{pEll = stats::pchisq(1, df = 2)}.
 #'   
-#' @return an object of class \code{owin} containing the numerically calculated
+#' @return an object of class \code{spatstat.geom::owin} containing the numerically calculated
 #'   ellipses and their union along with the raw ellipse boundaries in both raw
-#'   and \code{owin} format.
+#'   and \code{spatstat.geom::owin} format.
 #' 
 #' @import ggplot2
 #' @import dplyr
+#' @import spatstat
 #' @importFrom magrittr "%>%"
 #'   
 #' @export
@@ -66,14 +67,14 @@ siberKapow <- function(dtf, isoNames = c("iso1", "iso2"),
   
   # Define a short custom function and then apply it over the list
   # using map()
-  ell2owin <- function(x){spatstat::owin(poly = list(x = x$X1, y = x$X2))}
+  ell2owin <- function(x){spatstat.geom::owin(poly = list(x = x$X1, y = x$X2))}
   owin.coords <- purrr::map(ellCoords.list, ell2owin)
   
   # pass the list of ellipses for each individal to spatstat::union.owin
   # using do.call, which i dont really like but it is the only way i have 
   # found to parse the list correctly into union.owin. That is, I want 
   # this.list <- list(a,b,c) to be passed as union.owin(a,b,c)
-  boundaries <- do.call(get("union.owin", asNamespace("spatstat")),
+  boundaries <- do.call(get("union.owin", asNamespace("spatstat.geom")),
                         owin.coords)
   
   # bundle these coordinates into the boundaries object for later recall

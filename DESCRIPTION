@@ -1,17 +1,18 @@
 Package: SIBER
 Type: Package
 Title: Stable Isotope Bayesian Ellipses in R
-Version: 2.1.5.9000
+Version: 2.1.6
 Depends:
-    R (>= 4.0.0)
+    R (>= 4.0.0),
+    spatstat (>= 2.0-0),
 SystemRequirements: JAGS (>= 4.1)
 Imports:
     hdrcde,
     graphics,
     grDevices,
     mnormt,
-    rjags,                         
-    spatstat,
+    rjags,
+    spatstat.geom,
     spatstat.utils,
     stats,
     tidyr,
@@ -24,6 +25,7 @@ Suggests:
     ellipse,
     knitr,
     rmarkdown,
+    tidyverse,
     viridis
 Author: Andrew Jackson and Andrew Parnell
 Maintainer: Andrew Jackson <jacksoan@tcd.ie>

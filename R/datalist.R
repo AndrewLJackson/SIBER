@@ -75,7 +75,7 @@
 #'
 #' @format A 3 column, 251 row matrix containing the plasma data for the 8
 #'   groups of gees as consumers. Columns are in the order Group which is an
-#'   integer that determines which of the 8 groups the observation belons. The
+#'   integer that determines which of the 8 groups the observation belongs. The
 #'   second and third columns are d13C and d15N values derived from the blood
 #'   plasma for each observation. Retained here as legacy from now defunct
 #'   package siar. Note that the order of the isotope data has been swapped
@@ -99,7 +99,7 @@
 #' @usage data(correctionsdemo)
 #'
 #' @format A 5 column, 4 row data.frame object containing the trophic
-#'   discriminaton factors for brent geese consumers relative to 4 of their food
+#'   discrimination factors for brent geese consumers relative to 4 of their food
 #'   sources (in Ireland). The first column Source is a factor determining the
 #'   name of the source. The second and third columns are the mean d13C and mean
 #'   d15N TDF values for each source respectively. Columns 3 and 5 are the standard

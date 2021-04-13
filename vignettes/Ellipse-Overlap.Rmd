@@ -6,6 +6,7 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Ellipse Overlap}
   %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteDepends{viridis}
   \usepackage[utf8]{inputenc}
 ---
 
@@ -31,6 +32,7 @@ set.seed(1)
 
 # load SIBER
 library(SIBER)
+library(viridis)
 
 # set a new three-colour palette from the viridis package
 palette(viridis::viridis(3))

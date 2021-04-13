@@ -6,6 +6,7 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Test Convergence}
   %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteDepends{coda}
   \usepackage[utf8]{inputenc}
 ---
 

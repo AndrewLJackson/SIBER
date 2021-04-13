@@ -15,7 +15,7 @@
 #'    \item{lty}{ the line type of the convex hull.See 
 #'    \code{\link[graphics]{lines}} for more details.}
 #'    \item{lwd}{ the line width of the convex hulls. See 
-#'    \code{\link[?SIBgraphics]{lines} for more details.}}
+#'    \code{\link[graphics]{lines} for more details.}}
 #'  }
 #' @param iso.order a vector of length 2, either c(1,2) or c(2,1). The order 
 #'   determines which of the columns of raw data are plotted on the x (1) or y 

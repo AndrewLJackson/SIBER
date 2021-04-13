@@ -6,6 +6,7 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Introduction to SIBER}
   %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteDepends{viridis}
   \usepackage[utf8]{inputenc}
 ---
 
@@ -19,7 +20,7 @@ palette(viridis(3))
 ```
 
 ## SIBER introduction and guide
-This user manual introduces the basic functionality of this standalone version of SIBER, which was previously part of the [siar](http://andrewljackson.github.io/siar) package. SIBER contains two types of analysis, although both are founded on the same principle of fitting ellipses to groups of data. The questions are very different though and it is important that you satisfy yourself with which one you want for the questions you have of your own data. There are additional learning resources available at [SIAR-examples-and-queries](http://andrewljackson.github.io/siar). N.B. these examples currently still use the SIBER functions embedded within the SIAR package, which I will update shortly, but the concepts are exactly the same.
+This user manual introduces the basic functionality of this standalone version of SIBER, which was historically part of the [siar](https://github.com/AndrewLJackson/siar) package. Note that `siar` itself is now obsolete and instead you should look to the related packages [mixsiar](https://github.com/brianstock/MixSIAR) and  [simmr](https://github.com/andrewcparnell/simmr) for the latest mixing model approaches. SIBER contains two types of analysis, although both are founded on the same principle of fitting ellipses to groups of data. The questions are very different though and it is important that you satisfy yourself with which one you want for the questions you have of your own data.
 
 ## Setting up our R session for this demonstration
 In this example, we are going to work with a bundled example dataset that I created previously using the function `generateSiberData()`. This dataset is loaded using `data("demo.siber.data")` but it is also provided as a raw *.csv file which is more usually the format you would work with when organising your own dataset for analysis using SIBER. We then use `createSiberObject()` to convert this raw data form into an object that contains information summary statistics that are useful for plotting, and a z-score transformed version of the data which is used in the model fitting process before being back-transformed using the summary statistic information.

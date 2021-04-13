@@ -1,4 +1,4 @@
-#' Calculate the bayesian Standard Ellipse Area for all groups
+#' Calculate the Bayesian Standard Ellipse Area for all groups
 #' 
 #' This function loops over each group within each community and calculates the 
 #' posterior distribution describing the corresponding Standard Ellipse Area.

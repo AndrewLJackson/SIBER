@@ -24,7 +24,7 @@
 #'   Defaults to greyscale \code{grDevices::gray((9:1)/10)} replicated for as
 #'   many columns as there are in \code{dat}. When specified by the user, rows
 #'   contain the colours of each of the confidence regions specified in
-#'   \code{probs} and columns represent ecah of the columns of data in
+#'   \code{probs} and columns represent each of the columns of data in
 #'   \code{dat}. In this way, one could have shades of blue, red and yellow for
 #'   each of the groups.
 #' @param scl a scalar multiplier to scale the box widths. Defaults to 1.

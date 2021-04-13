@@ -6,6 +6,7 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Comparing communities}
   %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteDepends{viridis}
   \usepackage[utf8]{inputenc}
 ---
 
@@ -60,7 +61,7 @@ plotGroupEllipses(siber.example, n = 100, p.interval = 0.95,
 
 ```
 
-With a convex hull drawn between the means of the populations that make up the communities, it certainly appears that __Community 2__ (triangles) occupies a larger portion of isotope-space than __Community 1__ (circles). Just as is the case when fitting ellipses to the popuations within a community, there is uncertainty involved in estimating the means that describe their centroid (centre of mass). We can exploit this uncertainty to calculate a range of convex hulls that have a robust probabalistic interpretation within the Bayesian framework we use to esimate the means of the data. More than just convex hulls, we can calculate all 6 of the metrics proposed in [Layman et al 2007](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=6yV_oeoAAAAJ&citation_for_view=6yV_oeoAAAAJ:u-x6o8ySG0sC). 
+With a convex hull drawn between the means of the populations that make up the communities, it certainly appears that __Community 2__ (triangles) occupies a larger portion of isotope-space than __Community 1__ (circles). Just as is the case when fitting ellipses to the populations within a community, there is uncertainty involved in estimating the means that describe their centroid (centre of mass). We can exploit this uncertainty to calculate a range of convex hulls that have a robust probabalistic interpretation within the Bayesian framework we use to estimate the means of the data. More than just convex hulls, we can calculate all 6 of the metrics proposed in [Layman et al 2007](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=6yV_oeoAAAAJ&citation_for_view=6yV_oeoAAAAJ:u-x6o8ySG0sC). 
 
 * __TA__ - the area of convex hull containing, in the case of SIBER, the means of the populations that comprise the community.
 * __dN_range__ - the distance in units between the min and max y-axis populations means which is most often d15Nitrogen in ecological studies.
@@ -164,7 +165,7 @@ siberDensityPlot(cbind(layman.B[[1]][ , "TA"],
 ```
 
 
-And that pretty is pretty much that for comparing these metrics across communities, except perhaps to make a probabalistic statement about how convex hull area TA (for example) differs between __Community 1__ and __Community 2__. In this case, what is the probabily that TA in Community 1 is almost the same as that in Community 2?
+And that pretty is pretty much that for comparing these metrics across communities, except perhaps to make a probabilistic statement about how convex hull area TA (for example) differs between __Community 1__ and __Community 2__. In this case, what is the probability that TA in Community 1 is almost the same as that in Community 2?
 
 ```{r}
 

@@ -6,6 +6,7 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Plot Some Posterior Ellipses}
   %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteDepends{tidyverse}
   \usepackage[utf8]{inputenc}
 ---
 
@@ -15,8 +16,7 @@ In this example we try to create some plots of the multiple samples of the poste
 ```{r setup}
 
 library(SIBER)
-library(ggplot2)
-library(dplyr)
+library(tidyverse)
 library(ellipse)
 
 

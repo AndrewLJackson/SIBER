@@ -6,6 +6,7 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Comparing populations}
   %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteDepends{viridis}
   \usepackage[utf8]{inputenc}
 ---
 
@@ -51,13 +52,13 @@ plotSiberObject(siber.example,
 
 ```
 
-In this figure, we have 4 populations (or more generically: groups) of indivuals. We might want to make some comparisons of the isotopic (and hence ecological) niches occupied by these individuals. The two most obvious ways to compare two of these populations, is to ask whether their niches are located in the same place, and if they are the same size. Thereafter, we may be interested in asking to what extent do their niches overlap.
+In this figure, we have 4 populations (or more generically: groups) of individuals. We might want to make some comparisons of the isotopic (and hence ecological) niches occupied by these individuals. The two most obvious ways to compare two of these populations, is to ask whether their niches are located in the same place, and if they are the same size. Thereafter, we may be interested in asking to what extent do their niches overlap.
 
-We can visualise this by adding both ellipses, and convex hulls to the data. In this case, we add standard ellipses, which are to bivariate data as standard deviations are to univariate data. A standard ellipse contains approximately 40% of the data, although they can be rescaled to contain any proporition of the data we wish if we accept the assumption that they multivariate normal distributed. Owing to this proportional representation of the data, the ellipse _should_ be insensitive to sample size, and _should_ always contain 40% of the data. However, as was demonstrated in the SIBER paper [Jackson et al 2010](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=E0sB7fUAAAAJ&citation_for_view=E0sB7fUAAAAJ:_FxGoFyzp5QC), the basic Standard Ellipse Area (SEA) shows bias at small sample sizes, which can be corrected to calculate SEAc.
+We can visualise this by adding both ellipses, and convex hulls to the data. In this case, we add standard ellipses, which are to bivariate data as standard deviations are to univariate data. A standard ellipse contains approximately 40% of the data, although they can be rescaled to contain any proportion of the data we wish if we accept the assumption that they multivariate normal distributed. Owing to this proportional representation of the data, the ellipse _should_ be insensitive to sample size, and _should_ always contain 40% of the data. However, as was demonstrated in the SIBER paper [Jackson et al 2010](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=E0sB7fUAAAAJ&citation_for_view=E0sB7fUAAAAJ:_FxGoFyzp5QC), the basic Standard Ellipse Area (SEA) shows bias at small sample sizes, which can be corrected to calculate SEAc.
 
 In contrast, the convex hull is a polygon that is drawn around the outermost points in the cloud of data such that all other points lie within the outline. If we were to go out and collect more samples, then this hull can only grow in size and not get smaller. The result of this is that smaller sample sizes will result in smaller convex hulls. Despite this statistical problem, the convex hull remains a useful way to help us visualise bivariate data such as carbon-nitrogen stable isotope values.
 
-We can then go back to our community comprising 4 populations, and add standard ellipses and convex hulls to each group. The new code in SIBER creates a special object that contains the original data, the rescaled and z-scored data, along with various summary statistics to aid with plotting and model fitting. Most of this happens in the background, so you dont need to worry about the details of this object unless you want to delve deeper.
+We can then go back to our community comprising 4 populations, and add standard ellipses and convex hulls to each group. The new code in SIBER creates a special object that contains the original data, the rescaled and z-scored data, along with various summary statistics to aid with plotting and model fitting. Most of this happens in the background, so you don't need to worry about the details of this object unless you want to delve deeper.
 
 
 And now the full code...
@@ -123,7 +124,7 @@ legend("topright", colnames(group.ML),
 ***
 
 ## Using Bayesian Inference to calculate uncertainty around ellipses
-So far these still just point-metrics that describe the width of the isotopic niche. That is, they are single numbers for each group, which means that we can't compare one group to another in a statisical sense as we lack a measure of the uncertainty around each estimate. This is where we can use Bayesian Inference to quantify the error associated with fitting these ellipses to each group, that arises from both the number of samples we have, and also their distribution.
+So far these still just point-metrics that describe the width of the isotopic niche. That is, they are single numbers for each group, which means that we can't compare one group to another in a statistical sense as we lack a measure of the uncertainty around each estimate. This is where we can use Bayesian Inference to quantify the error associated with fitting these ellipses to each group, that arises from both the number of samples we have, and also their distribution.
 
 Essentially, what the MCMC algorithm does is generate a distribution of covariance matrices that to a greater or lesser extent (in terms of likelihood) describe the observed data. It does so, as is the general case in Bayesian Inference, by combing the prior probability with the likelihood of the data for a given covariance matrix.
 
@@ -200,7 +201,7 @@ print(SEA.B.modes)
 
 ## Comparing the posterior distributions
 
-In order to test whether one group's ellipse is smaller or larger than another, we can simply calculate the probability that its posterior distribution is smaller (or larger). This is achieved by comparing each pair of posterior draws for both groups, and dtermining which is smaller in magnitude. We then find the proportion of draws that are smaller, and this is a direct proxy for the probability that one group's posterior distribution (of ellipse size in this case) is smaller than the other.
+In order to test whether one group's ellipse is smaller or larger than another, we can simply calculate the probability that its posterior distribution is smaller (or larger). This is achieved by comparing each pair of posterior draws for both groups, and determining which is smaller in magnitude. We then find the proportion of draws that are smaller, and this is a direct proxy for the probability that one group's posterior distribution (of ellipse size in this case) is smaller than the other.
 
 
 Here, we first calculate the proportion, and hence probability, of the SEA.B for group 1 being smaller than the SEA.B for group 2.

@@ -25,9 +25,9 @@ grouping variable on which to calculate the KAPOW ellipse.}
 Standard Ellipse with \code{pEll = stats::pchisq(1, df = 2)}.}
 }
 \value{
-an object of class \code{owin} containing the numerically calculated
+an object of class \code{spatstat.geom::owin} containing the numerically calculated
   ellipses and their union along with the raw ellipse boundaries in both raw
-  and \code{owin} format.
+  and \code{spatstat.geom::owin} format.
 }
 \description{
 Intended to calculate the area of an ellipse as a proportion of a group of 

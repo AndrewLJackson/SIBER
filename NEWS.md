@@ -1,6 +1,6 @@
-# SIBER 2.1.5.9000
-+ in development
-+ added two vingettes illustrating how to compare populations and communities with calculation of probabilities for differences.
+# SIBER 2.1.6
++ added two vignettes illustrating how to compare populations and communities with calculation of probabilities for differences.
++ replaced package `spatstat` with direct importing from new sub-packages `spatstat.utils` and `spatstat.geom`
 
 # SIBER 2.1.5
 + Fixed bug in `createSiberObject` that meant z-scores could end up out of sync with their respective grouping variable. Thanks to Edward Doherty for pointing out this odd behaviour leading to bug discovery 2020/11/5. Ultimately the entire package needs to be recoded in `tidyverse`.

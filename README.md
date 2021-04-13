@@ -49,7 +49,7 @@ The package vignettes provide working examples of the two main analysis types.
 ## Help, Assistance and Queries
 In the first instance, queries about analyses or problems with the software can be posted [here on github](https://github.com/AndrewLJackson/SIBER/issues). Please post minimal worked examples so that we can recreate the problem and offer solutions.
 
-##Acknowledgments
+##Acknowledgements
 Some code and much input from my collaborator and co-author [Andrew Parnell](http://mathsci.ucd.ie/people/parnell_a) [@aparnellstats](https://twitter.com/aparnellstats). Thanks to Alex Bond [@thelabandfield](https://twitter.com/thelabandfield) for helping identify some problems in model fitting which is now resolved by z-scoring, fitting and back-transforming. Although not affecting every analysis, the potential issue is exemplified in [SIBER-sandbox]( https://github.com/AndrewLJackson/SIBER-sandbox). Thanks to [Edward Doherty](https://github.com/Edward-Doherty) for finding the bug that turned out to be in the creating of z-scores in `createSiberObject`.
 
 ## Citation

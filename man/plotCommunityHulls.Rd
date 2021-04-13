@@ -24,7 +24,7 @@ plotCommunityHulls(
   \item{lty}{ the line type of the convex hull.See 
   \code{\link[graphics]{lines}} for more details.}
   \item{lwd}{ the line width of the convex hulls. See 
-  \code{\link[?SIBgraphics]{lines} for more details.}}
+  \code{\link[graphics]{lines} for more details.}}
 }}
 
 \item{iso.order}{a vector of length 2, either c(1,2) or c(2,1). The order 

@@ -14,7 +14,7 @@
 #' @param ... additional arguments to pass onwards, not currently implemented.
 #'   
 #' @return A nice plot. You can get the corresponding matrices used to generate 
-#'   the plots if you ask for it nicely: thedata <- 
+#'   the plots if you ask for it nicely: the_data <- 
 #'   plotCentroidVectors(centroids)
 #'   
 #' @importFrom magrittr %>%
