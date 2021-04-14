@@ -1,3 +1,7 @@
+# SIBER 2.1.6.xxx
++ in development
++ added doi to DESCRIPTION per CRAN suggestion
+
 # SIBER 2.1.6
 + added two vignettes illustrating how to compare populations and communities with calculation of probabilities for differences.
 + replaced package `spatstat` with direct importing from new sub-packages `spatstat.utils` and `spatstat.geom`

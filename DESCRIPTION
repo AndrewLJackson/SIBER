@@ -1,7 +1,7 @@
 Package: SIBER
 Type: Package
 Title: Stable Isotope Bayesian Ellipses in R
-Version: 2.1.6
+Version: 2.1.6.xxx
 Depends:
     R (>= 4.0.0),
     spatstat (>= 2.0-0),
@@ -31,7 +31,9 @@ Author: Andrew Jackson and Andrew Parnell
 Maintainer: Andrew Jackson <jacksoan@tcd.ie>
 Description: Fits bi-variate ellipses to stable isotope data using Bayesian
     inference with the aim being to describe and compare their isotopic
-    niche.
+    niche. # SIBER 2.1.6
++ added two vignettes illustrating how to compare populations and communities with calculation of probabilities for differences.
++ replaced package `spatstat` with direct importing from new sub-packages `spatstat.utils` and `spatstat.geom`
 License: GPL (>= 2)
 Language: en-GB
 LazyLoad: yes
