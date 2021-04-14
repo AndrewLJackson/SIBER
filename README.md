@@ -23,7 +23,7 @@ The stable release can be installed by
     build_vignettes = TRUE)
     library(SIBER)
   ```
-[Release notes]("NEWS.md") are available for each version.
+[Release notes](NEWS.md) are available for each version.
 
 The latest development version is on the master branch. Often this includes some new things that I am working on, but I can't guarantee that the package is stable and it might not install sometimes if I have broken something; usually though I tend to break things on a separate branch and try to keep the master stable as a package even if bits and pieces of the new stuff is not working correctly.
 
