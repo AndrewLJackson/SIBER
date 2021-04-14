@@ -36,25 +36,20 @@ The latest development version is on the master branch. Often this includes some
 
 
 ## Tutorials
-
 More information and examples from the previous version of SIBER which is part of the SIAR package is available from [my website](http://www.tcd.ie/Zoology/research/groups/jackson/projects/Rpodcasts.php#siber). Much of this instructional content remains true, although the implementation of the code has changed substantially (for the better I hope).
 
 The package vignettes provide working examples of the two main analysis types.
 
 ## Frequently Asked Questions (FAQs)
-
 * __How do I make isotope plots in ggplot?__ - see this [code example](https://github.com/andrewcparnell/simms_course/blob/master/aj-content/practicals/day-1-pm1/first-scatterplot.Rmd) or the new vignette "Plot-SIA-ggplot2" included in the development version >2.1.5.9000. Install via `devtools::install_github("andrewljackson/SIBER@master",
   build_vignettes = TRUE)`
 * __Why are my community-level estimates of TA are zero or NA__ - This will arise if you have less than three groups (e.g. species) comprising a community. A triangle with three non-collinear points is the minimum requirement to draw a polygon and so if you have only one or two groups, the area of the TA is zero at best or possibly NA.
 
 ## Help, Assistance and Queries
-
 In the first instance, queries about analyses or problems with the software can be posted [here on github](https://github.com/AndrewLJackson/SIBER/issues). Please post minimal worked examples so that we can recreate the problem and offer solutions.
 
-##Acknowledgements
-
+## Acknowledgements
 Some code and much input from my collaborator and co-author [Andrew Parnell](http://mathsci.ucd.ie/people/parnell_a) [@aparnellstats](https://twitter.com/aparnellstats). Thanks to Alex Bond [@thelabandfield](https://twitter.com/thelabandfield) for helping identify some problems in model fitting which is now resolved by z-scoring, fitting and back-transforming. Although not affecting every analysis, the potential issue is exemplified in [SIBER-sandbox]( https://github.com/AndrewLJackson/SIBER-sandbox). Thanks to [Edward Doherty](https://github.com/Edward-Doherty) for finding the bug that turned out to be in the creating of z-scores in `createSiberObject`.
 
 ## Citation
-
 Jackson, A.L., Parnell, A.C., Inger R., & Bearhop, S. 2011. Comparing isotopic niche widths among and within communities: SIBER – Stable Isotope Bayesian Ellipses in R. Journal of Animal Ecology, 80, 595-602. [doi](https://doi.org/10.1111/j.1365-2656.2011.01806.x)
