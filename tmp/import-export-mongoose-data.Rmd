@@ -1,0 +1,29 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+## About
+import the mongoose data as csv and export to /data as .rda for inclusion in the package
+
+```{r}
+
+library(tidyverse)
+library(magrittr)
+
+# import csv file
+mongoose <- read.csv("mongooseFullData.csv", header = TRUE, 
+                     stringsAsFactors = FALSE) %>% 
+  select(indiv.id, pack, c13, n15)
+
+# export only the columns we need
+
+save(mongoose, 
+     file = "../data/mongooseData.rda", 
+     compress = "xz")
+
+```
+
+
+
