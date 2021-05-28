@@ -2,7 +2,7 @@
 % Please edit documentation in R/siberEllipses.R
 \name{siberEllipses}
 \alias{siberEllipses}
-\title{Calculate the bayesian Standard Ellipse Area for all groups}
+\title{Calculate the Bayesian Standard Ellipse Area for all groups}
 \usage{
 siberEllipses(corrected.posteriors)
 }

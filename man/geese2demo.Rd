@@ -7,7 +7,7 @@
 \format{
 A 3 column, 251 row matrix containing the plasma data for the 8
   groups of gees as consumers. Columns are in the order Group which is an
-  integer that determines which of the 8 groups the observation belons. The
+  integer that determines which of the 8 groups the observation belongs. The
   second and third columns are d13C and d15N values derived from the blood
   plasma for each observation. Retained here as legacy from now defunct
   package siar. Note that the order of the isotope data has been swapped

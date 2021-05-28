@@ -23,7 +23,7 @@ Defaults to TRUE.}
 }
 \value{
 A nice plot. You can get the corresponding matrices used to generate 
-  the plots if you ask for it nicely: thedata <- 
+  the plots if you ask for it nicely: the_data <- 
   plotCentroidVectors(centroids)
 }
 \description{

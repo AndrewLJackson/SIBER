@@ -167,7 +167,7 @@
 #'
 #' @docType data
 #'
-#' @usage data(mongooseData)
+#' @usage data(mongoose)
 #'
 #' @format A 4 column, 783 row data.frame object containing unique individual 
 #' mongoose identifiers in the first column "indiv.id"; an integer identifier for 
@@ -179,4 +179,4 @@
 #'
 #' @keywords datasets
 #' @author Harry Marshall
-"mongooseData"
+"mongoose"

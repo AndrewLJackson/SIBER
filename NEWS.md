@@ -1,6 +1,8 @@
 # SIBER 2.1.6.xxx
 + in development
 + added doi to DESCRIPTION per CRAN suggestion
++ added new vignette illustrating the kapow method and associated new dataset `data/mongooseData.rda`
++ fixed a bug in `siberKapow` which will hopefully pass CRAN checks re undeclared global variables. Will pick this up on next submission. 
 
 # SIBER 2.1.6
 + added two vignettes illustrating how to compare populations and communities with calculation of probabilities for differences.
@@ -10,7 +12,6 @@
 + Fixed bug in `createSiberObject` that meant z-scores could end up out of sync with their respective grouping variable. Thanks to Edward Doherty for pointing out this odd behaviour leading to bug discovery 2020/11/5. Ultimately the entire package needs to be recoded in `tidyverse`.
 + Fixed bug in `plotSiberObject` that meant both x.limits and y.limits had to be specified to invoke manual axis setting. Either or can now be specified on their own with the other reverting to the default which is the max and min values of the corresponding data axis +/- the specified `ax.pad` value which defaults to 1.
 + Allow users to specify a matrix of colours to define each group and each confidence boxplot uniquely using `siberDensityPlot(Y, clr = ...)`
-
 
 # SIBER 2.1.4
 + fixed "vignettes with duplicate titles" warning

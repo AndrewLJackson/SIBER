@@ -21,7 +21,7 @@ n.groups the number of groups within the focal community.
 }
 \description{
 This function extracts the posterior means from a call to 
-\code{\link{siberMVN}} which can then be used to calculate bayesian layman 
+\code{\link{siberMVN}} which can then be used to calculate Bayesian layman 
 metrics. This function is designed to create an array of posterior means 
 that is more easily interrogated for plotting and summary statistics.
 }

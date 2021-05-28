@@ -20,7 +20,7 @@ mongoose <- read.csv("mongooseFullData.csv", header = TRUE,
 # export only the columns we need
 
 save(mongoose, 
-     file = "../data/mongooseData.rda", 
+     file = "../data/mongoose.rda", 
      compress = "xz")
 
 ```

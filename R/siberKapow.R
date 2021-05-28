@@ -56,14 +56,16 @@ siberKapow <- function(dtf, isoNames = c("iso1", "iso2"),
   
   # apply our function to each group to calcluate the ellipse boundaries
   ellCoords <- dtf %>% ungroup() %>% droplevels() %>% 
-    group_by_(.dots = "group") %>%
+    # group_by_(.dots = "group") %>%
+    group_by_(.dots = group) %>%
     do(calcBoundaries(.data))
   
   # split the dataset by the defined grouping parameter
   # The piped version causes NOTEs
   # "no visible binding for global variable ‘group’"
   # ellCoords.list <- ellCoords %>% split(., .[,group])
-  ellCoords.list <- split(ellCoords, ellCoords$group)
+  # ellCoords.list <- split(ellCoords, ellCoords$group)
+  ellCoords.list <- split(ellCoords, ellCoords[`group`])
   
   # Define a short custom function and then apply it over the list
   # using map()
