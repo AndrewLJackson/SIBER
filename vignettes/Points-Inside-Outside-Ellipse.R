@@ -1,24 +1,9 @@
----
-title: "Points Inside or Outside Ellipse"
-author: "Andrew L Jackson"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Points Inside or Outside Ellipse}
-  %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
----
-
-```{r, echo = FALSE}
+## ---- echo = FALSE------------------------------------------------------------
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", 
                       fig.width = 6, fig.height = 5)
 
-```
 
-## Creating some test data
-First we will create some random data and draw an ellipse around it, and then we can test whether a defined set of other points are inside or outside the ellipse. This is done here by defining the seed for the random number generator to ensure we get the same data each time, but you may want to change this yourself to convince yourself that the method holds - with some uncertainty - around the expect proportion of points inside the ellipse. The function to set the random number generator is `set.seed(3)` and simply commenting this out will ensure new random numbers each time.
-
-```{r gendata, echo = TRUE}
+## ----gendata, echo = TRUE-----------------------------------------------------
 
 library(dplyr)
 library(magrittr)
@@ -35,11 +20,8 @@ n <- 100
 # some random multivariate data
 Y <- generateSiberGroup(n.obs = n)
 
-```
-## Determine whether points are inside or outside ellipse
-Now we want to determined whether a set of data points are inside or outside our ellipse. This could be the same data as used to generate the ellipse, and given that its a 95% prediction ellipse, we would expect there to be 95% of the data inside the ellipse on average. As it happens, with this random seed, all our data points are inside the 95% ellipse: stochasticity is so random. It could though be a set of other independent data points. The way the code works below is a bit of space-warping trickery. Essentially, there is a transformation that can be applied to our ellipse that makes it a perfect circle, centred around the origin (point [0,0]). We apply this transformation to both the ellipse boundary and also our data points that we want to test. It is then very easy to determine whether or not our points are within the radius of our circle or whether they are outside! Moving the ellipse to the origin is easy, as it just means subtracting the mean of the data. Warping the ellipse so it maps onto a circle is done by a bit of linear matrix algebra using the covariance matrix of the data (the same that defines the ellipse). SIBER has functions to help do this.
 
-```{r warpdata, echo = TRUE}
+## ----warpdata, echo = TRUE----------------------------------------------------
 
 # plot this example data with column 2 by column 1
 # plot(Y[,2] ~ Y[,1], type = "n", asp = 1,
@@ -69,10 +51,8 @@ inside_samp <- ellipseInOut(Z_samp, p = p) # test if inside
 # and plot them with colour coding for whether they are inside or outside
 points(Y[,2] ~ Y[,1], col = 1 + !inside_samp)
 
-```
-**Figure 1. ** The fitted 95% prediction ellipse with the samples coloured black if they are inside the ellipse and red otherwise. The expected proportion of points inside the ellipse is `r p` and the observed proportion is `r round(sum(inside_samp) / length(inside_samp), 2)`.
 
-```{r manually-test-points, eval = TRUE}
+## ----manually-test-points, eval = TRUE----------------------------------------
 # Define a matrix of 5 data points to test against our ellipse.
 # For ease of interpretation of this code, I have built this matrix by 
 # specifying each row on a separate line and do this by adding the option 
@@ -106,14 +86,8 @@ plot(test_these[,2] ~ test_these[,1],
 
 # and add the ellipse same as the one above
 tmp <- addEllipse(mu, Sigma, p.interval = p, col = "red", lty = 2)
-```
-**Figure 2.** A manual test of a few arbitrary points in space against the ellipse shown in Figure 1 just to satisfy ourselves that the process is working correctly.
 
-## Large simulation across sample size
-
-We can repeat the procedure above and assure ourselves that the 95% ellipses are behaving appropriately across a range of sample sizes. We first define a wrapper function that runs the above process with the number of samples $n$ as an input.
-
-```{r}
+## -----------------------------------------------------------------------------
 
 # a wrapper function to simulate a population, fit the ellipses and 
 # determine the proportion of samples inside.
@@ -139,11 +113,8 @@ testEllipse <- function(n, p) {
   
 }
 
-```
 
-Set up the simulation over a range of sample sizes ($n$). The absolute minimum sample size is $n = 3$ in order to calculate a covariance matrix, but realistically since we are estimating two means and a covariance matrix then as we start to enter sample sizes $n \lt 10$ we start to run out of degrees of freedom pretty quickly.
-
-```{r}
+## -----------------------------------------------------------------------------
 
 # define the prediciton interval to use
 prediction_interval <- 0.95
@@ -158,11 +129,8 @@ reps_per_n <- 200
 simExperiment <- tibble(n = rep(do_these_n, reps_per_n ),
                         p = prediction_interval) %>% arrange(n)
 
-```
 
-Loop over our experimental setup and add a column indicating the proportion of samples inside the fitted prediction ellipse.
-
-```{r}
+## -----------------------------------------------------------------------------
 
 simExperiment %<>% mutate(p_inside = pmap(list(n = n, p = p), testEllipse) %>% unlist)
 
@@ -172,11 +140,8 @@ summaries_simExperiment <- simExperiment %>% group_by(n) %>%
             min_p_inside = min(p_inside),
             max_p_inside = max(p_inside))
 
-```
 
-And plot
-
-```{r}
+## -----------------------------------------------------------------------------
 # and plot p_inside against n
 g3 <- ggplot(data = simExperiment, mapping = aes(x = n, y = p_inside)) + 
   geom_jitter() + 
@@ -188,18 +153,8 @@ g3 <- ggplot(data = simExperiment, mapping = aes(x = n, y = p_inside)) +
 
 print(g3)
 
-```
 
-**Figure 3.** The effect of sample size on the proportion of samples falling inside the 95% prediction ellipse (black points - jittered) with the mean shown in red.
-
-Clearly at large sample sizes we are getting very accurate and precise concordance between the simulated proportions of samples inside the 95% prediction ellipse with the predicted value at 0.95. The deviations from this become more pronounced and unstable $\less approx 10$. One of the main causes of this divergence is the integer nature of the samples. At $n = 10$ it is not possible to have exactly a proportion of 0.95 points inside the ellipse, and so the values tend towards either all 10 of them or 9 of them. There is increasing bias towards the ellipse containing more datapoints than expected as $n \rightarrow 0$.
-
-
-
-## 3 and more dimensions
-These functions will work just the same with more than 2 dimensions of data. In three dimensions you are testing whether your data are inside or outside a ball that has a transformation to and from an ellipsoid (spherical, cigar or frisbee shaped). The concept is exactly the same in 4 and more dimensions. The problem is illustrating the ellipsoid is not possible in >3 dimensions, and I have not yet implemented 3d versions of the ellipsoids, but I am sure many tutorials exist on how to plot these. Alternatively, and for illustrative purposes only you could plot each pair of your dimensions in turn, and add ellipses manually. The problem is that some points might appear to be in or out of the ellipse in these marginal plots, but might conflict with the true situation when all dimensions are considered simultaneously.
-
-```{r highdim, eval = TRUE}
+## ----highdim, eval = TRUE-----------------------------------------------------
 # set the random seed generator so we get consistent results each time 
 # we run this code.
 set.seed(2)
@@ -242,6 +197,4 @@ inside_d <- ellipseInOut(Z_d, p = p)
 # how many of our points are inside our ellipse?
 p_d_inside <- sum(inside_d) / length(inside_d)
 
-```
 
-The proportion of points inside our `r d` dimensional ellipsoid is `r round(p_d_inside,2)`.

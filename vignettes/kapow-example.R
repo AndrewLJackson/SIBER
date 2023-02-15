@@ -1,37 +1,10 @@
----
-title: "KAPOW! example"
-author: "Andrew Jackson"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{KAPOW! example}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteDepends{viridis}
-  \usepackage[utf8]{inputenc}
----
-
-## About
-
-This example is associated with, but is not guaranteed an exact replica of the analysis contained in Sheppard et al. 2018 (Intragroup competition predicts individual foraging specialisation in a group-living mammal. Ecology Letters. [doi](https://doi.org/10.1111/ele.12933)). It is included here a demonstration of the "KAPOW" function in SIBER and not as a reproducible example of the above cited paper.
-
-The data comprise multiple stable isotope values obtained on individual mongooses who are nested within packs. We calculate the proportional ellipse by individual in the context of its pack. An ellipse is fit to each individual within a pack; and the outline of all ellipses is then calculated as the union of all the ellipses. Finally, each individuals ellipse is calculated as a proportion of the total for that pack. Plotting is performed using ggplot and statistics generated using SIBER.
-
-
-## Setup
-
-First load in the packages. This script relies heavily on the `tidyverse` approach to data manipulation and avoids `for loops` wherever possible. Note that we do not explicitly load the `tidyverse` package which is itself a wrapper that loads a cluster of related packages, and instead load the specific packages we require, which in this case is `dplyr` and `purrr`.
-
-```{r, message=FALSE}
+## ---- message=FALSE-----------------------------------------------------------
 library(dplyr)
 library(purrr)
 library(SIBER)
 
-```
 
-## Import Data
-
-Now load in the data:
-```{r import-data}
+## ----import-data--------------------------------------------------------------
 
 # This loads a pre-saved object called mongoose that comprises the 
 # dataframe for this analysis.
@@ -44,11 +17,8 @@ data("mongooseData")
 #                      stringsAsFactors = FALSE)
 
 
-```
 
-There are lots of individuals with fewer than 4 observations which is definitely the lower limit to fit these models. There also appears to be at least one individual that appears in more than one pack, so we need to group both individual and pack and then check that there are sufficient samples.
-
-```{r remove-small-n}
+## ----remove-small-n-----------------------------------------------------------
 
 # min sample size for individual replicates per pack.
 min.n <- 4
@@ -65,28 +35,18 @@ id_pack_counts <- mongoose %>% count(pack)
 
 knitr::kable(id_pack_counts)
 
-```
 
+## ----plot-raw-data, fig.height = 10, eval = FALSE, include = FALSE------------
+#  
+#  p1 <- ggplot(data = mongoose_2, aes(c13, n15, color = indiv.id)) +
+#    geom_point()  +
+#    viridis::scale_color_viridis(discrete = TRUE, guide = FALSE) +
+#    facet_wrap(~pack)
+#  
+#  print(p1)
+#  
 
-<!-- Plot the raw data, with a panel for each pack that is left in our dataset. Ideally i would add the individual ellipses to this, but I need to do some more coding for that. -->
-
-```{r plot-raw-data, fig.height = 10, eval = FALSE, include = FALSE}
-
-p1 <- ggplot(data = mongoose_2, aes(c13, n15, color = indiv.id)) + 
-  geom_point()  + 
-  viridis::scale_color_viridis(discrete = TRUE, guide = FALSE) + 
-  facet_wrap(~pack)
-
-print(p1)
-
-```
-
-## Visualise the packs ellipses
-
-Split the data into a list by pack and plot the pack's collective isotopic niche as a grey shaded area, with the constituent invididual ellipses in colour along with the raw data.
-
-
-```{r make-packs, results = "hide"}
+## ----make-packs, results = "hide"---------------------------------------------
 
 # split by pack
 packs <- mongoose_2 %>% split(.$pack)
@@ -127,13 +87,8 @@ print(bndry_plots)
 
 
 
-```
 
-# Print tables of proportions
-
-The actual data of the proportional ellipses which is printed to the output document and also saved to *.csv file.
-
-```{r print-areas}
+## ----print-areas--------------------------------------------------------------
 
 # KAPOW areas for each pack
 total.area <- map(pack_boundaries, spatstat.geom::area)
@@ -167,15 +122,5 @@ knitr::kable(df_proportions, digits = 2)
 # Optional code to save to csv file
 # write.csv(df_proportions, file = "mongoose_kapow_niche_proportions.csv",
 #           row.names = FALSE)
-
-```
-
-
-
-
-
-
-
-
 
 

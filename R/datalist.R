@@ -90,7 +90,7 @@
 #' A set of trophic discrimination factors for brent geese feeding on their
 #' sources.
 #'
-#' A dataset of estimated trophic discriminaton factors for brent geese. The
+#' A dataset of estimated trophic discrimination factors for brent geese. The
 #' data assume the same TDF for each food source. Intended for use in a Stable
 #' Isotope Mixing Model.
 #'

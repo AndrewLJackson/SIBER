@@ -1,19 +1,4 @@
----
-title: "Plot Some Posterior Ellipses"
-author: "Andrew L Jackson"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Plot Some Posterior Ellipses}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteDepends{ellipse}
-  \usepackage[utf8]{inputenc}
----
-
-
-In this example we try to create some plots of the multiple samples of the posterior ellipses using ggplot2.
-
-```{r setup}
+## ----setup--------------------------------------------------------------------
 
 library(SIBER)
 library(dplyr)
@@ -21,12 +6,8 @@ library(ggplot2)
 library(ellipse)
 
 
-```
 
-
-Fit a basic SIBER model to the example data bundled with the package.
-
-```{r basic-model}
+## ----basic-model--------------------------------------------------------------
 # load in the included demonstration dataset
 data("demo.siber.data")
 #
@@ -66,11 +47,8 @@ siberDensityPlot(SEA.B, xticklabels = colnames(group.ML),
                 main = "SIBER ellipses on each group"
                 )
 
-```
 
-Now we want to create some plots of some sample ellipses from these distributions. We need to create a data.frame object of all the ellipses for each group. In this example we simply take the first 10 posterior draws assuming them to be independent of one another, but you could take a random sample if you prefer.
-
-```{r create-ellipse-df}
+## ----create-ellipse-df--------------------------------------------------------
 
 # how many of the posterior draws do you want?
 n.posts <- 10
@@ -135,12 +113,8 @@ ellipse_df <- dplyr::rename(ellipse_df, iso1 = x, iso2 = y)
 
 
 
-```
 
-
-Now to create the plots. First plot all the raw data as we want.
-
-```{r plot-data}
+## ----plot-data----------------------------------------------------------------
 first.plot <- ggplot(data = demo.siber.data, aes(iso1, iso2)) +
   geom_point(aes(color = factor(group):factor(community)), size = 2)+
   ylab(expression(paste(delta^{15}, "N (\u2030)")))+
@@ -148,11 +122,8 @@ first.plot <- ggplot(data = demo.siber.data, aes(iso1, iso2)) +
   theme(text = element_text(size=15))
 print(first.plot)
 
-```
 
-Now we can try to add the posterior ellipses on top and facet by group
-
-```{r plot-posts}
+## ----plot-posts---------------------------------------------------------------
 
 second.plot <- first.plot + facet_wrap(~factor(group):factor(community))
 print(second.plot)
@@ -168,14 +139,4 @@ third.plot <- second.plot +
                fill = NA,
                alpha = 0.2)
 print(third.plot)
-```
-
-
-
-
-
-
-
-
-
 

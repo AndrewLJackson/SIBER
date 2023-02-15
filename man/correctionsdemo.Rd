@@ -19,7 +19,7 @@ A 5 column, 4 row data.frame object containing the trophic
 data(correctionsdemo)
 }
 \description{
-A dataset of estimated trophic discriminaton factors for brent geese. The
+A dataset of estimated trophic discrimination factors for brent geese. The
 data assume the same TDF for each food source. Intended for use in a Stable
 Isotope Mixing Model.
 }

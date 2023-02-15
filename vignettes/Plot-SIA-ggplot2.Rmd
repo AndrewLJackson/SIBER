@@ -6,7 +6,6 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{SIA plots using ggplot2}
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteDepends{tidyverse}
   \usepackage[utf8]{inputenc}
 ---
 
@@ -19,7 +18,8 @@ Import the data as before. Note that we get some warnings from both that "object
 ```{r import-data}
 
 library(SIBER)
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 
 # import the data. Replace this line with a read.csv() or similar call
 # to you own local file.

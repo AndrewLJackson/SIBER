@@ -1,7 +1,14 @@
 Package: SIBER
 Type: Package
 Title: Stable Isotope Bayesian Ellipses in R
-Version: 2.1.6.900
+Version: 2.1.7
+Authors@R: c(
+    person("Andrew", "Jackson", role = c("aut", "cre"), 
+    email = "jacksoan@tcd.ie",
+    comment = c(ORCID = "0000-0001-7334-0434")),
+    person("Andrew", "Parnell", role = "aut", 
+    comment = c(ORCID = "0000-0001-7956-7939"))
+    )
 Depends:
     R (>= 4.0.0),
     spatstat (>= 2.0-0),
@@ -25,10 +32,7 @@ Suggests:
     ellipse,
     knitr,
     rmarkdown,
-    tidyverse,
     viridis
-Author: Andrew Jackson and Andrew Parnell
-Maintainer: Andrew Jackson <jacksoan@tcd.ie>
 Description: Fits bi-variate ellipses to stable isotope data using Bayesian
     inference with the aim being to describe and compare their isotopic
     niche.
@@ -40,4 +44,4 @@ Encoding: UTF-8
 Packaged: 
 NeedsCompilation: yes
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3

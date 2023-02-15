@@ -1,11 +1,12 @@
 ^CRAN-RELEASE$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-demo/
-plot/
-tmp/
+^demot
+^plot
+^tmp
 README.md
 cran-comments.md
 
 ^doc$
 ^Meta$
+^revdep$

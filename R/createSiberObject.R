@@ -26,7 +26,7 @@
 #'
 #' @export
 
-## Define a set of global variables so tidyverse calles dont generate
+## Define a set of global variables so tidyverse calls don't generate
 # "no visible binding for global variable" warnings.
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("iso1", 
                                                         "iso2",
