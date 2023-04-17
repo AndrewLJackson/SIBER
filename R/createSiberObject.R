@@ -35,6 +35,25 @@ if(getRversion() >= "2.15.1")  utils::globalVariables(c("iso1",
 
 createSiberObject <- function (data.in) {
 
+  
+  # Check that the data.in object is a data.frame object only
+  # If it is a tibble, then coerce to data.frame only and 
+  # return a warning.
+  if (any(class(data.in) %in% c("spec_tbl_df","tbl_df","tbl"))){
+    warning("The data object supplied is of class tibble. 
+            This has likely occurred owing to use of the 
+            readr::read_csv() function to import the data. 
+            The dataset has been coerced to an object of 
+            class data.frame only using as.data.frame().
+            You should check that this conversion has no 
+            unintended consequences, and ideally you should
+            convert it before passing it to createSiberObject 
+            which will prevent this warning and allow you to 
+            check that there has been no undesired change to the 
+            data.")
+    data.in <- as.data.frame(data.in)
+  }
+  
 # Check that the column headers have exactly the correct string
 if (!all(names(data.in) == c("iso1", "iso2", "group", "community"))){
   stop('The header names in your data file must match 
