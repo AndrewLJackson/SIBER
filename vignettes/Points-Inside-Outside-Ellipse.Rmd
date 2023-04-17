@@ -193,7 +193,7 @@ print(g3)
 
 **Figure 3.** The effect of sample size on the proportion of samples falling inside the 95% prediction ellipse (black points - jittered) with the mean shown in red.
 
-Clearly at large sample sizes we are getting very accurate and precise concordance between the simulated proportions of samples inside the 95% prediction ellipse with the predicted value at 0.95. The deviations from this become more pronounced and unstable $\less approx 10$. One of the main causes of this divergence is the integer nature of the samples. At $n = 10$ it is not possible to have exactly a proportion of 0.95 points inside the ellipse, and so the values tend towards either all 10 of them or 9 of them. There is increasing bias towards the ellipse containing more datapoints than expected as $n \rightarrow 0$.
+Clearly at large sample sizes we are getting very accurate and precise concordance between the simulated proportions of samples inside the 95% prediction ellipse with the predicted value at 0.95. The deviations from this become more pronounced and unstable $\lessapprox 10$. One of the main causes of this divergence is the integer nature of the samples. At $n = 10$ it is not possible to have exactly a proportion of 0.95 points inside the ellipse, and so the values tend towards either all 10 of them or 9 of them. There is increasing bias towards the ellipse containing more datapoints than expected as $n \rightarrow 0$.
 
 
 
