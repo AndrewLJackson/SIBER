@@ -1,12 +1,12 @@
 ## Update submission
-* this is a minor update to address a request to remove import/suggests/depends on package `tidyverse` and also features some minor text edits and improved vignettes.
+* this is a minor update to address a request to fix the PACKAGE associated help file. 
 
 
 ### Previous NOTES
-* On last submission to CRAN this PASSED Windows and FAILED Debian owing to missing library(ggplot2) statements in two vignettes. These have been fixed. 
+ 
 
 ## Test environments
-* local OS X 13.1 install, R 4.2.2 - OK
+* local OS X 13.1 install, R 4.3.1 - OK
 * win-builder development
     * R devel   - OK
     * R release - 1 NOTE Found the following (possibly) invalid URLs:

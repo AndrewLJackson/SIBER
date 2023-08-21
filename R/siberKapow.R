@@ -19,7 +19,6 @@
 #' 
 #' @import ggplot2
 #' @import dplyr
-#' @import spatstat
 #' @importFrom magrittr "%>%"
 #'   
 #' @export
@@ -72,7 +71,7 @@ siberKapow <- function(dtf, isoNames = c("iso1", "iso2"),
   ell2owin <- function(x){spatstat.geom::owin(poly = list(x = x$X1, y = x$X2))}
   owin.coords <- purrr::map(ellCoords.list, ell2owin)
   
-  # pass the list of ellipses for each individal to spatstat::union.owin
+  # pass the list of ellipses for each individal to spatstat.geom::union.owin
   # using do.call, which i dont really like but it is the only way i have 
   # found to parse the list correctly into union.owin. That is, I want 
   # this.list <- list(a,b,c) to be passed as union.owin(a,b,c)

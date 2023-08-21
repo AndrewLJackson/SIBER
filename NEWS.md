@@ -1,5 +1,6 @@
-# SIBER 2.1.7.xxx
+# SIBER 2.1.8
 + Added a check that the data object passed to `createSiberObject` is of class `data.frame` only. If this is the case, it will coerce via `as.data.frame(data.in)` and issue a warning to this effect, recommending the coercion is done before passing to this function. 
++ Updated PACKAGE help file construction per instructions from CRAN.
 
 # SIBER 2.1.7
 + removed suggests, depends or imports "tidyverse" and instead import specific packages as advised is best practice
