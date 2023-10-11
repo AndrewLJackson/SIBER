@@ -1826,8 +1826,8 @@ plotSiberObject(test,
                 group.hulls = T, group.hull.args,
                 bty = &quot;L&quot;,
                 iso.order = c(1,2),
-                xlab = expression({delta}^13*C~&#39;\u2030&#39;),
-                ylab = expression({delta}^15*N~&#39;\u2030&#39;)
+                xlab = expression({delta}^13*C~&#39;permille&#39;),
+                ylab = expression({delta}^15*N~&#39;permille&#39;)
 )</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-plot-begin eyJoZWlnaHQiOjQzMi42MzI5LCJ3aWR0aCI6NzAwLCJzaXplX2JlaGF2aW9yIjowLCJjb25kaXRpb25zIjpbXX0= -->
@@ -2795,7 +2795,7 @@ SEA.B &lt;- siberEllipses(ellipses.posterior)
 
 siberDensityPlot(SEA.B, xticklabels = colnames(group.ML), 
                 xlab = c(&quot;Community | Group&quot;),
-                ylab = expression(&quot;Standard Ellipse Area &quot; (&#39;\u2030&#39; ^2) ),
+                ylab = expression(&quot;Standard Ellipse Area &quot; (&#39;permille&#39; ^2) ),
                 bty = &quot;L&quot;,
                 las = 1,
                 main = &quot;SIBER ellipses on each group&quot;,

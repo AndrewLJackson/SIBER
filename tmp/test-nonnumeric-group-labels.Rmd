@@ -28,8 +28,8 @@ plotSiberObject(test,
                 group.hulls = T, group.hull.args,
                 bty = "L",
                 iso.order = c(1,2),
-                xlab = expression({delta}^13*C~'\u2030'),
-                ylab = expression({delta}^15*N~'\u2030')
+                xlab = expression({delta}^13*C~'permille'),
+                ylab = expression({delta}^15*N~'permille')
 )
 
 # Calculate sumamry statistics for each group: TA, SEA and SEAc
@@ -69,7 +69,7 @@ SEA.B <- siberEllipses(ellipses.posterior)
 
 siberDensityPlot(SEA.B, xticklabels = colnames(group.ML), 
                 xlab = c("Community | Group"),
-                ylab = expression("Standard Ellipse Area " ('\u2030' ^2) ),
+                ylab = expression("Standard Ellipse Area " ('permille' ^2) ),
                 bty = "L",
                 las = 1,
                 main = "SIBER ellipses on each group",

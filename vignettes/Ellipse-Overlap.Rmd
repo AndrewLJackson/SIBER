@@ -75,8 +75,8 @@ plotSiberObject(siber.example,
                   group.hulls = F, group.hull.args,
                   bty = "L",
                   iso.order = c(1,2),
-                  xlab = expression({delta}^13*C~'\u2030'),
-                  ylab = expression({delta}^15*N~'\u2030')
+                  xlab = expression({delta}^13*C~'permille'),
+                  ylab = expression({delta}^15*N~'permille')
                   )
 
 ```

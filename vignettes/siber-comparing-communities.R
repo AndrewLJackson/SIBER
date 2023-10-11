@@ -1,8 +1,8 @@
-## ---- echo=FALSE, message = FALSE, fig.width = 7, fig.height = 7--------------
+## ----echo=FALSE, message = FALSE, fig.width = 7, fig.height = 7---------------
 library(viridis)
 palette(viridis(4))
 
-## ---- echo=TRUE, message = FALSE, fig.width = 8, fig.height = 6---------------
+## ----echo=TRUE, message = FALSE, fig.width = 8, fig.height = 6----------------
 
 library(SIBER, quietly = TRUE,
         verbose = FALSE,
@@ -32,8 +32,8 @@ plotSiberObject(siber.example,
                   group.hulls = F, group.hull.args,
                   bty = "L",
                   iso.order = c(1,2),
-                  xlab = expression({delta}^13*C~'\u2030'),
-                  ylab = expression({delta}^15*N~'\u2030')
+                  xlab = expression({delta}^13*C~'permille'),
+                  ylab = expression({delta}^15*N~'permille')
                   )
 
 # add the confidence interval of the means to help locate
@@ -44,7 +44,7 @@ plotGroupEllipses(siber.example, n = 100, p.interval = 0.95,
 
 
 
-## ---- echo=TRUE, message = FALSE----------------------------------------------
+## ----echo=TRUE, message = FALSE-----------------------------------------------
 
 # Fit the Bayesian models
 
@@ -67,7 +67,7 @@ priors$tau.mu <- 1.0E-3
 ellipses.posterior <- siberMVN(siber.example, parms, priors)
 
 
-## ---- fig.width = 6, fig.height = 6-------------------------------------------
+## ----fig.width = 6, fig.height = 6--------------------------------------------
 # extract the posterior means
 mu.post <- extractPosteriorMeans(siber.example, ellipses.posterior)
 

@@ -1,4 +1,4 @@
-## ---- echo=FALSE, message = FALSE, fig.width = 7, fig.height = 7--------------
+## ----echo=FALSE, message = FALSE, fig.width = 7, fig.height = 7---------------
 
 library(SIBER, quietly = TRUE,
         verbose = FALSE,
@@ -31,8 +31,8 @@ plotSiberObject(siber.example,
                   group.hulls = F, group.hull.args,
                   bty = "L",
                   iso.order = c(1,2),
-                  xlab = expression({delta}^13*C~'\u2030'),
-                  ylab = expression({delta}^15*N~'\u2030')
+                  xlab = expression({delta}^13*C~'permille'),
+                  ylab = expression({delta}^15*N~'permille')
                   )
 
 
@@ -70,8 +70,8 @@ plotSiberObject(siber.example,
                   group.hulls = T, group.hull.args,
                   bty = "L",
                   iso.order = c(1,2),
-                  xlab = expression({delta}^13*C~'\u2030'),
-                  ylab = expression({delta}^15*N~'\u2030')
+                  xlab = expression({delta}^13*C~'permille'),
+                  ylab = expression({delta}^15*N~'permille')
                   )
 
 # You can add more ellipses by directly calling plot.group.ellipses()
@@ -126,7 +126,7 @@ SEA.B <- siberEllipses(ellipses.posterior)
 
 siberDensityPlot(SEA.B, xticklabels = colnames(group.ML), 
                 xlab = c("Community | Group"),
-                ylab = expression("Standard Ellipse Area " ('\u2030' ^2) ),
+                ylab = expression("Standard Ellipse Area " ('permille' ^2) ),
                 bty = "L",
                 las = 1,
                 main = "SIBER ellipses on each group"

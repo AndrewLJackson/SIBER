@@ -41,7 +41,7 @@ SEA.B <- siberEllipses(ellipses.posterior)
 
 siberDensityPlot(SEA.B, xticklabels = colnames(group.ML), 
                 xlab = c("Community | Group"),
-                ylab = expression("Standard Ellipse Area " ('\u2030' ^2) ),
+                ylab = expression("Standard Ellipse Area " ('permille' ^2) ),
                 bty = "L",
                 las = 1,
                 main = "SIBER ellipses on each group"
@@ -117,8 +117,8 @@ ellipse_df <- dplyr::rename(ellipse_df, iso1 = x, iso2 = y)
 ## ----plot-data----------------------------------------------------------------
 first.plot <- ggplot(data = demo.siber.data, aes(iso1, iso2)) +
   geom_point(aes(color = factor(group):factor(community)), size = 2)+
-  ylab(expression(paste(delta^{15}, "N (\u2030)")))+
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) + 
+  ylab(expression(paste(delta^{15}, "N (permille)")))+
+  xlab(expression(paste(delta^{13}, "C (permille)"))) + 
   theme(text = element_text(size=15))
 print(first.plot)
 

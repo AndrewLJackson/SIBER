@@ -31,8 +31,8 @@ first.plot <- ggplot(data = demo_data,
                      aes(x = d13C, 
                          y = d15N)) + 
   geom_point(aes(color = group, shape = community), size = 5) +
-  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) + 
+  ylab(expression(paste(delta^{15}, "N (permille)"))) +
+  xlab(expression(paste(delta^{13}, "C (permille)"))) + 
   theme(text = element_text(size=16)) + 
   scale_color_viridis_d()
 

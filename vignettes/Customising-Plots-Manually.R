@@ -1,9 +1,9 @@
-## ---- echo = FALSE------------------------------------------------------------
+## ----echo = FALSE-------------------------------------------------------------
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", 
                       fig.width = 6, fig.height = 5)
 
 
-## ---- echo = TRUE-------------------------------------------------------------
+## ----echo = TRUE--------------------------------------------------------------
 # remove previously loaded items from the current environment and remove previous graphics.
 rm(list=ls())
 graphics.off()
@@ -31,7 +31,7 @@ siber.example <- createSiberObject(demo.siber.data)
 
 
 
-## ---- echo=TRUE---------------------------------------------------------------
+## ----echo=TRUE----------------------------------------------------------------
 plotSiberObject(siber.example,
                   ax.pad = 2, 
                   hulls = FALSE, 
@@ -39,8 +39,8 @@ plotSiberObject(siber.example,
                   group.hulls = FALSE,
                   bty = "L",
                   iso.order = c(1,2),
-                  xlab = expression({delta}^13*C~'\u2030'),
-                  ylab = expression({delta}^15*N~'\u2030'),
+                  xlab = expression({delta}^13*C~'permille'),
+                  ylab = expression({delta}^15*N~'permille'),
                   points.order = c(24,22)
                   )
 # Call addEllipse directly on each group to customise the plot fully

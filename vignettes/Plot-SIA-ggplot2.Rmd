@@ -50,8 +50,8 @@ first.plot <- ggplot(data = demo_data,
                      aes(x = d13C, 
                          y = d15N)) + 
   geom_point(aes(color = group, shape = community), size = 5) +
-  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) + 
+  ylab(expression(paste(delta^{15}, "N (permille)"))) +
+  xlab(expression(paste(delta^{13}, "C (permille)"))) + 
   theme(text = element_text(size=16)) + 
   scale_color_viridis_d()
 
@@ -153,7 +153,7 @@ print(ellipse.plot)
 
 ## Trouble shooting
 
-If the permil symbol `r "\u2030"` is not showing correctly (and instead is printing as $\text{\u2030}$ in your plot it is likely because your computer is not set up to use UTF-8 format character encoding. This is not a problem with your setup of R or Rstudio, but is deeper in your computer. It is fixed by changing the region or locale settings on your computer. You can access these in the system preferences area of your computer's operating system. To check if your computer is set up to identify and interpret UTF-8 encoding, you can type `sessionInfo()` in the R console. You should see something like this: `en_IE.UTF-8/en_IE.UTF-8/en_IE.UTF-8/C/en_IE.UTF-8/en_IE.UTF-8` under the heading "locale". On my machine, this indicates that it is use english (en), for Ireland (IE) and the UTF-8 encoding format. If the UTF-8 format is missing from your `sessionInfo()` then you could try changing your operating system to a locale similar to your own region's location and see if the UTF-8 format is supported there.
+If the permil symbol `r "permille"` is not showing correctly (and instead is printing as $\text{permille}$ in your plot it is likely because your computer is not set up to use UTF-8 format character encoding. This is not a problem with your setup of R or Rstudio, but is deeper in your computer. It is fixed by changing the region or locale settings on your computer. You can access these in the system preferences area of your computer's operating system. To check if your computer is set up to identify and interpret UTF-8 encoding, you can type `sessionInfo()` in the R console. You should see something like this: `en_IE.UTF-8/en_IE.UTF-8/en_IE.UTF-8/C/en_IE.UTF-8/en_IE.UTF-8` under the heading "locale". On my machine, this indicates that it is use english (en), for Ireland (IE) and the UTF-8 encoding format. If the UTF-8 format is missing from your `sessionInfo()` then you could try changing your operating system to a locale similar to your own region's location and see if the UTF-8 format is supported there.
 
 
 

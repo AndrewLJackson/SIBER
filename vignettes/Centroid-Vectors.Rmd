@@ -61,8 +61,8 @@ plotSiberObject(siber.example,
                   group.hulls = T, group.hull.args,
                   bty = "L",
                   iso.order = c(1,2),
-                  xlab = expression({delta}^13*C~'\u2030'),
-                  ylab = expression({delta}^15*N~'\u2030')
+                  xlab = expression({delta}^13*C~'permille'),
+                  ylab = expression({delta}^15*N~'permille')
                   )
 
 
@@ -218,8 +218,8 @@ ggplot(cart_positions, aes(x,y) ) +
   geom_path(data = for_arrows, 
             arrow = arrow(type = "open", length = unit(0.2, "cm")),
             col = "red", alpha = 0.6) +
-  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)"))) + 
+  ylab(expression(paste(delta^{15}, "N (permille)"))) +
+  xlab(expression(paste(delta^{13}, "C (permille)"))) + 
   theme(text = element_text(size=15))
 
 ```

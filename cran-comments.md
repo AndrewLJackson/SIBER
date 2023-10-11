@@ -13,7 +13,8 @@ N/A
 
 ## Additionaly Test environments
 
-* local OS X 13.4.1 install, R 4.3.1 - OK
+* local OS X 13.6 install, R 4.3.1. Apple clang version 14.0.3 (clang-1403.0.22.14.1)
+       GNU Fortran (GCC) 12.2.0 - OK
 * win-builder development
     * R devel   - OK
     * R release - OK
