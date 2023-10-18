@@ -15,8 +15,10 @@ N/A
 
 * local OS X 13.6 install, R 4.3.1. Apple clang version 14.0.3 (clang-1403.0.22.14.1)
        GNU Fortran (GCC) 12.2.0 - OK
-* win-builder development
-    * R devel   - OK
+* OSX via `devtools::check_mac_release()`
+    * r-release-macosx-arm64|4.3.0|macosx|macOS 13.3.1 (22E261)|Mac mini|Apple M1||en_US.UTF-8|macOS 11.3|clang-1403.0.22.14.1|GNU Fortran (GCC) 12.2.0 - OK
+* win-builder
+    * R devel - Windows Server 2022 x64 (build 20348) - OK
     * R release - OK
 * R-hub
      * Debian Linux, R-devel, clang, ISO-8859-15 locale - OK
@@ -24,7 +26,7 @@ N/A
          * NOTE: checking HTML version of manual ... NOTE
 Skipping checking HTML validation: no command 'tidy' found
          * Maintainer states that this NOTE appears to arise owing to lack of 3rd party software on the server. These same HTML checks pass on other OS installs. 
-     * Maintainer states that several other R-hub based OS failed testing owing to lack of available 3rd party installation of jags including Fedora Linux and Windows Server 2022.
+     * Maintainer states that several other R-hub based OS failed testing at vignette building stage owing to lack of available 3rd party installation of JAGS including Fedora Linux and Windows Server 2022.
 
 
 ## Downstream dependencies
