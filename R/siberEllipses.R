@@ -4,7 +4,7 @@
 #' posterior distribution describing the corresponding Standard Ellipse Area.
 #' 
 #' @param corrected.posteriors the Bayesian ellipses as returned by
-#'   \code{\link{siberMVN}}.
+#'   [siberMVN()].
 #'   
 #' @return A matrix of with each column containing the posterior estimates of 
 #'   the SEA.

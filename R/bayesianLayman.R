@@ -7,9 +7,9 @@
 #' @param mu.post a list of length n.communities, with each list element 
 #' containing the estimated means of the groups comprising that community. The
 #' typical workflow to generate mu.post follows. The 
-#' Bayesian ellipses are fitted using \code{\link{siberEllipses}}, then the 
+#' Bayesian ellipses are fitted using [siberEllipses()], then the 
 #' posterior means (centre of mass of each group) is extracted using
-#' \code{\link{extractPosteriorMeans}}. See the example below.
+#' [extractPosteriorMeans()]. See the example below.
 #' 
 #' @return A list of length n.communities, with each element containing a 
 #' matrix of 6 columns, each representing the Bayesian posterior distribution 

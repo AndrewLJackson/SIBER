@@ -6,18 +6,22 @@
 #' 
 #' @param n.groups the an integer specifying the number of groups to simulate. 
 #' Defaults to 3.
+#' 
 #' @param community.id an integer identifying the community's ID number. 
 #' Defaults to 1.
+#' 
 #' @param n.obs the number of observations to draw per group.
+#' 
 #' @param mu.range a vector of length 4, specifying the mix and max x and y 
 #' values to sample means from. Group means are sampled from a uniform 
 #' distribution within this range. The first two entries are the min and max of 
 #' the x-axis, and the second two the min and max of the y-axis.  Defaults to 
-#' \code{c(-1, 1, -1, 1)}.
+#' `c(-1, 1, -1, 1)`.
+#' 
 #' @param wishSigmaScale is a simple multiplier for the call to
-#'   \code{\link[stats]{rWishart}} which scales the diagonal sigma matrix using
-#'   \code{wishSigmaScale * diag(2)} that is ultimately passed on to 
-#'   \code{\link{generateSiberGroup}}.
+#'   [stats::rWishart()] which scales the diagonal sigma matrix using
+#'   `wishSigmaScale * diag(2)` that is ultimately passed on to 
+#'   `generateSiberGroup`.
 #' 
 #' @return A data.frame object comprising a column of x and y data, a group 
 #' identifying column and a community identifying column, all of which are 

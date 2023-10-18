@@ -4,7 +4,7 @@
 #' Plots the posterior densities
 #' 
 #' @param centroids the list containing distance and angle matrices as returned 
-#'   by \code{\link{siberCentroids}}.
+#'   by [siberCentroids()].
 #' @param upper a logical determining whether to plot the upper or lower 
 #'   triangle of angles. Defaults to TRUE which is the upper triangle and 
 #'   returns the angle from the second ellipse to the first by centering on the 

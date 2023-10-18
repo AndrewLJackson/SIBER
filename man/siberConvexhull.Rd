@@ -13,17 +13,16 @@ siberConvexhull(x, y)
 }
 \value{
 A list of length four comprising:
- \itemize{
-   \item{TA}{the area of the convex hull.}
-   \item{hullX}{the x-coordinates of the points describing the convex hull.}
-   \item{hullY}{the y-coordinates of the points describing the convex hull.}
-   \item{ind}{the indices of the original data in \code{x} and \code{y} that
-               form the boundaries of the convex hull.}
- 
- }
+\itemize{
+\item \code{TA} the area of the convex hull.
+\item \code{hullX} the x-coordinates of the points describing the convex hull.
+\item \code{hullY} the y-coordinates of the points describing the convex hull.
+\item \code{ind} the indices of the original data in \code{x} and \code{y} that
+form the boundaries of the convex hull.
+}
 }
 \description{
-This function calculates the area of the convex hull describing a set of 
+This function calculates the area of the convex hull describing a set of
 bivariate points, and returns other information useful for plotting the hull.
 }
 \examples{

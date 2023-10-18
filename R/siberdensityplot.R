@@ -1,60 +1,60 @@
 #' Plot credible intervals as shaded boxplots using
 #' \code{\link[hdrcde]{hdr.boxplot}}
 #'
-#' This function is essentially \code{\link[hdrcde]{hdr.boxplot}} but it more
+#' This function is essentially [hdrcde::hdr.boxplot()] but it more
 #' easily works with matrices of data, where each column is a different variable
 #' of interest. It has some limitations though....
 #'
 #' @section Warning:: This function will not currently recognise and plot
-#'   multimodal distributions, unlike \code{\link[hdrcde]{hdr.boxplot}}. You
+#'   multimodal distributions, unlike [hdrcde::hdr.boxplot()]. You
 #'   should take care, and plot basic histograms of each variable (column in the
-#'   object you are passing) to \code{siardensityplot} and check that they are
+#'   object you are passing) and check that they are
 #'   indeed unimodal as expected.
 #'
 #'
 #' @param dat a matrix of data for which density region boxplots will be
 #'   constructed and plotted for each column.
 #' @param probs a vector of credible intervals to represent as box edges.
-#'   Defaults to \code{c(95, 75, 50)}.
-#' @param xlab a string for the x-axis label. Defaults to \code{"Group"}.
-#' @param ylab a string of the y-axis label. Defaults to \code{"Value"}.
+#'   Defaults to `c(95, 75, 50`.
+#' @param xlab a string for the x-axis label. Defaults to `"Group"`.
+#' @param ylab a string of the y-axis label. Defaults to `"Value".
 #' @param xticklabels a vector of strings to override the x-axis tick labels.
 #' @param yticklabels a vector of strings to override the y-axis tick labels.
 #' @param clr a matrix of colours to use for shading each of the box regions.
-#'   Defaults to greyscale \code{grDevices::gray((9:1)/10)} replicated for as
-#'   many columns as there are in \code{dat}. When specified by the user, rows
+#'   Defaults to greyscale `grDevices::gray((9:1)/10)` replicated for as
+#'   many columns as there are in `dat`. When specified by the user, rows
 #'   contain the colours of each of the confidence regions specified in
-#'   \code{probs} and columns represent each of the columns of data in
-#'   \code{dat}. In this way, one could have shades of blue, red and yellow for
+#'   `probs` and columns represent each of the columns of data in
+#'   `dat`. In this way, one could have shades of blue, red and yellow for
 #'   each of the groups.
 #' @param scl a scalar multiplier to scale the box widths. Defaults to 1.
 #' @param xspc a scalar determining the amount of spacing between each box.
 #'   Defaults to 0.5.
 #' @param prn a logical value determining whether summary statistics of each
-#'   column should be printed to screen \code{prn = TRUE} or suppressed as per
-#'   default \code{prn = FALSE}.
-#' @param ct a string of either \code{c("mode", "mean", "median")} which
+#'   column should be printed to screen `prn = TRUE` or suppressed as per
+#'   default `prn = FALSE`.
+#' @param ct a string of either `c("mode", "mean", "median")` which
 #'   determines which measure of central tendency will be plotted as a point in
-#'   the middle of the boxes. Defaults to "mode".
+#'   the middle of the boxes. Defaults to `"mode"`.
 #' @param ylims a vector of length two, specifying the lower and upper limits
-#'   for the y-axis. Defaults to NULL which inspects the data for appropriate
+#'   for the y-axis. Defaults to `NULL` which inspects the data for appropriate
 #'   limits.
 #' @param lbound a lower boundary to specify on the distribution to avoid the
 #'   density kernel estimating values beyond that which can be expected a
 #'   priori. Useful for example when plotting dietary proportions which must lie
-#'   in the interval \code{0 <= Y <= 1}. Defaults to -Inf
+#'   in the interval `0 <= Y <= 1`. Defaults to `-Inf`
 #' @param ubound an upper boundary to specify on the distribution to avoid the
 #'   density kernel estimating values beyond that which can be expected a
 #'   priori. Useful for example when plotting dietary proportions which must lie
-#'   in the interval \code{0 <= Y <= 1}. Defaults to +Inf.
+#'   in the interval `0 <= Y <= 1`. Defaults to `+Inf`.
 #' @param main a title for the figure. Defaults to blank.
 #' @param ylab.line a postive scalar indicating the line spacing for rendering
 #'   the y-axis label. This is included as using the permille symbol has a
 #'   tendency to push the axis label off the plotting window margins. See the
-#'   \code{line} option in \code{\link[graphics]{axis}} for more details as
+#'   \code{line} option in [graphics::axis()] for more details as
 #'   ylab.line passes to this.
 #' @param ... further graphical parameters for passing to
-#'   \code{\link[graphics]{plot}}
+#'   [graphics::plot()]
 #'
 #' @return A new figure window.
 #'

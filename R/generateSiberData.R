@@ -1,7 +1,7 @@
 #' A utility function to simulate isotope data for several communities
 #' 
 #' This function simulates data for a specified number of communities. It is a 
-#' wrapper function for \code{\link{generateSiberCommunity}}.
+#' wrapper function for [generateSiberCommunity()].
 #' 
 #' @param n.groups the an integer specifying the number of groups per community 
 #'   to simulate. Defaults to 3.
@@ -14,9 +14,9 @@
 #'   of the x-axis, and the second two the min and max of the y-axis. Defaults
 #'   to \code{c(-1, 1, -1, 1)}.
 #' @param wishSigmaScale is a simple multiplier for the call to
-#'   \code{\link[stats]{rWishart}} which scales the diagonal sigma matrix using
-#'   \code{wishSigmaScale * diag(2)} that is ultimately passed on to 
-#'   \code{\link{generateSiberGroup}}.
+#'   [stats::rWishart()] which scales the diagonal sigma matrix using
+#'   `wishSigmaScale * diag(2)` that is ultimately passed on to 
+#'   `generateSiberGroup`.
 #'   
 #' @return A data.frame object comprising a column of x and y data, a group 
 #'   identifying column and a community identifying column, all of which are 

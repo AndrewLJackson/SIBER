@@ -2,7 +2,7 @@
 % Please edit documentation in R/sigmaSEA.R
 \name{sigmaSEA}
 \alias{sigmaSEA}
-\title{Calculate metrics corresponding to the Standard Ellipse based on a 
+\title{Calculate metrics corresponding to the Standard Ellipse based on a
 covariance matrix}
 \usage{
 sigmaSEA(sigma)
@@ -11,26 +11,26 @@ sigmaSEA(sigma)
 \item{sigma}{a 2x2 covariance ellipse.}
 }
 \value{
-A list comprising the following metrics for summarising the Standard 
+A list comprising the following metrics for summarising the Standard
 Ellipse
-#' \itemize{
-   \item {SEA}{ the Standard Ellipse Area (not sample size corrected)}
-   \item {eccentricity}{ a measure of the elongation of the ellipse.}
-   \item {a}{ the length of the semi-major axis}
-   \item {b}{ the length of the semi-minor axis}
+\itemize{
+\item \code{SEA}  the Standard Ellipse Area (not sample size corrected).
+\item \code{eccentricity} a measure of the elongation of the ellipse.
+\item \code{a} the length of the semi-major axis.
+\item \code{b} the length of the semi-minor axis.
 }
 }
 \description{
-This function takes a covariance 2x2 matrix Sigma and returns various 
-metrics relating to the corresponding Standard Ellipse. The function is 
-limited to the 2-dimensional case, as many of the ancillary summary 
+This function takes a covariance 2x2 matrix Sigma and returns various
+metrics relating to the corresponding Standard Ellipse. The function is
+limited to the 2-dimensional case, as many of the ancillary summary
 statistics are not defined for higher dimensions (e.g. eccentricity).
 }
 \section{Note}{
- This function is currently based on the eigenvalue and 
-  eigenvector approach which is more flexible for higher dimensional problems
-  method for calculating the standard ellipse, and replaces the parametric
-  method used previously in siar and siber.
+ This function is currently based on the eigenvalue and
+eigenvector approach which is more flexible for higher dimensional problems
+method for calculating the standard ellipse, and replaces the parametric
+method used previously in siar and siber.
 }
 
 \examples{

@@ -2,18 +2,18 @@
 % Please edit documentation in R/allCentroidVectors.R
 \name{allCentroidVectors}
 \alias{allCentroidVectors}
-\title{Plot the pairwise distances and angles describing the difference between 
+\title{Plot the pairwise distances and angles describing the difference between
 centroids of all groups}
 \usage{
 allCentroidVectors(centroids, upper = TRUE, do.plot = TRUE, ...)
 }
 \arguments{
-\item{centroids}{the list containing distance and angle matrices as returned 
-by \code{\link{siberCentroids}}.}
+\item{centroids}{the list containing distance and angle matrices as returned
+by \code{\link[=siberCentroids]{siberCentroids()}}.}
 
-\item{upper}{a logical determining whether to plot the upper or lower 
-triangle of angles. Defaults to TRUE which is the upper triangle and 
-returns the angle from the second ellipse to the first by centering on the 
+\item{upper}{a logical determining whether to plot the upper or lower
+triangle of angles. Defaults to TRUE which is the upper triangle and
+returns the angle from the second ellipse to the first by centering on the
 first centroid.}
 
 \item{do.plot}{a logical indicating whether plotting should be done or not.
@@ -22,9 +22,9 @@ Defaults to TRUE.}
 \item{...}{additional arguments to pass onwards, not currently implemented.}
 }
 \value{
-A nice plot. You can get the corresponding matrices used to generate 
-  the plots if you ask for it nicely: the_data <- 
-  plotCentroidVectors(centroids)
+A nice plot. You can get the corresponding matrices used to generate
+the plots if you ask for it nicely: the_data <-
+plotCentroidVectors(centroids)
 }
 \description{
 Plots the posterior densities

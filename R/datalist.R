@@ -1,20 +1,20 @@
 #' Simulated d13C and d15N isotope-space data
 #'
-#' Data for two communities, created by \code{\link{generateSiberData}} used
+#' Data for two communities, created by [generateSiberData()] used
 #' to generate the vignette and illustrates the main functionality of SIBER.
 #'
 #' @docType data
 #'
 #' @usage data(demo.siber.data)
 #'
-#' @format An object of class \code{"data.frame"} containing four variables. 
-#' The first and second variables are generic isotopes called \code{iso1} 
-#' and \code{iso2}. The third variable \code{group} identifies which group 
+#' @format An object of class `"data.frame"` containing four variables. 
+#' The first and second variables are generic isotopes called `iso1` 
+#' and `iso2`. The third variable `group` identifies which group 
 #' within a community an observation belongs. Group are required to be 
-#' integers in sequential order starting at \code{1} and numbering should
-#' restart within each community. The fourth variable \code{community} 
+#' integers in sequential order starting at `1` and numbering should
+#' restart within each community. The fourth variable `community` 
 #' identifies which community an observation belongs, and again is required 
-#' to be an integer in sequential order staring at \code{1}.
+#' to be an integer in sequential order staring at `1`.
 #'
 #' @keywords datasets
 #' @author Andrew Jackson
@@ -24,21 +24,21 @@
 
 #' Simulated d13C and d15N isotope-space data
 #'
-#' Data for two communities, created by \code{\link{generateSiberData}} used
+#' Data for two communities, created by [generateSiberData()] used
 #' to generate the vignette and illustrates the main functionality of SIBER.
 #'
 #' @docType data
 #'
 #' @usage data(demo.siber.data.2)
 #'
-#' @format An object of class \code{"data.frame"} containing four variables. 
-#' The first and second variables are generic isotopes called \code{iso1} 
-#' and \code{iso2}. The third variable \code{group} identifies which group 
+#' @format An object of class `"data.frame"` containing four variables. 
+#' The first and second variables are generic isotopes called `iso1`
+#' and `iso2`. The third variable `group` identifies which group 
 #' within a community an observation belongs. Group are required to be 
-#' integers in sequential order starting at \code{1} and numbering should
-#' restart within each community. The fourth variable \code{community} 
+#' integers in sequential order starting at `1` and numbering should
+#' restart within each community. The fourth variable `community` 
 #' identifies which community an observation belongs, and again is required 
-#' to be an integer in sequential order staring at \code{1}.
+#' to be an integer in sequential order staring at `1`.
 #'
 #' @keywords datasets
 #' @author Andrew Jackson
@@ -172,8 +172,8 @@
 #' @format A 4 column, 783 row data.frame object containing unique individual 
 #' mongoose identifiers in the first column "indiv.id"; an integer identifier for 
 #' the pack to which each individual belongs in "pack"; Delta 13 Carbon values 
-#' "c13; and Delta 15 Nitrogen values in "n15". See the paper Sheppard et al 
-#' 2018 https://doi.org/10.1111/ele.12933 for more details, although N.B. 
+#' "c13; and Delta 15 Nitrogen values in "n15". See the paper [Sheppard et al 
+#' 2018](https://doi.org/10.1111/ele.12933) for more details, although N.B. 
 #' the data here are provided as an example, not as a reproducible analysis of 
 #' that paper. 
 #'

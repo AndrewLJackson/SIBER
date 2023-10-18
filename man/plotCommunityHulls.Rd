@@ -14,31 +14,31 @@ plotCommunityHulls(
 \arguments{
 \item{siber}{a siber object as created by createSiberObject.R}
 
-\item{plot.args}{a list of plotting arguments with the following suggested, 
- but non-exhaustive inputs. Additional plotting arguments for passing to the
- internal call to \code{\link[graphics]{plot}} can either be specified here,
- or as additional arguments under the \code{...} method.
+\item{plot.args}{a list of plotting arguments with the following suggested,
+but non-exhaustive inputs. Additional plotting arguments for passing to the
+internal call to \code{\link[graphics:plot.default]{graphics::plot()}} can either be specified here,
+or as additional arguments under the \code{...} method.
 \itemize{
-  \item{col}{ the color of the lines of the convex hull. See 
-  \code{\link[graphics]{lines}} for more details.}
-  \item{lty}{ the line type of the convex hull.See 
-  \code{\link[graphics]{lines}} for more details.}
-  \item{lwd}{ the line width of the convex hulls. See 
-  \code{\link[graphics]{lines} for more details.}}
+\item \code{col} the color of the lines of the convex hull. See \code{\link[graphics:lines]{graphics::lines()}}
+for more details.
+\item \code{lty} the line type of the convex hull.See \code{\link[graphics:lines]{graphics::lines()}}
+for more details.
+\item \code{lwd} the line width of the convex hulls. See \code{\link[graphics:lines]{graphics::lines()}}
+for more details.
 }}
 
-\item{iso.order}{a vector of length 2, either c(1,2) or c(2,1). The order 
-determines which of the columns of raw data are plotted on the x (1) or y 
-(2) axis. N.B. this will be deprecated in a future release, and plotting 
+\item{iso.order}{a vector of length 2, either c(1,2) or c(2,1). The order
+determines which of the columns of raw data are plotted on the x (1) or y
+(2) axis. N.B. this will be deprecated in a future release, and plotting
 order will be achieved at point of data-entry.}
 
-\item{...}{additional arguments for passing to \code{\link[graphics]{plot}}.}
+\item{...}{additional arguments for passing to \code{\link[graphics:plot.default]{graphics::plot()}}.}
 }
 \value{
 Convex hulls, drawn as lines on an existing figure.
 }
 \description{
 This function loops over each community and plots the convex hull
-based on the centres of each of the groups that make up the community. See 
+based on the centres of each of the groups that make up the community. See
 the demonstration scripts for example implementation.
 }

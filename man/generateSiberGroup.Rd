@@ -7,25 +7,25 @@
 generateSiberGroup(mu.range = c(-1, 1, -1, 1), n.obs = 30, wishSigmaScale = 1)
 }
 \arguments{
-\item{mu.range}{a vector of length 4, specifying the mix and max x and y 
-values to sample means from. Group means are sampled from a uniform 
-distribution within this range. The first two entries are the min and max of 
+\item{mu.range}{a vector of length 4, specifying the mix and max x and y
+values to sample means from. Group means are sampled from a uniform
+distribution within this range. The first two entries are the min and max of
 the x-axis, and the second two the min and max of the y-axis.}
 
 \item{n.obs}{the number of observations to draw per group. Defaults to 30.}
 
 \item{wishSigmaScale}{is a simple multiplier for the call to
-\code{\link[stats]{rWishart}} which scales the diagonal sigma matrix using
+\code{\link[stats:rWishart]{stats::rWishart()}} which scales the diagonal sigma matrix using
 \code{wishSigmaScale * diag(2)}.}
 }
 \value{
-A data.frame object comprising a column of x and y data, a group 
-identifying column and a community identifying column, all of which are 
+A data.frame object comprising a column of x and y data, a group
+identifying column and a community identifying column, all of which are
 numeric.
 }
 \description{
 This function simulates data for a single group by sampling from a normal
-distribution with different means for each group within some specified 
+distribution with different means for each group within some specified
 boundaries.
 }
 \examples{

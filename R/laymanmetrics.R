@@ -9,7 +9,7 @@
 #' of the group members comprising a community as is preferred under the SIBER
 #' model framework. However, one could use them to calculate the point estimates
 #' of the 6 Layman metrics for an entire group of data. In fact, you are free
-#' to pass this function any set of \code{x} and \code{y} data you wish.
+#' to pass this function any set of `x` and `y` data you wish.
 #' 
 #' 
 #' @param x a vector of locations in the x-axis direction.

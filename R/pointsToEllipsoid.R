@@ -1,16 +1,16 @@
 #' Test whether a set of points are inside or outside a defined ellipse
 #' 
-#' Takes a \code{i x d} matrix of points where \code{d} is the dimension of the 
-#' space considered, and \code{i} is the number of points and returns 
-#' \code{TRUE} or \code{FALSE} for whether each point is inside or outside a 
-#' d-dimensional ellipsoid defined by a covariance matrix \code{Sigma} and 
-#' vector of means \code{mu}.
+#' Takes a `i x d` matrix of points where `d` is the dimension of the 
+#' space considered, and `i` is the number of points and returns 
+#' `TRUE` or `FALSE` for whether each point is inside or outside a 
+#' d-dimensional ellipsoid defined by a covariance matrix `Sigma` and 
+#' vector of means `mu`.
 #' 
-#' @param X the \code{i x d} matrix of data points to be transformed
-#' @param Sigma the \code{d x d} covariance matrix of the ellipsoid 
-#' @param mu the vector of means of the ellipse of length \code{d}
+#' @param X the `i x d` matrix of data points to be transformed
+#' @param Sigma the `d x d` covariance matrix of the ellipsoid 
+#' @param mu the vector of means of the ellipse of length `d`
 #' 
-#' @return A matrix of transformed data points corresponding to \code{X}
+#' @return A matrix of transformed data points corresponding to `X`
 #' 
 #' @examples 
 #' X <- matrix(runif(200,-2.5, 2.5), ncol = 2, nrow = 100)

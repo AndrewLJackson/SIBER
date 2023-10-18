@@ -12,25 +12,25 @@ siberKapow(
 )
 }
 \arguments{
-\item{dtf}{a data.frame object comprising bivariate data as a requirement, 
+\item{dtf}{a data.frame object comprising bivariate data as a requirement,
 and possibly other variables too but these are currently ignored.}
 
-\item{isoNames}{a character vector of length 2 providing the names of the 
+\item{isoNames}{a character vector of length 2 providing the names of the
 variables containing the x and y data respectively.}
 
-\item{group}{a character vector of length 1 providing the name of the 
+\item{group}{a character vector of length 1 providing the name of the
 grouping variable on which to calculate the KAPOW ellipse.}
 
-\item{pEll}{the probability ellipse to draw for each group. Defaults to the 
+\item{pEll}{the probability ellipse to draw for each group. Defaults to the
 Standard Ellipse with \code{pEll = stats::pchisq(1, df = 2)}.}
 }
 \value{
 an object of class \code{spatstat.geom::owin} containing the numerically calculated
-  ellipses and their union along with the raw ellipse boundaries in both raw
-  and \code{spatstat.geom::owin} format.
+ellipses and their union along with the raw ellipse boundaries in both raw
+and \code{spatstat.geom::owin} format.
 }
 \description{
-Intended to calculate the area of an ellipse as a proportion of a group of 
-ellipses represented by their union, i.e. the total area encompassed by all 
+Intended to calculate the area of an ellipse as a proportion of a group of
+ellipses represented by their union, i.e. the total area encompassed by all
 ellipses superimposed.
 }

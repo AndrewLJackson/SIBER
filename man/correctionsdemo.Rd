@@ -7,13 +7,13 @@
 sources.}
 \format{
 A 5 column, 4 row data.frame object containing the trophic
-  discrimination factors for brent geese consumers relative to 4 of their food
-  sources (in Ireland). The first column Source is a factor determining the
-  name of the source. The second and third columns are the mean d13C and mean
-  d15N TDF values for each source respectively. Columns 3 and 5 are the standard
-  deviations of the d13C and d15N TDF values respectively. Note that the order of
-  the isotope data has been swapped since siar in order to present d13C as
-  the first isotope and hence on the x-axis by default.
+discrimination factors for brent geese consumers relative to 4 of their food
+sources (in Ireland). The first column Source is a factor determining the
+name of the source. The second and third columns are the mean d13C and mean
+d15N TDF values for each source respectively. Columns 3 and 5 are the standard
+deviations of the d13C and d15N TDF values respectively. Note that the order of
+the isotope data has been swapped since siar in order to present d13C as
+the first isotope and hence on the x-axis by default.
 }
 \usage{
 data(correctionsdemo)

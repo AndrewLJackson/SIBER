@@ -6,13 +6,13 @@
 \title{A set of isotope observations on food sources of brent geese}
 \format{
 A 5 column, 4 row data.frame object containing 4 different plants and
-  their measurements on 2 different isotopes. The first column Sources is a
-  factor determining the name of the source. The second and third columns are
-  the mean d13C and mean d15N values for each source respectively. Columns 3
-  and 5 are the standard deviations of the d13C and d15N values respectively.
-  Note that the order of the isotope data has been swapped since siar in
-  order to present d13C as the first isotope and hence on the x-axis by
-  default.
+their measurements on 2 different isotopes. The first column Sources is a
+factor determining the name of the source. The second and third columns are
+the mean d13C and mean d15N values for each source respectively. Columns 3
+and 5 are the standard deviations of the d13C and d15N values respectively.
+Note that the order of the isotope data has been swapped since siar in
+order to present d13C as the first isotope and hence on the x-axis by
+default.
 }
 \usage{
 data(sourcesdemo)

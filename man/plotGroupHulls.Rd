@@ -9,27 +9,27 @@ plotGroupHulls(siber, plot.args = NULL, iso.order = c(1, 2), ...)
 \arguments{
 \item{siber}{a siber object as created by createSiberObject}
 
-\item{plot.args}{a list of plotting arguments for passing to 
-\code{\link[graphics]{lines}}. See \code{\link[graphics]{lines}} for
+\item{plot.args}{a list of plotting arguments for passing to
+\code{\link[graphics:lines]{graphics::lines()}}. See \code{\link[graphics:lines]{graphics::lines()}} for
 details of the options. See also the demonstration scripts for examples of
 use.}
 
-\item{iso.order}{a vector of length 2, either \code{c(1,2)} or \code{c(2,1)}.
+\item{iso.order}{a vector of length 2, either \code{c(1,2)} or\code{c(2,1)}.
 The order determines which of the columns of raw data are plotted on the x
 (1) or y (2) axis. N.B. this will be deprecated in a future release, and
 plotting order will be achieved at point of data-entry.}
 
-\item{...}{additional arguments to be passed to \code{\link{addEllipse}}.}
+\item{...}{additional arguments to be passed to \code{\link[=addEllipse]{addEllipse()}}.}
 }
 \value{
 A series of convex hulls added to an existing plot.
 }
 \description{
-This function loops over each community and group within, and plots a 
-convex hull around the data. N.B. use of convex hulls to compare isotopic 
-niche width among groups within or between communities is not recommended 
-owing to strong sample size bias. Use of ellipse area is recommended instead. 
-This feature is provided for illustrative purposes only, and because some 
-people have expressed a desire for this feature for figure generation. See 
+This function loops over each community and group within, and plots a
+convex hull around the data. N.B. use of convex hulls to compare isotopic
+niche width among groups within or between communities is not recommended
+owing to strong sample size bias. Use of ellipse area is recommended instead.
+This feature is provided for illustrative purposes only, and because some
+people have expressed a desire for this feature for figure generation. See
 demonstration scripts for more examples.
 }

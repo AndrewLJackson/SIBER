@@ -5,14 +5,14 @@
 #' other ellipse.
 #' 
 #' @param corrected.posteriors the Bayesian ellipses as returned by 
-#'   \code{\link{siberMVN}}.
+#'   [siberMVN()].
 #'   
-#' @return A list containing two arrays, one \code{r} contains the pairwise 
+#' @return A list containing two arrays, one `r` contains the pairwise 
 #'   distances between ellipse centroids in as the first two dimensions, with 
 #'   the third dimension containing the same for each posterior draw defining 
-#'   the ellipse. The second array \code{theta} has the same structure and
+#'   the ellipse. The second array `theta` has the same structure and
 #'   contains the angle in radians (from 0 to 2*pi) between the pairs. A third
-#'   object \code{labels} refers to  which community.group combination is in
+#'   object `labels` refers to  which community.group combination is in
 #'   each of the first two dimensions of the arrays.
 #' @export
 

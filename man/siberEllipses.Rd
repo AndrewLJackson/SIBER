@@ -8,13 +8,13 @@ siberEllipses(corrected.posteriors)
 }
 \arguments{
 \item{corrected.posteriors}{the Bayesian ellipses as returned by
-\code{\link{siberMVN}}.}
+\code{\link[=siberMVN]{siberMVN()}}.}
 }
 \value{
-A matrix of with each column containing the posterior estimates of 
-  the SEA.
+A matrix of with each column containing the posterior estimates of
+the SEA.
 }
 \description{
-This function loops over each group within each community and calculates the 
+This function loops over each group within each community and calculates the
 posterior distribution describing the corresponding Standard Ellipse Area.
 }

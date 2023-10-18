@@ -2,10 +2,10 @@
 #' 
 #' Takes a 
 #' 
-#' @param Z the \code{i x d} matrix of data points to be tested
-#' @param p the percentile of the ellipse to be tested
-#' @param r a manually defined radius of the circle to be used. Setting \code{r} 
-#' to be anything other than NULL will override the choice of \code{p}.
+#' @param Z the `i x d` matrix of data points to be tested.
+#' @param p the percentile of the ellipse to be tested.
+#' @param r a manually defined radius of the circle to be used. Setting `r` 
+#' to be anything other than NULL will override the choice of `p`.
 #' 
 #' @return A logical vector indicating whether the point is inside or outside 
 #' the circle

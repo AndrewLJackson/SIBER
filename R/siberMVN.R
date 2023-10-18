@@ -4,27 +4,27 @@
 #' member, fitting a Bayesian multivariate (bivariate in this case) normal 
 #' distribution to each group of data. Not intended for direct calling by users.
 #' 
-#' @param siber a siber object as created by \code{\link{createSiberObject}}
+#' @param siber a siber object as created by [createSiberObject()]
 #' @param parms a list containing four items providing details of the
-#'  \code{\link[rjags]{rjags}} run to be sampled.
-#' \itemize{
-#'    \item {n.iter}{The number of iterations to sample}
-#'    \item {n.burnin}{The number of iterations to discard as a burnin from the
-#'                      start of sampling.}
-#'    \item {n.thin}{The number of samples to thin by.}
-#'    \item {n.chains}{The number of chains to fit.}
-#' }
+#'  [rjags::rjags()] run to be sampled.
+#'  
+#'    * `n.iter` The number of iterations to sample
+#'    * `n.burnin` The number of iterations to discard as a burnin from the
+#'                      start of sampling.
+#'    * `n.thin` The number of samples to thin by.
+#'    * `n.chains` The number of chains to fit.
+#'    
 #' @param priors a list of three items specifying the priors to be passed to 
 #' the jags model.
-#' \itemize{
-#'    \item {R}{The scaling vector for the diagonal of Inverse Wishart
+#' 
+#'    * `R` The scaling vector for the diagonal of Inverse Wishart
 #'    distribution prior on the covariance matrix Sigma. Typically 
-#'    set to a 2x2 matrix matrix(c(1, 0, 0, 1), 2, 2).}
-#'    \item {k}{The degrees of freedom of the Inverse Wishart distribution for 
+#'    set to a 2x2 matrix `matrix(c(1, 0, 0, 1), 2, 2)`.
+#'    * `k` The degrees of freedom of the Inverse Wishart distribution for 
 #'    the covariance matrix Sigma. Typically set to the dimensionality of Sigma,
-#'    which in this bivariate case is 2.}
-#'    \item {tau}{The precision on the normal prior on the means mu.}
-#' }
+#'    which in this bivariate case is 2.
+#'    * `tau` The precision on the normal prior on the means mu.
+#' 
 #' 
 #' @return A list of length equal to the total number of groups in all 
 #' communities. Each entry is named 1.1 1.2... 2.1.. with the first number
@@ -35,7 +35,7 @@
 #' posterior draws in the saved sample. The first two columns are the back-
 #' transformed means, and the remaining four columns are the covariance matrix
 #' Sigma in vector format. This vector converts to the covariance matrix as
-#' \code{matrix(v[1:4], nrow = 2, ncol = 2)}. 
+#' `matrix(v[1:4], nrow = 2, ncol = 2)`. 
 #' 
 #' @export
 

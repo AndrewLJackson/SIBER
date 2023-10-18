@@ -7,21 +7,21 @@
 extractPosteriorMeans(siber, post)
 }
 \arguments{
-\item{siber}{a siber object as created by \code{\link{createSiberObject}}}
+\item{siber}{a siber object as created by \code{\link[=createSiberObject]{createSiberObject()}}.}
 
-\item{post}{a list containing the posterior estimated parameters fitted to 
-each group within every community. See \code{\link{siberMVN}} which creates 
+\item{post}{a list containing the posterior estimated parameters fitted to
+each group within every community. See \code{\link[=siberMVN]{siberMVN()}} which creates
 this object for details.}
 }
 \value{
-A list of length n.communities with each entry representing a 
+A list of length n.communities with each entry representing a
 \code{n.draws * 2 * n.groups} array of rows equal to the number of posterior
-samples, 2 columns representing the two means of the multivariate data and 
-n.groups the number of groups within the focal community.
+samples, 2 columns representing the two means of the multivariate data and
+\code{n.groups} the number of groups within the focal community.
 }
 \description{
-This function extracts the posterior means from a call to 
-\code{\link{siberMVN}} which can then be used to calculate Bayesian layman 
-metrics. This function is designed to create an array of posterior means 
+This function extracts the posterior means from a call to
+\code{\link[=siberMVN]{siberMVN()}} which can then be used to calculate Bayesian layman
+metrics. This function is designed to create an array of posterior means
 that is more easily interrogated for plotting and summary statistics.
 }

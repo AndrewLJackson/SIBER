@@ -21,48 +21,47 @@ addEllipse(
 
 \item{sigma}{a 2x2 covariance matrix for the data}
 
-\item{m}{is the sample size of the dataset on which the ellipse is to be 
+\item{m}{is the sample size of the dataset on which the ellipse is to be
 plotted. This is only informative if calculating the confidence interval of
-the bivariate mean, which requires a correction of \code{1/sqrt(m)}. 
+the bivariate mean, which requires a correction of \code{1/sqrt(m)}.
 Defaults to NULL and has no effect.}
 
-\item{n}{the number of data points to be used to plot the ellipse. More 
-points makes for a smoother ellipse, especially if it has high 
+\item{n}{the number of data points to be used to plot the ellipse. More
+points makes for a smoother ellipse, especially if it has high
 eccentricity. Defaults to \code{n = 100}.}
 
-\item{p.interval}{the quantile to be used to construct a prediction ellipse 
-that contains p.interval proportion of the data. By default, 
-\code{p.interval = NULL} and the Standard Ellipse is drawn which contains 
-approximately 40\% of the data. Setting \code{p.interval = 0.95} will 
+\item{p.interval}{the quantile to be used to construct a prediction ellipse
+that contains p.interval proportion of the data. By default,
+\code{p.interval = NULL} and the Standard Ellipse is drawn which contains
+approximately 40\% of the data. Setting \code{p.interval = 0.95} will
 result in an ellipse that contains approximately 95\% of the data.}
 
-\item{ci.mean}{a logical that determines whether the ellipse drawn is a 
-prediction ellipse of the entire data, or a confidence interval of the 
-bivariate means. Defaults to \code{FALSE}. If set to \code{TRUE}, then 
-\code{p.interval} can be used to generate an appropriate \% confidence 
+\item{ci.mean}{a logical that determines whether the ellipse drawn is a
+prediction ellipse of the entire data, or a confidence interval of the
+bivariate means. Defaults to \code{FALSE}. If set to \code{TRUE}, then
+\code{p.interval} can be used to generate an appropriate \% confidence
 interval of the bivariate means.}
 
 \item{small.sample}{a logical that determines whether or not the small sample
-size correction is to be applied (TRUE) or not (FALSE). Defaults to FALSE. 
-This allows SEAc rather than SEA to be plotted, but the correction can be 
+size correction is to be applied (TRUE) or not (FALSE). Defaults to FALSE.
+This allows SEAc rather than SEA to be plotted, but the correction can be
 applied to any percentile ellipse.}
 
-\item{do.plot}{A logical that determines whether plotting should occur (TRUE 
-and default) or not (FALSE). Setting to false is useful if you want to 
+\item{do.plot}{A logical that determines whether plotting should occur (TRUE
+and default) or not (FALSE). Setting to false is useful if you want to
 access the coordinates of the ellipse in order to calculate overlap between
 ellipses for example.}
 
-\item{...}{additional arguments as a list to be passed to 
-\code{\link[graphics]{plot}}.}
+\item{...}{additional arguments as a list to be passed to \code{\link[graphics:plot.default]{graphics::plot()}}.}
 }
 \value{
-A \code{n x 2} matrix comprising the x and y coordinates of the
-  ellipse.
+A \verb{n x 2} matrix comprising the x and y coordinates of the
+ellipse.
 }
 \description{
-This function adds an ellipse based on means and covariance to an existing 
+This function adds an ellipse based on means and covariance to an existing
 plot. The ellipse can be scaled so as to represent any prediction interval of
-the data you wish, or alternatively any confidence interval of the bivariate 
+the data you wish, or alternatively any confidence interval of the bivariate
 means.
 }
 \examples{

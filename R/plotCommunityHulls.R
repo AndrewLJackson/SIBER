@@ -7,21 +7,19 @@
 #' @param siber a siber object as created by createSiberObject.R
 #' @param plot.args a list of plotting arguments with the following suggested, 
 #'   but non-exhaustive inputs. Additional plotting arguments for passing to the
-#'   internal call to \code{\link[graphics]{plot}} can either be specified here,
-#'   or as additional arguments under the \code{...} method.
-#'  \itemize{
-#'    \item{col}{ the color of the lines of the convex hull. See 
-#'    \code{\link[graphics]{lines}} for more details.}
-#'    \item{lty}{ the line type of the convex hull.See 
-#'    \code{\link[graphics]{lines}} for more details.}
-#'    \item{lwd}{ the line width of the convex hulls. See 
-#'    \code{\link[graphics]{lines} for more details.}}
-#'  }
+#'   internal call to [graphics::plot()] can either be specified here,
+#'   or as additional arguments under the `...` method.
+#'   * `col` the color of the lines of the convex hull. See [graphics::lines()]
+#'     for more details.
+#'    * `lty` the line type of the convex hull.See [graphics::lines()]
+#'     for more details.
+#'    * `lwd` the line width of the convex hulls. See [graphics::lines()]
+#'     for more details.
 #' @param iso.order a vector of length 2, either c(1,2) or c(2,1). The order 
 #'   determines which of the columns of raw data are plotted on the x (1) or y 
 #'   (2) axis. N.B. this will be deprecated in a future release, and plotting 
 #'   order will be achieved at point of data-entry.
-#' @param ... additional arguments for passing to \code{\link[graphics]{plot}}.
+#' @param ... additional arguments for passing to [graphics::plot()].
 #'   
 #' @return Convex hulls, drawn as lines on an existing figure.
 #' @export

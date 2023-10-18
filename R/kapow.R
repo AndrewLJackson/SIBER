@@ -6,7 +6,7 @@
 #' @param ng the number of ellipses to draw
 #' @param n the number of data points to simulate per group, but never displayed
 #' @param sc the scaling factor the rwishart sigma called by 
-#'   \code{\link[stats]{rWishart}}
+#'   [stats::rWishart()]
 #' @param do.plot a logical indicating whether the plot should be printed
 #'   (defaults to TRUE).
 #'   

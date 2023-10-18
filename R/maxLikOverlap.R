@@ -4,31 +4,31 @@
 #' This function uses the ML estimated means and covariances matrices of two 
 #' specified groups to calculate the area of overlap.
 #' 
-#' @param ellipse1 character code of the form \code{"x.y"} where \code{x} is an 
-#'   integer indexing the community, and \code{y} an integer indexing the group 
+#' @param ellipse1 character code of the form `"x.y"` where `x` is an 
+#'   integer indexing the community, and `y` an integer indexing the group 
 #'   within that community. This specifies the first of two ellipses whose 
 #'   overlap will be compared.
 #'   
-#' @param ellipse2 same as \code{ellipse1} specifying a second ellipse.
+#' @param ellipse2 same as `ellipse1` specifying a second ellipse.
 #'   
-#' @param siber.object an object created by  \code{\link{createSiberObject}} 
+#' @param siber.object an object created by  [createSiberObject()] 
 #'   which contains the ML estimates for the means and covariance matrices for 
 #'   each group.
 #'   
 #' @param p.interval the prediction interval used to scale the ellipse as per 
-#'   \code{\link{addEllipse}}.
+#'   [addEllipse()].
 #'   
 #' @param n the number of points on the edge of the ellipse used to define it. 
-#'   Defaults to \code{100} as per \code{\link{addEllipse}}.
+#'   Defaults to `100` as per [addEllipse()].
 #'   
 #' @param do.plot logical switch to determine whether the corresponding ellipses
 #'   should be plotted or not. A use-case would be in conjunction with a low 
-#'   numbered \code{draws} so as to visualise a relatively small number of the 
-#'   posterior ellipses. Defaults to \code{FALSE}.
+#'   numbered `draws` so as to visualise a relatively small number of the 
+#'   posterior ellipses. Defaults to `FALSE`.
 #'   
 #' @return A vector comprising three columns: the area of overlap, the area of 
 #'   the first ellipse and the area of the second ellipse and as many rows as 
-#'   specified by \code{draws}.
+#'   specified by `draws`.
 #'   
 #' @examples 
 #' # load in the included demonstration dataset data("demo.siber.data")

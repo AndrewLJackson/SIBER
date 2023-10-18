@@ -11,11 +11,11 @@
 #' @param group a character vector of length 1 providing the name of the 
 #'   grouping variable on which to calculate the KAPOW ellipse.
 #' @param pEll the probability ellipse to draw for each group. Defaults to the 
-#'   Standard Ellipse with \code{pEll = stats::pchisq(1, df = 2)}.
+#'   Standard Ellipse with `pEll = stats::pchisq(1, df = 2)`.
 #'   
-#' @return an object of class \code{spatstat.geom::owin} containing the numerically calculated
+#' @return an object of class `spatstat.geom::owin` containing the numerically calculated
 #'   ellipses and their union along with the raw ellipse boundaries in both raw
-#'   and \code{spatstat.geom::owin} format.
+#'   and `spatstat.geom::owin` format.
 #' 
 #' @import ggplot2
 #' @import dplyr

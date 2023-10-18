@@ -7,9 +7,9 @@
 pointsToEllipsoid(X, Sigma, mu)
 }
 \arguments{
-\item{X}{the \code{i x d} matrix of data points to be transformed}
+\item{X}{the \verb{i x d} matrix of data points to be transformed}
 
-\item{Sigma}{the \code{d x d} covariance matrix of the ellipsoid}
+\item{Sigma}{the \verb{d x d} covariance matrix of the ellipsoid}
 
 \item{mu}{the vector of means of the ellipse of length \code{d}}
 }
@@ -17,10 +17,10 @@ pointsToEllipsoid(X, Sigma, mu)
 A matrix of transformed data points corresponding to \code{X}
 }
 \description{
-Takes a \code{i x d} matrix of points where \code{d} is the dimension of the 
-space considered, and \code{i} is the number of points and returns 
-\code{TRUE} or \code{FALSE} for whether each point is inside or outside a 
-d-dimensional ellipsoid defined by a covariance matrix \code{Sigma} and 
+Takes a \verb{i x d} matrix of points where \code{d} is the dimension of the
+space considered, and \code{i} is the number of points and returns
+\code{TRUE} or \code{FALSE} for whether each point is inside or outside a
+d-dimensional ellipsoid defined by a covariance matrix \code{Sigma} and
 vector of means \code{mu}.
 }
 \examples{

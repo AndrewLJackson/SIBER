@@ -10,14 +10,14 @@ groupMetricsML(siber)
 \item{siber}{a siber object as created by createSiberObject.}
 }
 \value{
-A 3 x m matrix of the 6 Layman metrics of dX_range, dY_range, TA, 
+A 3 x m matrix of the 6 Layman metrics of dX_range, dY_range, TA,
 CD, MNND and SDNND in rows, where each column is a different group nested
 within a community.
 }
 \description{
-This function loops over each group within each community and calculates the 
-convex hull total area, Standard Ellipse Area (SEA) and its corresponding 
-small sample size corrected version SEAc based on the maximum likelihood 
+This function loops over each group within each community and calculates the
+convex hull total area, Standard Ellipse Area (SEA) and its corresponding
+small sample size corrected version SEAc based on the maximum likelihood
 estimates of the means and covariance matrices of each group.
 }
 \examples{

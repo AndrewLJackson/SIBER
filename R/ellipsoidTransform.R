@@ -1,8 +1,8 @@
 #' Apply a normalisation transformation to vectors of data onto ellipsoids
 #' 
-#' Takes a vector \code{x} and transforms the points onto the same geometry of 
+#' Takes a vector `x` and transforms the points onto the same geometry of 
 #' a normalised ellipse given by the inverse of the covariance matrix 
-#' \code{SigSqrt} and the location \code{mu}
+#' `SigSqrt` and the location `mu`.
 #' 
 #' @param x the vector of data points to be transformed
 #' @param SigSqrt the inverse of the covariance matrix

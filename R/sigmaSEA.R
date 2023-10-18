@@ -15,12 +15,15 @@
 #' 
 #' @return A list comprising the following metrics for summarising the Standard 
 #' Ellipse
-#' #' \itemize{
-#'    \item {SEA}{ the Standard Ellipse Area (not sample size corrected)}
-#'    \item {eccentricity}{ a measure of the elongation of the ellipse.}
-#'    \item {a}{ the length of the semi-major axis}
-#'    \item {b}{ the length of the semi-minor axis}
-#' }
+#' 
+#'    * `SEA`  the Standard Ellipse Area (not sample size corrected).
+#'    
+#'    * `eccentricity` a measure of the elongation of the ellipse.
+#'    
+#'    * `a` the length of the semi-major axis.
+#'    
+#'    * `b` the length of the semi-minor axis.
+#'
 #' 
 #' @examples
 #' # A perfect circle

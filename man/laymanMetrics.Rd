@@ -12,14 +12,14 @@ laymanMetrics(x, y)
 \item{y}{a vector of locations in the y-axis direction.}
 }
 \value{
-A vector of the 6 Layman metrics of dX_range, dY_range, TA, 
+A vector of the 6 Layman metrics of dX_range, dY_range, TA,
 CD, MNND and SDNND
 }
 \description{
-This function takes two x and y vectors, and calculates the corresponding 
-6 Layman metrics based on these points. Note that for generality, the 
-original metrics of dC_range and dN_range have been renamed dX_range and 
-dY_range respectively. These modified names represent the x and y axes in 
+This function takes two x and y vectors, and calculates the corresponding
+6 Layman metrics based on these points. Note that for generality, the
+original metrics of dC_range and dN_range have been renamed dX_range and
+dY_range respectively. These modified names represent the x and y axes in
 terms of the order in which the data have been entered, and relate typically
 to how one plots the data. These x and y vectors could represent the means
 of the group members comprising a community as is preferred under the SIBER

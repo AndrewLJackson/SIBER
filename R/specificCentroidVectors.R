@@ -4,7 +4,7 @@
 #' Plots the posterior densities
 #' 
 #' @param centroids the list containing distance and angle matrices as returned 
-#'   by \code{\link{siberCentroids}}.
+#'   by [siberCentroids()].
 #' @param do.these a character vector of the pattern used to find paired matches in
 #'   the matrix of all comparisons. Usually the group names within any of the 
 #'   communities.

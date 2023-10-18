@@ -30,11 +30,11 @@ siberDensityPlot(
 constructed and plotted for each column.}
 
 \item{probs}{a vector of credible intervals to represent as box edges.
-Defaults to \code{c(95, 75, 50)}.}
+Defaults to \verb{c(95, 75, 50}.}
 
 \item{xlab}{a string for the x-axis label. Defaults to \code{"Group"}.}
 
-\item{ylab}{a string of the y-axis label. Defaults to \code{"Value"}.}
+\item{ylab}{a string of the y-axis label. Defaults to `"Value".}
 
 \item{xticklabels}{a vector of strings to override the x-axis tick labels.}
 
@@ -59,47 +59,47 @@ default \code{prn = FALSE}.}
 
 \item{ct}{a string of either \code{c("mode", "mean", "median")} which
 determines which measure of central tendency will be plotted as a point in
-the middle of the boxes. Defaults to "mode".}
+the middle of the boxes. Defaults to \code{"mode"}.}
 
 \item{ylims}{a vector of length two, specifying the lower and upper limits
-for the y-axis. Defaults to NULL which inspects the data for appropriate
+for the y-axis. Defaults to \code{NULL} which inspects the data for appropriate
 limits.}
 
 \item{lbound}{a lower boundary to specify on the distribution to avoid the
 density kernel estimating values beyond that which can be expected a
 priori. Useful for example when plotting dietary proportions which must lie
-in the interval \code{0 <= Y <= 1}. Defaults to -Inf}
+in the interval \verb{0 <= Y <= 1}. Defaults to \code{-Inf}}
 
 \item{ubound}{an upper boundary to specify on the distribution to avoid the
 density kernel estimating values beyond that which can be expected a
 priori. Useful for example when plotting dietary proportions which must lie
-in the interval \code{0 <= Y <= 1}. Defaults to +Inf.}
+in the interval \verb{0 <= Y <= 1}. Defaults to \code{+Inf}.}
 
 \item{main}{a title for the figure. Defaults to blank.}
 
 \item{ylab.line}{a postive scalar indicating the line spacing for rendering
 the y-axis label. This is included as using the permille symbol has a
 tendency to push the axis label off the plotting window margins. See the
-\code{line} option in \code{\link[graphics]{axis}} for more details as
+\code{line} option in \code{\link[graphics:axis]{graphics::axis()}} for more details as
 ylab.line passes to this.}
 
 \item{...}{further graphical parameters for passing to
-\code{\link[graphics]{plot}}}
+\code{\link[graphics:plot.default]{graphics::plot()}}}
 }
 \value{
 A new figure window.
 }
 \description{
-This function is essentially \code{\link[hdrcde]{hdr.boxplot}} but it more
+This function is essentially \code{\link[hdrcde:hdr.boxplot]{hdrcde::hdr.boxplot()}} but it more
 easily works with matrices of data, where each column is a different variable
 of interest. It has some limitations though....
 }
 \section{Warning}{
 : This function will not currently recognise and plot
-  multimodal distributions, unlike \code{\link[hdrcde]{hdr.boxplot}}. You
-  should take care, and plot basic histograms of each variable (column in the
-  object you are passing) to \code{siardensityplot} and check that they are
-  indeed unimodal as expected.
+multimodal distributions, unlike \code{\link[hdrcde:hdr.boxplot]{hdrcde::hdr.boxplot()}}. You
+should take care, and plot basic histograms of each variable (column in the
+object you are passing) and check that they are
+indeed unimodal as expected.
 }
 
 \examples{

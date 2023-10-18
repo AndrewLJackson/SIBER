@@ -2,10 +2,10 @@
 #' 
 #' This function loops over each community, determines the centre of mass 
 #' (centroid) of each of the groups comprising the community using the basic 
-#' \code{\link[base]{mean}} function independently on the marginal x and y vectors,
+#' [base::mean()] function independently on the marginal x and y vectors,
 #' and calculates the corresponding 6 Layman metrics based on these points.
 #' 
-#' @param siber a siber object as created by createSiberObject.R
+#' @param siber a siber object as created by [createSiberObject()].
 #' 
 #' @return A 6 x m matrix of the 6 Layman metrics of dX_range, dY_range, TA, 
 #' CD, MNND and SDNND in rows, for each community by column

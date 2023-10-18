@@ -10,14 +10,14 @@
 #' 
 #' @param siber a siber object as created by createSiberObject
 #' @param plot.args a list of plotting arguments for passing to 
-#'   \code{\link[graphics]{lines}}. See \code{\link[graphics]{lines}} for
+#'   [graphics::lines()]. See [graphics::lines()] for
 #'   details of the options. See also the demonstration scripts for examples of
 #'   use.
-#' @param iso.order a vector of length 2, either \code{c(1,2)} or \code{c(2,1)}.
+#' @param iso.order a vector of length 2, either `c(1,2)` or`c(2,1)`.
 #'   The order determines which of the columns of raw data are plotted on the x
 #'   (1) or y (2) axis. N.B. this will be deprecated in a future release, and
 #'   plotting order will be achieved at point of data-entry.
-#' @param ... additional arguments to be passed to \code{\link{addEllipse}}.
+#' @param ... additional arguments to be passed to [addEllipse()].
 #'   
 #' @return A series of convex hulls added to an existing plot.
 #' @export

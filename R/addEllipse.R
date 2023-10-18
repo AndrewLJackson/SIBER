@@ -9,20 +9,20 @@
 #' @param sigma a 2x2 covariance matrix for the data
 #' @param m is the sample size of the dataset on which the ellipse is to be 
 #'   plotted. This is only informative if calculating the confidence interval of
-#'   the bivariate mean, which requires a correction of \code{1/sqrt(m)}. 
+#'   the bivariate mean, which requires a correction of `1/sqrt(m)`. 
 #'   Defaults to NULL and has no effect.
 #' @param n the number of data points to be used to plot the ellipse. More 
 #'   points makes for a smoother ellipse, especially if it has high 
-#'   eccentricity. Defaults to \code{n = 100}.
+#'   eccentricity. Defaults to `n = 100`.
 #' @param p.interval the quantile to be used to construct a prediction ellipse 
 #'   that contains p.interval proportion of the data. By default, 
-#'   \code{p.interval = NULL} and the Standard Ellipse is drawn which contains 
-#'   approximately 40\% of the data. Setting \code{p.interval = 0.95} will 
-#'   result in an ellipse that contains approximately 95\% of the data.
+#'   `p.interval = NULL` and the Standard Ellipse is drawn which contains 
+#'   approximately 40% of the data. Setting `p.interval = 0.95` will 
+#'   result in an ellipse that contains approximately 95% of the data.
 #' @param ci.mean a logical that determines whether the ellipse drawn is a 
 #'   prediction ellipse of the entire data, or a confidence interval of the 
-#'   bivariate means. Defaults to \code{FALSE}. If set to \code{TRUE}, then 
-#'   \code{p.interval} can be used to generate an appropriate \% confidence 
+#'   bivariate means. Defaults to `FALSE`. If set to `TRUE`, then 
+#'   `p.interval` can be used to generate an appropriate % confidence 
 #'   interval of the bivariate means.
 #' @param small.sample a logical that determines whether or not the small sample
 #'   size correction is to be applied (TRUE) or not (FALSE). Defaults to FALSE. 
@@ -32,10 +32,9 @@
 #'   and default) or not (FALSE). Setting to false is useful if you want to 
 #'   access the coordinates of the ellipse in order to calculate overlap between
 #'   ellipses for example.
-#' @param ... additional arguments as a list to be passed to 
-#'   \code{\link[graphics]{plot}}.
+#' @param ... additional arguments as a list to be passed to [graphics::plot()].
 #'   
-#' @return A \code{n x 2} matrix comprising the x and y coordinates of the
+#' @return A `n x 2` matrix comprising the x and y coordinates of the
 #'   ellipse.
 #'   
 #' @examples

@@ -13,11 +13,16 @@ can be entered as strings and/or numbers and need not be sequential.}
 }
 \value{
 A siber list object, that contains data that helps with various model
-  fitting and plotting. \itemize{ \item {original.data}{The original data as
-  passed into this function} \item {iso.summary}{The max, min, mean and
-  median of the isotope data useful for plotting} \item {sample.sizes}{The
-  number of observations tabulated by group and community} \item {raw.data}{A
-  list object of length equal to the number of communities} }
+fitting and plotting.
+\itemize{
+\item \code{original.data} The original data as
+passed into this function
+\item \code{iso.summary} The max, min, mean and
+median of the isotope data useful for plotting
+\item \code{sample.sizes} The
+number of observations tabulated by group and community
+\item \code{raw.data} A list object of length equal to the number of communities
+}
 }
 \description{
 This function takes raw isotope data and creates a SIBER object which

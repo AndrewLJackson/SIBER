@@ -14,11 +14,14 @@
 #'   labels should be entered  as sequential numbers. As of v2.0.1 group labels
 #'   can be entered as strings and/or numbers and need not be sequential.
 #' @return A siber list object, that contains data that helps with various model
-#'   fitting and plotting. \itemize{ \item {original.data}{The original data as
-#'   passed into this function} \item {iso.summary}{The max, min, mean and
-#'   median of the isotope data useful for plotting} \item {sample.sizes}{The
-#'   number of observations tabulated by group and community} \item {raw.data}{A
-#'   list object of length equal to the number of communities} }
+#'   fitting and plotting. 
+#'   * `original.data` The original data as
+#'   passed into this function
+#'   * `iso.summary` The max, min, mean and
+#'   median of the isotope data useful for plotting
+#'   * `sample.sizes` The
+#'   number of observations tabulated by group and community
+#'   * `raw.data` A list object of length equal to the number of communities
 #' @examples
 #' data(demo.siber.data)
 #' my.siber.data <- createSiberObject(demo.siber.data)

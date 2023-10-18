@@ -17,7 +17,7 @@ ellipsoidTransform(x, SigSqrt, mu)
 A vector of transformed data points
 }
 \description{
-Takes a vector \code{x} and transforms the points onto the same geometry of 
-a normalised ellipse given by the inverse of the covariance matrix 
-\code{SigSqrt} and the location \code{mu}
+Takes a vector \code{x} and transforms the points onto the same geometry of
+a normalised ellipse given by the inverse of the covariance matrix
+\code{SigSqrt} and the location \code{mu}.
 }

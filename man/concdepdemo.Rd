@@ -6,14 +6,14 @@
 \title{A set of concentration dependence values for stable isotope analysis}
 \format{
 A 5 column, 4 row data.frame object containing the concentration
-  dependence data for the geese1demo and geese2demo datasets. The first
-  column Source is a factor determining the name of the source. The second
-  and third columns are the mean d13C and mean d15N concentration values for
-  each source respectively. Columns 3 and 5 are the standard deviations but
-  these are not currently implemented in either simmr or MixSIAR stable
-  isotope mixing models. Note that the order of the isotope data has been
-  swapped since siar in order to present d13C as the first isotope and hence
-  on the x-axis by default.
+dependence data for the geese1demo and geese2demo datasets. The first
+column Source is a factor determining the name of the source. The second
+and third columns are the mean d13C and mean d15N concentration values for
+each source respectively. Columns 3 and 5 are the standard deviations but
+these are not currently implemented in either simmr or MixSIAR stable
+isotope mixing models. Note that the order of the isotope data has been
+swapped since siar in order to present d13C as the first isotope and hence
+on the x-axis by default.
 }
 \usage{
 data(concdepdemo)

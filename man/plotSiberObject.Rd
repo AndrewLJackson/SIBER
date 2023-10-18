@@ -25,75 +25,75 @@ plotSiberObject(
 )
 }
 \arguments{
-\item{siber}{a siber object as created by \code{\link{createSiberObject}}.}
+\item{siber}{a siber object as created by \code{\link[=createSiberObject]{createSiberObject()}}.}
 
-\item{iso.order}{a vector of length 2, either c(1,2) or c(2,1). The order 
-determines which of the columns of raw data are plotted on the x (1) or y 
-(2) axis. N.B. this will be deprecated in a future release, and plotting 
+\item{iso.order}{a vector of length 2, either \code{c(1,2)} or \code{c(2,1)}. The order
+determines which of the columns of raw data are plotted on the x (1) or y
+(2) axis. N.B. this will be deprecated in a future release, and plotting
 order will be achieved at point of data-entry.}
 
-\item{ax.pad}{a padding amount to apply to the x-axis either side of the 
+\item{ax.pad}{a padding amount to apply to the x-axis either side of the
 extremes of the data. Defaults to 1.}
 
-\item{hulls}{a logical defaulting to TRUE determining whether or not hulls 
+\item{hulls}{a logical defaulting to \code{TRUE} determining whether or not hulls
 based on the means of groups within communities should be drawn. That is, a
 community-level convex hull.}
 
-\item{community.hulls.args}{a list of plotting arguments to pass to 
-\code{\link{plotCommunityHulls}}. See \code{\link{plotCommunityHulls}} for 
+\item{community.hulls.args}{a list of plotting arguments to pass to
+\code{\link[=plotCommunityHulls]{plotCommunityHulls()}}. See \code{\link[=plotCommunityHulls]{plotCommunityHulls()}} for
 further details.}
 
-\item{ellipses}{a logical defaulting to TRUE determining whether or not an 
+\item{ellipses}{a logical defaulting to TRUE determining whether or not an
 ellipse should be drawn around each group within each community.}
 
-\item{group.ellipses.args}{a list of plotting arguments to pass to 
-\code{\link{plotGroupEllipses}}. See \code{\link{plotGroupEllipses}} for 
+\item{group.ellipses.args}{a list of plotting arguments to pass to
+\code{\link[=plotGroupEllipses]{plotGroupEllipses()}}. See \code{\link[=plotGroupEllipses]{plotGroupEllipses()}} for
 further details.}
 
-\item{group.hulls}{a logical defaulting to FALSE determining whether or not 
+\item{group.hulls}{a logical defaulting to FALSE determining whether or not
 convex hulls should be drawn around each group within each community.}
 
-\item{group.hulls.args}{a list of plotting options to pass to 
-\code{\link{plotGroupHulls}}. See \code{\link{plotGroupHulls}} for further 
+\item{group.hulls.args}{a list of plotting options to pass to
+\code{\link[=plotGroupHulls]{plotGroupHulls()}}. See \code{\link[=plotGroupHulls]{plotGroupHulls()}} for further
 details.}
 
-\item{bty}{a string specifying the box type for the plot. See 
-\code{\link[graphics]{par}} for details.}
+\item{bty}{a string specifying the box type for the plot. See
+\code{\link[graphics:par]{graphics::par()}} for details.}
 
 \item{xlab}{a string for the x-axis label.}
 
 \item{ylab}{a string for the y-axis label.}
 
-\item{las}{a scalar determining the rotation of the y-axis labels. Defaults 
-to horizontal with \code{las = 1}. See \code{\link[graphics]{par}} for more
+\item{las}{a scalar determining the rotation of the y-axis labels. Defaults
+to horizontal with \code{las = 1}. See \code{\link[graphics:par]{graphics::par()}} for more
 details.}
 
 \item{x.limits}{allows you to specify a two-element vector of lower and upper
-x-axis limits. Specifying this argument over-rides the automatic plotting 
+x-axis limits. Specifying this argument over-rides the automatic plotting
 and ax.pad option. Defaults to NULL.}
 
 \item{y.limits}{allows you to specify a two-element vector of lower and upper
-y-axis limits. Specifying this argument over-rides the automatic plotting 
+y-axis limits. Specifying this argument over-rides the automatic plotting
 and ax.pad option. Defaults to NULL.}
 
-\item{points.order}{a vector of integers specifying the order of point types 
-to use. See \code{\link[graphics]{points}} for how integers map onto point 
-types. Defaults to the sequence 1:15 as per \code{\link[graphics]{points}}.
+\item{points.order}{a vector of integers specifying the order of point types
+to use. See \code{\link[graphics:points]{graphics::points()}} for how integers map onto point
+types. Defaults to the sequence 1:15 as per \code{\link[graphics:points]{graphics::points()}}.
 It must have at least as many entries as there are communities to plot,
 else a warning will be issued, and the order will default to the sequence
 \code{1:25}.}
 
-\item{...}{additional arguments to be passed to \code{\link[graphics]{plot}}.}
+\item{...}{additional arguments to be passed to \code{\link[graphics:plot.default]{graphics::plot()}}.}
 }
 \value{
 An isotope scatterplot.
 }
 \description{
-This function takes a SIBER object as created by 
+This function takes a SIBER object as created by
 \code{\link{createSiberObject}}, and loops over communities and their groups,
-creating a scatterplot, and adding ellipses and hulls as desired. Ellipses can be 
-added to groups, while convex hulls can be added at both the group and 
-community level (the former for illustrative purposes only, with no 
+creating a scatterplot, and adding ellipses and hulls as desired. Ellipses can be
+added to groups, while convex hulls can be added at both the group and
+community level (the former for illustrative purposes only, with no
 analytical tools in SIBER to fit Bayesian hulls to individual groups. This is
 not mathematically possible in a Bayesian framework.).
 }

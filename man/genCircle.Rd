@@ -15,8 +15,8 @@ genCircle(n = 100, r)
 A 2 x n matrix of x and y coordinates of points on a circle.
 }
 \description{
-This is a helper function that creates a sequence of points on a circle of 
-radius \code{r} as a resolution determined by \code{n}. It is not intended 
-for direct calling, and is used by the ellipse plotting function 
-\code{\link{addEllipse}}. NB not an exported function.
+This is a helper function that creates a sequence of points on a circle of
+radius \code{r} as a resolution determined by \code{n}. It is not intended
+for direct calling, and is used by the ellipse plotting function
+\code{\link[=addEllipse]{addEllipse()}}. NB not an exported function.
 }

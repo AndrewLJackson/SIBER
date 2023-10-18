@@ -6,10 +6,10 @@
 \title{A single group of the geese data}
 \format{
 A 2 column, 9 row matrix containing the plasma data for the first
-  group of geese. Columns are in the order d13C and d15N. Retained here as
-  legacy from now defunct package siar. Note that the order of the data has
-  been swapped since siar in order to present d13C as the first isotope and
-  hence on the x-axis by default.
+group of geese. Columns are in the order d13C and d15N. Retained here as
+legacy from now defunct package siar. Note that the order of the data has
+been swapped since siar in order to present d13C as the first isotope and
+hence on the x-axis by default.
 }
 \usage{
 data(geese1demo)
