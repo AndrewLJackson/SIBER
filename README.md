@@ -12,14 +12,14 @@ Ellipse and convex hull fitting package to estimate niche width for stable isoto
 
 
 ## Installation
-The latest stable release package is released on CRAN as v2.1.8. Type `install.packages("SIBER")` in the command line.
+The latest stable release package is released on CRAN as v2.1.9. Type `install.packages("SIBER")` in the command line.
 
 Alternatively, you can install directly from github
 
 The stable release can be installed by
   ```R
     # install.packages("devtools") # install if necessary
-    devtools::install_github("andrewljackson/SIBER@v2.1.8", 
+    devtools::install_github("andrewljackson/SIBER@v2.1.9", 
     build_vignettes = TRUE)
     library(SIBER)
   ```
