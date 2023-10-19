@@ -172,8 +172,8 @@
 #' @format A 4 column, 783 row data.frame object containing unique individual 
 #' mongoose identifiers in the first column "indiv.id"; an integer identifier for 
 #' the pack to which each individual belongs in "pack"; Delta 13 Carbon values 
-#' "c13; and Delta 15 Nitrogen values in "n15". See the paper [Sheppard et al 
-#' 2018](https://doi.org/10.1111/ele.12933) for more details, although N.B. 
+#' "c13; and Delta 15 Nitrogen values in "n15". See the paper Sheppard et al 
+#' 2018 \doi{10.1111/ele.12933} for more details, although N.B. 
 #' the data here are provided as an example, not as a reproducible analysis of 
 #' that paper. 
 #'

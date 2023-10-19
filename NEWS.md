@@ -1,6 +1,7 @@
 # SIBER 2.1.9
 + Problems with rendering the permille symbol on latest OSX systems has meant we have had to remove all reference to the unicode symbol "U+2023" or "\u2030" within expressions. In order to create figures with the symbol present, you will need to do so with your own code running on your own machine with code to work with your local OS and region/locale settings.
 + Re-wrote all help files to use markdown format via Roxygen2 in place of LaTeX format. 
++ DOIs correctly referenced in *.Rd files using \doi{} syntax.
 
 
 # SIBER 2.1.8

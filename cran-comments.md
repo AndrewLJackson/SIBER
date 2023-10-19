@@ -5,13 +5,15 @@
 
 ### Previous NOTES
 
-N/A
+*  Found the following URLs which should use \doi (with the DOI name only):
+     File 'mongoose.Rd':
+       https://doi.org/10.1111/ele.12933 - FIXED 
 
-## R CMD check results
+## R CMD check --as-cran results
 
 0 errors | 0 warnings | 0 notes
 
-## Additionaly Test environments
+## Additional Test environments
 
 * local OS X 13.6 install, R 4.3.1. Apple clang version 14.0.3 (clang-1403.0.22.14.1)
        GNU Fortran (GCC) 12.2.0 - OK
