@@ -12,6 +12,9 @@ Ellipse and convex hull fitting package to estimate niche width for stable isoto
 
 
 ## Installation
+
+__NOTE__ you will also need to install [JAGS](https://mcmc-jags.sourceforge.io) which is a standalone software that the R package `rjags` provides an interface for SIBER to fit the models.
+
 The latest stable release package is released on CRAN as v2.1.9. Type `install.packages("SIBER")` in the command line.
 
 Alternatively, you can install directly from github
@@ -34,7 +37,6 @@ The latest development version is on the master branch. Often this includes some
     library(SIBER)
   ```
 
-__NOTE__ you will also need to install [JAGS](https://mcmc-jags.sourceforge.io) which is a standalone software that the R package `rjags` provides an interface for SIBER to fit the models.
 
 
 ## Tutorials
