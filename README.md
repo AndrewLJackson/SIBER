@@ -49,6 +49,12 @@ The package vignettes have been expanded to provide working examples of the two 
 ## Help, Assistance and Queries
 In the first instance, queries about analyses or problems with the software can be posted [here on github](https://github.com/AndrewLJackson/SIBER/issues). Please post a [minimal worked examples](https://www.r-bloggers.com/2013/05/writing-a-minimal-working-example-mwe-in-r/) so that we can recreate the problem and offer solutions.
 
+Before you contact us, please make sure to check the following:
+
++ [R](https://cran.r-project.org) is up-to-date: type `version` in your R console window to compare with whats available from CRAN.
++ Ensure all your installed pacakges are up-to-date: type `update.packages(ask = FALSE)` and type `yes` in response to questions about installing pacakges from source.
++ Ensure you have JAGS installed: see FAQs for details.
+
 ## Acknowledgements
 Some code and much input from my collaborator and co-author [Andrew Parnell](https://www.maynoothuniversity.ie/faculty-science-engineering/our-people/andrew-parnell). Thanks to [Alex Bond](https://alexanderbond.org) for helping identify some problems in model fitting which is now resolved by z-scoring, fitting and back-transforming. Although not affecting every analysis, the potential issue is exemplified in [SIBER-sandbox]( https://github.com/AndrewLJackson/SIBER-sandbox). Thanks to [Edward Doherty](https://github.com/Edward-Doherty) for finding the bug that turned out to be in the creating of z-scores in `createSiberObject`.
 
