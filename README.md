@@ -34,6 +34,8 @@ The latest development version is on the master branch. Often this includes some
     library(SIBER)
   ```
 
+__NOTE__ you will also need to install [JAGS](https://mcmc-jags.sourceforge.io) which is a standalone software that the R package `rjags` provides an interface for SIBER to fit the models.
+
 
 ## Tutorials
 
@@ -42,6 +44,7 @@ The package vignettes have been expanded to provide working examples of the two 
 ## Frequently Asked Questions (FAQs)
 * __How do I make isotope plots in ggplot?__ - see the vignette "Plot-SIA-ggplot2" included in versions >2.1.4
 * __Why are my community-level estimates of TA are zero or NA__ - This will arise if you have less than three groups (e.g. species) comprising a community. A triangle with three non-collinear points is the minimum requirement to draw a polygon and so if you have only one or two groups, the area of the TA is zero at best or possibly NA.
+* __Error: .onLoad failed in loadNamespace() for 'rjags', details:__ - and similar errors referring to DLLs and dylib etc... This is mostly due to not having the standalone software JAGS installed, or an out of date version that is no longer supported. You can check your latest release and download instructions at [JAGS](https://mcmc-jags.sourceforge.io)
 
 ## Help, Assistance and Queries
 In the first instance, queries about analyses or problems with the software can be posted [here on github](https://github.com/AndrewLJackson/SIBER/issues). Please post a [minimal worked examples](https://www.r-bloggers.com/2013/05/writing-a-minimal-working-example-mwe-in-r/) so that we can recreate the problem and offer solutions.
