@@ -64,9 +64,9 @@
 "geese1demo"
 
 
-#' A single group of the geese data
+#' A multiple group version of the the geese data
 #'
-#' A dataset for a single group of geese (as consumers) for two isotope tracers.
+#' A dataset for 8 groups of geese (as consumers) for two isotope tracers.
 #' Intended for use in a Stable Isotope Mixing Model.
 #'
 #' @docType data

@@ -1,7 +1,7 @@
 Package: SIBER
 Type: Package
 Title: Stable Isotope Bayesian Ellipses in R
-Version: 2.1.9
+Version: 3.1.0
 Authors@R: c(
     person("Andrew", "Jackson", role = c("aut", "cre"), 
     email = "jacksoan@tcd.ie",
