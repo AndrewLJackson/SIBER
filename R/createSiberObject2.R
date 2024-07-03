@@ -142,6 +142,10 @@ createSiberObject2 <- function (dd, group_start_position) {
                                  \(x) siberNSEA(x))
   dd_nested$D <- map_vec(dd_nested$cov, ncol)
   
+  dd_nested$TA <- map_vec(dd_nested$tracer_data, 
+                           \(x) {convhulln(x %>% select(all_of(tracer_idx)) , 
+                                           output.options = "FA")$vol})
+  
   ## AJ - problem here is hulls are only relevant for 2d data. There are
   # probably some n-dimensional equivalents, but I might need to call nicheRover
   # pkg to do this. 
