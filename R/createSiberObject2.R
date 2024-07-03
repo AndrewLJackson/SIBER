@@ -131,14 +131,22 @@ createSiberObject2 <- function (dd, group_start_position) {
   dd_nested$cov <- map(dd_nested$tracer_data,
                       \(x) cov(x %>% select(all_of(tracer_idx))))
   
-  ## calculate SEA  associated values
-  dd_nested <- bind_cols(dd_nested,
-                         map(dd_nested$cov, 
-                             \(x) unlist(sigmaSEA(x))) %>% bind_rows())
+  ## calculate SEA generalised for the D dimensions
+  # the commented out code below is suitable for 2D only and might be brought
+  # into a separate function designed to extract more info suitable only for 
+  # special but most common case of 2D.
+  # dd_nested <- bind_cols(dd_nested,
+  #                        map(dd_nested$cov, 
+  #                            \(x) unlist(sigmaSEA(x))) %>% bind_rows())
+  dd_nested$SEA <- map_vec(dd_nested$cov, 
+                                 \(x) siberNSEA(x))
+  dd_nested$D <- map_vec(dd_nested$cov, ncol)
   
-  ## add convex hull areas
-  dd_nested$TA <- map(dd_nested$tracer_data,
-                      \(x) hullarea(x %>% select(all_of(tracer_idx))))
+  ## AJ - problem here is hulls are only relevant for 2d data. There are
+  # probably some n-dimensional equivalents, but I might need to call nicheRover
+  # pkg to do this. 
+  # add convex hull areas 
+  # dd_nested$TA <- map(dd_nested$tracer_data, \(x) hullarea(x %>% select(all_of(tracer_idx))))
   
   
   
