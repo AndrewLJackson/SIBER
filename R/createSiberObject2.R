@@ -38,8 +38,14 @@
 
 createSiberObject2 <- function (dd, group_start_position) {
   
+  # create vectors to look up the column positions of tracers and groups
   tracer_idx <- 1:(group_start_position-1)
   group_idx  <- group_start_position:ncol(dd)
+  
+  # extract the column names of the tracers and groups
+  tracer_labels <- names(dd)[tracer_idx]
+  group_labels  <- names(dd)[group_idx]
+  
   
   # Check that all the tracer data are numeric
   if (!any(is.numeric(as.matrix(dd[,tracer_idx])))){
@@ -130,6 +136,10 @@ createSiberObject2 <- function (dd, group_start_position) {
                          map(dd_nested$cov, 
                              \(x) unlist(sigmaSEA(x))) %>% bind_rows())
   
+  ## add convex hull areas
+  dd_nested$TA <- map(dd_nested$tracer_data,
+                      \(x) hullarea(x %>% select(all_of(tracer_idx))))
+  
   
   
   # add the ML SEA and SEAc estimates
@@ -137,13 +147,18 @@ createSiberObject2 <- function (dd, group_start_position) {
   #                          by = c("group", "community", "master_code"),
   #                          keep = FALSE)
   
-  # join all the data together
-  siber$test <- left_join(siber$summary %>%
+  # join all the data together in a series of left_joins
+  siber$summary <- left_join(siber$summary %>%
                              select(-starts_with("mean_"), -starts_with("sd_")),
                            nested_means, 
-                          by = NULL, keep = FALSE) %>%
-    left_join(., nested_sds, by = NULL, keep = FALSE) %>%
-    left_join(.,  dd_nested, by = NULL, keep = FALSE)
+                          by = c(group_labels, "master_code"), 
+                          keep = FALSE) %>%
+    left_join(., nested_sds, 
+              by = c(group_labels, "master_code"), 
+              keep = FALSE) %>%
+    left_join(.,  dd_nested, 
+              by = c(group_labels, "master_code"), 
+              keep = FALSE)
   
   # siber$nested_means <- nested_means
   # siber$nested_sds <- nested_sds
@@ -155,8 +170,10 @@ createSiberObject2 <- function (dd, group_start_position) {
   # covariances for each group stored in ML.mu and ML.cov
   # to backtransform them later.
   # AJ - the use of master_code here is going to throw "global variable" warnings
-  siber$data <- dd %>% group_by(`master_code`) %>% 
-    mutate(across(all_of(tracer_idx), scale, .names = "z_{.col}")) 
+  siber$z_data <- dd %>% group_by(`master_code`) %>% 
+    mutate(across(all_of(tracer_idx), scale, 
+                  .names = "z_{.col}"), 
+           .keep = "none") 
   
   
   

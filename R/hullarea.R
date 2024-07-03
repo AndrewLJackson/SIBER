@@ -10,6 +10,7 @@
 #' @return a scalar representing the area of the convex hull in units of 
 #' `x * y`; i.e. most commonly in permille squared for isotope data.
 #' 
+#' @export
 
 
 hullArea <- function (x,y) {
