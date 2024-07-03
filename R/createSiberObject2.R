@@ -31,97 +31,62 @@
 
 ## Define a set of global variables so tidyverse calls don't generate
 # "no visible binding for global variable" warnings.
-if(getRversion() >= "2.15.1")  utils::globalVariables(c("iso1", 
-                                                        "iso2",
-                                                        "group", 
-                                                        "community"))
+# if(getRversion() >= "2.15.1")  utils::globalVariables(c("iso1", 
+#                                                         "iso2",
+#                                                         "group", 
+#                                                         "community"))
 
 createSiberObject2 <- function (dd, group_start_position) {
   
   tracer_idx <- 1:(group_start_position-1)
   group_idx  <- group_start_position:ncol(dd)
-
+  
   # Check that all the tracer data are numeric
   if (!any(is.numeric(as.matrix(dd[,tracer_idx])))){
     error("All tracer data must be numeric. At least one of your 
-          entries in the tracer data are non-numeric values.")
+          entries in the tracer data are non-numeric values. Check that the 
+          tracer (isotope) appear as the first 
+          columns and any grouping variables in columns to the right. 
+          Check also that `group_start_position` correctly identifies
+          the first column containing the grouping variables.")
   }
   
-  # # Check that the data.in object is a data.frame object only
-  # # If it is a tibble, then coerce to data.frame only and 
-  # # return a warning.
-  # if (any(class(data.in) %in% c("spec_tbl_df","tbl_df","tbl"))){
-  #   warning("The data object supplied is of class tibble. 
-  #           This has likely occurred owing to use of the 
-  #           readr::read_csv() function to import the data. 
-  #           The dataset has been coerced to an object of 
-  #           class data.frame only using as.data.frame().
-  #           You should check that this conversion has no 
-  #           unintended consequences, and ideally you should
-  #           convert it before passing it to createSiberObject 
-  #           which will prevent this warning and allow you to 
-  #           check that there has been no undesired change to the 
-  #           data.")
-  #   data.in <- as.data.frame(data.in)
-  # }
   
-  # # Check that the column headers have exactly the correct string
-  #   if (!all(startsWith(names(tracer_df), "tracer"))){
-  #     stop('The header names in your tracer data file must 
-  #          start with the text "tracer"')
-  #   }
-  #   if (!all(startsWith(names(group_df), "group"))){
-  #     stop('The header names in your grouping data file must 
-  #          start with the text "group"')
-  #   }  
+  # force group and community variable to be factors
+  dd <- dd %>% mutate(across(group_idx, as.factor))
   
-  # error if community is not a sequential numeric vector
-  # if (!is.numeric(data.in$community)){
-  #   stop('The community column must be a sequential numeric vector 
-  #        indicating the community membership of each observation.')
-  # } 
+  # create a grouping column that is unique for all combinations of groups
+  dd <- dd %>% 
+    unite("master_group", all_of(group_idx), remove = FALSE) %>%
+    relocate("master_group", .after = last_col()) %>%
+    mutate("master_code" = as.numeric(as.factor(`master_group`)))
   
-  # rename the column headers of the tracer and grouping dataframes
-  # tracer_labels <- names(tracer_df)
-  # group_labels  <- names(group_df)
-  
-  # names(tracer_df) <- paste0("tracer", 1:ncol(tracer_df))
-  # names(group_df)  <- paste0("group", 1:ncol(group_df))
+  # get the means (and ultimately sds for each tracer to allow rescaling back
+  # from z scores)
+  dd <- dd %>% group_by(master_code) %>% 
+    mutate(across(all_of(tracer_idx), mean, .names = "mean_{.col}")) %>%
+    mutate(across(all_of(tracer_idx), sd, .names = "sd_{.col}"))
   
   
-    
-# force group and community variable to be factors
-dd <- dd %>% mutate(across(group_idx, as.factor))
-
-# create a grouping column that is unique for all combinations of groups
-dd <- dd %>% 
-  unite("master_group", all_of(group_idx), remove = FALSE) %>%
-  relocate("master_group", .after = last_col()) %>%
-  mutate("master_code" = as.numeric(as.factor(`master_group`)))
-
-# get the means (and ultilmately sds for each tracer to allow rescaling back from z scores)
-dd <- dd %>% group_by(master_code) %>% 
-  mutate(across(all_of(tracer_idx), mean, .names = "mean_{.col}")) %>%
-  mutate(across(all_of(tracer_idx), sd, .names = "sd_{.col}"))
-
+  # create an object that is a list, into which the raw data, 
+  # its transforms, and various calculated metrics can be stored.
+  siber <- list()
   
-# create an object that is a list, into which the raw data, 
-# its transforms, and various calculated metrics can be stored.
-siber <- list()
-
-# keep the original data in its original format just in case
-siber$original_data <- dd
-
-# create some summary statistics of the tracer data
-siber$summary <- dd %>% 
-  group_by(across(all_of(group_idx)), `master_code`) %>% 
-  summarise(across(all_of(tracer_idx), mean, .names = "mean_{.col}"), 
-            across(all_of(tracer_idx), sd, .names = "sd_{.col}"), 
-            n = n(),
-            .groups = "keep")
-
-if (any(siber$summary$n < 5, na.rm = TRUE)){
-  warning("At least one of your groups has less than 5 observations.
+  # AJ - mark for delete.
+  # I dont think we need to keep a copy of the original data
+  # keep the original data in its original format just in case
+  # siber$original_data <- dd
+  
+  # create some summary statistics of the tracer data
+  siber$summary <- dd %>% 
+    group_by(across(all_of(group_idx)), `master_code`) %>% 
+    summarise(across(all_of(tracer_idx), mean, .names = "mean_{.col}"), 
+              across(all_of(tracer_idx), sd, .names = "sd_{.col}"), 
+              n = n(),
+              .groups = "keep")
+  
+  if (any(siber$summary$n < 5, na.rm = TRUE)){
+    warning("At least one of your groups has less than 5 observations.
           The absolute minimum sample size for each group is 3 in order
           for the various ellipses and corresponding metrics to be 
           calculated. More reasonably though, a minimum of 5 data points
@@ -132,70 +97,71 @@ if (any(siber$summary$n < 5, na.rm = TRUE)){
           the sample.size matrix simply indicate groups that are not 
           present in that community, and is an acceptable data structure 
           for these analyses.")
-}
-
-
-# ------------------------------------------------------------------------------
-# store the Maximum Likelihood estimates
-# of the means and covariances for each group.
-siber$ML <- siber$summary %>% select(starts_with("mean_")) %>% nest()
-
-# nested data structure to work with map()
-dd_nested <- dd %>% group_by(across(all_of(group_idx))) %>% nest()
-
-siber$ML$cov <- map(dd_nested$data,
-    \(x) cov(x %>% select(tracer_idx)))
-
-# ------------------------------------------------------------------------------
-# create z-score transformed versions of the raw data.
-# we can then use the saved information in the mean and 
-# covariances for each group stored in ML.mu and ML.cov
-# to backtransform them later.
-
-aj <- dd %>% group_by(master_code) %>% 
-  mutate(across(all_of(tracer_idx), scale, .names = "z_{.col}")) 
-
-for (i in 1:siber$n.communities) {
-  
-  # BUG - discovered 2020/5/11 per emails with Edward Doherty.
-  # Incorrect ordering by tapply() meant z-scores were not correctly
-  # applied within groups.
+  }
   
   
-  # -- BUGGED CODE BEGIN --
-  # apply z-score transform to each group within the community via tapply()
-  # using the function scale()
-  # siber$zscore.data[[i]][,1] <- unlist(tapply(siber$raw.data[[i]]$iso1,
-  # 	                                          siber$raw.data[[i]]$group,
-  # 	                                          scale))
-  # siber$zscore.data[[i]][,2] <- unlist(tapply(siber$raw.data[[i]]$iso2,
-  # 	                                          siber$raw.data[[i]]$group,
-  # 	                                          scale))
-  # 
-  # -- BUGGED CODE END --
+  # ----------------------------------------------------------------------------
+  # store the Maximum Likelihood estimates of the means and covariances for each
+  # group. When selecting the variables, the first columns are the grouping
+  # variables and the master_code variable
+  nested_means <- siber$summary %>% 
+    select(all_of(1:(length(group_idx)+ 1)), 
+           starts_with("mean_")) %>% 
+    nest(.key = "means")
+  
+  nested_sds <- siber$summary %>% 
+    select(all_of(1:(length(group_idx)+ 1)), 
+           starts_with("sd_")) %>% 
+    nest(.key = "sds")
+  
+  # nested data structure of the original data to work with map()
+  dd_nested <- dd %>% 
+    group_by(across(all_of(group_idx)), `master_code`) %>% 
+    nest(.key = "tracer_data")
+  
+  # map over the data column which are are list with entry for each of the
+  # unique groups defined by master_code and calculate covariance matrix for
+  # each
+  dd_nested$cov <- map(dd_nested$tracer_data,
+                      \(x) cov(x %>% select(all_of(tracer_idx))))
+  
+  ## calculate SEA  associated values
+  dd_nested <- bind_cols(dd_nested,
+                         map(dd_nested$cov, 
+                             \(x) unlist(sigmaSEA(x))) %>% bind_rows())
   
   
   
+  # add the ML SEA and SEAc estimates
+  # siber$test <- inner_join(dd_nested, nested_means, nested_sds, 
+  #                          by = c("group", "community", "master_code"),
+  #                          keep = FALSE)
+  
+  # join all the data together
+  siber$test <- left_join(siber$summary %>%
+                             select(-starts_with("mean_"), -starts_with("sd_")),
+                           nested_means, 
+                          by = NULL, keep = FALSE) %>%
+    left_join(., nested_sds, by = NULL, keep = FALSE) %>%
+    left_join(.,  dd_nested, by = NULL, keep = FALSE)
+  
+  # siber$nested_means <- nested_means
+  # siber$nested_sds <- nested_sds
+  # siber$dd_nested <- dd_nested
+  
+  # ----------------------------------------------------------------------------
+  # create z-score transformed versions of the raw data.
+  # we can then use the saved information in the mean and 
+  # covariances for each group stored in ML.mu and ML.cov
+  # to backtransform them later.
+  # AJ - the use of master_code here is going to throw "global variable" warnings
+  siber$data <- dd %>% group_by(`master_code`) %>% 
+    mutate(across(all_of(tracer_idx), scale, .names = "z_{.col}")) 
   
   
-  ## -- HOT FIX BEGIN -- 
-  # (plan to tidyverse the whole package)
   
-  # take the raw data, group by "group" and 
-  # transform iso1 and iso2 by scaling them and
-  # finally converting to data.frame.
-  siber$zscore.data[[i]] <- siber$raw.data[[i]] %>%
-    group_by(group) %>% mutate(iso1 = scale(iso1),
-                               iso2 = scale(iso2)) %>%
-    data.frame()
-  # 
-  ## -- HOT FIX END   --
-
-	
-}
-
-return(siber)
-
+  return(siber)
+  
 } # end of function
 
 
