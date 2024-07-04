@@ -61,7 +61,7 @@
 #'
 #' @export
 
-fitEllipse <- function (x, y, parms, priors, id = NULL) 
+fitEllipse <- function (Y, G, parms, priors, id = NULL) 
 {
   
   # some input argument checking
@@ -85,15 +85,21 @@ fitEllipse <- function (x, y, parms, priors, id = NULL)
     # ----------------------------------
     
     # this loop defines the priors for the means
-    for (i in 1:n.iso) {
-      mu[i] ~ dnorm (0, tau.mu)
+    for (j in 1:n.iso) {
+      for (k in 1:n.groups){
+        mu[1,j,k] ~ dnorm (0, tau.mu)
+      }
     }
     
     # prior for the precision matrix
-    tau[1:n.iso,1:n.iso] ~ dwish(R[1:n.iso,1:n.iso],k)
+    for (k in 1:n.groups){
+      
+      tau[1:n.iso,1:n.iso,k] ~ dwish(R[1:n.iso,1:n.iso],kappa)
+      
+      # convert to covariance matrix
+      Sigma2[1:n.iso, 1:n.iso,k] <- inverse(tau[1:n.iso, 1:n.iso,k])  
+    }
     
-    # convert to covariance matrix
-    Sigma2[1:n.iso, 1:n.iso] <- inverse(tau[1:n.iso, 1:n.iso]) 
     
     # calculate correlation coefficient
     # rho <- Sigma2[1,2]/sqrt(Sigma2[1,1]*Sigma 2[2,2])
@@ -103,7 +109,7 @@ fitEllipse <- function (x, y, parms, priors, id = NULL)
     #----------------------------------------------------
     
     for(i in 1:n.obs) {                             
-      Y[i,1:2] ~ dmnorm(mu[1:n.iso],tau[1:n.iso,1:n.iso])
+      Y[i,1:n.iso] ~ dmnorm(mu[1, 1:n.iso, G[i]], tau[1:n.iso,1:n.iso, G[i]])
     }
     
     
@@ -116,12 +122,15 @@ fitEllipse <- function (x, y, parms, priors, id = NULL)
   # ----------------------------------------------------------------------------
   
   
-  Y = cbind(x,y)
+  # Y = cbind(x,y)
   n.obs <- nrow(Y)
   n.iso <- ncol(Y)
+  n.groups <- length(unique(G))
   
-  jags.data <- list("Y"= Y, "n.obs" = n.obs, "n.iso" = n.iso,
-                    "R"= priors$R, "k" = priors$k, "tau.mu" = priors$tau.mu)
+  jags.data <- list("Y"= as.matrix(Y), "G" = G, "n.obs" = n.obs, "n.iso" = n.iso, 
+                    "n.groups" = n.groups,
+                    "R"= priors$R, "kappa" = priors$kappa, 
+                    "tau.mu" = priors$tau.mu)
   
   inits <- list(
     list(mu = stats::rnorm(2,0,1)),

@@ -77,6 +77,7 @@ createSiberObject2 <- function (dd, group_start_position) {
   # create an object that is a list, into which the raw data, 
   # its transforms, and various calculated metrics can be stored.
   siber <- list()
+
   
   # AJ - mark for delete.
   # I dont think we need to keep a copy of the original data
@@ -188,6 +189,10 @@ createSiberObject2 <- function (dd, group_start_position) {
            .keep = "none") 
   
   
+  # ----------------------------------------------------------------------------
+  # Add some basic info
+  siber$n.iso <- length(tracer_idx)
+  siber$n.groups <- max(siber$summary$`master_code`)
   
   return(siber)
   
