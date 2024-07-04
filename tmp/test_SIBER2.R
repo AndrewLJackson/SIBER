@@ -9,7 +9,7 @@ source("../R/siberNSEA.R")
 
 
 aj <- createSiberObject2(demo.siber.data, group_start_position = 3)
-aj$z_data <- aj$z_data %>% filter(master_code %in% c(1, 2))
+# aj$z_data <- aj$z_data %>% filter(master_code %in% c(1, 2))
 
 # options for running jags
 parms <- list()
@@ -65,6 +65,8 @@ extractCOV <- function(X, n_groups, n_iso){
            
     ) %>%
     bind_cols()
+  
+  return(out)
   
 }
 
