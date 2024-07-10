@@ -61,7 +61,7 @@
 #'
 #' @export
 
-fitEllipse <- function (Y, G, parms, priors, id = NULL) 
+fitEllipse <- function (Y, G = rep(1, nrow(Y)), parms, priors, id = NULL) 
 {
   
   # some input argument checking

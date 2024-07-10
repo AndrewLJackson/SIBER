@@ -2,9 +2,9 @@ library(SIBER)
 library(tidyverse)
 library(geometry)
 
-source("../R/createSiberObject2.R")
-source("../R/fitEllipse.R")
-source("../R/siberNSEA.R")
+source("R/createSiberObject2.R")
+source("R/fitEllipse.R")
+source("R/siberNSEA.R")
 
 
 
@@ -20,8 +20,8 @@ parms$n.chains <- 2        # run this many chains
 
 # define the priors
 priors <- list()
-priors$R <- 1 * diag(2)
-priors$kappa <- 2
+priors$R <- 1 * diag(aj$n.iso)
+priors$kappa <- aj$n.iso
 priors$tau.mu <- 1.0E-3
 
 
@@ -40,20 +40,22 @@ n_groups <- max(aj$z_data$master_code)
 extractCOV <- function(X, n_groups, n_iso){
   
   # calculate the indices to look up for each group
-  ff <- matrix(1:(n_iso*n_iso*n_groups), nrow = 2, byrow = TRUE)
+  ff <- matrix(1:(n_iso*n_iso*n_groups), nrow = n_groups, byrow = TRUE)
   
-  # conver to list by row for passing to map()
-  location <- lapply(seq_len(nrow(ff)), function(i) x[i,])
+  # convert to list by row for passing to map()
+  location <- lapply(seq_len(nrow(ff)), function(i) ff[i,])
   
   # create some labels so we can keep track of which group is which
-  names(location) <- paste0("zCOV_", 1:n_groups)
+  names(location) <- paste0(1:n_groups)
   
   # map over the column index locations of each of the groups' Sigma2 
   # data, extract it, convert it to a nxn matrix, store it as a list within a 
   # tibble and name the column zCOV_1 for z-transformed Covariance matrix for 
   # group with the master_code == 1.
   out <- location %>% 
-    imap(~ X %>% as_tibble(., rownames = "index") %>%
+    imap(~ X %>% 
+           as.matrix() %>% 
+           as_tibble(., rownames = "index") %>%
           group_by(`index`) %>% 
           select("index", all_of(.x + 1)) %>% 
            # nest(.key = .y) %>%
@@ -69,6 +71,43 @@ extractCOV <- function(X, n_groups, n_iso){
   return(out)
   
 }
+
+backTransCOV <- function(X,Z){
+  
+  # get sd of original data X
+  a <- diag(X)^0.5
+  A <- a %*% t(a)
+  
+  # rescale the Z score estimated correlation matrix back to covariance matrix
+  # on same scale as the original data Xaj
+  out <- Z * A
+  
+  return(out)
+  
+}
+
+ajCOV <- extractCOV(test, n_groups, n_iso = 2)
+
+
+# hh <- gg %>% map_vec(siberNSEA)
+
+# jj <- ajCOV %>% map(\(x) x %>% map_vec(\(z) siberNSEA(z)))
+
+
+
+kk <- map2(ajCOV, aj$summary$cov, 
+           \(x,y) x %>% map_vec(\(z) siberNSEA(backTransCOV(z,y))) %>% 
+             as_tibble()
+           )
+
+# mm <- pmap(list(ajCOV, aj$summary$cov, names(ajCOV)), 
+#            \(x,y,n) x %>% map_vec(\(z) siberNSEA(backTransCOV(z,y))) %>% 
+#              tibble()  %>% rename(!!n := .))
+
+
+ggplot(kk %>% bind_rows(., .id = "group"), 
+       aes(x = group, y = value)) + 
+  geom_boxplot()
 
 
 # 

@@ -6,7 +6,7 @@
 #' generate various plots, and additional analyses on the posterior
 #' distributions.
 #' 
-#' @name createSiberObject
+#' @name createSiberObject2
 #' @param data.in Specified In a basic R data.frame or matrix comprising 4
 #'   columns. The first two of which are typically isotope tracers, then the
 #'   third is a column that indicates the group membership, and the fourth
@@ -59,7 +59,7 @@ createSiberObject2 <- function (dd, group_start_position) {
   
   
   # force group and community variable to be factors
-  dd <- dd %>% mutate(across(group_idx, as.factor))
+  dd <- dd %>% mutate(across(all_of(group_idx), as.factor))
   
   # create a grouping column that is unique for all combinations of groups
   dd <- dd %>% 
