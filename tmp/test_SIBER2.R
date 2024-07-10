@@ -37,20 +37,22 @@ test <- fitEllipse(Y = aj$z_data %>% ungroup %>% select(all_of(2:3)),
 n_groups <- max(aj$z_data$master_code)
 
 # A function to extract the COVs and put them into nested tibbles
-extractCOV <- function(X, n_groups, n_iso){
+extractCOV <- function(X, siber_obj){
   
   # calculate the indices to look up for each group
-  ff <- matrix(1:(n_iso*n_iso*n_groups), nrow = n_groups, byrow = TRUE)
+  ff <- matrix(1:(siber_obj$n.iso^2*n_groups), 
+               nrow = siber_obj$n.groups, byrow = TRUE)
   
   # convert to list by row for passing to map()
   location <- lapply(seq_len(nrow(ff)), function(i) ff[i,])
   
   # create some labels so we can keep track of which group is which
-  names(location) <- paste0(1:n_groups)
+  names(location) <- paste0(1:siber_obj$n.groups)
   
   # map over the column index locations of each of the groups' Sigma2 
   # data, extract it, convert it to a nxn matrix, store it as a list within a 
-  # tibble and name the column zCOV_1 for z-transformed Covariance matrix for 
+  # tibble and name the column using master_code as character of numeric 
+  # for z-transformed Covariance matrix for 
   # group with the master_code == 1.
   out <- location %>% 
     imap(~ X %>% 
@@ -63,10 +65,16 @@ extractCOV <- function(X, n_groups, n_iso){
            ungroup() %>%
            mutate({{.y}} := map(`data`, \(x) matrix(as.matrix(x), 
                                                     ncol = 2, nrow = 2) )) %>% 
-           select(all_of(.y))
+           select(all_of(.y)) %>%
+           tibble()
            
     ) %>%
     bind_cols()
+  
+  
+  out <- map2(out, siber_obj$summary$cov, 
+       \(x,y) x %>% map(\(z) backTransCOV(z,y))
+       ) %>% as_tibble()
   
   return(out)
   
@@ -86,37 +94,36 @@ backTransCOV <- function(X,Z){
   
 }
 
-ajCOV <- extractCOV(test, n_groups, n_iso = 2)
 
+# extract the COV data from the fitted jags model
+ajCOV <- extractCOV(test, siber_obj = aj)
 
-# hh <- gg %>% map_vec(siberNSEA)
+# backtransform these correlation matrices to covariance matrices on the 
+# original scale of the data.
+# kk <- map2(ajCOV, aj$summary$cov, 
+#            \(x,y) x %>% map_vec(\(z) siberNSEA(backTransCOV(z,y))) %>% 
+#              as_tibble()
+#            )
 
-# jj <- ajCOV %>% map(\(x) x %>% map_vec(\(z) siberNSEA(z)))
+kk <- map(ajCOV, \(x) x %>% map_vec(\(z) siberNSEA(z))) %>% tibble() %>%
+  rename( SEA_B_post = ".")
 
+kk %>% mutate(mu = map_vec(SEA_B_post, mean))
 
+# kk <- map(ajCOV, \(x) x %>% map(\(z) class(z)))
 
-kk <- map2(ajCOV, aj$summary$cov, 
-           \(x,y) x %>% map_vec(\(z) siberNSEA(backTransCOV(z,y))) %>% 
-             as_tibble()
-           )
+# bind them into a single tibble
+mm <- kk %>% bind_rows(., .id = "master_code")
 
-# mm <- pmap(list(ajCOV, aj$summary$cov, names(ajCOV)), 
-#            \(x,y,n) x %>% map_vec(\(z) siberNSEA(backTransCOV(z,y))) %>% 
-#              tibble()  %>% rename(!!n := .))
-
-
-ggplot(kk %>% bind_rows(., .id = "group"), 
-       aes(x = group, y = value)) + 
+ggplot(mm, 
+       aes(x = master_code, y = value)) + 
   geom_boxplot()
 
+SEA_B_summaries = mm %>% group_by(master_code) %>% 
+  summarise(mean = mean(value), 
+            median = median(value),
+            sd = sd(value), 
+            hdr = list(hdrcde::hdr(den = density(value, from = 0), 
+                                   prob= 0.95)$hdr))
 
-# 
-# 
-# bb <- as_tibble(test[[1]][,1:4], rownames = "index") %>% 
-#   group_by(index) %>% nest() %>%
-#   mutate(data2 = map(data, \(x) matrix(as.matrix(x), ncol = 2, nrow = 2)))
-# 
-# 
-# cc <- as_tibble(test[[1]][,5:8], rownames = "index") %>% 
-#   group_by(index) %>% nest() %>%
-#   mutate(data2 = map(data, \(x) matrix(as.matrix(x), ncol = 2, nrow = 2)))
+
