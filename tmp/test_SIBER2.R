@@ -105,25 +105,34 @@ ajCOV <- extractCOV(test, siber_obj = aj)
 #              as_tibble()
 #            )
 
-kk <- map(ajCOV, \(x) x %>% map_vec(\(z) siberNSEA(z))) %>% tibble() %>%
-  rename( SEA_B_post = ".")
+kk <- map(ajCOV, \(x) x %>% map_vec(\(z) siberNSEA(z)) %>% data.frame()) %>%
+  bind_rows(.id = "master_code") %>% 
+  mutate(master_code = as.numeric(master_code)) %>%
+  rename("SEA_B_post" = ".")
 
-kk %>% mutate(mu = map_vec(SEA_B_post, mean))
+# kk %>% mutate(mu = map_vec(SEA_B_post, mean))
 
 # kk <- map(ajCOV, \(x) x %>% map(\(z) class(z)))
 
 # bind them into a single tibble
-mm <- kk %>% bind_rows(., .id = "master_code")
+# mm <- kk %>% bind_rows(., .id = "master_code")
+# 
+# ggplot(mm, 
+#        aes(x = master_code, y = SEA_B_post)) + 
+#   geom_boxplot()
 
-ggplot(mm, 
-       aes(x = master_code, y = value)) + 
+ggplot(kk, 
+       aes(x = master_code %>% as.factor, y = SEA_B_post)) + 
   geom_boxplot()
 
-SEA_B_summaries = mm %>% group_by(master_code) %>% 
-  summarise(mean = mean(value), 
-            median = median(value),
-            sd = sd(value), 
-            hdr = list(hdrcde::hdr(den = density(value, from = 0), 
+
+SEA_B_summaries = kk %>% group_by(master_code) %>% 
+  summarise(mean = mean(SEA_B_post), 
+            median = median(SEA_B_post),
+            sd = sd(SEA_B_post), 
+            hdr = list(hdrcde::hdr(den = density(SEA_B_post, from = 0), 
                                    prob= 0.95)$hdr))
+
+print(SEA_B_summaries)
 
 
