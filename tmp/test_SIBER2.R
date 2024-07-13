@@ -29,7 +29,7 @@ priors$tau.mu <- 1.0E-3
 
 
 
-
+# Fit bayesian ellipses to each group
 test <- fitEllipse(Y = aj$z_data %>% ungroup %>% select(all_of(2:3)), 
                    G = aj$z_data$master_code,
                    parms = parms, 
@@ -39,37 +39,16 @@ test <- fitEllipse(Y = aj$z_data %>% ungroup %>% select(all_of(2:3)),
 # Number of groups
 n_groups <- max(aj$z_data$master_code)
 
-
+# generate a tibble of SEAB values for each group
 kk <- siberEllipses2(test, aj)
 
-# extract the COV data from the fitted jags model
-# ajCOV <- extractCOV(test, siber_obj = aj)
-
-# backtransform these correlation matrices to covariance matrices on the 
-# original scale of the data.
-# kk <- map2(ajCOV, aj$summary$cov, 
-#            \(x,y) x %>% map_vec(\(z) siberNSEA(backTransCOV(z,y))) %>% 
-#              as_tibble()
-#            )
-
-
-
-# kk %>% mutate(mu = map_vec(SEA_B_post, mean))
-
-# kk <- map(ajCOV, \(x) x %>% map(\(z) class(z)))
-
-# bind them into a single tibble
-# mm <- kk %>% bind_rows(., .id = "master_code")
-# 
-# ggplot(mm, 
-#        aes(x = master_code, y = SEA_B_post)) + 
-#   geom_boxplot()
-
+## plot the SEAB values
 ggplot(kk, 
        aes(x = master_code %>% as.factor, y = SEA_B_post)) + 
   geom_boxplot()
 
 
+# Summarise the SEAB values
 SEA_B_summaries = kk %>% group_by(master_code) %>% 
   summarise(mean = mean(SEA_B_post), 
             median = median(SEA_B_post),

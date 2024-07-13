@@ -77,6 +77,10 @@ createSiberObject2 <- function (dd, group_start_position) {
   # create an object that is a list, into which the raw data, 
   # its transforms, and various calculated metrics can be stored.
   siber <- list()
+  
+  # add the tracer_idx and group_idx information
+  siber$tracer_idx <- tracer_idx
+  siber$group_idx  <- group_idx
 
   
   # AJ - mark for delete.

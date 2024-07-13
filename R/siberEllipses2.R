@@ -22,5 +22,10 @@ siberEllipses2 <- function (siberFit, siberObject) {
     mutate(master_code = as.numeric(master_code)) %>%
     rename("SEA_B_post" = ".")
   
+  SEAB <- left_join(SEAB, siberObject$summary %>% 
+                      select(siberObject$tracer_idx), 
+                    by = "master_code", 
+                    keep = NULL)
+  
  return(SEAB)
 }
