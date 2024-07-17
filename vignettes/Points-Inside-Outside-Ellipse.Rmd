@@ -89,9 +89,11 @@ test_these <- matrix(c(-2,  2,
 # transform these points onto ellipsoid coordinates
 Z_test <- pointsToEllipsoid(test_these, Sigma, mu)
 
+
+
 # determine whther or not these points are inside or outside the ellipse drawn 
 # with same p as above (percentile).
-inside_test <- ellipseInOut(Z_test, p = p)
+inside_test <- ellipseInOut(Z_test, p = p, method = "qChi")
 
 # inside points are marked TRUE which corresponds to 1 in numeric terms, and 
 # outside marked FALSE which corresponds to 0. 
@@ -132,7 +134,7 @@ testEllipse <- function(n, p) {
   Z_samp <- pointsToEllipsoid(Y, Sigma, mu) # convert to circle space
   
   # test if inside
-  inside_samp <- ellipseInOut(Z_samp, p = p)
+  inside_samp <- ellipseInOut(Z_samp, p = p, method = "qChi")
   
   # return propotion inside
   return(sum(inside_samp) / length(inside_samp))
@@ -150,7 +152,7 @@ Set up the simulation over a range of sample sizes ($n$). The absolute minimum s
 prediction_interval <- 0.95
 
 # specify a range of n
-do_these_n <- c(5, 10, 15, 20, 50, 100, 320, 1000)
+do_these_n <- c(5:50, 100, 320, 1000)
 
 # how many replicates per n to simulate
 reps_per_n <- 200
@@ -191,7 +193,7 @@ print(g3)
 
 ```
 
-**Figure 3.** The effect of sample size on the proportion of samples falling inside the 95% prediction ellipse (black points - jittered) with the mean shown in red.
+**Figure 3.** The effect of sample size on the proportion of samples falling inside the 95% prediction ellipse (black points - jittered) with the mean shown in red. At lower samples sizes, the possible combinations are more granular, and cause the step-wise shifts: e.g. at $n$=10 there are either 9/10 or 10/10 points inside the ellipse.
 
 Clearly at large sample sizes we are getting very accurate and precise concordance between the simulated proportions of samples inside the 95% prediction ellipse with the predicted value at 0.95. The deviations from this become more pronounced and unstable $\lessapprox 10$. One of the main causes of this divergence is the integer nature of the samples. At $n = 10$ it is not possible to have exactly a proportion of 0.95 points inside the ellipse, and so the values tend towards either all 10 of them or 9 of them. There is increasing bias towards the ellipse containing more datapoints than expected as $n \rightarrow 0$.
 
