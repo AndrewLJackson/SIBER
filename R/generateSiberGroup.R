@@ -25,12 +25,16 @@
 
 # a function to generate a single group
 generateSiberGroup <- function (mu.range = c(-1, 1, -1, 1), n.obs = 30, 
-                                wishSigmaScale = 1) {
+                                wishSigmaScale = 1,) {
   
   # pull a random set of means from the appropriate range
   # Code allows for different ranges for each isotope.
   mu <- numeric(2)
-  mu[1] <- stats::runif(1, mu.range[1], mu.range[2])
+  
+  for (i in 1:dd){
+    mu[i] <- stats::runif(1, mu.range[1], mu.range[2])
+  }
+  mu[1] <- 
   mu[2] <- stats::runif(1, mu.range[3], mu.range[4])
   
   # pull a precision matrix from the wishart distribution and invert it to 

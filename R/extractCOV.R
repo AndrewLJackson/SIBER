@@ -33,8 +33,10 @@ extractCOV <- function(X, siberObject){
            # nest(.key = .y) %>%
            nest() %>% 
            ungroup() %>%
-           mutate({{.y}} := map(`data`, \(x) matrix(as.matrix(x), 
-                                                    ncol = 2, nrow = 2) )) %>% 
+           mutate({{.y}} := map(`data`, 
+                                \(x) matrix(as.matrix(x), 
+                                            ncol = siberObject$n.iso, 
+                                            nrow = siberObject$n.iso) )) %>% 
            select(all_of(.y)) %>%
            tibble()
          
