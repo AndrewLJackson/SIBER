@@ -8,6 +8,7 @@ source("R/siberNSEA.R")
 source("R/backTransCOV.R")
 source("R/extractCOV.R")
 source("R/siberEllipses2.R")
+source("R/stat_siber_ellipse.R")
 
 
 
@@ -40,12 +41,17 @@ test <- fitEllipse(Y = aj$z_data %>% ungroup %>% select(all_of(2:3)),
 n_groups <- max(aj$z_data$master_code)
 
 # generate a tibble of SEAB values for each group
+# this fits the Bayesian model
 kk <- siberEllipses2(test, aj)
 
 ## plot the SEAB values
 ggplot(kk, 
        aes(x = master_code %>% as.factor, y = SEA_B_post)) + 
-  geom_boxplot()
+  geom_boxplot() + 
+  
+  geom_point(data = aj$summary, 
+             mapping = aes(x = master_code, 
+                           y = SEAc), col = "red")
 
 
 # Summarise the SEAB values
@@ -57,5 +63,35 @@ SEA_B_summaries = kk %>% group_by(master_code) %>%
                                    prob= 0.95)$hdr))
 
 print(SEA_B_summaries)
+
+
+## Plot the raw data and try to add stat_SIBER_ellipse()
+
+# rlang needed to run the 
+library(rlang)
+
+g1 <- ggplot(data = demo.siber.data %>% mutate(group = factor(group), 
+                                               community = factor(community)), 
+             mapping = aes(x = iso1, y = iso2, 
+                           color = group, 
+                           shape = community)) + 
+  geom_point() + 
+  scale_color_viridis_d(end = 0.9) + 
+  stat_siber_ellipse(type = "SEA", level = 0.95)
+
+print(g1)
+
+
+# This comparison takes a small subset of each group (n=6) and 
+# illustrates that SEAc tends to be slightly larger than SEA
+ggplot(demo.siber.data %>%
+         group_by(group, community) %>%
+         slice_sample(n = 6) %>% ungroup,
+       aes(iso1, iso2, color = factor(group), shape = factor(community))) +
+  geom_point() + stat_siber_ellipse(type = "SEA") +
+  stat_SIBER_ellipse(type = "SEAc", linetype = 2) + 
+  scale_color_viridis_d()
+
+
 
 

@@ -44,7 +44,7 @@ n_groups <- max(aj$z_data$master_code)
 # generate a tibble of SEAB values for each group
 kk <- siberEllipses2(test, aj)
 
-## plot the SEAB values
+## plot the SEAB values as boxplots
 ggplot(kk, 
        aes(x = master_code %>% as.factor, y = SEA_B_post)) + 
   geom_boxplot() + 
@@ -52,6 +52,16 @@ ggplot(kk,
              mapping = aes(x = master_code, 
                            y = SEAc), col = "red")
 
+
+## plot as violin plots
+ggplot(kk, 
+       aes(x = master_code %>% as.factor, y = SEA_B_post)) + 
+  geom_violin(bounds = c(0, Inf),
+              draw_quantiles = c(0.025, 0.25, 0.5,0.75,0.975), 
+              scale = "width") + 
+  geom_point(data = aj$summary, 
+             mapping = aes(x = master_code, 
+                           y = SEAc), col = "red")
 
 # Summarise the SEAB values
 SEA_B_summaries = kk %>% group_by(master_code) %>% 
