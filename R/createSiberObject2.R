@@ -145,6 +145,7 @@ createSiberObject2 <- function (dd, group_start_position) {
   #                            \(x) unlist(sigmaSEA(x))) %>% bind_rows())
   dd_nested$SEA <- map_vec(dd_nested$cov, 
                                  \(x) siberNSEA(x))
+  
   dd_nested$D <- map_vec(dd_nested$cov, ncol)
   
   dd_nested$TA <- map_vec(dd_nested$tracer_data, 
@@ -176,6 +177,9 @@ createSiberObject2 <- function (dd, group_start_position) {
     left_join(.,  dd_nested, 
               by = c(group_labels, "master_code"), 
               keep = FALSE)
+  
+  # calculate SEAc
+  siber$summary <- siber$summary %>% mutate(SEAc = SEA * (n-1) / (n-2))
   
   # siber$nested_means <- nested_means
   # siber$nested_sds <- nested_sds

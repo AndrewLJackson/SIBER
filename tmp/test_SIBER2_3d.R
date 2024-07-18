@@ -47,7 +47,10 @@ kk <- siberEllipses2(test, aj)
 ## plot the SEAB values
 ggplot(kk, 
        aes(x = master_code %>% as.factor, y = SEA_B_post)) + 
-  geom_boxplot()
+  geom_boxplot() + 
+  geom_point(data = aj$summary, 
+             mapping = aes(x = master_code, 
+                           y = SEAc), col = "red")
 
 
 # Summarise the SEAB values
