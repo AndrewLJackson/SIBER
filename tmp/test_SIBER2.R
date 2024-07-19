@@ -77,7 +77,7 @@ g1 <- ggplot(data = demo.siber.data %>% mutate(group = factor(group),
                            shape = community)) + 
   geom_point() + 
   scale_color_viridis_d(end = 0.9) + 
-  stat_siber_ellipse(type = "SEA", level = 0.95)
+  stat_siber_ellipse(type = "SEA", level = NULL)
 
 print(g1)
 
