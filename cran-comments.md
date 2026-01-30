@@ -1,6 +1,6 @@
 ## Update submission
 
-* this is a minor update to address a request to fix an issue on newer OSX builds that cause an error when rendering the unicode permille symbol 'U+2030'. This have been fixed by switching to the text label "permille" when building the graphics objects that require it. 
+* this is a minor update to replace `dplyr::group_by_()` with `dplyr::group_by()` in `SIBER::siberKapow()` per advice from `dplyr` package maintainers. 
 
 
 ### Previous NOTES

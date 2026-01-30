@@ -55,8 +55,7 @@ siberKapow <- function(dtf, isoNames = c("iso1", "iso2"),
   
   # apply our function to each group to calcluate the ellipse boundaries
   ellCoords <- dtf %>% ungroup() %>% droplevels() %>% 
-    # group_by_(.dots = "group") %>%
-    group_by_(.dots = group) %>%
+    group_by(.dots = group) %>%
     do(calcBoundaries(.data))
   
   # split the dataset by the defined grouping parameter
