@@ -26,7 +26,7 @@ library(ellipse)
 
 Fit a basic SIBER model to the example data bundled with the package.
 
-```{r basic-model}
+```{r basic-model, fig.width=5}
 # load in the included demonstration dataset
 data("demo.siber.data")
 #
@@ -140,7 +140,7 @@ ellipse_df <- dplyr::rename(ellipse_df, iso1 = x, iso2 = y)
 
 Now to create the plots. First plot all the raw data as we want.
 
-```{r plot-data}
+```{r plot-data, fig.width=7}
 first.plot <- ggplot(data = demo.siber.data, aes(iso1, iso2)) +
   geom_point(aes(color = factor(group):factor(community)), size = 2)+
   ylab(expression(paste(delta^{15}, "N (permille)")))+
@@ -152,7 +152,7 @@ print(first.plot)
 
 Now we can try to add the posterior ellipses on top and facet by group
 
-```{r plot-posts}
+```{r plot-posts, fig.width=7}
 
 second.plot <- first.plot + facet_wrap(~factor(group):factor(community))
 print(second.plot)

@@ -11,12 +11,15 @@
 
 ## R CMD check --as-cran results
 
+local OS X 26.2 install, R 4.5.2. Apple clang version 17.0.0 (clang-1700.0.13.3) GNU Fortran (Homebrew GCC 15.2.0) 15.2.0
+       
+called by `devtools::check(remote = TRUE, manual = TRUE)`
+
 0 errors | 0 warnings | 0 notes
 
 ## Additional Test environments
 
-* local OS X 13.6 install, R 4.3.1. Apple clang version 14.0.3 (clang-1403.0.22.14.1)
-       GNU Fortran (GCC) 12.2.0 - OK
+
 * OSX via `devtools::check_mac_release()`
     * r-release-macosx-arm64|4.3.0|macosx|macOS 13.3.1 (22E261)|Mac mini|Apple M1||en_US.UTF-8|macOS 11.3|clang-1403.0.22.14.1|GNU Fortran (GCC) 12.2.0 - OK
 * win-builder
