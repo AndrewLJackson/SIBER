@@ -10,6 +10,10 @@ Ellipse and convex hull fitting package to estimate niche width for stable isoto
 
 [MixSIAR](https://github.com/brianstock/MixSIAR) is intended to encompass all the mixing model functionality in the now defunct SIAR package. Additionally, we have updated the basic mixing model from SIAR and released this as a standalone package for basic mixing model fitting as [simmr](https://CRAN.R-project.org/package=simmr ). 
 
+<!-- badges: start -->
+  [![R-CMD-check](https://github.com/AndrewLJackson/SIBER/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AndrewLJackson/SIBER/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 
 ## Installation
 
@@ -58,7 +62,7 @@ Before you contact us, please make sure to check the following:
 + Ensure you have JAGS installed: see FAQs for details.
 
 ## Acknowledgements
-Some code and much input from my collaborator and co-author [Andrew Parnell](https://www.maynoothuniversity.ie/faculty-science-engineering/our-people/andrew-parnell). Thanks to [Alex Bond](https://alexanderbond.org) for helping identify some problems in model fitting which is now resolved by z-scoring, fitting and back-transforming. Although not affecting every analysis, the potential issue is exemplified in [SIBER-sandbox]( https://github.com/AndrewLJackson/SIBER-sandbox). Thanks to [Edward Doherty](https://github.com/Edward-Doherty) for finding the bug that turned out to be in the creating of z-scores in `createSiberObject`.
+Some code and much input from my collaborator and co-author [Andrew Parnell](https://people.ucd.ie/andrew.parnell1). Thanks to [Alex Bond](https://alexanderbond.org) for helping identify some problems in model fitting which is now resolved by z-scoring, fitting and back-transforming. Although not affecting every analysis, the potential issue is exemplified in [SIBER-sandbox]( https://github.com/AndrewLJackson/SIBER-sandbox). Thanks to [Edward Doherty](https://github.com/Edward-Doherty) for finding the bug that turned out to be in the creating of z-scores in `createSiberObject`.
 
 ## Citation
 Jackson, A.L., Parnell, A.C., Inger R., & Bearhop, S. 2011. Comparing isotopic niche widths among and within communities: SIBER – Stable Isotope Bayesian Ellipses in R. Journal of Animal Ecology, 80, 595-602. [doi](https://doi.org/10.1111/j.1365-2656.2011.01806.x)

@@ -93,8 +93,8 @@ Split the data into a list by pack and plot the pack's collective isotopic niche
 packs <- mongoose_2 %>% split(.$pack)
 
 # use purrr::map to apply siberKapow across each pack.
-pack_boundaries <- purrr::map(packs, siberKapow, isoNames = c("c13","n15"), 
-                             group = "indiv.id", pEll = 0.95)
+pack_boundaries <- packs |> purrr::map(\(x) siberKapow(x, isoNames = c("c13","n15"), 
+                             group = "indiv.id", pEll = 0.95))
 
 
 # Define afunction to strip out the boundaries of the union of the 
