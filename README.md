@@ -1,18 +1,20 @@
 SIBER
 =====
 
+<!-- badges: start -->
 [![cran version](http://www.r-pkg.org/badges/version/SIBER)](https://CRAN.R-project.org/package=SIBER ) 
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/SIBER?)](https://github.com/r-hub/cranlogs.app)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/SIBER?color=82b4e8)](https://github.com/r-hub/cranlogs.app)
 [![DOI](https://zenodo.org/badge/27975343.svg)](https://zenodo.org/badge/latestdoi/27975343)
+[![R-CMD-check](https://github.com/AndrewLJackson/SIBER/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AndrewLJackson/SIBER/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
 
 Ellipse and convex hull fitting package to estimate niche width for stable isotope data (and potentially other relevant types of bivariate data).
 
 [MixSIAR](https://github.com/brianstock/MixSIAR) is intended to encompass all the mixing model functionality in the now defunct SIAR package. Additionally, we have updated the basic mixing model from SIAR and released this as a standalone package for basic mixing model fitting as [simmr](https://CRAN.R-project.org/package=simmr ). 
 
-<!-- badges: start -->
-  [![R-CMD-check](https://github.com/AndrewLJackson/SIBER/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AndrewLJackson/SIBER/actions/workflows/R-CMD-check.yaml)
-<!-- badges: end -->
+
+
 
 
 ## Installation

@@ -1,7 +1,7 @@
 ## Update submission
 
 * this is a minor update to replace `dplyr::group_by_()` with `dplyr::group_by()` in `SIBER::siberKapow()` per advice from `dplyr` package maintainers. 
-* 
+* no longer pass `.dots` argument to purrr::map() and instead use anonymous function to handle the additional parameters
 
 
 ### Previous NOTES
