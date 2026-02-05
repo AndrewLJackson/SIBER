@@ -155,11 +155,11 @@ ellipse_proportions <- map2(ellipse.areas, total.area, `/`)
 # convert to table with a nested map_df call for easier printing. 
 # Probably possible to use at_depth() to simplify this, but possibly
 # not as i use map_df() here.
-df_proportions <-  map_df(ellipse_proportions, 
-                         . %>% map_df(data.frame, .id = "individual"), 
-                         .id = "pack" )
+# df_proportions <-  map_df(ellipse_proportions, 
+#                          . %>% map_df(data.frame, .id = "individual"), 
+#                          .id = "pack" )
 
-aj <- ellipse_proportions |> 
+df_proportions <- ellipse_proportions |> 
   map_df(\(x) x |> 
            map_df(\(y) data.frame(y),  .id = "individual"), 
          .id = "pack")
