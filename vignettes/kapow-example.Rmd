@@ -144,7 +144,7 @@ total.area <- map(pack_boundaries, spatstat.geom::area)
 extractProportions <- function(x){unlist(map(x$owin.coords, spatstat.geom::area))}
 
 # map our individual ellipse area function over packs
-ellipse.areas <- map(pack_boundaries, . %>% extractProportions)
+ellipse.areas <- pack_boundaries |> map(\(x) extractProportions(x))
 
 # calculate ellipses as proportions of the KAPOW for that pack by mapping
 # over both the individual ellipses and pack totals and dividing.
@@ -155,12 +155,17 @@ ellipse_proportions <- map2(ellipse.areas, total.area, `/`)
 # convert to table with a nested map_df call for easier printing. 
 # Probably possible to use at_depth() to simplify this, but possibly
 # not as i use map_df() here.
-df_proportions <- map_df(ellipse_proportions, 
+df_proportions <-  map_df(ellipse_proportions, 
                          . %>% map_df(data.frame, .id = "individual"), 
                          .id = "pack" )
 
+aj <- ellipse_proportions |> 
+  map_df(\(x) x |> 
+           map_df(\(y) data.frame(y),  .id = "individual"), 
+         .id = "pack")
+
 # rename the ugly variable manually
-df_proportions <- rename(df_proportions, Proportion = ".x..i..")
+df_proportions <- rename(df_proportions, Proportion = "y")
 
 # print a nice table
 knitr::kable(df_proportions, digits = 2)
