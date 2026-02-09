@@ -7,7 +7,7 @@ library(ellipse)
 
 
 
-## ----basic-model--------------------------------------------------------------
+## ----basic-model, fig.width=5-------------------------------------------------
 # load in the included demonstration dataset
 data("demo.siber.data")
 #
@@ -114,7 +114,7 @@ ellipse_df <- dplyr::rename(ellipse_df, iso1 = x, iso2 = y)
 
 
 
-## ----plot-data----------------------------------------------------------------
+## ----plot-data, fig.width=7---------------------------------------------------
 first.plot <- ggplot(data = demo.siber.data, aes(iso1, iso2)) +
   geom_point(aes(color = factor(group):factor(community)), size = 2)+
   ylab(expression(paste(delta^{15}, "N (permille)")))+
@@ -123,7 +123,7 @@ first.plot <- ggplot(data = demo.siber.data, aes(iso1, iso2)) +
 print(first.plot)
 
 
-## ----plot-posts---------------------------------------------------------------
+## ----plot-posts, fig.width=7--------------------------------------------------
 
 second.plot <- first.plot + facet_wrap(~factor(group):factor(community))
 print(second.plot)

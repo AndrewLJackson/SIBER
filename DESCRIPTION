@@ -18,18 +18,17 @@ Imports:
     grDevices,
     mnormt,
     rjags,
-    spatstat.geom,
     spatstat.utils,
     stats,
     tidyr,
     dplyr,
-    ggplot2,
-    magrittr,
-    purrr
+    magrittr
 Suggests:
     coda,
     ellipse,
+    ggplot2,
     knitr,
+    purrr,
     rmarkdown,
     viridis
 Description: Fits bi-variate ellipses to stable isotope data using Bayesian
@@ -44,4 +43,4 @@ Packaged:
 NeedsCompilation: yes
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3

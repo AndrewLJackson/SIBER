@@ -1,7 +1,8 @@
 ## Update submission
 
-* this is a minor update to replace `dplyr::group_by_()` with `dplyr::group_by()` in `SIBER::siberKapow()` per advice from `dplyr` package maintainers. 
-* no longer pass `.dots` argument to purrr::map() and instead use anonymous function to handle the additional parameters
+* the files relating to the nested niche calculations in the functions `kapow()` and `siberKapow()` along with the vignetted `kapow-example` have been removed from this version. There are several calls to deprecated and defunct methods in package `dplyr` that need to be resolved. I have not managed to find a satisfactory solution and I have decided to temporarily take these out of the package. They are almost unused, and included to support an associated research paper. I will work to get them back in for the next release. The following points are no longer relevant, but will be rolled into the next release.
+    * this is a minor update to replace `dplyr::group_by_()` with `dplyr::group_by()` in `SIBER::siberKapow()` per advice from `dplyr` package maintainers. 
+    * no longer pass `.dots` argument to purrr::map() and instead use anonymous function to handle the additional parameters
 
 
 ### Previous NOTES

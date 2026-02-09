@@ -31,7 +31,7 @@ siberKapow <- function(dtf, isoNames = c("iso1", "iso2"),
     
     mu <- dd %>% select(isoNames) %>% colMeans()
     
-    Sigma <- dd  %>% select(isoNames) %>% stats::cov()
+    Sigma <- dd  %>% select(all_of(isoNames)) %>% stats::cov()
     
     # turn the mean and covariance matrix into a set of xy coordinates 
     # demarcating the ellipse boundary. SIBER::addellipse()
@@ -54,23 +54,26 @@ siberKapow <- function(dtf, isoNames = c("iso1", "iso2"),
 
   
   # apply our function to each group to calcluate the ellipse boundaries
-  ellCoords <- dtf %>% ungroup() %>% droplevels() %>% 
-    group_by(.dots = group) %>%
-    do(calcBoundaries(.data))
+  # ellCoords <- dtf %>% ungroup() %>% droplevels() %>% 
+  #   group_by(!!!group) %>%
+  #   do(calcBoundaries(.data)) # AJ THIS IS THE LINE THAT NEEDS TO BE FIXED
+  # 
+  ellCoords.list <- dtf |> ungroup() |> droplevels() |> split(`group`) |> purrr::map(\(x) calcBoundaries(x))
+    
   
   # split the dataset by the defined grouping parameter
   # The piped version causes NOTEs
   # "no visible binding for global variable ‘group’"
   # ellCoords.list <- ellCoords %>% split(., .[,group])
   # ellCoords.list <- split(ellCoords, ellCoords$group)
-  ellCoords.list <- split(ellCoords, ellCoords[`group`])
+  # ellCoords.list <- split(ellCoords, ellCoords[`group`])
   
   # Define a short custom function and then apply it over the list
   # using map()
   ell2owin <- function(x){spatstat.geom::owin(poly = list(x = x$X1, y = x$X2))}
   owin.coords <- purrr::map(ellCoords.list, ell2owin)
   
-  # pass the list of ellipses for each individal to spatstat.geom::union.owin
+  # pass the list of ellipses for each individual to spatstat.geom::union.owin
   # using do.call, which i dont really like but it is the only way i have 
   # found to parse the list correctly into union.owin. That is, I want 
   # this.list <- list(a,b,c) to be passed as union.owin(a,b,c)

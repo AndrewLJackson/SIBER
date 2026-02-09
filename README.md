@@ -6,7 +6,8 @@ SIBER
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/SIBER?)](https://github.com/r-hub/cranlogs.app)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/SIBER?color=82b4e8)](https://github.com/r-hub/cranlogs.app)
 [![DOI](https://zenodo.org/badge/27975343.svg)](https://zenodo.org/badge/latestdoi/27975343)
-[![R-CMD-check](https://github.com/AndrewLJackson/SIBER/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AndrewLJackson/SIBER/actions/workflows/R-CMD-check.yaml)
+<!-- Badge below to auto check the package fails owing to JAGS not being available on the server -->
+<!-- [![R-CMD-check](https://github.com/AndrewLJackson/SIBER/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AndrewLJackson/SIBER/actions/workflows/R-CMD-check.yaml) -->
 <!-- badges: end -->
 
 Ellipse and convex hull fitting package to estimate niche width for stable isotope data (and potentially other relevant types of bivariate data).

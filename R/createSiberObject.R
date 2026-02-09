@@ -221,7 +221,7 @@ for (i in 1:siber$n.communities) {
   # transform iso1 and iso2 by scaling them and
   # finally converting to data.frame.
   siber$zscore.data[[i]] <- siber$raw.data[[i]] %>%
-    group_by(group) %>% mutate(iso1 = scale(iso1),
+    dplyr::group_by(group) %>% dplyr::mutate(iso1 = scale(iso1),
                                iso2 = scale(iso2)) %>%
     data.frame()
   # 

@@ -1,0 +1,6 @@
+# KAPOW
+
+I removed the files `kapow()`, `siberKapow()` and the associated vignette `kapow-example` becuase I couldn't fix the errors and warnings associated with using now defunct methods in `dplyr`. 
+
+* As a consequence, packages `purrr` and `ggplot2` moved from Impors to Suggests in DESCRIPTION
+* Package `spatstat.geom` is removed entirely from DESCRIPTION

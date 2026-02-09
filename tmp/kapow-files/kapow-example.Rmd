@@ -93,7 +93,8 @@ Split the data into a list by pack and plot the pack's collective isotopic niche
 packs <- mongoose_2 %>% split(.$pack)
 
 # use purrr::map to apply siberKapow across each pack.
-pack_boundaries <- packs |> purrr::map(\(x) siberKapow(x, isoNames = c("c13","n15"), 
+pack_boundaries <- packs |> 
+  purrr::map(\(x) siberKapow(x, isoNames = c("c13","n15"), 
                              group = "indiv.id", pEll = 0.95))
 
 
@@ -113,8 +114,8 @@ plotBoundaries <- function(dd, ee){
     viridis::scale_fill_viridis(discrete = TRUE, guide = FALSE) + 
     theme_bw() + 
     ggtitle(paste0("Pack: ", as.character(ee$pack[1]) )) + 
-    geom_polygon(data = dd$ell.coords, aes(X1, X2, group = indiv.id), 
-                 alpha = 0.2, fill = NA)
+    geom_polygon(data = dd$ell.coords[[1]], aes(X1, X2), 
+                 alpha = 0.2, fill = NA, color = "red")
   return(p)
   
 }

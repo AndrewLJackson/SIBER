@@ -1,5 +1,5 @@
 # SIBER 2.1.10
-+ minor update replacing `dplyr::group_by_()` with `dplyr::group_by()` in `SIBER::siberKapow()`.
++ minor update that temporarily removes `kapow()`, `siberKapow()` and the associated vignette `kapow-example`. There are errors and warnings arising from calls to now defunct methods in `dplyr`. These require more time to recode this function. I have made the decision that it is better to keep the package live on CRAN and remove these seldom, if ever used, functions. 
 
 # SIBER 2.1.9
 + Problems with rendering the permille symbol on latest OSX systems has meant we have had to remove all reference to the unicode symbol "U+2023" or "\u2030" within expressions. In order to create figures with the symbol present, you will need to do so with your own code running on your own machine with code to work with your local OS and region/locale settings.
