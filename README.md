@@ -7,7 +7,7 @@ SIBER
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/SIBER?color=82b4e8)](https://github.com/r-hub/cranlogs.app)
 [![DOI](https://zenodo.org/badge/27975343.svg)](https://zenodo.org/badge/latestdoi/27975343)
 <!-- Badge below to auto check the package fails owing to JAGS not being available on the server -->
-<!-- [![R-CMD-check](https://github.com/AndrewLJackson/SIBER/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AndrewLJackson/SIBER/actions/workflows/R-CMD-check.yaml) -->
+[![R-CMD-check](https://github.com/AndrewLJackson/SIBER/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AndrewLJackson/SIBER/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Ellipse and convex hull fitting package to estimate niche width for stable isotope data (and potentially other relevant types of bivariate data).
@@ -22,14 +22,14 @@ Ellipse and convex hull fitting package to estimate niche width for stable isoto
 
 __NOTE__ you will also need to install [JAGS](https://mcmc-jags.sourceforge.io) which is a standalone software that the R package `rjags` provides an interface for SIBER to fit the models.
 
-The latest stable release package is released on CRAN as v2.1.9. Type `install.packages("SIBER")` in the command line.
+The latest stable release package is released on CRAN as v2.1.10. Type `install.packages("SIBER")` in the command line.
 
 Alternatively, you can install directly from github
 
 The stable release can be installed by
   ```R
     # install.packages("devtools") # install if necessary
-    devtools::install_github("andrewljackson/SIBER@v2.1.9", 
+    devtools::install_github("andrewljackson/SIBER@v2.1.10", 
     build_vignettes = TRUE)
     library(SIBER)
   ```
