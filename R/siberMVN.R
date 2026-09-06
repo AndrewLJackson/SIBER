@@ -85,6 +85,9 @@ siberMVN <- function (siber, parms, priors)
       # I NEED TO CHECK TO SEE IF S3 CLASSES MEAN I DONT HAVE TO PASS IN AND OUT
       # THE SAME OBJECT EACH TIME WHICH IS WASTEFUL.
       siber.posterior[[ct]] <- corrected.posteriors
+      names(siber.posterior)[ct] <- paste(siber$all.communities[k],
+                                          siber$group.names[[k]][j],
+                                          sep = ".")
       
       ct <- ct + 1 # update the counter
       
@@ -92,12 +95,7 @@ siberMVN <- function (siber, parms, priors)
 }
   
   
-  # give the list objects names for easier retrieval
-  tmp.names <- unique(paste(siber$original.data[,"community"],
-                            siber$original.data[,"group"],
-                            sep=".")
-  )
-  names(siber.posterior) <- tmp.names
+  # Names are assigned with each fitted group above, not in input-row order.
   
   return(siber.posterior)
 }
