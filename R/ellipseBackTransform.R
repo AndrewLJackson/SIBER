@@ -41,8 +41,12 @@ ellipseBackTransform <- function (jags.output, siber, idx.community, idx.group) 
   all.draws[,3] <- all.draws[,2]
   
   # now correct the ellipse locations (i.e. their means)
-  all.draws[,5] <- all.draws[,5] + siber$ML.mu[[idx.community]][1,1,idx.group]
-  all.draws[,6] <- all.draws[,6] + siber$ML.mu[[idx.community]][1,2,idx.group]
+  all.draws[,5] <- all.draws[,5] *
+    sqrt(siber$ML.cov[[idx.community]][1,1,idx.group]) +
+    siber$ML.mu[[idx.community]][1,1,idx.group]
+  all.draws[,6] <- all.draws[,6] *
+    sqrt(siber$ML.cov[[idx.community]][2,2,idx.group]) +
+    siber$ML.mu[[idx.community]][1,2,idx.group]
   
   return(all.draws)
   
